@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<time-tracks type="array">
+  <time-track>
+    <id>2776996</id>
+    <name>fast</name>
+    <href>https://api.samanage.com/incidents/35881048/time_tracks/2776996.xml</href>
+    <created_at>2019-03-05T15:43:27Z</created_at>
+    <updated_at>2019-03-05T15:43:27Z</updated_at>
+    <minutes>30</minutes>
+    <parent>
+      <id>35881048</id>
+      <class>incident</class>
+      <href>https://api.samanage.com/incidents/35881048.xml</href>
+    </parent>
+    <creator>
+      <id>1753326</id>
+      <name>Ta, Minh Q</name>
+      <disabled>false</disabled>
+      <title></title>
+      <email>MINHTA16@augustana.edu</email>
+      <created_at>2016-08-11T14:02:59Z</created_at>
+      <updated_at>2019-03-06T19:13:19Z</updated_at>
+      <last_login>2019-03-06T19:11:14Z</last_login>
+      <phone>84.98861969</phone>
+      <mobile_phone></mobile_phone>
+      <department>
+        <id>40524</id>
+        <name>Student</name>
+        <description></description>
+        <default_assignee_id>-1</default_assignee_id>
+      </department>
+      <role>
+        <id>471977</id>
+        <name>Student Intern</name>
+        <description>Almost like an administrator but no access to setup.</description>
+        <portal>false</portal>
+        <show_my_tasks>false</show_my_tasks>
+      </role>
+      <salt>9a9b25cb6848cd98a62588e0b60762e5639fe4ff</salt>
+      <group_ids>
+        <group_id>1953008</group_id>
+      </group_ids>
+      <platform_widget_developer nil="true"/>
+      <custom_fields_values/>
+      <site>
+        <id>43379</id>
+        <name>Freya House 2</name>
+        <location>Freya House 2</location>
+        <description></description>
+        <time_zone></time_zone>
+        <language>-1</language>
+        <business_record>
+          <id>26881</id>
+          <name>Default Business Hours</name>
+          <description>This is your initial business hours record</description>
+        </business_record>
+      </site>
+      <avatar>
+        <type>image</type>
+        <image_class>avatar_image</image_class>
+        <sso_image_class></sso_image_class>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/fac79d347fd307254c23/visa_card.jpg?1551800564</avatar_url>
+      </avatar>
+      <mfa_enabled>false</mfa_enabled>
+      <reports_to nil="true"/>
+    </creator>
+  </time-track>
+  <time-track>
+    <id>2784230</id>
+    <name>slow</name>
+    <href>https://api.samanage.com/incidents/35881048/time_tracks/2784230.xml</href>
+    <created_at>2019-03-06T21:43:58Z</created_at>
+    <updated_at>2019-03-06T21:43:58Z</updated_at>
+    <minutes>25</minutes>
+    <parent>
+      <id>35881048</id>
+      <class>incident</class>
+      <href>https://api.samanage.com/incidents/35881048.xml</href>
+    </parent>
+    <creator>
+      <id>1753326</id>
+      <name>Ta, Minh Q</name>
+      <disabled>false</disabled>
+      <title></title>
+      <email>MINHTA16@augustana.edu</email>
+      <created_at>2016-08-11T14:02:59Z</created_at>
+      <updated_at>2019-03-06T19:13:19Z</updated_at>
+      <last_login>2019-03-06T19:11:14Z</last_login>
+      <phone>84.98861969</phone>
+      <mobile_phone></mobile_phone>
+      <department>
+        <id>40524</id>
+        <name>Student</name>
+        <description></description>
+        <default_assignee_id>-1</default_assignee_id>
+      </department>
+      <role>
+        <id>471977</id>
+        <name>Student Intern</name>
+        <description>Almost like an administrator but no access to setup.</description>
+        <portal>false</portal>
+        <show_my_tasks>false</show_my_tasks>
+      </role>
+      <salt>9a9b25cb6848cd98a62588e0b60762e5639fe4ff</salt>
+      <group_ids>
+        <group_id>1953008</group_id>
+      </group_ids>
+      <platform_widget_developer nil="true"/>
+      <custom_fields_values/>
+      <site>
+        <id>43379</id>
+        <name>Freya House 2</name>
+        <location>Freya House 2</location>
+        <description></description>
+        <time_zone></time_zone>
+        <language>-1</language>
+        <business_record>
+          <id>26881</id>
+          <name>Default Business Hours</name>
+          <description>This is your initial business hours record</description>
+        </business_record>
+      </site>
+      <avatar>
+        <type>image</type>
+        <image_class>avatar_image</image_class>
+        <sso_image_class></sso_image_class>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/fac79d347fd307254c23/visa_card.jpg?1551800564</avatar_url>
+      </avatar>
+      <mfa_enabled>false</mfa_enabled>
+      <reports_to nil="true"/>
+    </creator>
+  </time-track>
+</time-tracks>
