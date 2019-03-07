@@ -2,7 +2,8 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 
 #curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+json' -H 'Content-type: application/json' -X GET https://api.samanage.com/incidents.json | python -mjson.tool > "formatted.json"
 
-# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET https://api.samanage.com/incidents.xml?per_page=100 -o data.xml
+# Get incidents ------------------------------------------------
+#curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET https://api.samanage.com/incidents.xml?per_page=1 -o data.xml
 
 
 # New incident ------------------------------------------------
@@ -19,6 +20,7 @@ curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
  <description>Test curl-ing new incidents</description>
 </incident>
 ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
+
 # New time track -----------------------------------------------
 ID=35881048
 # curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
