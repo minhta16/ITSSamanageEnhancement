@@ -6,8 +6,8 @@ import java.io.OutputStreamWriter;
 public class EverythingAboutCurl {
 	public static void main(String[] args) {
 		String userToken = "TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg";
-//		newIncident(userToken);
-		addTimeTrack(userToken, 35961711, 30);
+		newIncident(userToken);
+//		addTimeTrack(userToken, 35961711, 30);
 	}
 
 	public static void newIncident(String userToken) {
@@ -23,12 +23,15 @@ public class EverythingAboutCurl {
 			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
 			conn.setRequestProperty("Content-Type", "text/xml");
 
-			String data = "<incident>" + " <name>Test</name>" + " <priority>Medium</priority>"
-					+ " <requester><email>minhta16@augustana.edu</email></requester>"
-					+ " <category><name>Meetings (ITS use only)</name></category>" + " <subcategory>"
-					+ "      <name>Training/Workshops</name>" + " </subcategory>"
-					+ " <description>Test curl-ing new incidents/description>"
-					+ " <assignee><email>minhta16@augustana.edu</email></assignee>" + "</incident>";
+			String data = "<incident>"
+						+ " <name>Test</name>" + " <priority>Medium</priority>"
+						+ " <requester><email>MINHTA16@augustana.edu</email></requester>"
+						+ " <category><name>Meetings  (ITS use only)</name></category>"
+						+ " <subcategory>"
+						+ "      <name>Training/Workshops</name>" + " </subcategory>"
+						+ " <description>Test curl-ing new incidents</description>"
+						+ " <assignee><email>MINHTA16@augustana.edu</email></assignee>"
+						+ "</incident>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
 			out.close();
