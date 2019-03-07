@@ -17,9 +17,9 @@ import java.io.StringReader;
 public class EverythingAboutCurl {
 	public static void main(String[] args) {
 		String userToken = "TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg";
-//		newIncident(userToken);
+		newIncident(userToken);
 //		System.out.println(getID(userToken));
-		addTimeTrack(userToken, 36010690, 30);
+		addTimeTrack(userToken, getID(userToken), 30);
 	}
 
 	public static void newIncident(String userToken) {
@@ -48,6 +48,10 @@ public class EverythingAboutCurl {
 					+ "</incident>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
+			out.close();
+			
+			new InputStreamReader(conn.getInputStream());
+			conn.disconnect();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -86,6 +90,7 @@ public class EverythingAboutCurl {
 			Element rootElement = document.getDocumentElement();
 			
 			int incidentID = Integer.parseInt(getString("id", rootElement));
+			conn.disconnect();
 			return incidentID;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -116,7 +121,10 @@ public class EverythingAboutCurl {
 					+ "</time_track>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
-
+			out.close();
+			
+			new InputStreamReader(conn.getInputStream());
+			conn.disconnect();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
