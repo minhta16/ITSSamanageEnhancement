@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab text="Main Menu">
+               <content>
+                  <VBox prefHeight="477.0" prefWidth="778.0">
+                     <children>
+                        <GridPane prefHeight="362.0" prefWidth="678.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.20001220703125" minWidth="10.0" prefWidth="120.39998016357421" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="417.60000762939455" minWidth="10.0" prefWidth="166.0000244140625" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="60.80000000000001" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="156.9999877929688" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="230.4000122070313" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="110.4000015258789" minHeight="10.0" prefHeight="38.40001983642579" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="132.79997406005862" minHeight="0.0" prefHeight="60.00000457763672" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="128.39999542236328" minHeight="10.0" prefHeight="41.600018310546886" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="131.9999816894531" minHeight="0.0" prefHeight="131.9999816894531" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="83.79999389648435" minHeight="6.399993896484375" prefHeight="37.79999389648435" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="69.20001831054685" minHeight="10.0" prefHeight="24.600006103515625" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Incident Name" />
+                              <TextField fx:id="incidentNameField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" />
+                              <Label text="Description" GridPane.rowIndex="1" />
+                              <TextField fx:id="descField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label prefHeight="52.0" prefWidth="162.0" text="Time Track Comment" GridPane.columnIndex="3" />
+                              <TextField fx:id="timeTrackCmtField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="4" />
+                              <Label id="timeElapsedField" text="Time Elapsed" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <TextField fx:id="timeElapsedField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="30.0" right="30.0" top="10.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="Settings">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <GridPane BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.20001220703125" minWidth="10.0" prefWidth="91.40002441406247" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="685.9999694824219" minWidth="10.0" prefWidth="671.5999755859375" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="187.8000244140625" minHeight="10.0" prefHeight="60.79999389648439" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="298.40000610351564" minHeight="10.0" prefHeight="298.40000610351564" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="User Token" />
+                              <TextArea fx:id="userTokenField" prefHeight="127.0" prefWidth="672.0" text="TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="4" />
+                           </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets left="30.0" right="30.0" top="10.0" />
+                           </padding>
+                        </GridPane>
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
