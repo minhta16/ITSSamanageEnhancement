@@ -23,7 +23,7 @@ public class EverythingAboutCurl {
 	public static void newIncidentWithTimeTrack(String userToken, int minutesTaken) {
 		newIncident(userToken);
 //		System.out.println(getID(userToken));
-		addTimeTrack(userToken, getID(userToken), minutesTaken);
+//		addTimeTrack(userToken, getID(userToken), minutesTaken);
 	}
 	
 	public static void newIncident(String userToken) {

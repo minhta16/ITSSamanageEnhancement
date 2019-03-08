@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents>
+  <incident>
+    <id>36007119</id>
+    <number>16670</number>
+    <name>clear print queue from Swenson Hall of Geosciences basement computer lab</name>
+    <description> There are 22 multiple page abandoned student&amp;nbsp;jobs lined up in the printer&amp;nbsp;queue that I don't have permission to cancel to clear the queue. How can I clear the queue without wasting hundred pages of paper and toner&amp;nbsp;so that students can use the printer again? Thanks! </description>
+    <description_no_html>There are 22 multiple page abandoned student jobs lined up in the printer queue that I don't have permission to cancel to clear the queue. How can I clear the queue without wasting hundred pages of paper and toner so that students can use the printer again? Thanks!</description_no_html>
+    <state>Assigned</state>
+    <priority>Medium</priority>
+    <category>
+      <id>408914</id>
+      <name>Hardware</name>
+      <default_tags></default_tags>
+      <children>
+        <child>
+          <id>408928</id>
+          <name>Computer Lab/Classroom</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408926</id>
+          <name>Desktop Computer</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>1564650</default_assignee_id>
+        </child>
+        <child>
+          <id>408929</id>
+          <name>Instructor Console</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408932</id>
+          <name>Keyboard/Mouse/Cable/Accessory</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>862552</id>
+          <name>Laptop/Tablet Computer</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408935</id>
+          <name>Monitor/TV</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>1564650</default_assignee_id>
+        </child>
+        <child>
+          <id>408930</id>
+          <name>MultiMedia (Sound/Projector)</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>859024</id>
+          <name>Personal Device</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408927</id>
+          <name>Printer</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408931</id>
+          <name>Relocate/Disposal</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>1564650</default_assignee_id>
+        </child>
+        <child>
+          <id>408934</id>
+          <name>Vendor Product Support</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+      </children>
+      <parent_id nil="true"/>
+      <default_assignee_id>1564650</default_assignee_id>
+    </category>
+    <subcategory nil="true"/>
+    <assignee>
+      <group_id>1564679</group_id>
+      <is_user>true</is_user>
+      <id>1374220</id>
+      <name>Martin, Jeff</name>
+      <disabled>false</disabled>
+      <title>Hardware Technician</title>
+      <email>jeffmartin@augustana.edu</email>
+      <created_at>2015-12-18T10:44:57-06:00</created_at>
+      <updated_at>2019-02-11T13:06:33-06:00</updated_at>
+      <last_login>2019-02-11T13:06:33-06:00</last_login>
+      <phone>0092959</phone>
+      <mobile_phone></mobile_phone>
+      <department>
+        <id>39102</id>
+        <name>ITS</name>
+        <description></description>
+        <default_assignee_id>-1</default_assignee_id>
+      </department>
+      <role>
+        <id>242157</id>
+        <name>Service Agent User</name>
+        <description>Almost like an administrator but no access to setup.</description>
+        <portal>false</portal>
+        <show_my_tasks>false</show_my_tasks>
+      </role>
+      <salt>4c5a2c800f420778fa36f15f1a8de036565fb9f7</salt>
+      <group_ids>
+        <group_id>1564650</group_id>
+        <group_id>1564679</group_id>
+        <group_id>1820162</group_id>
+      </group_ids>
+      <platform_widget_developer nil="true"/>
+      <custom_fields_values/>
+      <site>
+        <id>49769</id>
+        <name>Sorensen 166C</name>
+        <location>Sorensen 166C</location>
+        <description></description>
+        <time_zone></time_zone>
+        <language>-1</language>
+        <business_record>
+          <id>26881</id>
+          <name>Default Business Hours</name>
+          <description>This is your initial business hours record</description>
+        </business_record>
+      </site>
+      <avatar>
+        <type>image</type>
+        <image_class>avatar_image</image_class>
+        <sso_image_class></sso_image_class>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/55dc4d5b134265ab6c9b/images_%281%29_card.jpg?1536067769</avatar_url>
+      </avatar>
+      <mfa_enabled>false</mfa_enabled>
+      <reports_to>
+        <group_id>1564629</group_id>
+        <is_user>true</is_user>
+        <id>1374176</id>
+        <name>Shawn Beattie</name>
+        <disabled>false</disabled>
+        <title>Manager of Educational Technology</title>
+        <email>shawnbeattie@augustana.edu</email>
+        <created_at>2015-12-18T10:00:04-06:00</created_at>
+        <updated_at>2019-03-06T10:21:14-06:00</updated_at>
+        <last_login>2019-03-06T10:21:14-06:00</last_login>
+        <phone>7647</phone>
+        <mobile_phone>563-209-2211</mobile_phone>
+        <department>
+          <id>39102</id>
+          <name>ITS</name>
+          <description></description>
+          <default_assignee_id>-1</default_assignee_id>
+        </department>
+        <role>
+          <id>242156</id>
+          <name>Administrator</name>
+          <description>This is the all powerful administrator user!</description>
+          <portal>false</portal>
+          <show_my_tasks>false</show_my_tasks>
+        </role>
+        <salt>6e4c09ff9da5f34c05ff0b6f691a0d7bee96011e</salt>
+        <group_ids>
+          <group_id>1564629</group_id>
+          <group_id>1564651</group_id>
+          <group_id>1820162</group_id>
+        </group_ids>
+        <platform_widget_developer nil="true"/>
+        <custom_fields_values/>
+        <site>
+          <id>49750</id>
+          <name>Sorensen 163</name>
+          <location>Sorensen 163</location>
+          <description></description>
+          <time_zone></time_zone>
+          <language>-1</language>
+          <business_record>
+            <id>26881</id>
+            <name>Default Business Hours</name>
+            <description>This is your initial business hours record</description>
+          </business_record>
+        </site>
+        <avatar>
+          <type>image</type>
+          <image_class>avatar_image</image_class>
+          <sso_image_class></sso_image_class>
+          <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/4b0fa735568dc051b834/Screen_Shot_2016-06-30_at_12.52.38_PM_card.png?1468359299</avatar_url>
+        </avatar>
+        <mfa_enabled>false</mfa_enabled>
+      </reports_to>
+    </assignee>
+    <requester>
+      <id>1236509</id>
+      <account_id>39281</account_id>
+      <user_id>1528307</user_id>
+      <email>SusanWolf@augustana.edu</email>
+      <name>Wolf, Susan K</name>
+      <disabled>false</disabled>
+      <has_gravatar>false</has_gravatar>
+      <customer_satisfaction_survey_time>2019-01-24T11:06:36-06:00</customer_satisfaction_survey_time>
+      <avatar>
+        <type>initials</type>
+        <color>#dfcd00</color>
+        <initials>WK</initials>
+      </avatar>
+    </requester>
+    <created_at>2019-03-07T15:25:33-06:00</created_at>
+    <updated_at>2019-03-07T15:26:38-06:00</updated_at>
+    <due_at nil="true"/>
+    <sla_violations/>
+    <number_of_comments>0</number_of_comments>
+    <user_saw_all_comments>true</user_saw_all_comments>
+    <is_service_request>false</is_service_request>
+    <created_by>
+      <id>1236509</id>
+      <account_id>39281</account_id>
+      <user_id>1528307</user_id>
+      <email>SusanWolf@augustana.edu</email>
+      <name>Wolf, Susan K</name>
+      <disabled>false</disabled>
+      <has_gravatar>false</has_gravatar>
+      <customer_satisfaction_survey_time>2019-01-24T11:06:36-06:00</customer_satisfaction_survey_time>
+      <avatar>
+        <type>initials</type>
+        <color>#dfcd00</color>
+        <initials>WK</initials>
+      </avatar>
+    </created_by>
+    <resolution_description nil="true"/>
+    <resolution_code nil="true"/>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/incidents/36007119-clear-print-queue-from-swenson-hall-of-geosciences-basement-computer-lab.xml</href>
+    <site>
+      <id>70115</id>
+      <name>Swenson Geosciences 105</name>
+      <location>Swenson Geosciences 105</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <department>
+      <id>40576</id>
+      <name>Geology</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <cc/>
+    <custom_fields_values>
+      <custom_fields_value>
+        <id>82605270</id>
+        <custom_field_id>96890</custom_field_id>
+        <name>Customer Priority</name>
+        <value>MED - Standard times apply</value>
+        <options>NONE - No set timeframe (i.e. proposal)&lt;br&gt;LOW - Completion longer than a week&lt;br&gt;MED - Standard times apply&lt;br&gt;HIGH - Within next 24 hours&lt;br&gt;CRITICAL - Please call IT Helpdesk</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>82605271</id>
+        <custom_field_id>23902</custom_field_id>
+        <name>Devices</name>
+        <value>Campus-PC</value>
+        <options>Personal - PC&lt;br&gt;Personal - Mac&lt;br&gt;Cell Phone&lt;br&gt;Gaming Station&lt;br&gt;Campus-iPad&lt;br&gt;Campus-Chromebook&lt;br&gt;Campus-PC&lt;br&gt;Campus-Mac&lt;br&gt;Extron console&lt;br&gt;Audio issue&lt;br&gt;Other</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>82605272</id>
+        <custom_field_id>18358</custom_field_id>
+        <name>Building</name>
+        <value>Swenson Geosciences</value>
+        <options>No Building&lt;br&gt;Abbey House&lt;br&gt;Abbey Studio&lt;br&gt;Andeberg House&lt;br&gt;Anderson &amp; Bartholomew Houses&lt;br&gt;Andreen&lt;br&gt;Ansvar House&lt;br&gt;Arbaugh &amp; Naeseth Townhouses&lt;br&gt;Art Studios&lt;br&gt;Art-Pottery&lt;br&gt;Asgard House&lt;br&gt;Austin House&lt;br&gt;Black Culture House&lt;br&gt;Baldur House&lt;br&gt;Baseball Stadium&lt;br&gt;Bellman House&lt;br&gt;Bergendoff&lt;br&gt;Bergman House&lt;br&gt;Bostad House&lt;br&gt;Branting House&lt;br&gt;Bremer House A/B&lt;br&gt;Brew by the Slough&lt;br&gt;Brunner Theatre Center @ College Center&lt;br&gt;Brodahl&lt;br&gt;Carlsson Hall&lt;br&gt;Carriage House&lt;br&gt;Carver PE Center&lt;br&gt;Casa Latina&lt;br&gt;Celsius House&lt;br&gt;Centennial Hall&lt;br&gt;College Center&lt;br&gt;Delling House&lt;br&gt;Denkmann&lt;br&gt;Erfara House&lt;br&gt;Erickson Residence Center&lt;br&gt;Esbjorn House&lt;br&gt;Evald Hall&lt;br&gt;Flats&lt;br&gt;Forseti House&lt;br&gt;Founders Hall&lt;br&gt;Freya House&lt;br&gt;Gavle in Gerber Center&lt;br&gt;Gerber Center&lt;br&gt;Gustav House&lt;br&gt;Hansen House&lt;br&gt;Hanson Science Building&lt;br&gt;Hedin House&lt;br&gt;Heimdall House&lt;br&gt;House On The Hill&lt;br&gt;Idun House&lt;br&gt;Jansson House&lt;br&gt;JD Planetarium&lt;br&gt;Karsten House&lt;br&gt;Ken Anderson Center&lt;br&gt;Larsson House&lt;br&gt;Levander House&lt;br&gt;Lindgren House A/B&lt;br&gt;Local Culture House One&lt;br&gt;Lundholm House&lt;br&gt;Luther House&lt;br&gt;Martinson House A/B&lt;br&gt;Milles House&lt;br&gt;Moberg House&lt;br&gt;Music&lt;br&gt;Music Annex&lt;br&gt;Nobel House&lt;br&gt;Oden House&lt;br&gt;Old Main&lt;br&gt;Olin Center&lt;br&gt;Ostara House&lt;br&gt;Pagoda House&lt;br&gt;Parkander Residence Centers&lt;br&gt;Pepsico&lt;br&gt;Pool&lt;br&gt;President's House&lt;br&gt;Quad Outdoors&lt;br&gt;Roslin House&lt;br&gt;Ryden House&lt;br&gt;Sanning House&lt;br&gt;Seminary Hall&lt;br&gt;Sif House&lt;br&gt;Skadi House&lt;br&gt;Sorensen&lt;br&gt;Swanson Commons&lt;br&gt;Swendenborg House&lt;br&gt;Swenson Geosciences&lt;br&gt;Thor House&lt;br&gt;Ticket Office&lt;br&gt;Tredway Library&lt;br&gt;Tyr House&lt;br&gt;Vidar House&lt;br&gt;Viking House&lt;br&gt;Wallenberg Hall&lt;br&gt;Westerlin Residence Center&lt;br&gt;Wicksell House&lt;br&gt;Wilson Center&lt;br&gt;WVIK&lt;br&gt;Zander House&lt;br&gt;Zorn&lt;br&gt;Chicago Office&lt;br&gt;Tredway House</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>true</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>82605273</id>
+        <custom_field_id>20407</custom_field_id>
+        <name>Room</name>
+        <value>basement room 2</value>
+        <options></options>
+        <type>1</type>
+        <type_name>Text</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>82605274</id>
+        <custom_field_id>18547</custom_field_id>
+        <name>Phone number</name>
+        <value>7369</value>
+        <options></options>
+        <type>1</type>
+        <type_name>Text</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>82605275</id>
+        <custom_field_id>18424</custom_field_id>
+        <name>Software</name>
+        <value>-1</value>
+        <options>Notifi&lt;br&gt;Microsoft Silverlight&lt;br&gt;Firefox&lt;br&gt;Safari&lt;br&gt;Viking Score&lt;br&gt;Omnilert&lt;br&gt;OneCause&lt;br&gt;Acquia&lt;br&gt;Active Directory&lt;br&gt;Ad-Astra&lt;br&gt;Adobe Acrobat Pro&lt;br&gt;Adobe Creative Cloud&lt;br&gt;Adobe Creative Suite&lt;br&gt;Adobe Flash&lt;br&gt;Adobe Reader&lt;br&gt;AIMS&lt;br&gt;AugieChoice&lt;br&gt;AugieHub&lt;br&gt;Authorize.Net&lt;br&gt;Campaign Enterprise&lt;br&gt;Capture&lt;br&gt;CashNet&lt;br&gt;Check I'm Here&lt;br&gt;Class List&lt;br&gt;Co-Curricular Transcript&lt;br&gt;Colleague&lt;br&gt;Core Client Database&lt;br&gt;Course Master&lt;br&gt;CMAP&lt;br&gt;Dell&lt;br&gt;DHCP&lt;br&gt;DNS&lt;br&gt;Drop Verify&lt;br&gt;Extron&lt;br&gt;EZproxy&lt;br&gt;FERPA Compliance&lt;br&gt;Folder Rights&lt;br&gt;FrontRush&lt;br&gt;G Suite&lt;br&gt;Gmail&lt;br&gt;Google File Stream&lt;br&gt;GoToProfair&lt;br&gt;Hiatus (MSAccess)&lt;br&gt;IIS&lt;br&gt;Ingeniux&lt;br&gt;ISE - Scheduler&lt;br&gt;JMP&lt;br&gt;macOS&lt;br&gt;Maxient&lt;br&gt;Mediacom&lt;br&gt;Moodle&lt;br&gt;MP2&lt;br&gt;MS-Access&lt;br&gt;MSDS&lt;br&gt;Netreg&lt;br&gt;Noel Levitz&lt;br&gt;Office&lt;br&gt;OMC&lt;br&gt;Other&lt;br&gt;Palantir&lt;br&gt;PaperCut&lt;br&gt;Performance Appraisal&lt;br&gt;ProWatch&lt;br&gt;Reporting Services&lt;br&gt;Ruffalo Cody&lt;br&gt;Samanage&lt;br&gt;SAS&lt;br&gt;Simple Campus&lt;br&gt;Slate&lt;br&gt;SPSS&lt;br&gt;SSRPM&lt;br&gt;Starfish&lt;br&gt;Symantec&lt;br&gt;TimeClock Plus&lt;br&gt;Titanium Scheduling&lt;br&gt;Vectorworks&lt;br&gt;Veeam&lt;br&gt;VLC&lt;br&gt;VMware&lt;br&gt;Wealth Engine&lt;br&gt;WebAdvisor&lt;br&gt;Website&lt;br&gt;Wimprism&lt;br&gt;Windows 7/10&lt;br&gt;Winsdows SUS Server&lt;br&gt;Windows Server&lt;br&gt;Windstream&lt;br&gt;WordPress&lt;br&gt;eScrip-Safe&lt;br&gt;Lynda/LinkedIn Learning&lt;br&gt;FortisBlue&lt;br&gt;ArcGIS&lt;br&gt;Faronics Insight&lt;br&gt;Faronics DeepFreeze&lt;br&gt;Synergy</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>82605276</id>
+        <custom_field_id>20408</custom_field_id>
+        <name>Computer Number</name>
+        <value></value>
+        <options></options>
+        <type>1</type>
+        <type_name>Text</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+    </custom_fields_values>
+    <incidents/>
+    <changes/>
+    <tasks/>
+    <time_tracks/>
+    <solutions/>
+    <assets/>
+    <mobiles/>
+    <other_assets/>
+    <configuration_items/>
+    <purchase_orders/>
+  </incident>
+  <page>1</page>
+  <per_page>1</per_page>
+  <total_entries>16298</total_entries>
+</incidents>
