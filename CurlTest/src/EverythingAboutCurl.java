@@ -17,11 +17,15 @@ import java.io.StringReader;
 public class EverythingAboutCurl {
 	public static void main(String[] args) {
 		String userToken = "TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg";
+		newIncidentWithTimeTrack(userToken, 30);
+	}
+	
+	public static void newIncidentWithTimeTrack(String userToken, int minutesTaken) {
 		newIncident(userToken);
 //		System.out.println(getID(userToken));
-		addTimeTrack(userToken, getID(userToken), 30);
+		addTimeTrack(userToken, getID(userToken), minutesTaken);
 	}
-
+	
 	public static void newIncident(String userToken) {
 		try {
 			String url = "https://api.samanage.com/incidents.xml";
@@ -35,6 +39,46 @@ public class EverythingAboutCurl {
 			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
 			conn.setRequestProperty("Content-Type", "text/xml");
 
+			String data1 = "<incident>" +
+					" <name>Test</name>" +
+					" <priority>Medium</priority>" +
+					" <requester><email>MINHTA16@augustana.edu</email></requester>" +
+					" <category><name>Meetings  (ITS use only)</name></category>" +
+					" <subcategory>" +
+					"      <name>Training/Workshops</name>" +
+					" </subcategory>" +
+					" <cc type=\"array\">" + 
+					"   <cc>MINHTA16@augustana.edu</cc>" + 
+					" </cc>" + 
+					" <description>Test curl-ing new incidents</description>" + 
+					" <due_at>Mar 8, 2019</due_at>" + 
+					" <assignee><email>MINHTA16@augustana.edu</email></assignee>" + 
+					" <incidents type=\"array\">" + 
+					"   <incident><number>1474</number></incident>" + 
+					"   <incident><number>1475</number></incident>" + 
+					" </incidents>" + 
+					" <assets type=\"array\">" + 
+					"   <asset><id>275498</id></asset>" + 
+					" </assets>" + 
+					" <problem><number>445</number></problem>" + 
+					" <solutions type=\"array\">" + 
+					"   <solution><number>34</number></solution>" + 
+					" </solutions>" + 
+					" <configuration_items type=\"array\">" + 
+					"   <configuration_item><id>27234</id></configuration_item>" + 
+					" </configuration_items>" + 
+					" <custom_fields_values>" + 
+					"   <custom_fields_value>" + 
+					"     <name>field name</name>" + 
+					"     <value>content</value>" + 
+					"   </custom_fields_value>" + 
+					"   <custom_fields_value>" + 
+					"     <name>field name</name>" + 
+					"     <value>content</value>" + 
+					"   </custom_fields_value>" + 
+					" </custom_fields_values>" + 
+					"</incident>";
+			
 			String data = "<incident>"
 					+ " <name>Test</name>"
 					+ " <priority>Medium</priority>"
