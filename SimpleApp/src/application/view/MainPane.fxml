@@ -8,13 +8,17 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
    <top>
@@ -71,6 +75,19 @@
                               <Label id="timeElapsedField" text="Time Elapsed" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <TextField fx:id="timeElapsedField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                               <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                              <Label id="timeElapsedField" text="Tracked User (email)" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <FlowPane alignment="CENTER" columnHalignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <children>
+                                    <CustomTextField fx:id="userInputField" prefHeight="26.0" prefWidth="198.0" />
+                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" text="Add" />
+                                 </children>
+                              </FlowPane>
+                              <TableView fx:id="infoTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="ID" />
+                                  <TableColumn prefWidth="159.20001220703125" text="Email" />
+                                </columns>
+                              </TableView>
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -91,6 +108,9 @@
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.20001220703125" minWidth="10.0" prefWidth="91.40002441406247" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="685.9999694824219" minWidth="10.0" prefWidth="671.5999755859375" />
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                              <ColumnConstraints />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints maxHeight="187.8000244140625" minHeight="10.0" prefHeight="60.79999389648439" vgrow="SOMETIMES" />

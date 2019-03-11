@@ -1,5 +1,7 @@
 package application.controller;
 
+import org.controlsfx.control.textfield.TextFields;
+
 import application.SamanageRequests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -25,10 +27,15 @@ public class MainPaneController {
 	@FXML
 	private TextField timeElapsedField;
 	@FXML
+	private TextField userInputField;
+	@FXML
 	private Button submitBtn;
+	@FXML
+	private Button addEmailBtn;
 	
 	public void setStageAndSetupListeners(Stage primaryStage) {
 		mainWindow = primaryStage;
+		TextFields.bindAutoCompletion(userInputField, "");
 	}
 	
 	@FXML
