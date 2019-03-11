@@ -181,12 +181,9 @@ public class EverythingAboutCurl {
 		}
 	}
 	
-	public static void getAllUsers(String userToken) {
+	public static int getNumPages(String userToken, String dataType) {
 		try {
-			Map<Integer, String> map = new HashMap<Integer, String>();
-			//map.put(123, "Nguyen");
-			//map.get(123);
- 			String url = "https://api.samanage.com/users.xml?per_page=10000";
+ 			String url = "https://api.samanage.com/" + dataType + ".xml?per_page=1";
 
 			URL obj = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -207,7 +204,6 @@ public class EverythingAboutCurl {
 			String output;
 			while ((output = br.readLine()) != null) {
 				xml.append(output);
-				System.err.println(output);
 			}
 
 			// got from https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
@@ -216,27 +212,70 @@ public class EverythingAboutCurl {
 			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
 			Element rootElement = document.getDocumentElement();
 		
-			NodeList listOfUsers = rootElement.getElementsByTagName("user");
-			System.out.println(listOfUsers.getLength());
-			for (int i = 0; i < listOfUsers.getLength(); i++) {
-				
-				if (listOfUsers.item(i) instanceof Element)
-			    {
-			        Element user  = (Element) listOfUsers.item(i);
-					int ID = Integer.parseInt(getString("id", user));
-					String name = getString("name", user);
-					//map.put(ID, name); #purposely commented out to solve the NumberFormatException
-					System.out.println(ID+" "+name);
-					
-			    }
-				
-			}
+			int pages = Integer.parseInt(getString("total_entries", rootElement)) / 100 + 1;
 			conn.disconnect();
-			//return map; #purposely comment out
+			return pages;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//return 0;		
+		return 0;
+	}
+	public static void getAllUsers(String userToken) {
+//		int numPages = getNumPages(userToken, "users");
+		int numPages = 1;
+		Map<Integer, String> map = new HashMap<Integer, String>();
+		for (int page = 1; page <= numPages; page++) {
+			try {
+	 			String url = "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
+
+				URL obj = new URL(url);
+				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+				conn.setDoOutput(true);
+
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+				conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+				//conn.setRequestProperty("Content-Type", "text/xml");
+
+				BufferedReader br;
+				if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+					br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				} else {
+					br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+				}
+				StringBuffer xml = new StringBuffer();
+				String output;
+				while ((output = br.readLine()) != null) {
+					xml.append(output);
+				}
+
+				// got from https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+				Element rootElement = document.getDocumentElement();
+			
+				NodeList listOfUsers = rootElement.getElementsByTagName("user");
+				for (int i = 0; i < listOfUsers.getLength(); i++) {
+					
+					if (listOfUsers.item(i) instanceof Element)
+				    {
+				        Element user  = (Element) listOfUsers.item(i);
+						int ID = Integer.parseInt(getString("id", user));
+						String name = getString("name", user);
+						map.put(ID, name);
+						System.err.println(name);	
+				    }
+					
+				}
+				conn.disconnect();
+				//return map; #purposely comment out
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		System.err.println(map);
 	}
 
 	

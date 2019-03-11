@@ -8,10 +8,13 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
@@ -72,7 +75,19 @@
                               <Label id="timeElapsedField" text="Time Elapsed" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <TextField fx:id="timeElapsedField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                               <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                              <CustomTextField fx:id="userInputField" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                              <Label id="timeElapsedField" text="Tracked User (email)" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <FlowPane alignment="CENTER" columnHalignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <children>
+                                    <CustomTextField fx:id="userInputField" prefHeight="26.0" prefWidth="198.0" />
+                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" text="Add" />
+                                 </children>
+                              </FlowPane>
+                              <TableView fx:id="infoTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="ID" />
+                                  <TableColumn prefWidth="159.20001220703125" text="Email" />
+                                </columns>
+                              </TableView>
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -81,7 +96,6 @@
                               <Insets left="30.0" right="30.0" top="10.0" />
                            </padding>
                         </GridPane>
-                        <CustomTextField />
                      </children>
                   </VBox>
                </content>

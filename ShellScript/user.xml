@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <id>1524673</id>
+    <name>Aasen, Bailey</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>BAILEYAASEN15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:21-05:00</created_at>
+    <updated_at>2018-12-07T11:58:03-06:00</updated_at>
+    <last_login>2018-12-07T11:58:03-06:00</last_login>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>5b23f04543e90011f760e07ca591a3a4d6510955</salt>
+    <group_ids>
+      <group_id>1718812</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43249</id>
+      <name>Erickson Residence Center C117</name>
+      <location>Erickson Residence Center C117</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <page>1</page>
+  <per_page>1</per_page>
+  <total_entries>5718</total_entries>
+</users>

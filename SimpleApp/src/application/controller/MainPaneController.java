@@ -30,6 +30,8 @@ public class MainPaneController {
 	private TextField userInputField;
 	@FXML
 	private Button submitBtn;
+	@FXML
+	private Button addEmailBtn;
 	
 	public void setStageAndSetupListeners(Stage primaryStage) {
 		mainWindow = primaryStage;
