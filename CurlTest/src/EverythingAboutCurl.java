@@ -3,10 +3,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.soap.Node;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -19,17 +22,15 @@ import java.io.StringReader;
 public class EverythingAboutCurl {
 	public static void main(String[] args) {
 		String userToken = "TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg";
-	//	newIncidentWithTimeTrack(userToken, 30);
-		System.out.println(getID(userToken));
-		getAllUsers(userToken);
+		//newIncidentWithTimeTrack(userToken, 30);
+		
+		 getAllUsers(userToken);
 	}
 	
 	public static void newIncidentWithTimeTrack(String userToken, int minutesTaken) {
-//		newIncident(userToken);
-//	    System.out.println(getID(userToken));
+		newIncident(userToken);
+//		System.out.println(getID(userToken));
 //		addTimeTrack(userToken, getID(userToken), minutesTaken);
-		
-		
 	}
 	
 	public static void newIncident(String userToken) {
@@ -180,6 +181,72 @@ public class EverythingAboutCurl {
 		}
 	}
 	
+	public static void getAllUsers(String userToken) {
+		try {
+			Map<Integer, String> map = new HashMap<Integer, String>();
+			//map.put(123, "Nguyen");
+			//map.get(123);
+ 			String url = "https://api.samanage.com/users.xml";
+
+			URL obj = new URL(url);
+			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+			conn.setDoOutput(true);
+
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+			//conn.setRequestProperty("Content-Type", "text/xml");
+
+			BufferedReader br;
+			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			} else {
+				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+			}
+			StringBuffer xml = new StringBuffer();
+			String output;
+			while ((output = br.readLine()) != null) {
+				xml.append(output);
+			}
+			
+
+			// got from https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+			Element rootElement = document.getDocumentElement();
+			
+			
+			
+			
+		
+			NodeList listOfUsers = rootElement.getChildNodes();
+		//	System.out.println(listOfUsers.getLength());
+			for (int i = 0; i < listOfUsers.getLength(); i++) {
+				
+				if (listOfUsers.item(i) instanceof Element)
+			    {
+			        Element user  = (Element) listOfUsers.item(i);
+					int ID = Integer.parseInt(getString("id", user));
+					String name = getString("name", user);
+					//map.put(ID, name); #purposely commented out to solve the NumberFormatException
+					System.out.println(ID+" "+name);
+					
+
+			    }
+				
+
+
+				
+			}
+			conn.disconnect();
+			//return map; #purposely comment out
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//return 0;		
+	}
+
 	
 	// got from https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
 	protected static String getString(String tagName, Element element) {
@@ -191,7 +258,7 @@ public class EverythingAboutCurl {
                 return subList.item(0).getNodeValue();
             }
         }
-
         return null;
     }
 }
+
