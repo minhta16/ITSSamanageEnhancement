@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,13 +19,17 @@ import java.io.StringReader;
 public class EverythingAboutCurl {
 	public static void main(String[] args) {
 		String userToken = "TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg";
-		newIncidentWithTimeTrack(userToken, 30);
+	//	newIncidentWithTimeTrack(userToken, 30);
+		System.out.println(getID(userToken));
+		getAllUsers(userToken);
 	}
 	
 	public static void newIncidentWithTimeTrack(String userToken, int minutesTaken) {
-		newIncident(userToken);
-//		System.out.println(getID(userToken));
+//		newIncident(userToken);
+//	    System.out.println(getID(userToken));
 //		addTimeTrack(userToken, getID(userToken), minutesTaken);
+		
+		
 	}
 	
 	public static void newIncident(String userToken) {
@@ -173,6 +179,7 @@ public class EverythingAboutCurl {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	// got from https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
 	protected static String getString(String tagName, Element element) {
