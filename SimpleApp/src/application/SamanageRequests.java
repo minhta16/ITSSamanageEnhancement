@@ -118,6 +118,35 @@ public class SamanageRequests {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void getCategories(String userToken) {
+		/*
+		 *  curl -H "X-Samanage-Authorization: Bearer TOKEN" 
+		 *  -H 'Accept: application/vnd.samanage.v2.1+xml' 
+		 *  -H 'Content-Type:text/xml' -X GET https://api.samanage.com/categories.xml
+		 */
+		try {
+			String url = "https://api.samanage.com/categories.xml";
+
+			URL obj = new URL(url);
+			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+			conn.setDoOutput(true);
+
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+			conn.setRequestProperty("Content-Type", "text/xml");
+
+			
+			Element rootElement = documentFromOutput(conn);
+			NodeList categories = rootElement.getElementsByTagName("");
+			
+			int incidentID = Integer.parseInt(getString("id", rootElement));
+			conn.disconnect();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static int getID(String userToken) {
 		try {
@@ -132,23 +161,7 @@ public class SamanageRequests {
 			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
 			conn.setRequestProperty("Content-Type", "application/xml");
 
-			BufferedReader br;
-			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
-				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			} else {
-				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-			}
-			StringBuffer xml = new StringBuffer();
-			String output;
-			while ((output = br.readLine()) != null) {
-				xml.append(output);
-			}
-
-			// got from https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
-			Element rootElement = document.getDocumentElement();
+			Element rootElement = documentFromOutput(conn);
 			
 			int incidentID = Integer.parseInt(getString("id", rootElement));
 			conn.disconnect();
@@ -191,6 +204,34 @@ public class SamanageRequests {
 		}
 	}
 	
+	public static Element documentFromOutput(HttpURLConnection conn) {
+		Element rootElement = null;
+		try {
+			BufferedReader br;
+			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			} else {
+				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+			}
+			String output;
+			StringBuffer xml = new StringBuffer();
+			while ((output = br.readLine()) != null) {
+				xml.append(output);
+			}
+
+			// got from
+			// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+			rootElement = document.getDocumentElement();
+
+			conn.disconnect();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rootElement;
+	}
 	// got from https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
 	protected static String getString(String tagName, Element element) {
         NodeList list = element.getElementsByTagName(tagName);

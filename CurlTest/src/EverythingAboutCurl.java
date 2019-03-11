@@ -30,7 +30,7 @@ public class EverythingAboutCurl {
 	public static void newIncidentWithTimeTrack(String userToken, int minutesTaken) {
 		newIncident(userToken);
 //		System.out.println(getID(userToken));
-//		addTimeTrack(userToken, getID(userToken), minutesTaken);
+		addTimeTrack(userToken, getID(userToken), minutesTaken);
 	}
 	
 	public static void newIncident(String userToken) {
@@ -186,7 +186,7 @@ public class EverythingAboutCurl {
 			Map<Integer, String> map = new HashMap<Integer, String>();
 			//map.put(123, "Nguyen");
 			//map.get(123);
- 			String url = "https://api.samanage.com/users.xml";
+ 			String url = "https://api.samanage.com/users.xml?per_page=10000";
 
 			URL obj = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -207,21 +207,17 @@ public class EverythingAboutCurl {
 			String output;
 			while ((output = br.readLine()) != null) {
 				xml.append(output);
+				System.err.println(output);
 			}
-			
 
 			// got from https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
 			Element rootElement = document.getDocumentElement();
-			
-			
-			
-			
 		
-			NodeList listOfUsers = rootElement.getChildNodes();
-		//	System.out.println(listOfUsers.getLength());
+			NodeList listOfUsers = rootElement.getElementsByTagName("user");
+			System.out.println(listOfUsers.getLength());
 			for (int i = 0; i < listOfUsers.getLength(); i++) {
 				
 				if (listOfUsers.item(i) instanceof Element)
@@ -232,11 +228,7 @@ public class EverythingAboutCurl {
 					//map.put(ID, name); #purposely commented out to solve the NumberFormatException
 					System.out.println(ID+" "+name);
 					
-
 			    }
-				
-
-
 				
 			}
 			conn.disconnect();
