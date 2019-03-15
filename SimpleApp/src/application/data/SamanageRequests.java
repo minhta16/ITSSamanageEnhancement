@@ -99,7 +99,7 @@ public class SamanageRequests {
 
 			NodeList listOfUsers = rootElement.getElementsByTagName("user");
 			if (listOfUsers.getLength() == 0) {
-				throw new NoSuchElementException();
+				return null;
 			}
 			
 			User newUser = new User();
