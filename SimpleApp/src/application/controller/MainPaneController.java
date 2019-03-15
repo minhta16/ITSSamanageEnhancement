@@ -3,13 +3,13 @@ package application.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.controlsfx.control.textfield.TextFields;
-
 import com.google.gson.JsonIOException;
 
 import application.data.AppSession;
 import application.data.SamanageRequests;
 import application.data.User;
+import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
+import impl.org.controlsfx.autocompletion.SuggestionProvider;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -35,6 +35,7 @@ public class MainPaneController {
 	private TextField timeElapsedField;
 	@FXML
 	private TextField userInputField;
+	private SuggestionProvider<String> provider;
 	@FXML
 	private Button submitBtn;
 	@FXML
@@ -141,18 +142,21 @@ public class MainPaneController {
 			infoTable.getItems().remove(user);
 		});
 		infoTable.getItems().add(user);
-		TextFields.bindAutoCompletion(userInputField, user.getEmail());
+
+		
 		try {
 			AppSession.getSession().addTrackedUser(user);
 		} catch (JsonIOException | IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		provider.clearSuggestions();
+		provider.addPossibleSuggestions(AppSession.getSession().getSavedEmails());
 	}
 
 	private void setupEmailAutoComplete() {
-		ArrayList<String> savedEmails = AppSession.getSession().getSavedEmails();
-		TextFields.bindAutoCompletion(userInputField, savedEmails);
+		provider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
+		new AutoCompletionTextFieldBinding<>(userInputField, provider);
 	}
 
 	private void setupStatesChoiceBox() {
