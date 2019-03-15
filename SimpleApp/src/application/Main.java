@@ -3,7 +3,6 @@ package application;
 import java.io.IOException;
 
 import application.controller.MainPaneController;
-import application.data.AppSession;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

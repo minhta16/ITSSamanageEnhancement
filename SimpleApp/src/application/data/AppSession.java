@@ -1,12 +1,12 @@
 package application.data;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.stream.JsonReader;
 
@@ -70,14 +70,17 @@ public class AppSession {
 		trackedUsers.clear();
 	}
 	
-	public void loadData(String fileName) throws FileNotFoundException {
-		JsonReader reader = new JsonReader(new FileReader(fileName));
+	public void loadData(String fileName) throws IOException {
+		FileReader fd = new FileReader(fileName);
+		JsonReader reader = new JsonReader(fd);
 		Gson gson = new Gson();
 		session = gson.fromJson(reader, AppSession.class);
+		System.err.println(userToken);
+		fd.close();
 	}
 	
 	public void saveData(String fileName) throws JsonIOException, IOException {
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		FileWriter fw = new FileWriter(fileName);
 		gson.toJson(session, fw);
 		fw.close();

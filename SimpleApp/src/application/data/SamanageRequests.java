@@ -57,7 +57,19 @@ public class SamanageRequests {
 			out.write(data);
 			out.close();
 
-			new InputStreamReader(conn.getInputStream());
+			BufferedReader br;
+			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			} else {
+				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+			}
+			StringBuffer xml = new StringBuffer();
+			String output;
+			while ((output = br.readLine()) != null) {
+				xml.append(output);
+			}
+			
+			System.err.println(xml);
 			conn.disconnect();
 
 		} catch (Exception e) {
@@ -270,4 +282,6 @@ public class SamanageRequests {
 
 		return null;
 	}
+	
+	
 }

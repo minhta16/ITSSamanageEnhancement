@@ -48,12 +48,14 @@ public class MainPaneController {
 
 	@FXML
 	private TextArea userTokenField;
-	
-	public void setStageAndSetupListeners(Stage primaryStage) throws FileNotFoundException {
+
+	public void setStageAndSetupListeners(Stage primaryStage) throws IOException {
 		mainWindow = primaryStage;
+
 
 		AppSession.getSession().loadData("data/data.json");
 		userTokenField.setText(AppSession.getSession().getUserToken());
+		
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
 
@@ -67,15 +69,22 @@ public class MainPaneController {
 
 	@FXML
 	private void handleSubmitBtn() {
-		submitBtn.setText("Loading...");
-		submitBtn.setDisable(true);
-		new Thread(() -> {
-			newIncidentWithTimeTrack(userTokenField.getText(), incidentNameField.getText(), descField.getText());
-		}).start();
-		showAlert("Incident created", "Incident created", AlertType.INFORMATION);
-		clearInputFields();
-		submitBtn.setText("Submit");
-		submitBtn.setDisable(false);
+		if (userTokenField.getText().trim().equals("")) {
+			showAlert("Error", "User Token missing", AlertType.ERROR);
+		} else if (incidentNameField.getText().equals("")) {
+			showAlert("Error", "Incident name missing", AlertType.ERROR);
+		} else {
+			submitBtn.setText("Loading...");
+			submitBtn.setDisable(true);
+			new Thread(() -> {
+				newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(),
+						descField.getText());
+			}).start();
+			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
+			clearInputFields();
+			submitBtn.setText("Submit");
+			submitBtn.setDisable(false);
+		}
 	}
 
 	@FXML
@@ -105,14 +114,14 @@ public class MainPaneController {
 		SamanageRequests.newIncident(userToken, incidentName, description);
 		String incidentID = SamanageRequests.getID(userToken);
 		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
-		for (User user: trackedUsers) {
+		for (User user : trackedUsers) {
 			SamanageRequests.addTimeTrack(userToken, incidentID, user.getComment(), user.getID(), user.getTime());
 		}
 		SamanageRequests.updateState(userToken, incidentID, "Closed");
-		
+
 		// clear the UI
 		AppSession.getSession().clearTrackedUsers();
-		
+
 	}
 
 	private void showAlert(String title, String message, AlertType alertType) {
@@ -142,7 +151,7 @@ public class MainPaneController {
 		descField.clear();
 		infoTable.getItems().clear();
 	}
-	
+
 	@FXML
 	private void handleUserTokenFieldChange() throws JsonIOException, IOException {
 		AppSession.getSession().setUserToken(userTokenField.getText());
