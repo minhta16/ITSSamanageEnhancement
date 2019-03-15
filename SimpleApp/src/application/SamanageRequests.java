@@ -16,6 +16,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import application.data.User;
+
 public class SamanageRequests {
 	public static void newIncident(String userToken, String incidentName, String description) {
 		try {

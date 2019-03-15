@@ -3,7 +3,7 @@ package application.controller;
 import org.controlsfx.control.textfield.TextFields;
 
 import application.SamanageRequests;
-import application.User;
+import application.data.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

@@ -1,4 +1,4 @@
-package application;
+package application.data;
 
 public class User {
 	private String name;
