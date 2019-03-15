@@ -121,7 +121,7 @@ public class SamanageRequests {
 		return null;
 	}
 
-	public static void updateState(String userToken, int incidentID, String state) {
+	public static void updateState(String userToken, String incidentID, String state) {
 		try {
 			String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
 
@@ -174,7 +174,7 @@ public class SamanageRequests {
 		}
 	}
 
-	public static int getID(String userToken) {
+	public static String getID(String userToken) {
 		try {
 			String url = "https://api.samanage.com/incidents.xml?per_page=1";
 
@@ -189,16 +189,17 @@ public class SamanageRequests {
 
 			Element rootElement = documentFromOutput(conn);
 
-			int incidentID = Integer.parseInt(getString("id", rootElement));
+			String incidentID = getString("id", rootElement);
 			conn.disconnect();
 			return incidentID;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return "";
 	}
+	
 
-	public static void addTimeTrack(String userToken, int incidentID, String trackCmt, int time) {
+	public static void addTimeTrack(String userToken, String incidentID, String trackCmt, double time) {
 
 		try {
 			String url = "https://api.samanage.com/incidents/" + incidentID + "/time_tracks.xml";

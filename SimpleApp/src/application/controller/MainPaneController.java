@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -32,6 +33,8 @@ public class MainPaneController {
 	private Button submitBtn;
 	@FXML
 	private Button addEmailBtn;
+	@FXML
+	private TableView infoTable;
 	
 	public void setStageAndSetupListeners(Stage primaryStage) {
 		mainWindow = primaryStage;
@@ -54,9 +57,14 @@ public class MainPaneController {
 		submitBtn.setDisable(false);
 	}
 	
-	public void newIncidentWithTimeTrack(String userToken, String incidentName, String description, String trackCmt, int minutesTaken) {
+	@FXML
+	private void handleAddEmailButton() {
+		
+	}
+	
+	public void newIncidentWithTimeTrack(String userToken, String incidentName, String description, String trackCmt, double minutesTaken) {
 		SamanageRequests.newIncident(userToken, incidentName, description);
-		int incidentID = SamanageRequests.getID(userToken);
+		String incidentID = SamanageRequests.getID(userToken);
 		SamanageRequests.addTimeTrack(userToken, incidentID, trackCmt, minutesTaken);
 		SamanageRequests.updateState(userToken, incidentID, "Closed");
 	}
