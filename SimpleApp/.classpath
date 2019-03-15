@@ -7,7 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/User/Downloads/controlsfx-9.0.0/controlsfx-9.0.0.jar"/>
-	<classpathentry kind="lib" path="D:/User/Downloads/controlsfx-9.0.0/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/Study/ITSInternship/controlsfx-9.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Study/ITSInternship/gson-2.8.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
