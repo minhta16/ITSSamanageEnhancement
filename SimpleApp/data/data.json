@@ -4,6 +4,14 @@
   "savedEmails": [
     "minhta16@augustana.edu",
     "hainguyen17@augustana.edu",
-    "michaelsalamone16@augustana.edu"
+    "michaelsalamone16@augustana.edu",
+    "nguyentruong17@augustana.edu"
+  ],
+  "states": [
+    "New",
+    "Assigned",
+    "Resolved",
+    "In Progress",
+    "Closed"
   ]
 }

@@ -1,15 +1,10 @@
 package application.controller;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 
 import org.controlsfx.control.textfield.TextFields;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 
 import application.data.AppSession;
@@ -19,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -27,8 +23,8 @@ import javafx.stage.Stage;
 
 public class MainPaneController {
 
-	private Stage mainWindow;
-
+	@FXML
+	private ChoiceBox<String> statesChoiceBox;
 	@FXML
 	private TextField incidentNameField;
 	@FXML
@@ -50,8 +46,6 @@ public class MainPaneController {
 	private TextArea userTokenField;
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
-		mainWindow = primaryStage;
-
 
 		try {
 			AppSession.getSession().loadData();
@@ -60,6 +54,9 @@ public class MainPaneController {
 			e.printStackTrace();
 		}
 		userTokenField.setText(AppSession.getSession().getUserToken());
+		
+		// setup state
+		setupStatesChoiceBox();
 		
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
@@ -122,7 +119,7 @@ public class MainPaneController {
 		for (User user : trackedUsers) {
 			SamanageRequests.addTimeTrack(userToken, incidentID, user.getComment(), user.getID(), user.getTime());
 		}
-		SamanageRequests.updateState(userToken, incidentID, "Closed");
+		SamanageRequests.updateState(userToken, incidentID, statesChoiceBox.getValue());
 
 		// clear the UI
 		AppSession.getSession().clearTrackedUsers();
@@ -156,6 +153,10 @@ public class MainPaneController {
 	private void setupEmailAutoComplete() {
 		ArrayList<String> savedEmails = AppSession.getSession().getSavedEmails();
 		TextFields.bindAutoCompletion(userInputField, savedEmails);
+	}
+
+	private void setupStatesChoiceBox() {
+		statesChoiceBox.getItems().addAll(AppSession.getSession().getStates());
 	}
 
 	private void clearInputFields() {

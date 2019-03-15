@@ -17,16 +17,19 @@ public class AppSession {
 	private String userToken;
 	private transient ArrayList<User> trackedUsers;
 	private ArrayList<String> savedEmails;
+	private ArrayList<String> states;
 	
 	private AppSession() {
 		userToken = "";
 		trackedUsers = new ArrayList<User>();
 		savedEmails = new ArrayList<String>();
+		states = new ArrayList<String>();
 	}
 	private AppSession(String userToken) {
 		this.userToken = userToken;
 		trackedUsers = new ArrayList<User>();
 		savedEmails = new ArrayList<String>();
+		states = new ArrayList<String>();
 	}
 	
 	public static AppSession getSession() {
@@ -56,6 +59,10 @@ public class AppSession {
 	
 	public ArrayList<String> getSavedEmails() {
 		return savedEmails;
+	}
+
+	public ArrayList<String> getStates() {
+		return states;
 	}
 	
 	public void removeTrackedUser(String email) {
