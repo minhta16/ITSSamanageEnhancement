@@ -1,9 +1,16 @@
 package application.controller;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import org.controlsfx.control.textfield.TextFields;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 
 import application.data.AppSession;
 import application.data.SamanageRequests;
@@ -23,8 +30,6 @@ public class MainPaneController {
 	private Stage mainWindow;
 
 	@FXML
-	private TextArea userTokenField;
-	@FXML
 	private TextField incidentNameField;
 	@FXML
 	private TextField descField;
@@ -41,10 +46,14 @@ public class MainPaneController {
 	@FXML
 	private TableView<User> infoTable;
 
-	public void setStageAndSetupListeners(Stage primaryStage) {
+	@FXML
+	private TextArea userTokenField;
+	
+	public void setStageAndSetupListeners(Stage primaryStage) throws FileNotFoundException {
 		mainWindow = primaryStage;
 
-		AppSession.getSession().setUserToken(userTokenField.getText());
+		AppSession.getSession().loadData("data/data.json");
+		userTokenField.setText(AppSession.getSession().getUserToken());
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
 
@@ -132,5 +141,13 @@ public class MainPaneController {
 		incidentNameField.clear();
 		descField.clear();
 		infoTable.getItems().clear();
+	}
+	
+	@FXML
+	private void handleUserTokenFieldChange() throws JsonIOException, IOException {
+		System.err.println(AppSession.getSession().getUserToken());
+		AppSession.getSession().setUserToken(userTokenField.getText());
+		System.err.println(AppSession.getSession().getUserToken());
+		AppSession.getSession().saveData("data/data.json");
 	}
 }
