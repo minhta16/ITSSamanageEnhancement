@@ -46,7 +46,8 @@ public class EverythingAboutCurl {
 			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
 			conn.setRequestProperty("Content-Type", "text/xml");
 
-			String data1 = "<incident>" +
+			//what is this used for, the data1? 
+			/*String data1 = "<incident>" +
 					" <name>Test</name>" +
 					" <priority>Medium</priority>" +
 					" <requester><email>MINHTA16@augustana.edu</email></requester>" +
@@ -84,7 +85,7 @@ public class EverythingAboutCurl {
 					"     <value>content</value>" + 
 					"   </custom_fields_value>" + 
 					" </custom_fields_values>" + 
-					"</incident>";
+					"</incident>";*/
 			
 			String data = "<incident>"
 					+ " <name>Test</name>"
@@ -181,9 +182,9 @@ public class EverythingAboutCurl {
 		}
 	}
 	
-	public static int getNumPages(String userToken, String dataType) {
+	public static int getNumQueries(String userToken, String dataType) {
 		try {
- 			String url = "https://api.samanage.com/" + dataType + ".xml?per_page=1";
+ 			String url = "https://api.samanage.com/" + dataType + ".xml";
 
 			URL obj = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -212,21 +213,23 @@ public class EverythingAboutCurl {
 			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
 			Element rootElement = document.getDocumentElement();
 		
-			int pages = Integer.parseInt(getString("total_entries", rootElement)) / 100 + 1;
+			int numQueries = Integer.parseInt(getString("total_entries", rootElement)) / 100 + 1;
 			conn.disconnect();
-			return pages;
+			return numQueries;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return 0;
 	}
-	public static void getAllUsers(String userToken) {
+	public static Map getAllUsers(String userToken) {
 //		int numPages = getNumPages(userToken, "users");
-		int numPages = 1;
+		int numPages = getNumQueries("users", userToken);
 		Map<Integer, String> map = new HashMap<Integer, String>();
-		for (int page = 1; page <= numPages; page++) {
+		
+		for (int page = 1; numPages < 58; page++) {
 			try {
-	 			String url = "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
+	 			//String url = "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
+				String url = "https://api.samanage.com/users.xml?per_page=100&page="+page;
 
 				URL obj = new URL(url);
 				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -256,6 +259,7 @@ public class EverythingAboutCurl {
 				Element rootElement = document.getDocumentElement();
 			
 				NodeList listOfUsers = rootElement.getElementsByTagName("user");
+				
 				for (int i = 0; i < listOfUsers.getLength(); i++) {
 					
 					if (listOfUsers.item(i) instanceof Element)
@@ -264,18 +268,18 @@ public class EverythingAboutCurl {
 						int ID = Integer.parseInt(getString("id", user));
 						String name = getString("name", user);
 						map.put(ID, name);
-						System.err.println(name);	
+						//System.err.println(ID+" "+name);	
 				    }
 					
 				}
 				conn.disconnect();
-				//return map; #purposely comment out
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
-		System.err.println(map);
+		return map;
+		//System.err.println(map);
 	}
 
 	
