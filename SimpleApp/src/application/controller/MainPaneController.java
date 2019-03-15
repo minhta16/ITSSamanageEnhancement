@@ -145,9 +145,7 @@ public class MainPaneController {
 	
 	@FXML
 	private void handleUserTokenFieldChange() throws JsonIOException, IOException {
-		System.err.println(AppSession.getSession().getUserToken());
 		AppSession.getSession().setUserToken(userTokenField.getText());
-		System.err.println(AppSession.getSession().getUserToken());
 		AppSession.getSession().saveData("data/data.json");
 	}
 }

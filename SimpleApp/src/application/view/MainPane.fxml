@@ -46,7 +46,7 @@
    <center>
       <TabPane BorderPane.alignment="CENTER">
          <tabs>
-            <Tab text="Main Menu">
+            <Tab closable="false" text="Main Menu">
                <content>
                   <VBox prefHeight="477.0" prefWidth="778.0">
                      <children>
@@ -104,7 +104,7 @@
                   </VBox>
                </content>
             </Tab>
-            <Tab text="Settings">
+            <Tab closable="false" text="Settings">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
@@ -122,7 +122,6 @@
                            <children>
                               <Label text="User Token" />
                               <TextArea fx:id="userTokenField" onKeyTyped="#handleUserTokenFieldChange" prefHeight="112.0" prefWidth="270.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" />
-                              <Button fx:id="saveSettingBtn" mnemonicParsing="false" onAction="#handleSaveSettingBtn" text="Save Settings" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <BorderPane.margin>
                               <Insets />
@@ -135,7 +134,7 @@
                   </BorderPane>
                </content>
             </Tab>
-            <Tab text="Time Track">
+            <Tab closable="false" text="Time Track">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
