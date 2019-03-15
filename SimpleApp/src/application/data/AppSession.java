@@ -11,7 +11,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.stream.JsonReader;
 
 public class AppSession {
-	private final String DATA_LOCATION = "data/data.json";
+	private final String DATA_LOCATION = "src/resources/data.json";
 	private static AppSession session = new AppSession();
 	
 	private String userToken;
