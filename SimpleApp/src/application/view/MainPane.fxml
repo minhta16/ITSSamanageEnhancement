@@ -78,8 +78,8 @@
                               <Label id="timeElapsedField" text="Tracked User (email)" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                               <FlowPane alignment="CENTER" columnHalignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                  <children>
-                                    <CustomTextField fx:id="userInputField" prefHeight="26.0" prefWidth="198.0" />
-                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" text="Add" />
+                                    <CustomTextField fx:id="userInputField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="198.0" />
+                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" onAction="#handleAddEmailButton" text="Add" />
                                  </children>
                               </FlowPane>
                               <TableView fx:id="infoTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">

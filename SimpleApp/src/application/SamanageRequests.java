@@ -65,8 +65,7 @@ public class SamanageRequests {
 		}
 	}
 
-	public static String[] getUserByEmail(String userToken, String email) {
-		String[] userString = new String[2];
+	public static User getUserByEmail(String userToken, String email) {
 		try {
 			String url = "https://api.samanage.com/users.xml?email=" + email;
 
@@ -103,18 +102,20 @@ public class SamanageRequests {
 				throw new NoSuchElementException();
 			}
 			
+			User newUser = new User();
 			for (int i = 0; i < listOfUsers.getLength(); i++) {
 				if (listOfUsers.item(i) instanceof Element) {
 					Element user = (Element) listOfUsers.item(i);
-					int ID = Integer.parseInt(getString("id", user));
 					String name = getString("name", user);
-					userString[0] = "" + ID;
-					userString[1] = name;
+					String ID = getString("id", user);
+					newUser.setName(name);
+					newUser.setEmail(email);
+					newUser.setID(ID);
 				}
 
 			}
 			conn.disconnect();
-			return userString;
+			return newUser;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
