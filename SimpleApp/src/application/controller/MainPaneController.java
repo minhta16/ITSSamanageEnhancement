@@ -99,6 +99,8 @@ public class MainPaneController {
 				showAlert("Error", "Time elapsed empty", AlertType.ERROR);
 			} else if (timeTrackCmtField.getText().equals("")) {
 				showAlert("Error", "Time track comment empty", AlertType.ERROR);
+			} else if (userTokenField.getText().trim().equals("")) {
+				showAlert("Error", "User Token missing", AlertType.ERROR);
 			} else {
 				User user;
 				user = SamanageRequests.getUserByEmail(userTokenField.getText(), userInputField.getText());
