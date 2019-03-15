@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -61,8 +62,8 @@
                             <RowConstraints maxHeight="110.4000015258789" minHeight="10.0" prefHeight="38.40001983642579" vgrow="SOMETIMES" />
                             <RowConstraints maxHeight="132.79997406005862" minHeight="0.0" prefHeight="60.00000457763672" vgrow="SOMETIMES" />
                             <RowConstraints maxHeight="128.39999542236328" minHeight="10.0" prefHeight="41.600018310546886" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="131.9999816894531" minHeight="0.0" prefHeight="131.9999816894531" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="83.79999389648435" minHeight="6.399993896484375" prefHeight="37.79999389648435" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="144.20001220703125" minHeight="0.0" prefHeight="144.20001220703125" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="167.79999389648435" minHeight="6.399993896484375" prefHeight="38.59998779296876" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="69.20001831054685" minHeight="10.0" prefHeight="24.600006103515625" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
@@ -70,24 +71,27 @@
                               <TextField fx:id="incidentNameField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" />
                               <Label text="Description" GridPane.rowIndex="1" />
                               <TextField fx:id="descField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label prefHeight="52.0" prefWidth="162.0" text="Time Track Comment" GridPane.columnIndex="3" />
-                              <TextField fx:id="timeTrackCmtField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="4" />
+                              <Label id="timeElapsedField" text="Tracked User (email)" GridPane.columnIndex="3" />
+                              <CustomTextField fx:id="userInputField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="198.0" GridPane.columnIndex="4" />
                               <Label id="timeElapsedField" text="Time Elapsed" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <TextField fx:id="timeElapsedField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                              <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                              <Label id="timeElapsedField" text="Tracked User (email)" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <FlowPane alignment="CENTER" columnHalignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                              <TextField fx:id="timeElapsedField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <Label prefHeight="52.0" prefWidth="162.0" text="Time Track Comment" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                  <children>
-                                    <CustomTextField fx:id="userInputField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="198.0" />
-                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" onAction="#handleAddEmailButton" text="Add" />
+                                    <TextField fx:id="timeTrackCmtField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="148.0" />
+                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" onAction="#handleAddEmailButton" text="Add To Table" />
                                  </children>
                               </FlowPane>
-                              <TableView fx:id="infoTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                              <TableView fx:id="infoTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3">
                                 <columns>
                                   <TableColumn prefWidth="75.0" text="Name" />
-                                  <TableColumn prefWidth="159.20001220703125" text="Email" />
+                                  <TableColumn prefWidth="132.00000762939453" text="Email" />
+                                    <TableColumn prefWidth="66.4000244140625" text="Time" />
+                                    <TableColumn minWidth="0.0" prefWidth="88.0" text="Comment" />
+                                    <TableColumn prefWidth="33.5999755859375" text="Rm" />
                                 </columns>
                               </TableView>
+                              <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.rowIndex="5" />
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -131,6 +135,11 @@
                      </center>
                   </BorderPane>
                </content>
+            </Tab>
+            <Tab text="Time Track">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
             </Tab>
          </tabs>
       </TabPane>

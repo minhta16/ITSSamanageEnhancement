@@ -38,11 +38,27 @@ public class AppSession {
 		return false;
 	}
 	
+	public void removeTrackedUser(String email) {
+		for (int i = trackedUsers.size() - 1; i >= 0; i--) {
+			if (trackedUsers.get(i).getEmail().equalsIgnoreCase(email)) {
+				trackedUsers.remove(trackedUsers.get(i));
+			}
+		}
+	}
+	
+	public ArrayList<User> getTrackedUsers() {
+		return trackedUsers;
+	}
+	
 	public void setUserToken(String userToken) {
 		this.userToken = userToken;
 	}
 	
 	public String getUserToken() {
 		return userToken;
+	}
+	
+	public void clearTrackedUsers() {
+		trackedUsers.clear();
 	}
 }

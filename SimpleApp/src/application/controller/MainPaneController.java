@@ -1,5 +1,6 @@
 package application.controller;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import org.controlsfx.control.textfield.TextFields;
@@ -50,6 +51,9 @@ public class MainPaneController {
 		// setup infoTable
 		infoTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
 		infoTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("email"));
+		infoTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("time"));
+		infoTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("comment"));
+		infoTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
 	}
 
 	@FXML
@@ -57,10 +61,10 @@ public class MainPaneController {
 		submitBtn.setText("Loading...");
 		submitBtn.setDisable(true);
 		new Thread(() -> {
-			newIncidentWithTimeTrack(userTokenField.getText(), incidentNameField.getText(), descField.getText(),
-					timeTrackCmtField.getText(), Integer.parseInt(timeElapsedField.getText()));
+			newIncidentWithTimeTrack(userTokenField.getText(), incidentNameField.getText(), descField.getText());
 		}).start();
-		showAlert("Incident created!", "Incident created!", AlertType.INFORMATION);
+		showAlert("Incident created", "Incident created", AlertType.INFORMATION);
+		clearInputFields();
 		submitBtn.setText("Submit");
 		submitBtn.setDisable(false);
 	}
@@ -68,24 +72,38 @@ public class MainPaneController {
 	@FXML
 	private void handleAddEmailButton() {
 		if (!AppSession.getSession().containTrackedUser(userInputField.getText())) {
-			User user;
-			user = SamanageRequests.getUserByEmail(userTokenField.getText(), userInputField.getText());
-			System.err.println(user);
-			if (user == null) {
-				showAlert("Error", "User doesn't exists.", AlertType.ERROR);
+			if (userInputField.getText().equals("")) {
+				showAlert("Error", "Email empty", AlertType.ERROR);
+			} else if (timeElapsedField.getText().equals("")) {
+				showAlert("Error", "Time elapsed empty", AlertType.ERROR);
 			} else {
-				addTableItem(user);
-				userInputField.clear();
+				User user;
+				user = SamanageRequests.getUserByEmail(userTokenField.getText(), userInputField.getText());
+				System.err.println(user);
+				if (user == null) {
+					showAlert("Error", "User doesn't exists", AlertType.ERROR);
+				} else {
+					addTableItem(user);
+					userInputField.clear();
+					timeTrackCmtField.clear();
+					timeElapsedField.clear();
+				}
 			}
 		}
 	}
 
-	private void newIncidentWithTimeTrack(String userToken, String incidentName, String description, String trackCmt,
-			double minutesTaken) {
+	private void newIncidentWithTimeTrack(String userToken, String incidentName, String description) {
 		SamanageRequests.newIncident(userToken, incidentName, description);
 		String incidentID = SamanageRequests.getID(userToken);
-		SamanageRequests.addTimeTrack(userToken, incidentID, trackCmt, minutesTaken);
+		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
+		for (User user: trackedUsers) {
+			SamanageRequests.addTimeTrack(userToken, incidentID, user.getComment(), user.getID(), user.getTime());
+		}
 		SamanageRequests.updateState(userToken, incidentID, "Closed");
+		
+		// clear the UI
+		AppSession.getSession().clearTrackedUsers();
+		
 	}
 
 	private void showAlert(String title, String message, AlertType alertType) {
@@ -96,6 +114,12 @@ public class MainPaneController {
 	}
 
 	private void addTableItem(User user) {
+		user.setComment(timeTrackCmtField.getText());
+		user.setTime(Integer.parseInt(timeElapsedField.getText()));
+		user.getRemoveBtn().setOnAction((e) -> {
+			AppSession.getSession().removeTrackedUser(user.getEmail());
+			infoTable.getItems().remove(user);
+		});
 		infoTable.getItems().add(user);
 		AppSession.getSession().addTrackedUser(user);
 	}
@@ -104,4 +128,9 @@ public class MainPaneController {
 		TextFields.bindAutoCompletion(userInputField, "");
 	}
 
+	private void clearInputFields() {
+		incidentNameField.clear();
+		descField.clear();
+		infoTable.getItems().clear();
+	}
 }
