@@ -2,7 +2,7 @@ package application.controller;
 
 import org.controlsfx.control.textfield.TextFields;
 
-import application.SamanageRequests;
+import application.data.SamanageRequests;
 import application.data.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
