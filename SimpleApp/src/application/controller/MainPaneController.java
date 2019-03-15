@@ -49,11 +49,16 @@ public class MainPaneController {
 	@FXML
 	private TextArea userTokenField;
 
-	public void setStageAndSetupListeners(Stage primaryStage) throws IOException {
+	public void setStageAndSetupListeners(Stage primaryStage) {
 		mainWindow = primaryStage;
 
 
-		AppSession.getSession().loadData("data/data.json");
+		try {
+			AppSession.getSession().loadData();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		userTokenField.setText(AppSession.getSession().getUserToken());
 		
 		// setup TextFields autocomplete
@@ -139,11 +144,18 @@ public class MainPaneController {
 			infoTable.getItems().remove(user);
 		});
 		infoTable.getItems().add(user);
-		AppSession.getSession().addTrackedUser(user);
+		TextFields.bindAutoCompletion(userInputField, user.getEmail());
+		try {
+			AppSession.getSession().addTrackedUser(user);
+		} catch (JsonIOException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	private void setupEmailAutoComplete() {
-		TextFields.bindAutoCompletion(userInputField, "");
+		ArrayList<String> savedEmails = AppSession.getSession().getSavedEmails();
+		TextFields.bindAutoCompletion(userInputField, savedEmails);
 	}
 
 	private void clearInputFields() {
@@ -153,8 +165,13 @@ public class MainPaneController {
 	}
 
 	@FXML
-	private void handleUserTokenFieldChange() throws JsonIOException, IOException {
+	private void handleUserTokenFieldChange() {
 		AppSession.getSession().setUserToken(userTokenField.getText());
-		AppSession.getSession().saveData("data/data.json");
+		try {
+			AppSession.getSession().saveData();
+		} catch (JsonIOException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

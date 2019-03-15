@@ -11,26 +11,34 @@ import com.google.gson.JsonIOException;
 import com.google.gson.stream.JsonReader;
 
 public class AppSession {
+	private final String DATA_LOCATION = "data/data.json";
 	private static AppSession session = new AppSession();
 	
 	private String userToken;
 	private transient ArrayList<User> trackedUsers;
+	private ArrayList<String> savedEmails;
 	
 	private AppSession() {
 		userToken = "";
 		trackedUsers = new ArrayList<User>();
+		savedEmails = new ArrayList<String>();
 	}
 	private AppSession(String userToken) {
 		this.userToken = userToken;
 		trackedUsers = new ArrayList<User>();
+		savedEmails = new ArrayList<String>();
 	}
 	
 	public static AppSession getSession() {
 		return session;
 	}
 	
-	public void addTrackedUser(User user) {
+	public void addTrackedUser(User user) throws JsonIOException, IOException {
 		trackedUsers.add(user);
+		if (!savedEmails.contains(user.getEmail().toLowerCase())) {
+			savedEmails.add(user.getEmail().toLowerCase());
+			saveData();
+		}
 	}
 	
 	public boolean containTrackedUser(User user) {
@@ -44,6 +52,10 @@ public class AppSession {
 			}
 		}
 		return false;
+	}
+	
+	public ArrayList<String> getSavedEmails() {
+		return savedEmails;
 	}
 	
 	public void removeTrackedUser(String email) {
@@ -70,8 +82,8 @@ public class AppSession {
 		trackedUsers.clear();
 	}
 	
-	public void loadData(String fileName) throws IOException {
-		FileReader fd = new FileReader(fileName);
+	public void loadData() throws IOException {
+		FileReader fd = new FileReader(DATA_LOCATION);
 		JsonReader reader = new JsonReader(fd);
 		Gson gson = new Gson();
 		session = gson.fromJson(reader, AppSession.class);
@@ -79,10 +91,12 @@ public class AppSession {
 		fd.close();
 	}
 	
-	public void saveData(String fileName) throws JsonIOException, IOException {
+	public void saveData() throws JsonIOException, IOException {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		FileWriter fw = new FileWriter(fileName);
+		FileWriter fw = new FileWriter(DATA_LOCATION);
 		gson.toJson(session, fw);
 		fw.close();
 	}
+	
+	
 }
