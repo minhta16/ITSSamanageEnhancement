@@ -1,10 +1,13 @@
 package application.data;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -19,69 +22,61 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public class SamanageRequests {
-	public static void newIncident(String userToken, String incidentName, String category, String subcategory, String description) {
-		try {
-			String url = "https://api.samanage.com/incidents.xml";
+	public static void newIncident(String userToken, String incidentName, String category, String subcategory,
+			String description) throws IOException {
+		String url = "https://api.samanage.com/incidents.xml";
 
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
 
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
-			conn.setRequestProperty("Content-Type", "text/xml");
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+		conn.setRequestProperty("Content-Type", "text/xml");
 
-			String data1 = "<incident>" + " <name>Test</name>" + " <priority>Medium</priority>"
-					+ " <requester><email>MINHTA16@augustana.edu</email></requester>"
-					+ " <category><name>Meetings  (ITS use only)</name></category>" + " <subcategory>"
-					+ "      <name>Training/Workshops</name>" + " </subcategory>" + " <cc type=\"array\">"
-					+ "   <cc>MINHTA16@augustana.edu</cc>" + " </cc>" + " <description>" + description
-					+ "</description>" + " <due_at>Mar 8, 2019</due_at>"
-					+ " <assignee><email>MINHTA16@augustana.edu</email></assignee>" + " <incidents type=\"array\">"
-					+ "   <incident><number>1474</number></incident>" + "   <incident><number>1475</number></incident>"
-					+ " </incidents>" + " <assets type=\"array\">" + "   <asset><id>275498</id></asset>" + " </assets>"
-					+ " <problem><number>445</number></problem>" + " <solutions type=\"array\">"
-					+ "   <solution><number>34</number></solution>" + " </solutions>"
-					+ " <configuration_items type=\"array\">"
-					+ "   <configuration_item><id>27234</id></configuration_item>" + " </configuration_items>"
-					+ " <custom_fields_values>" + "   <custom_fields_value>" + "     <name>field name</name>"
-					+ "     <value>content</value>" + "   </custom_fields_value>" + "   <custom_fields_value>"
-					+ "     <name>field name</name>" + "     <value>content</value>" + "   </custom_fields_value>"
-					+ " </custom_fields_values>" + "</incident>";
+		String data1 = "<incident>" + " <name>Test</name>" + " <priority>Medium</priority>"
+				+ " <requester><email>MINHTA16@augustana.edu</email></requester>"
+				+ " <category><name>Meetings  (ITS use only)</name></category>" + " <subcategory>"
+				+ "      <name>Training/Workshops</name>" + " </subcategory>" + " <cc type=\"array\">"
+				+ "   <cc>MINHTA16@augustana.edu</cc>" + " </cc>" + " <description>" + description + "</description>"
+				+ " <due_at>Mar 8, 2019</due_at>" + " <assignee><email>MINHTA16@augustana.edu</email></assignee>"
+				+ " <incidents type=\"array\">" + "   <incident><number>1474</number></incident>"
+				+ "   <incident><number>1475</number></incident>" + " </incidents>" + " <assets type=\"array\">"
+				+ "   <asset><id>275498</id></asset>" + " </assets>" + " <problem><number>445</number></problem>"
+				+ " <solutions type=\"array\">" + "   <solution><number>34</number></solution>" + " </solutions>"
+				+ " <configuration_items type=\"array\">" + "   <configuration_item><id>27234</id></configuration_item>"
+				+ " </configuration_items>" + " <custom_fields_values>" + "   <custom_fields_value>"
+				+ "     <name>field name</name>" + "     <value>content</value>" + "   </custom_fields_value>"
+				+ "   <custom_fields_value>" + "     <name>field name</name>" + "     <value>content</value>"
+				+ "   </custom_fields_value>" + " </custom_fields_values>" + "</incident>";
 
-			String data = "<incident>" + " <name>" + incidentName + "</name>" + " <priority>Medium</priority>"
-					+ " <requester><email>MINHTA16@augustana.edu</email></requester>"
-					+ " <category><name>" + category + "</name></category>";
-			if (!subcategory.equals("")) {
-					data += " <subcategory>"
-					+ "      <name>" + subcategory + "</name>" 
-					+ " </subcategory>";
-			}
-			data += " <description>" + description + "</description>" 
-					+ " <assignee><email>MINHTA16@augustana.edu</email></assignee>"
-					+ "</incident>";
-			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
-			out.write(data);
-			out.close();
-
-			BufferedReader br;
-			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
-				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			} else {
-				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-			}
-			StringBuffer xml = new StringBuffer();
-			String output;
-			while ((output = br.readLine()) != null) {
-				xml.append(output);
-			}
-			
-			conn.disconnect();
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		String data = "<incident>" + " <name>" + incidentName + "</name>" + " <priority>Medium</priority>"
+				+ " <requester><email>MINHTA16@augustana.edu</email></requester>" + " <category><name>" + category
+				+ "</name></category>";
+		if (!subcategory.equals("")) {
+			data += " <subcategory>" + "      <name>" + subcategory + "</name>" + " </subcategory>";
 		}
+		data += " <description>" + description + "</description>"
+				+ " <assignee><email>MINHTA16@augustana.edu</email></assignee>" + "</incident>";
+		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+		out.write(data);
+		out.close();
+
+		BufferedReader br;
+		if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+			br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		}
+		StringBuffer xml = new StringBuffer();
+		String output;
+		while ((output = br.readLine()) != null) {
+			xml.append(output);
+		}
+
+		conn.disconnect();
+
 	}
 
 	public static User getUserByEmail(String userToken, String email) {
@@ -120,7 +115,7 @@ public class SamanageRequests {
 			if (listOfUsers.getLength() == 0) {
 				return null;
 			}
-			
+
 			User newUser = new User();
 			for (int i = 0; i < listOfUsers.getLength(); i++) {
 				if (listOfUsers.item(i) instanceof Element) {
@@ -194,10 +189,11 @@ public class SamanageRequests {
 			for (int i = 0; i < categories.getLength(); i++) {
 				if (categories.item(i) instanceof Element) {
 					Element category = (Element) categories.item(i);
-					if (category.getElementsByTagName("parent_id").item(category.getElementsByTagName("parent_id").getLength() - 1).hasAttributes()) {
+					if (category.getElementsByTagName("parent_id")
+							.item(category.getElementsByTagName("parent_id").getLength() - 1).hasAttributes()) {
 						String name = getString("name", category);
 						categoriesMap.put(name, new ArrayList<String>());
-						NodeList subcat =  category.getElementsByTagName("child");
+						NodeList subcat = category.getElementsByTagName("child");
 						for (int j = 0; j < subcat.getLength(); j++) {
 							categoriesMap.get(name).add(getString("name", (Element) subcat.item(j)));
 						}
@@ -205,7 +201,7 @@ public class SamanageRequests {
 				}
 
 			}
-			
+
 			conn.disconnect();
 			return categoriesMap;
 		} catch (Exception e) {
@@ -237,9 +233,9 @@ public class SamanageRequests {
 		}
 		return "";
 	}
-	
 
-	public static void addTimeTrack(String userToken, String incidentID, String trackCmt, String creatorID, double time) {
+	public static void addTimeTrack(String userToken, String incidentID, String trackCmt, String creatorID,
+			double time) {
 
 		try {
 			String url = "https://api.samanage.com/incidents/" + incidentID + "/time_tracks.xml";
@@ -253,11 +249,8 @@ public class SamanageRequests {
 			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
 			conn.setRequestProperty("Content-Type", "text/xml");
 
-			String data = "<time_track>"
-							+ "<name>" + trackCmt + "</name>"
-							+ "<creator_id>" + creatorID + "</creator_id>"
-							+ "<minutes_parsed>" + time + "</minutes_parsed>"
-						+ "</time_track>";
+			String data = "<time_track>" + "<name>" + trackCmt + "</name>" + "<creator_id>" + creatorID
+					+ "</creator_id>" + "<minutes_parsed>" + time + "</minutes_parsed>" + "</time_track>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
 			out.close();
@@ -312,6 +305,5 @@ public class SamanageRequests {
 
 		return null;
 	}
-	
-	
+
 }

@@ -121,6 +121,7 @@ public class MainPaneController {
 					showAlert("Error", "User doesn't exists", AlertType.ERROR);
 				} else {
 					addTableItem(user);
+					userInputField.requestFocus();
 					userInputField.clear();
 					timeTrackCmtField.clear();
 					timeElapsedField.clear();
@@ -130,7 +131,12 @@ public class MainPaneController {
 	}
 
 	private void newIncidentWithTimeTrack(String userToken, String incidentName, String category, String subcategory, String description) {
-		SamanageRequests.newIncident(userToken, incidentName, category, subcategory, description);
+		try {
+			SamanageRequests.newIncident(userToken, incidentName, category, subcategory, description);
+		} catch (IOException e) {
+			showAlert("Error", e.getMessage(), AlertType.ERROR);
+			e.printStackTrace();
+		}
 		String incidentID = SamanageRequests.getID(userToken);
 		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
 		for (User user : trackedUsers) {

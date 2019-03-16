@@ -64,9 +64,9 @@
                             <RowConstraints maxHeight="110.4000015258789" minHeight="10.0" prefHeight="38.40001983642579" vgrow="SOMETIMES" />
                             <RowConstraints maxHeight="132.79997406005862" minHeight="0.0" prefHeight="37.0" vgrow="SOMETIMES" />
                             <RowConstraints maxHeight="128.39999542236328" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="144.20001220703125" minHeight="0.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="167.79999389648435" minHeight="6.399993896484375" prefHeight="54.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="144.20001220703125" minHeight="0.0" prefHeight="42.80001220703126" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="167.79999389648435" minHeight="6.399993896484375" prefHeight="37.99998779296874" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="106.80000610351564" minHeight="10.0" prefHeight="106.80000610351564" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                           </rowConstraints>
@@ -88,8 +88,8 @@
                               <Label prefHeight="52.0" prefWidth="162.0" text="Time Track Comment" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                               <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                  <children>
-                                    <TextField fx:id="timeTrackCmtField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="148.0" />
-                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" onAction="#handleAddEmailButton" text="Add To Table" />
+                                    <TextField fx:id="timeTrackCmtField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="162.0" />
+                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="74.0" text="Add Track" />
                                  </children>
                               </FlowPane>
                               <TableView fx:id="infoTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="3">
@@ -98,7 +98,7 @@
                                   <TableColumn prefWidth="132.00000762939453" text="Email" />
                                     <TableColumn prefWidth="66.4000244140625" text="Time" />
                                     <TableColumn minWidth="0.0" prefWidth="88.0" text="Comment" />
-                                    <TableColumn prefWidth="33.5999755859375" text="Rm" />
+                                    <TableColumn prefWidth="33.5999755859375" text=" " />
                                 </columns>
                               </TableView>
                               <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="26.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.rowIndex="7" />
