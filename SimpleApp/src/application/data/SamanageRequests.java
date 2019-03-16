@@ -189,16 +189,18 @@ public class SamanageRequests {
 			if (categories.getLength() == 0) {
 				return null;
 			}
-			
+
 			TreeMap<String, ArrayList<String>> categoriesMap = new TreeMap<String, ArrayList<String>>();
 			for (int i = 0; i < categories.getLength(); i++) {
 				if (categories.item(i) instanceof Element) {
 					Element category = (Element) categories.item(i);
-					String name = getString("name", category);
-					categoriesMap.put(name, new ArrayList<String>());
-					NodeList subcat =  category.getElementsByTagName("child");
-					for (int j = 0; j < subcat.getLength(); j++) {
-						categoriesMap.get(name).add(getString("name", (Element) subcat.item(j)));
+					if (category.getElementsByTagName("parent_id").item(category.getElementsByTagName("parent_id").getLength() - 1).hasAttributes()) {
+						String name = getString("name", category);
+						categoriesMap.put(name, new ArrayList<String>());
+						NodeList subcat =  category.getElementsByTagName("child");
+						for (int j = 0; j < subcat.getLength(); j++) {
+							categoriesMap.get(name).add(getString("name", (Element) subcat.item(j)));
+						}
 					}
 				}
 

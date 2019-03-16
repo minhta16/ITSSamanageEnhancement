@@ -88,8 +88,8 @@ public class MainPaneController {
 			submitBtn.setText("Loading...");
 			submitBtn.setDisable(true);
 			new Thread(() -> {
-//				newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
-//						descField.getText());
+				newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
+						catChoiceBox.getValue(), subcatChoiceBox.getValue(), descField.getText());
 			}).start();
 			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 			clearInputFields();
@@ -176,6 +176,8 @@ public class MainPaneController {
 
 	private void setupCatChoiceBox() {
 		AppSession.getSession().setCategories(SamanageRequests.getCategories(AppSession.getSession().getUserToken()));
+		catChoiceBox.getSelectionModel().select(0);
+		subcatChoiceBox.getSelectionModel().select(0);
 		catChoiceBox.getItems().addAll(AppSession.getSession().getCategories().keySet());
 		catChoiceBox.getSelectionModel().selectedItemProperty()
 	    		.addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
@@ -185,7 +187,13 @@ public class MainPaneController {
 	
 	private void updateSubcatChoiceBox() {
 		subcatChoiceBox.getItems().clear();
-		subcatChoiceBox.getItems().addAll(AppSession.getSession().getCategories().get(catChoiceBox.getValue()));		
+		
+		if (AppSession.getSession().getCategories().get(catChoiceBox.getValue()).isEmpty()) {
+			subcatChoiceBox.setDisable(true);
+		} else {
+			subcatChoiceBox.setDisable(false);
+			subcatChoiceBox.getItems().addAll(AppSession.getSession().getCategories().get(catChoiceBox.getValue()));
+		}		
 	}
 
 
