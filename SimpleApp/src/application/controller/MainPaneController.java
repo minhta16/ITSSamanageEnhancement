@@ -26,6 +26,10 @@ public class MainPaneController {
 	@FXML
 	private ChoiceBox<String> statesChoiceBox;
 	@FXML
+	private ChoiceBox<String> catChoiceBox;
+	@FXML
+	private ChoiceBox<String> subcatChoiceBox;
+	@FXML
 	private TextField incidentNameField;
 	@FXML
 	private TextField descField;

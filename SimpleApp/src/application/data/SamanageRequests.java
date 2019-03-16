@@ -6,7 +6,9 @@ import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.TreeMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -159,7 +161,7 @@ public class SamanageRequests {
 		}
 	}
 
-	public static void getCategories(String userToken) {
+	public static TreeMap<String, ArrayList<String>> getCategories(String userToken) {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -178,13 +180,31 @@ public class SamanageRequests {
 			conn.setRequestProperty("Content-Type", "text/xml");
 
 			Element rootElement = documentFromOutput(conn);
-			NodeList categories = rootElement.getElementsByTagName("");
+			NodeList categories = rootElement.getElementsByTagName("incident-type");
+			if (categories.getLength() == 0) {
+				return null;
+			}
+			
+			TreeMap<String, ArrayList<String>> categoriesMap = new TreeMap<String, ArrayList<String>>();
+			for (int i = 0; i < categories.getLength(); i++) {
+				if (categories.item(i) instanceof Element) {
+					Element category = (Element) categories.item(i);
+					String name = getString("name", category);
+					categoriesMap.put(name, new ArrayList<String>());
+					NodeList subcat =  category.getElementsByTagName("child");
+					for (int j = 0; j < subcat.getLength(); j++) {
+						categoriesMap.get(name).add(getString("name", (Element) subcat.item(j)));
+					}
+				}
 
-			int incidentID = Integer.parseInt(getString("id", rootElement));
+			}
+			
 			conn.disconnect();
+			return categoriesMap;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public static String getID(String userToken) {
