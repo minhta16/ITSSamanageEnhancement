@@ -16,6 +16,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -27,9 +28,9 @@ public class MainPaneController {
 	@FXML
 	private ChoiceBox<String> statesChoiceBox;
 	@FXML
-	private ChoiceBox<String> catChoiceBox;
+	private ComboBox<String> catChoiceBox;
 	@FXML
-	private ChoiceBox<String> subcatChoiceBox;
+	private ComboBox<String> subcatChoiceBox;
 	@FXML
 	private TextField incidentNameField;
 	@FXML
@@ -81,9 +82,13 @@ public class MainPaneController {
 	@FXML
 	private void handleSubmitBtn() {
 		if (userTokenField.getText().trim().equals("")) {
-			showAlert("Error", "User Token missing", AlertType.ERROR);
+			showAlert("Error", "Please enter user token (Setting)", AlertType.WARNING);
 		} else if (incidentNameField.getText().equals("")) {
-			showAlert("Error", "Incident name missing", AlertType.ERROR);
+			showAlert("Error", "Please enter incident name", AlertType.WARNING);
+		} else if (catChoiceBox.getValue() == null) {
+			showAlert("Error", "Please select a category", AlertType.WARNING);
+		} else if (!subcatChoiceBox.isDisable() && subcatChoiceBox.getValue() == null) {
+			showAlert("Error", "Please select a subcategory", AlertType.WARNING);
 		} else {
 			submitBtn.setText("Loading...");
 			submitBtn.setDisable(true);
@@ -172,12 +177,14 @@ public class MainPaneController {
 
 	private void setupStatesChoiceBox() {
 		statesChoiceBox.getItems().addAll(AppSession.getSession().getStates());
+		statesChoiceBox.getSelectionModel().select(0);
 	}
 
 	private void setupCatChoiceBox() {
 		AppSession.getSession().setCategories(SamanageRequests.getCategories(AppSession.getSession().getUserToken()));
 		catChoiceBox.getSelectionModel().select(0);
 		subcatChoiceBox.getSelectionModel().select(0);
+		subcatChoiceBox.setDisable(true);
 		catChoiceBox.getItems().addAll(AppSession.getSession().getCategories().keySet());
 		catChoiceBox.getSelectionModel().selectedItemProperty()
 	    		.addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
