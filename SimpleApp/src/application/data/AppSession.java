@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,18 +19,21 @@ public class AppSession {
 	private transient ArrayList<User> trackedUsers;
 	private ArrayList<String> savedEmails;
 	private ArrayList<String> states;
+	private TreeMap<String, ArrayList<String>> categories;
 	
 	private AppSession() {
 		userToken = "";
 		trackedUsers = new ArrayList<User>();
 		savedEmails = new ArrayList<String>();
 		states = new ArrayList<String>();
+		categories = new TreeMap<String, ArrayList<String>>();
 	}
 	private AppSession(String userToken) {
 		this.userToken = userToken;
 		trackedUsers = new ArrayList<User>();
 		savedEmails = new ArrayList<String>();
 		states = new ArrayList<String>();
+		categories = new TreeMap<String, ArrayList<String>>();
 	}
 	
 	public static AppSession getSession() {
@@ -42,6 +46,14 @@ public class AppSession {
 			savedEmails.add(user.getEmail().toLowerCase());
 			saveData();
 		}
+	}
+	
+	public TreeMap<String, ArrayList<String>> getCategories() {
+		return categories;
+	}
+	
+	public void setCategories(TreeMap<String, ArrayList<String>> categories) {
+		this.categories = categories;
 	}
 	
 	public boolean containTrackedUser(User user) {

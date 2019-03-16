@@ -19,7 +19,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public class SamanageRequests {
-	public static void newIncident(String userToken, String incidentName, String description) {
+	public static void newIncident(String userToken, String incidentName, String category, String subcategory, String description) {
 		try {
 			String url = "https://api.samanage.com/incidents.xml";
 
@@ -52,9 +52,15 @@ public class SamanageRequests {
 
 			String data = "<incident>" + " <name>" + incidentName + "</name>" + " <priority>Medium</priority>"
 					+ " <requester><email>MINHTA16@augustana.edu</email></requester>"
-					+ " <category><name>Meetings  (ITS use only)</name></category>" + " <subcategory>"
-					+ "      <name>Training/Workshops</name>" + " </subcategory>" + " <description>" + description
-					+ "</description>" + " <assignee><email>MINHTA16@augustana.edu</email></assignee>" + "</incident>";
+					+ " <category><name>" + category + "</name></category>";
+			if (!subcategory.equals("")) {
+					data += " <subcategory>"
+					+ "      <name>" + subcategory + "</name>" 
+					+ " </subcategory>";
+			}
+			data += " <description>" + description + "</description>" 
+					+ " <assignee><email>MINHTA16@augustana.edu</email></assignee>"
+					+ "</incident>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
 			out.close();
@@ -71,7 +77,6 @@ public class SamanageRequests {
 				xml.append(output);
 			}
 			
-			System.err.println(xml);
 			conn.disconnect();
 
 		} catch (Exception e) {

@@ -10,6 +10,7 @@ import application.data.SamanageRequests;
 import application.data.User;
 import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
 import impl.org.controlsfx.autocompletion.SuggestionProvider;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -60,6 +61,9 @@ public class MainPaneController {
 		}
 		userTokenField.setText(AppSession.getSession().getUserToken());
 		
+		// setup category
+		setupCatChoiceBox();
+		
 		// setup state
 		setupStatesChoiceBox();
 		
@@ -84,8 +88,8 @@ public class MainPaneController {
 			submitBtn.setText("Loading...");
 			submitBtn.setDisable(true);
 			new Thread(() -> {
-				newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(),
-						descField.getText());
+//				newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
+//						descField.getText());
 			}).start();
 			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 			clearInputFields();
@@ -108,7 +112,6 @@ public class MainPaneController {
 			} else {
 				User user;
 				user = SamanageRequests.getUserByEmail(userTokenField.getText(), userInputField.getText());
-				System.err.println(user);
 				if (user == null) {
 					showAlert("Error", "User doesn't exists", AlertType.ERROR);
 				} else {
@@ -121,8 +124,8 @@ public class MainPaneController {
 		}
 	}
 
-	private void newIncidentWithTimeTrack(String userToken, String incidentName, String description) {
-		SamanageRequests.newIncident(userToken, incidentName, description);
+	private void newIncidentWithTimeTrack(String userToken, String incidentName, String category, String subcategory, String description) {
+		SamanageRequests.newIncident(userToken, incidentName, category, subcategory, description);
 		String incidentID = SamanageRequests.getID(userToken);
 		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
 		for (User user : trackedUsers) {
@@ -170,6 +173,21 @@ public class MainPaneController {
 	private void setupStatesChoiceBox() {
 		statesChoiceBox.getItems().addAll(AppSession.getSession().getStates());
 	}
+
+	private void setupCatChoiceBox() {
+		AppSession.getSession().setCategories(SamanageRequests.getCategories(AppSession.getSession().getUserToken()));
+		catChoiceBox.getItems().addAll(AppSession.getSession().getCategories().keySet());
+		catChoiceBox.getSelectionModel().selectedItemProperty()
+	    		.addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+	    			updateSubcatChoiceBox();
+	    		});
+	}
+	
+	private void updateSubcatChoiceBox() {
+		subcatChoiceBox.getItems().clear();
+		subcatChoiceBox.getItems().addAll(AppSession.getSession().getCategories().get(catChoiceBox.getValue()));		
+	}
+
 
 	private void clearInputFields() {
 		incidentNameField.clear();
