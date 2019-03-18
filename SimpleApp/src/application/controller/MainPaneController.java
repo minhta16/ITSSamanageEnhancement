@@ -129,7 +129,7 @@ public class MainPaneController {
 				User user;
 				user = SamanageRequests.getUserByEmail(userTokenField.getText(), userInputField.getText());
 				if (user == null) {
-					showAlert("Error", "User doesn't exists", AlertType.ERROR);
+					showAlert("Error", "Cannot find any users with that email. Try again", AlertType.ERROR);
 				} else {
 					addTableItem(user);
 					userInputField.requestFocus();
