@@ -20,6 +20,7 @@ public class AppSession {
 	private ArrayList<String> savedEmails;
 	private ArrayList<String> states;
 	private TreeMap<String, ArrayList<String>> categories;
+	private ArrayList<String> priorities;
 	
 	private AppSession() {
 		userToken = "";
@@ -27,6 +28,7 @@ public class AppSession {
 		savedEmails = new ArrayList<String>();
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
+		priorities = new ArrayList<String>();
 	}
 	private AppSession(String userToken) {
 		this.userToken = userToken;
@@ -34,6 +36,7 @@ public class AppSession {
 		savedEmails = new ArrayList<String>();
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
+		priorities = new ArrayList<String>();
 	}
 	
 	public static AppSession getSession() {
@@ -75,6 +78,10 @@ public class AppSession {
 
 	public ArrayList<String> getStates() {
 		return states;
+	}
+
+	public ArrayList<String> getPriorities() {
+		return priorities;
 	}
 	
 	public void removeTrackedUser(String email) {

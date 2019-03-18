@@ -22,7 +22,22 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public class SamanageRequests {
-	public static void newIncident(String userToken, String incidentName, String category, String subcategory,
+
+	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority,
+			String category, String subcategory, String description, String state) throws IOException {
+		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description);
+		String incidentID = SamanageRequests.getID(userToken);
+		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
+		for (User user : trackedUsers) {
+			SamanageRequests.addTimeTrack(userToken, incidentID, user.getComment(), user.getID(), user.getTime());
+		}
+		SamanageRequests.updateState(userToken, incidentID, state);
+
+		// clear the UI
+		AppSession.getSession().clearTrackedUsers();
+	}
+	
+	public static void newIncident(String userToken, String incidentName, String priority, String category, String subcategory,
 			String description) throws IOException {
 		String url = "https://api.samanage.com/incidents.xml";
 
@@ -45,20 +60,23 @@ public class SamanageRequests {
 				+ "   <incident><number>1475</number></incident>" + " </incidents>" + " <assets type=\"array\">"
 				+ "   <asset><id>275498</id></asset>" + " </assets>" + " <problem><number>445</number></problem>"
 				+ " <solutions type=\"array\">" + "   <solution><number>34</number></solution>" + " </solutions>"
-				+ " <configuration_items type=\"array\">" + "   <configuration_item><id>27234</id></configuration_item>"
+				+ " <configuration_items type=\"array\">" + "   <configuratioexpn_item><id>27234</id></configuration_item>"
 				+ " </configuration_items>" + " <custom_fields_values>" + "   <custom_fields_value>"
 				+ "     <name>field name</name>" + "     <value>content</value>" + "   </custom_fields_value>"
 				+ "   <custom_fields_value>" + "     <name>field name</name>" + "     <value>content</value>"
 				+ "   </custom_fields_value>" + " </custom_fields_values>" + "</incident>";
 
-		String data = "<incident>" + " <name>" + incidentName + "</name>" + " <priority>Medium</priority>"
-				+ " <requester><email>MINHTA16@augustana.edu</email></requester>" + " <category><name>" + category
-				+ "</name></category>";
+		String data = "<incident>";
+		data += " <name>" + incidentName + "</name>";
+		data += " <priority>" + priority + "</priority>";
+		data += " <requester><email>MINHTA16@augustana.edu</email></requester>";
+		data += " <category><name>" + category + "</name></category>";
 		if (!subcategory.equals("")) {
 			data += " <subcategory>" + "      <name>" + subcategory + "</name>" + " </subcategory>";
 		}
-		data += " <description>" + description + "</description>"
-				+ " <assignee><email>MINHTA16@augustana.edu</email></assignee>" + "</incident>";
+		data += " <description>" + description + "</description>";
+		data += " <assignee><email>MINHTA16@augustana.edu</email></assignee>" + "</incident>";
+		
 		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 		out.write(data);
 		out.close();

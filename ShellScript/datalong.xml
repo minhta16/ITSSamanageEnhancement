@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents>
+  <incident>
+    <id>36397162</id>
+    <number>16881</number>
+    <name>PowerBI Desktop</name>
+    <description> Install 2019 version&amp;nbsp;on VirtualViking and publish app; old version can be uninstalled  \\ghost\Soft\Win10 Soft\PowerBI </description>
+    <description_no_html>Install 2019 version on VirtualViking and publish app; old version can be uninstalled \\ghost\Soft\Win10 Soft\PowerBI</description_no_html>
+    <state>New</state>
+    <priority>Medium</priority>
+    <category>
+      <id>408915</id>
+      <name>Software</name>
+      <default_tags></default_tags>
+      <children>
+        <child>
+          <id>408938</id>
+          <name>Data Reports</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>858292</id>
+          <name>Data Transfer</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408936</id>
+          <name>Error/Bug</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>862222</id>
+          <name>ITS Website Updates (ITS use only)</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>1564651</default_assignee_id>
+        </child>
+        <child>
+          <id>629965</id>
+          <name>License</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>862557</id>
+          <name>Maintenance</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408943</id>
+          <name>New Installation</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>523760</id>
+          <name>User Process</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408941</id>
+          <name>Vendor Product Support</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408940</id>
+          <name>Version Update</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408937</id>
+          <name>Z - Report - New</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408915</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+      </children>
+      <parent_id nil="true"/>
+      <default_assignee_id>-1</default_assignee_id>
+    </category>
+    <subcategory>
+      <id>408940</id>
+      <name>Version Update</name>
+      <default_tags></default_tags>
+      <children nil="true"/>
+      <parent_id>408915</parent_id>
+      <default_assignee_id>-1</default_assignee_id>
+    </subcategory>
+    <assignee>
+      <id>1564653</id>
+      <name>Development Group</name>
+      <description></description>
+      <email nil="true"/>
+      <disabled>false</disabled>
+      <is_user>false</is_user>
+      <user_id nil="true"/>
+      <reports_to>
+        <id>-1</id>
+        <href>https://api.samanage.com/groups/-1.xml</href>
+      </reports_to>
+      <avatar>
+        <type>group</type>
+        <color>#fd4165</color>
+      </avatar>
+      <memberships>
+        <membership>
+          <id>1152496</id>
+          <user>Chris Vaughan</user>
+        </membership>
+        <membership>
+          <id>1154572</id>
+          <user>Bjork, Brad</user>
+        </membership>
+        <membership>
+          <id>1154576</id>
+          <user>Justin McDanel</user>
+        </membership>
+        <membership>
+          <id>1228994</id>
+          <user>Tammy McAuliffe</user>
+        </membership>
+        <membership>
+          <id>1242996</id>
+          <user>Bradshaw, Lillian</user>
+        </membership>
+        <membership>
+          <id>2008718</id>
+          <user>Arpy, Jana</user>
+        </membership>
+      </memberships>
+    </assignee>
+    <requester>
+      <id>1143652</id>
+      <account_id>39281</account_id>
+      <user_id>1374176</user_id>
+      <email>shawnbeattie@augustana.edu</email>
+      <name>Shawn Beattie</name>
+      <disabled>false</disabled>
+      <has_gravatar>false</has_gravatar>
+      <customer_satisfaction_survey_time>2019-03-06T10:07:12-06:00</customer_satisfaction_survey_time>
+      <avatar>
+        <type>image</type>
+        <image_class>avatar_image</image_class>
+        <sso_image_class></sso_image_class>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/4b0fa735568dc051b834/Screen_Shot_2016-06-30_at_12.52.38_PM_card.png?1468359299</avatar_url>
+      </avatar>
+    </requester>
+    <created_at>2019-03-18T12:40:39-05:00</created_at>
+    <updated_at>2019-03-18T12:40:41-05:00</updated_at>
+    <due_at nil="true"/>
+    <sla_violations/>
+    <number_of_comments>0</number_of_comments>
+    <user_saw_all_comments>true</user_saw_all_comments>
+    <is_service_request>false</is_service_request>
+    <created_by>
+      <id>1143652</id>
+      <account_id>39281</account_id>
+      <user_id>1374176</user_id>
+      <email>shawnbeattie@augustana.edu</email>
+      <name>Shawn Beattie</name>
+      <disabled>false</disabled>
+      <has_gravatar>false</has_gravatar>
+      <customer_satisfaction_survey_time>2019-03-06T10:07:12-06:00</customer_satisfaction_survey_time>
+      <avatar>
+        <type>image</type>
+        <image_class>avatar_image</image_class>
+        <sso_image_class></sso_image_class>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/4b0fa735568dc051b834/Screen_Shot_2016-06-30_at_12.52.38_PM_card.png?1468359299</avatar_url>
+      </avatar>
+    </created_by>
+    <resolution_description nil="true"/>
+    <resolution_code nil="true"/>
+    <custom>2019-03-18 17:40:40.692471</custom>
+    <href>https://api.samanage.com/incidents/36397162-powerbi-desktop.xml</href>
+    <site>
+      <id>49750</id>
+      <name>Sorensen 163</name>
+      <location>Sorensen 163</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <department>
+      <id>39102</id>
+      <name>ITS</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <cc/>
+    <custom_fields_values>
+      <custom_fields_value>
+        <id>83450971</id>
+        <custom_field_id>18424</custom_field_id>
+        <name>Software</name>
+        <value>Other</value>
+        <options>Notifi&lt;br&gt;Microsoft Silverlight&lt;br&gt;Firefox&lt;br&gt;Safari&lt;br&gt;Viking Score&lt;br&gt;Omnilert&lt;br&gt;OneCause&lt;br&gt;Acquia&lt;br&gt;Active Directory&lt;br&gt;Ad-Astra&lt;br&gt;Adobe Acrobat Pro&lt;br&gt;Adobe Creative Cloud&lt;br&gt;Adobe Creative Suite&lt;br&gt;Adobe Flash&lt;br&gt;Adobe Reader&lt;br&gt;AIMS&lt;br&gt;AugieChoice&lt;br&gt;AugieHub&lt;br&gt;Authorize.Net&lt;br&gt;Campaign Enterprise&lt;br&gt;Capture&lt;br&gt;CashNet&lt;br&gt;Check I'm Here&lt;br&gt;Class List&lt;br&gt;Co-Curricular Transcript&lt;br&gt;Colleague&lt;br&gt;Core Client Database&lt;br&gt;Course Master&lt;br&gt;CMAP&lt;br&gt;Dell&lt;br&gt;DHCP&lt;br&gt;DNS&lt;br&gt;Drop Verify&lt;br&gt;Extron&lt;br&gt;EZproxy&lt;br&gt;FERPA Compliance&lt;br&gt;Folder Rights&lt;br&gt;FrontRush&lt;br&gt;G Suite&lt;br&gt;Gmail&lt;br&gt;Google File Stream&lt;br&gt;GoToProfair&lt;br&gt;Hiatus (MSAccess)&lt;br&gt;IIS&lt;br&gt;Ingeniux&lt;br&gt;ISE - Scheduler&lt;br&gt;JMP&lt;br&gt;macOS&lt;br&gt;Maxient&lt;br&gt;Mediacom&lt;br&gt;Moodle&lt;br&gt;MP2&lt;br&gt;MS-Access&lt;br&gt;MSDS&lt;br&gt;Netreg&lt;br&gt;Noel Levitz&lt;br&gt;Office&lt;br&gt;OMC&lt;br&gt;Other&lt;br&gt;Palantir&lt;br&gt;PaperCut&lt;br&gt;Performance Appraisal&lt;br&gt;ProWatch&lt;br&gt;Reporting Services&lt;br&gt;Ruffalo Cody&lt;br&gt;Samanage&lt;br&gt;SAS&lt;br&gt;Simple Campus&lt;br&gt;Slate&lt;br&gt;SPSS&lt;br&gt;SSRPM&lt;br&gt;Starfish&lt;br&gt;Symantec&lt;br&gt;TimeClock Plus&lt;br&gt;Titanium Scheduling&lt;br&gt;Vectorworks&lt;br&gt;Veeam&lt;br&gt;VLC&lt;br&gt;VMware&lt;br&gt;Wealth Engine&lt;br&gt;WebAdvisor&lt;br&gt;Website&lt;br&gt;Wimprism&lt;br&gt;Windows 7/10&lt;br&gt;Winsdows SUS Server&lt;br&gt;Windows Server&lt;br&gt;Windstream&lt;br&gt;WordPress&lt;br&gt;eScrip-Safe&lt;br&gt;Lynda/LinkedIn Learning&lt;br&gt;FortisBlue&lt;br&gt;ArcGIS&lt;br&gt;Faronics Insight&lt;br&gt;Faronics DeepFreeze&lt;br&gt;Synergy</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>true</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>83450972</id>
+        <custom_field_id>96890</custom_field_id>
+        <name>Customer Priority</name>
+        <value>-1</value>
+        <options>NONE - No set timeframe (i.e. proposal)&lt;br&gt;LOW - Completion longer than a week&lt;br&gt;MED - Standard times apply&lt;br&gt;HIGH - Within next 24 hours&lt;br&gt;CRITICAL - Please call IT Helpdesk</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>83450973</id>
+        <custom_field_id>18547</custom_field_id>
+        <name>Phone number</name>
+        <value></value>
+        <options></options>
+        <type>1</type>
+        <type_name>Text</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>83450974</id>
+        <custom_field_id>98681</custom_field_id>
+        <name>Error message</name>
+        <value></value>
+        <options></options>
+        <type>1</type>
+        <type_name>Text</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>83450975</id>
+        <custom_field_id>18358</custom_field_id>
+        <name>Building</name>
+        <value>-1</value>
+        <options>No Building&lt;br&gt;Abbey House&lt;br&gt;Abbey Studio&lt;br&gt;Andeberg House&lt;br&gt;Anderson &amp; Bartholomew Houses&lt;br&gt;Andreen&lt;br&gt;Ansvar House&lt;br&gt;Arbaugh &amp; Naeseth Townhouses&lt;br&gt;Art Studios&lt;br&gt;Art-Pottery&lt;br&gt;Asgard House&lt;br&gt;Austin House&lt;br&gt;Black Culture House&lt;br&gt;Baldur House&lt;br&gt;Baseball Stadium&lt;br&gt;Bellman House&lt;br&gt;Bergendoff&lt;br&gt;Bergman House&lt;br&gt;Bostad House&lt;br&gt;Branting House&lt;br&gt;Bremer House A/B&lt;br&gt;Brew by the Slough&lt;br&gt;Brunner Theatre Center @ College Center&lt;br&gt;Brodahl&lt;br&gt;Carlsson Hall&lt;br&gt;Carriage House&lt;br&gt;Carver PE Center&lt;br&gt;Casa Latina&lt;br&gt;Celsius House&lt;br&gt;Centennial Hall&lt;br&gt;College Center&lt;br&gt;Delling House&lt;br&gt;Denkmann&lt;br&gt;Erfara House&lt;br&gt;Erickson Residence Center&lt;br&gt;Esbjorn House&lt;br&gt;Evald Hall&lt;br&gt;Flats&lt;br&gt;Forseti House&lt;br&gt;Founders Hall&lt;br&gt;Freya House&lt;br&gt;Gavle in Gerber Center&lt;br&gt;Gerber Center&lt;br&gt;Gustav House&lt;br&gt;Hansen House&lt;br&gt;Hanson Science Building&lt;br&gt;Hedin House&lt;br&gt;Heimdall House&lt;br&gt;House On The Hill&lt;br&gt;Idun House&lt;br&gt;Jansson House&lt;br&gt;JD Planetarium&lt;br&gt;Karsten House&lt;br&gt;Ken Anderson Center&lt;br&gt;Larsson House&lt;br&gt;Levander House&lt;br&gt;Lindgren House A/B&lt;br&gt;Local Culture House One&lt;br&gt;Lundholm House&lt;br&gt;Luther House&lt;br&gt;Martinson House A/B&lt;br&gt;Milles House&lt;br&gt;Moberg House&lt;br&gt;Music&lt;br&gt;Music Annex&lt;br&gt;Nobel House&lt;br&gt;Oden House&lt;br&gt;Old Main&lt;br&gt;Olin Center&lt;br&gt;Ostara House&lt;br&gt;Pagoda House&lt;br&gt;Parkander Residence Centers&lt;br&gt;Pepsico&lt;br&gt;Pool&lt;br&gt;President's House&lt;br&gt;Quad Outdoors&lt;br&gt;Roslin House&lt;br&gt;Ryden House&lt;br&gt;Sanning House&lt;br&gt;Seminary Hall&lt;br&gt;Sif House&lt;br&gt;Skadi House&lt;br&gt;Sorensen&lt;br&gt;Swanson Commons&lt;br&gt;Swendenborg House&lt;br&gt;Swenson Geosciences&lt;br&gt;Thor House&lt;br&gt;Ticket Office&lt;br&gt;Tredway Library&lt;br&gt;Tyr House&lt;br&gt;Vidar House&lt;br&gt;Viking House&lt;br&gt;Wallenberg Hall&lt;br&gt;Westerlin Residence Center&lt;br&gt;Wicksell House&lt;br&gt;Wilson Center&lt;br&gt;WVIK&lt;br&gt;Zander House&lt;br&gt;Zorn&lt;br&gt;Chicago Office&lt;br&gt;Tredway House</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>83450976</id>
+        <custom_field_id>20407</custom_field_id>
+        <name>Room</name>
+        <value></value>
+        <options></options>
+        <type>1</type>
+        <type_name>Text</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+    </custom_fields_values>
+    <comments/>
+    <attachments/>
+    <statistics>
+      <statistic>
+        <statistic_type>State Changed</statistic_type>
+        <time>00:01</time>
+        <time_elapsed>00:01</time_elapsed>
+        <business_time_elapsed>00:01</business_time_elapsed>
+        <value>2019-03-18 17:40:39 UTC</value>
+      </statistic>
+      <statistic>
+        <statistic_type>Incident Reassigned</statistic_type>
+        <time nil="true"/>
+        <time_elapsed nil="true"/>
+        <business_time_elapsed nil="true"/>
+        <value>1</value>
+      </statistic>
+    </statistics>
+    <tags>
+      <tag>
+        <id>685881</id>
+        <name>Sorensen 163</name>
+        <taggings_count>353</taggings_count>
+      </tag>
+      <tag>
+        <id>73885</id>
+        <name>ITS</name>
+        <taggings_count>10322</taggings_count>
+      </tag>
+    </tags>
+    <incidents/>
+    <changes/>
+    <solutions/>
+    <associated_sla_names/>
+    <is_customer_satisfied nil="true"/>
+    <customer_satisfaction_response nil="true"/>
+    <total_time_spent>0</total_time_spent>
+    <resolution nil="true"/>
+    <resolution_type nil="true"/>
+    <tasks/>
+    <time_tracks/>
+    <assets/>
+    <mobiles/>
+    <other_assets/>
+    <configuration_items/>
+    <purchase_orders/>
+    <request_variables/>
+  </incident>
+</incidents>

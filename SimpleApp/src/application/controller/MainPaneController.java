@@ -32,6 +32,8 @@ public class MainPaneController {
 	@FXML
 	private ComboBox<String> subcatChoiceBox;
 	@FXML
+	private ChoiceBox<String> priorityChoiceBox;
+	@FXML
 	private TextField incidentNameField;
 	@FXML
 	private TextField descField;
@@ -68,6 +70,9 @@ public class MainPaneController {
 		// setup state
 		setupStatesChoiceBox();
 		
+		// setup priority
+		setupPriorityChoiceBox();
+		
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
 
@@ -93,8 +98,14 @@ public class MainPaneController {
 			submitBtn.setText("Loading...");
 			submitBtn.setDisable(true);
 			new Thread(() -> {
-				newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
-						catChoiceBox.getValue(), subcatChoiceBox.getValue(), descField.getText());
+				try {
+				SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
+						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
+						subcatChoiceBox.getValue(), descField.getText(), statesChoiceBox.getValue());
+				} catch (IOException e) {
+					showAlert("Error", e.getMessage(), AlertType.ERROR);
+					e.printStackTrace();
+				}
 			}).start();
 			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 			clearInputFields();
@@ -128,25 +139,6 @@ public class MainPaneController {
 				}
 			}
 		}
-	}
-
-	private void newIncidentWithTimeTrack(String userToken, String incidentName, String category, String subcategory, String description) {
-		try {
-			SamanageRequests.newIncident(userToken, incidentName, category, subcategory, description);
-		} catch (IOException e) {
-			showAlert("Error", e.getMessage(), AlertType.ERROR);
-			e.printStackTrace();
-		}
-		String incidentID = SamanageRequests.getID(userToken);
-		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
-		for (User user : trackedUsers) {
-			SamanageRequests.addTimeTrack(userToken, incidentID, user.getComment(), user.getID(), user.getTime());
-		}
-		SamanageRequests.updateState(userToken, incidentID, statesChoiceBox.getValue());
-
-		// clear the UI
-		AppSession.getSession().clearTrackedUsers();
-
 	}
 
 	private void showAlert(String title, String message, AlertType alertType) {
@@ -184,6 +176,11 @@ public class MainPaneController {
 	private void setupStatesChoiceBox() {
 		statesChoiceBox.getItems().addAll(AppSession.getSession().getStates());
 		statesChoiceBox.getSelectionModel().select(0);
+	}
+
+	private void setupPriorityChoiceBox() {
+		priorityChoiceBox.getItems().addAll(AppSession.getSession().getPriorities());
+		priorityChoiceBox.getSelectionModel().select(2);
 	}
 
 	private void setupCatChoiceBox() {

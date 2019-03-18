@@ -15,5 +15,12 @@
     "Resolved",
     "In Progress",
     "Closed"
+  ],
+  "priorities": [
+    "None",
+    "Low",
+    "Medium",
+    "High",
+    "Critical"
   ]
 }
