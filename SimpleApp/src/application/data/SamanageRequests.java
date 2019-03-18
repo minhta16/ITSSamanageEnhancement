@@ -267,8 +267,9 @@ public class SamanageRequests {
 			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
 			conn.setRequestProperty("Content-Type", "text/xml");
 
-			String data = "<time_track>" + "<name>" + trackCmt + "</name>" + "<creator_id>" + creatorID
-					+ "</creator_id>" + "<minutes_parsed>" + time + "</minutes_parsed>" + "</time_track>";
+			String data = "<time_track>" + "<name>" + trackCmt + "</name>";
+			data += "<creator_id>" + creatorID + "</creator_id>";
+			data += "<minutes_parsed>" + time + "</minutes_parsed>" + "</time_track>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
 			out.close();

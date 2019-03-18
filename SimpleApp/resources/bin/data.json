@@ -1,5 +1,5 @@
 {
-  "DATA_LOCATION": "resources/data.json",
+  "DATA_LOCATION": "./resources/bin/data.json",
   "userToken": "TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ\u003d\u003d:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg",
   "savedEmails": [
     "minhta16@augustana.edu",
@@ -12,8 +12,15 @@
   "states": [
     "New",
     "Assigned",
-    "Resolved",
+    "Awaiting Input",
+    "On Hold",
+    "Critical",
+    "On Order",
+    "Scheduled",
+    "New - User High Priority",
     "In Progress",
+    "Modifying Work Order",
+    "Resolved",
     "Closed"
   ],
   "priorities": [

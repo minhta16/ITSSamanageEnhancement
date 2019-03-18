@@ -12,7 +12,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.stream.JsonReader;
 
 public class AppSession {
-	private final String DATA_LOCATION = "./resources/data.json";
+	private final String DATA_LOCATION = "./resources/bin/data.json";
 	private static AppSession session = new AppSession();
 	
 	private String userToken;

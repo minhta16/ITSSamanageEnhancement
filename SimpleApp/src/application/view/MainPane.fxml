@@ -60,10 +60,10 @@
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="247.20003662109377" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="110.4000015258789" minHeight="10.0" prefHeight="38.40001983642579" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="132.79997406005862" minHeight="0.0" prefHeight="37.999993896484376" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="128.39999542236328" minHeight="10.0" prefHeight="35.600006103515625" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="144.20001220703125" minHeight="0.0" prefHeight="41.60001220703124" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="110.4000015258789" minHeight="10.0" prefHeight="40.2" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="132.79997406005862" minHeight="0.0" prefHeight="41.80001831054687" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="128.39999542236328" minHeight="10.0" prefHeight="38.79999999999998" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="144.20001220703125" minHeight="0.0" prefHeight="68.4" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="167.79999389648435" minHeight="6.399993896484375" prefHeight="41.59998779296873" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
@@ -101,8 +101,8 @@
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints maxHeight="422.4000244140625" minHeight="10.0" prefHeight="104.79999237060547" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="376.7999694824219" minHeight="0.0" prefHeight="266.4000305175781" />
+                              <RowConstraints maxHeight="422.4000244140625" minHeight="10.0" prefHeight="99.79999237060548" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="376.7999694824219" minHeight="0.0" prefHeight="75.00000762939453" />
                               <RowConstraints maxHeight="308.79999389648435" minHeight="6.399999999999977" prefHeight="88.79996948242189" />
                            </rowConstraints>
                            <children>
