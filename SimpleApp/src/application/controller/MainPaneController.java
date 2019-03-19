@@ -169,7 +169,7 @@ public class MainPaneController {
 	
 	@FXML
 	private void handleDatePicker() {
-		System.err.println(datePicker);
+		datePicker.setValue(LocalDate.now());
 		datePicker.setConverter(new StringConverter<LocalDate>() {
 			@Override
 			public String toString(LocalDate t) {
