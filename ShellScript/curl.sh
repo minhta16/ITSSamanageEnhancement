@@ -8,22 +8,22 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 # curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET https://api.samanage.com/categories.xml -o categories.xml
 
 # Get users ---------------------------------------------------
-# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET https://api.samanage.com/users.xml?per_page=1 -o user.xml
+curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET "https://api.samanage.com/users.xml?department=39102" -o ITSpeople.xml
 
 # New incident ------------------------------------------------
-curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
-<incident>
- <name>Test</name>
- <priority>Medium</priority>
- <requester><email>MINHTA16@augustana.edu</email></requester>
-  <category><name>Meetings  (ITS use only)</name></category>
-  <subcategory>
-       <name>Training/Workshops</name>
-  </subcategory>
- <description>Test curl-ing new incidents</description>
- <due_at>Mar 20, 2019</due_at>
-</incident>
-' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
+# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
+# <incident>
+#  <name>Test</name>
+#  <priority>Medium</priority>
+#  <requester><email>MINHTA16@augustana.edu</email></requester>
+#   <category><name>Meetings  (ITS use only)</name></category>
+#   <subcategory>
+#        <name>Training/Workshops</name>
+#   </subcategory>
+#  <description>Test curl-ing new incidents</description>
+#  <due_at>Mar 20, 2019</due_at>
+# </incident>
+# ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
 
 # New time track -----------------------------------------------
 ID=36010690
