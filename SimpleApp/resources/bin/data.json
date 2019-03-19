@@ -23,6 +23,108 @@
     "Resolved",
     "Closed"
   ],
+  "categories": {
+    "Account Management": [
+      "Account Maintenance",
+      "Account suspension",
+      "Exiting Employee",
+      "New Employee",
+      "Security/Permissions/Passwords"
+    ],
+    "Campus Services": [
+      "Audio/Video Conversion",
+      "Equipment Loan ",
+      "Meeting/Event Support",
+      "Purchase Request",
+      "User Training"
+    ],
+    "Contract Management": [
+      "Consulting and Contracting Services",
+      "Entertainment/Guest speakers",
+      "Financial Services",
+      "Goods and Supplies",
+      "Technology Services",
+      "Travel and Transportation",
+      "Utilities"
+    ],
+    "Hardware": [
+      "Computer Lab/Classroom",
+      "Desktop Computer",
+      "Instructor Console",
+      "Keyboard/Mouse/Cable/Accessory",
+      "Laptop/Tablet Computer",
+      "Monitor/TV",
+      "MultiMedia (Sound/Projector)",
+      "Personal Device",
+      "Printer",
+      "Relocate/Disposal",
+      "Vendor Product Support"
+    ],
+    "Meetings  (ITS use only)": [
+      "Campus Event",
+      "Conference",
+      "Planning/Consulting/Brainstorming",
+      "Status/Update",
+      "Training/Workshops",
+      "Vendor",
+      "Z - Department",
+      "Z - ITS Group",
+      "Z - Project"
+    ],
+    "Network": [
+      "Broadband/Internet",
+      "Cable TV",
+      "Data Management",
+      "Server",
+      "TLA Services",
+      "Vendor Product Support",
+      "Wired Connection",
+      "Wireless Connection"
+    ],
+    "Outages (ITS use only)": [
+      "Planned",
+      "Unplanned"
+    ],
+    "Phone": [
+      "Faulty Equipment",
+      "Moves/Adds/Changes",
+      "Security/Safety Alarms",
+      "Switch maintenance",
+      "Vendor Product Support",
+      "Voicemail"
+    ],
+    "Project": [
+      "Calendar Transition",
+      "Colleague Server Migration",
+      "Electronic Gift Receipts",
+      "Managed Print RFP Process",
+      "Material Safety Data Sheets",
+      "Moodle Upgrade",
+      "PCard Review process",
+      "Performance Engagement",
+      "Pre-Registration",
+      "Risk Assessment",
+      "Wage Grade Implementation ",
+      "Website Hosting RFP",
+      "Windows 10 Migration",
+      "Wireless expansion",
+      "Work Order Processing"
+    ],
+    "Risks (ITS use only)": [],
+    "Software": [
+      "Data Reports",
+      "Data Transfer",
+      "Error/Bug",
+      "ITS Website Updates (ITS use only)",
+      "License",
+      "Maintenance",
+      "New Installation",
+      "User Process",
+      "Vendor Product Support",
+      "Version Update",
+      "Z - Report - New"
+    ]
+  },
   "priorities": [
     "None",
     "Low",

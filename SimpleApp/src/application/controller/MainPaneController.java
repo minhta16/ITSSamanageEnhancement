@@ -1,7 +1,12 @@
 package application.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.JsonIOException;
 
@@ -17,11 +22,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 public class MainPaneController {
 
@@ -33,6 +40,11 @@ public class MainPaneController {
 	private ComboBox<String> subcatChoiceBox;
 	@FXML
 	private ChoiceBox<String> priorityChoiceBox;
+	@FXML
+	private ChoiceBox<String> assigneeChoiceBox;
+	@FXML
+	private DatePicker datePicker;
+	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 	@FXML
 	private TextField incidentNameField;
 	@FXML
@@ -53,6 +65,13 @@ public class MainPaneController {
 
 	@FXML
 	private TextArea userTokenField;
+	
+	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
+		put(1,"Jan"); put(2,"Feb"); put(3,"March"); put(4,"Apr"); put(5,"May"); put(6,"June"); 
+		put(7,"July"); put(8,"Aug"); put(9,"Sept"); put(10,"Oct"); put(11,"Nov"); put(12, "Dec");
+		}};
+		
+	private String date;
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
 
@@ -72,6 +91,10 @@ public class MainPaneController {
 		
 		// setup priority
 		setupPriorityChoiceBox();
+		
+		// setup date picker
+		handleDatePicker();
+		System.out.println();
 		
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
@@ -94,6 +117,8 @@ public class MainPaneController {
 			showAlert("Error", "Please select a category", AlertType.WARNING);
 		} else if (!subcatChoiceBox.isDisable() && subcatChoiceBox.getValue() == null) {
 			showAlert("Error", "Please select a subcategory", AlertType.WARNING);
+		} else if (date == null) {
+			showAlert("Error", "Please choose a due date", AlertType.WARNING);
 		} else {
 			submitBtn.setText("Loading...");
 			submitBtn.setDisable(true);
@@ -101,7 +126,7 @@ public class MainPaneController {
 				try {
 				SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
-						subcatChoiceBox.getValue(), descField.getText(), statesChoiceBox.getValue());
+						subcatChoiceBox.getValue(), descField.getText(), statesChoiceBox.getValue(), convertDate(date));
 				} catch (IOException e) {
 					showAlert("Error", e.getMessage(), AlertType.ERROR);
 					e.printStackTrace();
@@ -139,6 +164,33 @@ public class MainPaneController {
 				}
 			}
 		}
+	}
+	
+	@FXML
+	private void handleDatePicker() {
+		datePicker.setConverter(new StringConverter<LocalDate>() {
+			@Override
+			public String toString(LocalDate t) {
+				if (t != null) {
+					return formatter.format(t);
+				}
+				return null;
+			}
+
+			@Override
+			public LocalDate fromString(String string) {
+				if (string != null && !string.trim().isEmpty()) {
+					return LocalDate.parse(string, formatter);
+				}
+				return null;
+			}
+		});
+		datePicker.setOnAction(event -> {
+			date = new String();
+		    LocalDate d = datePicker.getValue();
+		    date = formatter.format(d); 	
+		  //  System.err.println("Selected date: " + date);
+		});
 	}
 
 	private void showAlert(String title, String message, AlertType alertType) {
@@ -222,5 +274,16 @@ public class MainPaneController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private String convertDate(String old) {
+		String s = new String();
+		String[] subStrings = old.split("/");
+		String month = calendar.get(subStrings[0]);
+		s += month + " ";
+		s += subStrings[1] + ", ";
+		s += subStrings[2];
+		
+		return s;
 	}
 }

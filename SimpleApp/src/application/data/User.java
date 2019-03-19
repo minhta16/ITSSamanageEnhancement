@@ -7,7 +7,7 @@ public class User {
 	private String email;
 	private int time;
 	private String comment;
-	private Button removeBtn;
+	private Button removeBtn; //?
 
 
 	private String ID;
