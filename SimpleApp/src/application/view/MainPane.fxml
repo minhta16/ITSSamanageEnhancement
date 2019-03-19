@@ -117,7 +117,7 @@
                               <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
                                     <Label text="\@" />
-                                    <TextField />
+                                    <TextField fx:id="domainField" />
                                  </children>
                               </FlowPane>
                            </children>
