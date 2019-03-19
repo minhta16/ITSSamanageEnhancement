@@ -94,7 +94,6 @@ public class MainPaneController {
 		
 		// setup date picker
 		handleDatePicker();
-		System.out.println();
 		
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
