@@ -2,9 +2,7 @@ package application.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +55,9 @@ public class MainPaneController {
 	private TextField userInputField;
 	private SuggestionProvider<String> provider;
 	@FXML
+	private TextField assigneeField;
+	private SuggestionProvider<String> assigneeProvider;
+	@FXML
 	private Button submitBtn;
 	@FXML
 	private Button addEmailBtn;
@@ -66,12 +67,12 @@ public class MainPaneController {
 	@FXML
 	private TextArea userTokenField;
 	
+	@SuppressWarnings("serial")
 	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
 		put(1,"Jan"); put(2,"Feb"); put(3,"Mar"); put(4,"Apr"); put(5,"May"); put(6,"June"); 
 		put(7,"July"); put(8,"Aug"); put(9,"Sept"); put(10,"Oct"); put(11,"Nov"); put(12, "Dec");
 		}};
 		
-	private String date;
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
 
@@ -93,7 +94,7 @@ public class MainPaneController {
 		setupPriorityChoiceBox();
 		
 		// setup date picker
-		handleDatePicker();
+		initializeDatePicker();
 		
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
@@ -116,16 +117,20 @@ public class MainPaneController {
 			showAlert("Error", "Please select a category", AlertType.WARNING);
 		} else if (!subcatChoiceBox.isDisable() && subcatChoiceBox.getValue() == null) {
 			showAlert("Error", "Please select a subcategory", AlertType.WARNING);
-		} else if (date == null) {
-			showAlert("Error", "Please choose a due date", AlertType.WARNING);
+//		} else if (datePicker.getValue() == null) {
+//			showAlert("Error", "Please choose a due date", AlertType.WARNING);
+		} else if (SamanageRequests.getUserByEmail(AppSession.getSession().getUserToken(), assigneeField.getText()) == null) {
+			showAlert("Error", "Cannot find any assignee with that email. Try again", AlertType.ERROR);
 		} else {
 			submitBtn.setText("Loading...");
 			submitBtn.setDisable(true);
 			new Thread(() -> {
 				try {
-				SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
+					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
-						subcatChoiceBox.getValue(), descField.getText(), convertDate(date), statesChoiceBox.getValue());
+						subcatChoiceBox.getValue(), descField.getText(),
+						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
+						toCorrectDomain(assigneeField.getText()));
 				
 				} catch (IOException e) {
 					showAlert("Error", e.getMessage(), AlertType.ERROR);
@@ -152,7 +157,7 @@ public class MainPaneController {
 				showAlert("Error", "User Token missing", AlertType.ERROR);
 			} else {
 				User user;
-				user = SamanageRequests.getUserByEmail(userTokenField.getText(), userInputField.getText());
+				user = SamanageRequests.getUserByEmail(userTokenField.getText(), toCorrectDomain(userInputField.getText()));
 				if (user == null) {
 					showAlert("Error", "Cannot find any users with that email. Try again", AlertType.ERROR);
 				} else {
@@ -166,8 +171,7 @@ public class MainPaneController {
 		}
 	}
 	
-	@FXML
-	private void handleDatePicker() {
+	private void initializeDatePicker() {
 		datePicker.setValue(LocalDate.now());
 		datePicker.setConverter(new StringConverter<LocalDate>() {
 			@Override
@@ -185,12 +189,6 @@ public class MainPaneController {
 				}
 				return null;
 			}
-		});
-		datePicker.setOnAction(event -> {
-			date = new String();
-		    LocalDate d = datePicker.getValue();
-		    date = formatter.format(d); 	
-		  //  System.err.println("Selected date: " + date);
 		});
 	}
 
@@ -214,16 +212,19 @@ public class MainPaneController {
 		try {
 			AppSession.getSession().addTrackedUser(user);
 		} catch (JsonIOException | IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		provider.clearSuggestions();
 		provider.addPossibleSuggestions(AppSession.getSession().getSavedEmails());
+		assigneeProvider.clearSuggestions();
+		assigneeProvider.addPossibleSuggestions(AppSession.getSession().getSavedEmails());
 	}
 
 	private void setupEmailAutoComplete() {
 		provider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		new AutoCompletionTextFieldBinding<>(userInputField, provider);
+		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
+		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
 	}
 
 	private void setupStatesChoiceBox() {
@@ -272,19 +273,20 @@ public class MainPaneController {
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	private String convertDate(String old) {
-		String s = new String();
-		String[] subStrings = old.split("/");
-		String month = calendar.get(Integer.parseInt(subStrings[0]));
-		s += month + " ";
-		s += subStrings[1] + ", ";
-		s += subStrings[2];
-		
-		return s;
+	private String convertDate(LocalDate date) {
+		return calendar.get(date.getMonthValue()) + date.getDayOfMonth() + ", " + date.getYear();
+	}
+	
+	private String toCorrectDomain(String email) {
+		if (!email.contains("@")) {
+			return email + "@" + AppSession.getSession().getDefaultDomain();
+		}
+		else {
+			return email;
+		}
 	}
 }

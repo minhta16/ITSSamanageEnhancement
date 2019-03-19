@@ -24,8 +24,8 @@ import org.xml.sax.InputSource;
 public class SamanageRequests {
 
 	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority,
-			String category, String subcategory, String description, String dueDate, String state) throws IOException {
-		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate);
+			String category, String subcategory, String description, String dueDate, String state, String assignee) throws IOException {
+		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate, assignee);
 		String incidentID = SamanageRequests.getID(userToken);
 		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
 		for (User user : trackedUsers) {
@@ -38,7 +38,7 @@ public class SamanageRequests {
 	}
 	
 	public static void newIncident(String userToken, String incidentName, String priority, String category, String subcategory,
-			String description, String dueDate) throws IOException {
+			String description, String dueDate, String assignee) throws IOException {
 		String url = "https://api.samanage.com/incidents.xml";
 
 		URL obj = new URL(url);
@@ -76,7 +76,7 @@ public class SamanageRequests {
 		}
 		data += " <description>" + description + "</description>";
 		data += " <due_at>" + dueDate + "</due_at>";
-		data += " <assignee><email>MINHTA16@augustana.edu</email></assignee>" + "</incident>";
+		data += " <assignee><email>" + assignee + "</assignee>" + "</incident>";
 		
 		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 		out.write(data);

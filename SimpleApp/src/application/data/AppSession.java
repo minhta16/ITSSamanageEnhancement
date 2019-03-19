@@ -16,6 +16,7 @@ public class AppSession {
 	private static AppSession session = new AppSession();
 	
 	private String userToken;
+	private String defaultDomain;
 	private transient ArrayList<User> trackedUsers;
 	private ArrayList<String> savedEmails;
 	private ArrayList<String> states;
@@ -24,6 +25,7 @@ public class AppSession {
 	
 	private AppSession() {
 		userToken = "";
+		defaultDomain = "";
 		trackedUsers = new ArrayList<User>();
 		savedEmails = new ArrayList<String>();
 		states = new ArrayList<String>();
@@ -32,6 +34,7 @@ public class AppSession {
 	}
 	private AppSession(String userToken) {
 		this.userToken = userToken;
+		defaultDomain = "";
 		trackedUsers = new ArrayList<User>();
 		savedEmails = new ArrayList<String>();
 		states = new ArrayList<String>();
@@ -100,8 +103,15 @@ public class AppSession {
 		this.userToken = userToken;
 	}
 	
+	public void setDefaultDomain(String domain) {
+		defaultDomain = domain;
+	}
 	public String getUserToken() {
 		return userToken;
+	}
+	
+	public String getDefaultDomain() {
+		return defaultDomain;
 	}
 	
 	public void clearTrackedUsers() {

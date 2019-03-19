@@ -23,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -46,7 +46,7 @@
       </MenuBar>
    </top>
    <center>
-      <TabPane BorderPane.alignment="CENTER">
+      <TabPane prefHeight="295.0" prefWidth="824.0" BorderPane.alignment="CENTER">
          <tabs>
             <Tab closable="false" text="Main Menu">
                <content>
@@ -55,30 +55,34 @@
                         <GridPane prefHeight="294.0" prefWidth="824.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.20001220703125" minWidth="10.0" prefWidth="120.39998016357421" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="417.60000762939455" minWidth="10.0" prefWidth="200.2" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="86.40003662109376" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="109.59996337890624" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="247.20003662109377" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="417.60000762939455" minWidth="10.0" prefWidth="185.59998779296876" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="54.80003662109374" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="122.99997558593753" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="272.60002441406243" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.6000061035156" minWidth="10.0" prefWidth="57.199951171875" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints maxHeight="110.4000015258789" minHeight="10.0" prefHeight="40.2" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="132.79997406005862" minHeight="0.0" prefHeight="41.80001831054687" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="128.39999542236328" minHeight="10.0" prefHeight="38.79999999999998" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="144.20001220703125" minHeight="0.0" prefHeight="68.4" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="167.79999389648435" minHeight="6.399993896484375" prefHeight="41.59998779296873" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="132.79997406005862" minHeight="0.0" prefHeight="37.800001525878905" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="128.39999542236328" minHeight="10.0" prefHeight="45.79999847412111" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="144.20001220703125" minHeight="0.0" prefHeight="84.19999389648439" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="167.79999389648435" minHeight="6.399993896484375" prefHeight="19.400006103515636" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="167.79999389648435" minHeight="10.0" prefHeight="54.00001220703123" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Label text="State" />
                               <ChoiceBox fx:id="statesChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
-                              <Label text="Incident Name" GridPane.rowIndex="1" />
-                              <TextField fx:id="incidentNameField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label text="Description" GridPane.rowIndex="2" />
-                              <TextField fx:id="descField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="Assignee" GridPane.rowIndex="1" />
+                              <CustomTextField fx:id="assigneeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="Incident Name" GridPane.rowIndex="2" />
+                              <TextField fx:id="incidentNameField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="Description" GridPane.rowIndex="3" />
+                              <TextArea fx:id="descField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3" />
                               <Label text="Category" GridPane.columnIndex="3" />
                               <ComboBox fx:id="catChoiceBox" layoutX="166.0" layoutY="263.0" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" />
                               <Label text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <ComboBox fx:id="subcatChoiceBox" layoutX="166.0" layoutY="263.0" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                              <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="42.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                              <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="42.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5" />
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -97,18 +101,25 @@
                      <center>
                         <GridPane BorderPane.alignment="CENTER">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0000244140625" minWidth="10.0" prefWidth="112.00001831054684" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="498.3999816894531" minWidth="10.0" prefWidth="494.3999816894531" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints maxHeight="422.4000244140625" minHeight="10.0" prefHeight="99.79999237060548" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="376.7999694824219" minHeight="0.0" prefHeight="75.00000762939453" />
-                              <RowConstraints maxHeight="308.79999389648435" minHeight="6.399999999999977" prefHeight="88.79996948242189" />
+                              <RowConstraints maxHeight="376.7999694824219" minHeight="0.0" prefHeight="42.40001220703127" />
+                              <RowConstraints maxHeight="308.79999389648435" minHeight="6.399999999999977" prefHeight="105.59998779296876" />
                            </rowConstraints>
                            <children>
                               <Label text="User Token" />
                               <TextArea fx:id="userTokenField" onKeyTyped="#handleUserTokenFieldChange" prefHeight="112.0" prefWidth="270.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                              <Label text="Default Email domain" GridPane.rowIndex="1" />
+                              <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="\@" />
+                                    <TextField />
+                                 </children>
+                              </FlowPane>
                            </children>
                            <BorderPane.margin>
                               <Insets />
@@ -129,7 +140,7 @@
         <tabs>
             <Tab closable="false" text="Time Track">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox prefHeight="202.0" prefWidth="824.0">
                      <children>
                         <GridPane prefHeight="148.0" prefWidth="803.0">
                            <columnConstraints>
@@ -193,8 +204,6 @@
                            <children>
                               <Label text="Priority" />
                               <ChoiceBox fx:id="priorityChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
-                              <Label text="Assignee" GridPane.rowIndex="1" />
-                              <ChoiceBox fx:id="assigneeChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label text="Due On" GridPane.rowIndex="2" />
                               <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
