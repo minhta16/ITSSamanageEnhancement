@@ -66,6 +66,8 @@ public class MainPaneController {
 
 	@FXML
 	private TextArea userTokenField;
+	@FXML
+	private TextArea domainField;
 	
 	@SuppressWarnings("serial")
 	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
@@ -270,6 +272,15 @@ public class MainPaneController {
 	@FXML
 	private void handleUserTokenFieldChange() {
 		AppSession.getSession().setUserToken(userTokenField.getText());
+		try {
+			AppSession.getSession().saveData();
+		} catch (JsonIOException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	private void handleDefaultDomainChange() {
+		AppSession.getSession().setDefaultDomain(domainField.getText());
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
