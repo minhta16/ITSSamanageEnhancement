@@ -67,7 +67,7 @@ public class MainPaneController {
 	private TextArea userTokenField;
 	
 	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
-		put(1,"Jan"); put(2,"Feb"); put(3,"March"); put(4,"Apr"); put(5,"May"); put(6,"June"); 
+		put(1,"Jan"); put(2,"Feb"); put(3,"Mar"); put(4,"Apr"); put(5,"May"); put(6,"June"); 
 		put(7,"July"); put(8,"Aug"); put(9,"Sept"); put(10,"Oct"); put(11,"Nov"); put(12, "Dec");
 		}};
 		
@@ -126,7 +126,8 @@ public class MainPaneController {
 				try {
 				SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
-						subcatChoiceBox.getValue(), descField.getText(), statesChoiceBox.getValue(), convertDate(date));
+						subcatChoiceBox.getValue(), descField.getText(), convertDate(date), statesChoiceBox.getValue());
+				
 				} catch (IOException e) {
 					showAlert("Error", e.getMessage(), AlertType.ERROR);
 					e.printStackTrace();
@@ -168,6 +169,7 @@ public class MainPaneController {
 	
 	@FXML
 	private void handleDatePicker() {
+		System.err.println(datePicker);
 		datePicker.setConverter(new StringConverter<LocalDate>() {
 			@Override
 			public String toString(LocalDate t) {
@@ -279,7 +281,7 @@ public class MainPaneController {
 	private String convertDate(String old) {
 		String s = new String();
 		String[] subStrings = old.split("/");
-		String month = calendar.get(subStrings[0]);
+		String month = calendar.get(Integer.parseInt(subStrings[0]));
 		s += month + " ";
 		s += subStrings[1] + ", ";
 		s += subStrings[2];

@@ -19,7 +19,7 @@ public class AppSession {
 	private transient ArrayList<User> trackedUsers;
 	private ArrayList<String> savedEmails;
 	private ArrayList<String> states;
-	private TreeMap<String, ArrayList<String>> categories;
+	private transient TreeMap<String, ArrayList<String>> categories;
 	private ArrayList<String> priorities;
 	
 	private AppSession() {

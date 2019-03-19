@@ -70,14 +70,14 @@
                            <children>
                               <Label text="State" />
                               <ChoiceBox fx:id="statesChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
-                              <Label text="Category" GridPane.columnIndex="3" />
-                              <ComboBox fx:id="catChoiceBox" layoutX="166.0" layoutY="263.0" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" />
-                              <Label text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <ComboBox fx:id="subcatChoiceBox" layoutX="166.0" layoutY="263.0" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                               <Label text="Incident Name" GridPane.rowIndex="1" />
                               <TextField fx:id="incidentNameField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label text="Description" GridPane.rowIndex="2" />
                               <TextField fx:id="descField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="Category" GridPane.columnIndex="3" />
+                              <ComboBox fx:id="catChoiceBox" layoutX="166.0" layoutY="263.0" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" />
+                              <Label text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="subcatChoiceBox" layoutX="166.0" layoutY="263.0" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                               <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="42.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3" />
                            </children>
                            <opaqueInsets>
@@ -153,6 +153,7 @@
                               <Label id="timeElapsedField" text="Time Elapsed (in minutes)" GridPane.rowIndex="1" />
                               <TextField fx:id="timeElapsedField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label prefHeight="52.0" prefWidth="162.0" text="Time Track Comment" GridPane.rowIndex="2" />
+                              <TextField fx:id="timeTrackCmtField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="113.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <TableView fx:id="infoTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowSpan="4">
                                 <columns>
                                   <TableColumn prefWidth="110.39996641874313" text="Name" />
@@ -167,7 +168,6 @@
                                     <Button fx:id="addEmailBtn" mnemonicParsing="false" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="74.0" text="Add Track" />
                                  </children>
                               </FlowPane>
-                              <TextField fx:id="timeTrackCmtField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="113.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </children>
