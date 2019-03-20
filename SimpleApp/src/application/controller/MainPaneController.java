@@ -221,14 +221,14 @@ public class MainPaneController {
 		provider.clearSuggestions();
 		provider.addPossibleSuggestions(AppSession.getSession().getSavedEmails());
 		assigneeProvider.clearSuggestions();
-		assigneeProvider.addPossibleSuggestions(AppSession.getSession().getSavedEmails());
+		assigneeProvider.addPossibleSuggestions(AppSession.getSession().getAssigneeEmails());
 	}
 
 	private void setupEmailAutoComplete() {
 		provider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		new AutoCompletionTextFieldBinding<>(userInputField, provider);
 		assigneeField.setText(toCorrectDomain(AppSession.getSession().getDefaultAssignee()));
-		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
+		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
 		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
 	}
 
