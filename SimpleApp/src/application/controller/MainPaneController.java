@@ -181,11 +181,11 @@ public class MainPaneController {
 	private void setupEmailAutoComplete() {
 		provider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		new AutoCompletionTextFieldBinding<>(userInputField, provider);
-		assigneeField.setText(toCorrectDomain(AppSession.getSession().getDefaultAssignee()));
+		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
 		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
-		requesterField.setText(toCorrectDomain(AppSession.getSession().getDefaultRequester()));
-		requesterProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
+		requesterField.setText(AppSession.getSession().getDefaultRequester());
+		requesterProvider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		new AutoCompletionTextFieldBinding<>(requesterField, requesterProvider);
 	}
 	
@@ -195,13 +195,20 @@ public class MainPaneController {
 			showAlert("Error", "Please enter user token (Setting)", AlertType.WARNING);
 		} else if (incidentNameField.getText().equals("")) {
 			showAlert("Error", "Please enter incident name", AlertType.WARNING);
+		} else if (requesterField.getText().trim().equals("")) {
+			showAlert("Error", "Please enter a requester email", AlertType.WARNING);
 		} else if (catChoiceBox.getValue() == null) {
 			showAlert("Error", "Please select a category", AlertType.WARNING);
 		} else if (!subcatChoiceBox.isDisable() && subcatChoiceBox.getValue() == null) {
 			showAlert("Error", "Please select a subcategory", AlertType.WARNING);
+			
 //		} else if (datePicker.getValue() == null) {
 //			showAlert("Error", "Please choose a due date", AlertType.WARNING);
-		} else if (SamanageRequests.getUserByEmail(AppSession.getSession().getUserToken(), assigneeField.getText()) == null) {
+		} else if (assigneeField.getText().trim().equals("")) {
+			showAlert("Error", "Please enter an assignee email", AlertType.WARNING);
+		} else if (SamanageRequests.getUserByEmail(AppSession.getSession().getUserToken(), toCorrectDomain(requesterField.getText())) == null) {
+			showAlert("Error", "Cannot find any requester with that email. Try again", AlertType.ERROR);
+		} else if (SamanageRequests.getUserByEmail(AppSession.getSession().getUserToken(), toCorrectDomain(assigneeField.getText())) == null) {
 			showAlert("Error", "Cannot find any assignee with that email. Try again", AlertType.ERROR);
 		} else {
 			submitBtn.setText("Loading...");
@@ -223,6 +230,7 @@ public class MainPaneController {
 			clearInputFields();
 			submitBtn.setText("Submit");
 			submitBtn.setDisable(false);
+			incidentNameField.requestFocus();
 		}
 	}
 
@@ -312,6 +320,7 @@ public class MainPaneController {
 	@FXML
 	private void handleDefaultRequesterFieldChange() {
 		AppSession.getSession().setDefaultRequester(defaultRequesterField.getText());
+		requesterField.setText(AppSession.getSession().getDefaultRequester());
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
@@ -321,7 +330,8 @@ public class MainPaneController {
 	
 	@FXML
 	private void handleDefaultAssigneeFieldChange() {
-		AppSession.getSession().setDefaultRequester(defaultAssigneeField.getText());
+		AppSession.getSession().setDefaultAssignee(defaultAssigneeField.getText());
+		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {

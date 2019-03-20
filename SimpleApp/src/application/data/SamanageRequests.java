@@ -76,7 +76,7 @@ public class SamanageRequests {
 		}
 		data += " <description>" + description + "</description>";
 		data += " <due_at>" + dueDate + "</due_at>";
-		data += " <assignee><email>" + assignee + "</assignee>" + "</incident>";
+		data += " <assignee><email>" + assignee + "</email></assignee>" + "</incident>";
 		
 		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 		out.write(data);

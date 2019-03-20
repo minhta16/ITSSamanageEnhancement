@@ -137,6 +137,11 @@ public class AppSession {
 	}
 	
 	public String getDefaultAssignee() {
+		if (defaultAssignee.contains("@")) {
+			if (defaultAssignee.split("@")[1].substring(1).equalsIgnoreCase(defaultDomain)) {
+				return defaultAssignee.split("@")[0];
+			}
+		}
 		return defaultAssignee;
 	}
 	
@@ -145,6 +150,11 @@ public class AppSession {
 	}
 	
 	public String getDefaultRequester() {
+		if (defaultRequester.contains("@")) {
+			if (defaultRequester.split("@")[1].substring(1).equalsIgnoreCase(defaultDomain)) {
+				return defaultRequester.split("@")[0];
+			}
+		}
 		return defaultRequester;
 	}
 	
