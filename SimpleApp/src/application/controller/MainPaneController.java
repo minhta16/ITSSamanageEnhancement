@@ -46,7 +46,7 @@ public class MainPaneController {
 	@FXML
 	private TextField incidentNameField;
 	@FXML
-	private TextField descField;
+	private TextArea descField;
 	@FXML
 	private TextField timeTrackCmtField;
 	@FXML
@@ -67,7 +67,7 @@ public class MainPaneController {
 	@FXML
 	private TextArea userTokenField;
 	@FXML
-	private TextArea domainField;
+	private TextField domainField;
 	
 	@SuppressWarnings("serial")
 	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
