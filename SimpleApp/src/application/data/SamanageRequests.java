@@ -24,8 +24,8 @@ import org.xml.sax.InputSource;
 public class SamanageRequests {
 
 	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority,
-			String category, String subcategory, String description, String dueDate, String state, String assignee) throws IOException {
-		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate, assignee);
+			String category, String subcategory, String description, String dueDate, String state, String assignee, String requester) throws IOException {
+		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate, assignee, requester);
 		String incidentID = SamanageRequests.getID(userToken);
 		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
 		for (User user : trackedUsers) {
@@ -38,7 +38,7 @@ public class SamanageRequests {
 	}
 	
 	public static void newIncident(String userToken, String incidentName, String priority, String category, String subcategory,
-			String description, String dueDate, String assignee) throws IOException {
+			String description, String dueDate, String assignee, String requester) throws IOException {
 		String url = "https://api.samanage.com/incidents.xml";
 
 		URL obj = new URL(url);
@@ -69,7 +69,7 @@ public class SamanageRequests {
 		String data = "<incident>";
 		data += " <name>" + incidentName + "</name>";
 		data += " <priority>" + priority + "</priority>";
-		data += " <requester><email>MINHTA16@augustana.edu</email></requester>";
+		data += " <requester><email>" + requester + "</email></requester>";
 		data += " <category><name>" + category + "</name></category>";
 		if (!subcategory.equals("")) {
 			data += " <subcategory>" + "      <name>" + subcategory + "</name>" + " </subcategory>";

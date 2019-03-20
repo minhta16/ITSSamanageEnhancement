@@ -55,6 +55,9 @@ public class MainPaneController {
 	private TextField userInputField;
 	private SuggestionProvider<String> provider;
 	@FXML
+	private TextField requesterField;
+	private SuggestionProvider<String> requesterProvider;
+	@FXML
 	private TextField assigneeField;
 	private SuggestionProvider<String> assigneeProvider;
 	@FXML
@@ -70,6 +73,8 @@ public class MainPaneController {
 	private TextField domainField;
 	@FXML
 	private TextField defaultAssigneeField;
+	@FXML
+	private TextField defaultRequesterField;
 	
 	@SuppressWarnings("serial")
 	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
@@ -86,7 +91,8 @@ public class MainPaneController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		userTokenField.setText(AppSession.getSession().getUserToken());
+		// setup setting page
+		setupSettingTab();
 		
 		// setup category
 		setupCatChoiceBox();
@@ -110,7 +116,79 @@ public class MainPaneController {
 		infoTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("comment"));
 		infoTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
 	}
+	
+	private void setupSettingTab() {
+		userTokenField.setText(AppSession.getSession().getUserToken());
+		domainField.setText(AppSession.getSession().getDefaultDomain());
+		defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
+		defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
+	}
+	
+	private void setupCatChoiceBox() {
+		AppSession.getSession().setCategories(SamanageRequests.getCategories(AppSession.getSession().getUserToken()));
+		catChoiceBox.getSelectionModel().select(0);
+		subcatChoiceBox.getSelectionModel().select(0);
+		subcatChoiceBox.setDisable(true);
+		catChoiceBox.getItems().addAll(AppSession.getSession().getCategories().keySet());
+		catChoiceBox.getSelectionModel().selectedItemProperty()
+	    		.addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+	    			updateSubcatChoiceBox();
+	    		});
+	}
+	
+	private void updateSubcatChoiceBox() {
+		subcatChoiceBox.getItems().clear();
+		
+		if (AppSession.getSession().getCategories().get(catChoiceBox.getValue()).isEmpty()) {
+			subcatChoiceBox.setDisable(true);
+		} else {
+			subcatChoiceBox.setDisable(false);
+			subcatChoiceBox.getItems().addAll(AppSession.getSession().getCategories().get(catChoiceBox.getValue()));
+		}		
+	}
+	
+	private void setupStatesChoiceBox() {
+		statesChoiceBox.getItems().addAll(AppSession.getSession().getStates());
+		statesChoiceBox.getSelectionModel().select(0);
+	}
 
+	private void setupPriorityChoiceBox() {
+		priorityChoiceBox.getItems().addAll(AppSession.getSession().getPriorities());
+		priorityChoiceBox.getSelectionModel().select(2);
+	}
+	
+	private void initializeDatePicker() {
+		datePicker.setValue(LocalDate.now());
+		datePicker.setConverter(new StringConverter<LocalDate>() {
+			@Override
+			public String toString(LocalDate t) {
+				if (t != null) {
+					return formatter.format(t);
+				}
+				return null;
+			}
+
+			@Override
+			public LocalDate fromString(String string) {
+				if (string != null && !string.trim().isEmpty()) {
+					return LocalDate.parse(string, formatter);
+				}
+				return null;
+			}
+		});
+	}
+	
+	private void setupEmailAutoComplete() {
+		provider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
+		new AutoCompletionTextFieldBinding<>(userInputField, provider);
+		assigneeField.setText(toCorrectDomain(AppSession.getSession().getDefaultAssignee()));
+		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
+		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
+		requesterField.setText(toCorrectDomain(AppSession.getSession().getDefaultRequester()));
+		requesterProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
+		new AutoCompletionTextFieldBinding<>(requesterField, requesterProvider);
+	}
+	
 	@FXML
 	private void handleSubmitBtn() {
 		if (userTokenField.getText().trim().equals("")) {
@@ -134,7 +212,7 @@ public class MainPaneController {
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
 						subcatChoiceBox.getValue(), descField.getText(),
 						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
-						toCorrectDomain(assigneeField.getText()));
+						toCorrectDomain(assigneeField.getText()), toCorrectDomain(defaultRequesterField.getText()));
 				
 				} catch (IOException e) {
 					showAlert("Error", e.getMessage(), AlertType.ERROR);
@@ -175,27 +253,7 @@ public class MainPaneController {
 		}
 	}
 	
-	private void initializeDatePicker() {
-		datePicker.setValue(LocalDate.now());
-		datePicker.setConverter(new StringConverter<LocalDate>() {
-			@Override
-			public String toString(LocalDate t) {
-				if (t != null) {
-					return formatter.format(t);
-				}
-				return null;
-			}
-
-			@Override
-			public LocalDate fromString(String string) {
-				if (string != null && !string.trim().isEmpty()) {
-					return LocalDate.parse(string, formatter);
-				}
-				return null;
-			}
-		});
-	}
-
+	
 	private void showAlert(String title, String message, AlertType alertType) {
 		Alert alert = new Alert(alertType);
 		alert.setTitle(title);
@@ -224,47 +282,6 @@ public class MainPaneController {
 		assigneeProvider.addPossibleSuggestions(AppSession.getSession().getAssigneeEmails());
 	}
 
-	private void setupEmailAutoComplete() {
-		provider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
-		new AutoCompletionTextFieldBinding<>(userInputField, provider);
-		assigneeField.setText(toCorrectDomain(AppSession.getSession().getDefaultAssignee()));
-		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
-		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
-	}
-
-	private void setupStatesChoiceBox() {
-		statesChoiceBox.getItems().addAll(AppSession.getSession().getStates());
-		statesChoiceBox.getSelectionModel().select(0);
-	}
-
-	private void setupPriorityChoiceBox() {
-		priorityChoiceBox.getItems().addAll(AppSession.getSession().getPriorities());
-		priorityChoiceBox.getSelectionModel().select(2);
-	}
-
-	private void setupCatChoiceBox() {
-		AppSession.getSession().setCategories(SamanageRequests.getCategories(AppSession.getSession().getUserToken()));
-		catChoiceBox.getSelectionModel().select(0);
-		subcatChoiceBox.getSelectionModel().select(0);
-		subcatChoiceBox.setDisable(true);
-		catChoiceBox.getItems().addAll(AppSession.getSession().getCategories().keySet());
-		catChoiceBox.getSelectionModel().selectedItemProperty()
-	    		.addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-	    			updateSubcatChoiceBox();
-	    		});
-	}
-	
-	private void updateSubcatChoiceBox() {
-		subcatChoiceBox.getItems().clear();
-		
-		if (AppSession.getSession().getCategories().get(catChoiceBox.getValue()).isEmpty()) {
-			subcatChoiceBox.setDisable(true);
-		} else {
-			subcatChoiceBox.setDisable(false);
-			subcatChoiceBox.getItems().addAll(AppSession.getSession().getCategories().get(catChoiceBox.getValue()));
-		}		
-	}
-
 
 	private void clearInputFields() {
 		incidentNameField.clear();
@@ -281,6 +298,37 @@ public class MainPaneController {
 			e.printStackTrace();
 		}
 	}
+
+	@FXML
+	private void handleDefaultDomainFieldChange() {
+		AppSession.getSession().setDefaultDomain(domainField.getText());
+		try {
+			AppSession.getSession().saveData();
+		} catch (JsonIOException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	private void handleDefaultRequesterFieldChange() {
+		AppSession.getSession().setDefaultRequester(defaultRequesterField.getText());
+		try {
+			AppSession.getSession().saveData();
+		} catch (JsonIOException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	private void handleDefaultAssigneeFieldChange() {
+		AppSession.getSession().setDefaultRequester(defaultAssigneeField.getText());
+		try {
+			AppSession.getSession().saveData();
+		} catch (JsonIOException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@FXML
 	private void handleDefaultDomainChange() {
 		AppSession.getSession().setDefaultDomain(domainField.getText());
@@ -296,7 +344,7 @@ public class MainPaneController {
 	}
 	
 	private String toCorrectDomain(String email) {
-		if (!email.contains("@")) {
+		if (!email.contains("@") && !email.trim().equals("")) {
 			return email + "@" + AppSession.getSession().getDefaultDomain();
 		}
 		else {
