@@ -100,34 +100,42 @@ public class MainPaneController {
 		
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
-
+		System.err.println("start load");
 		try {
 			AppSession.getSession().loadData();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.err.println("end load");
 		// setup setting page
 		setupSettingTab();
-		
+
+		System.err.println("setting");
 		// setup category
 		setupCatChoiceBox();
-		
+
+		System.err.println("cat");
 		// setup state
 		setupStatesChoiceBox();
-		
+
+		System.err.println("state");
 		// setup priority
 		setupPriorityChoiceBox();
-		
+
+		System.err.println("prio");
 		// setup date picker
 		initializeDatePicker();
-		
+
+		System.err.println("date");
 		// setup dept and site
 		setupDeptAndSiteChoiceBox();
-		
+
+		System.err.println("dept");
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
-		
+
+		System.err.println("autocomplete");
 		isUpToDate = AppSession.getSession().isUpToDate();
 
 		// setup infoTable
