@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.controlsfx.control.textfield.TextFields;
 
@@ -25,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -48,9 +50,9 @@ public class MainPaneController {
 	@FXML
 	private ChoiceBox<String> assigneeChoiceBox;
 	@FXML
-	private ComboBox<String> deptChoiceBox;
+	private ComboBox<String> deptComboBox;
 	@FXML
-	private ComboBox<String> siteChoiceBox;
+	private ComboBox<String> siteComboBox;
 	@FXML
 	private DatePicker datePicker;
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
@@ -64,10 +66,9 @@ public class MainPaneController {
 	private TextField timeElapsedField;
 	@FXML
 	private TextField userInputField;
-	private SuggestionProvider<String> provider;
+	private SuggestionProvider<String> savedEmailprovider;
 	@FXML
 	private TextField requesterField;
-	private SuggestionProvider<String> requesterProvider;
 	@FXML
 	private TextField assigneeField;
 	private SuggestionProvider<String> assigneeProvider;
@@ -148,6 +149,9 @@ public class MainPaneController {
 		domainField.setText(AppSession.getSession().getDefaultDomain());
 		defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
+		
+		new AutoCompletionTextFieldBinding<>(defaultAssigneeField, savedEmailprovider);
+		new AutoCompletionTextFieldBinding<>(defaultRequesterField, savedEmailprovider);
 	}
 	
 	private void setupCatChoiceBox() {
@@ -205,26 +209,31 @@ public class MainPaneController {
 	}
 	
 	private void setupDeptAndSiteChoiceBox() {
-		deptChoiceBox.getItems().addAll(AppSession.getSession().getDepartments());
-		deptChoiceBox.getSelectionModel().select(AppSession.getSession()
-				.getDepartments().indexOf(AppSession.getSession().getRequesterInfo().getDept()));
-		TextFields.bindAutoCompletion(deptChoiceBox.getEditor(), deptChoiceBox.getItems());
+		deptComboBox.getItems().addAll(AppSession.getSession().getDepartments());
+		TextFields.bindAutoCompletion(deptComboBox.getEditor(), deptComboBox.getItems());
 		
-		siteChoiceBox.getItems().addAll(AppSession.getSession().getSites());
-		siteChoiceBox.getSelectionModel().select(AppSession.getSession()
+		siteComboBox.getItems().addAll(AppSession.getSession().getSites());
+		TextFields.bindAutoCompletion(siteComboBox.getEditor(), siteComboBox.getItems());
+		
+		updateDefaultDeptSite();
+	}
+	
+	private void updateDefaultDeptSite() {
+
+		deptComboBox.getSelectionModel().select(AppSession.getSession()
+				.getDepartments().indexOf(AppSession.getSession().getRequesterInfo().getDept()));
+		siteComboBox.getSelectionModel().select(AppSession.getSession()
 				.getSites().indexOf(AppSession.getSession().getRequesterInfo().getSite()));
-		TextFields.bindAutoCompletion(siteChoiceBox.getEditor(), siteChoiceBox.getItems());
 	}
 	
 	private void setupEmailAutoComplete() {
-		provider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
-		new AutoCompletionTextFieldBinding<>(userInputField, provider);
+		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
+		new AutoCompletionTextFieldBinding<>(userInputField, savedEmailprovider);
 		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
 		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
-		requesterProvider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
-		new AutoCompletionTextFieldBinding<>(requesterField, requesterProvider);
+		new AutoCompletionTextFieldBinding<>(requesterField, savedEmailprovider);
 	}
 	
 	@FXML
@@ -244,9 +253,9 @@ public class MainPaneController {
 //			showAlert("Error", "Please choose a due date", AlertType.WARNING);
 		} else if (assigneeField.getText().trim().equals("")) {
 			showAlert("Error", "Please enter an assignee email", AlertType.WARNING);
-		} else if (SamanageRequests.getUserByEmail(AppSession.getSession().getUserToken(), toCorrectDomain(requesterField.getText())) == null) {
+		} else if (!AppSession.getSession().getSavedEmails().contains(toCorrectDomain(requesterField.getText()))) {
 			showAlert("Error", "Cannot find any requester with that email. Try again", AlertType.ERROR);
-		} else if (SamanageRequests.getUserByEmail(AppSession.getSession().getUserToken(), toCorrectDomain(assigneeField.getText())) == null) {
+		} else if (!AppSession.getSession().getSavedEmails().contains(toCorrectDomain(assigneeField.getText()))) {
 			showAlert("Error", "Cannot find any assignee with that email. Try again", AlertType.ERROR);
 		} else {
 			submitBtn.setText("Loading...");
@@ -322,8 +331,8 @@ public class MainPaneController {
 		} catch (JsonIOException | IOException e1) {
 			e1.printStackTrace();
 		}
-		provider.clearSuggestions();
-		provider.addPossibleSuggestions(AppSession.getSession().getSavedEmails());
+		savedEmailprovider.clearSuggestions();
+		savedEmailprovider.addPossibleSuggestions(AppSession.getSession().getSavedEmails());
 		assigneeProvider.clearSuggestions();
 		assigneeProvider.addPossibleSuggestions(AppSession.getSession().getAssigneeEmails());
 	}
@@ -358,6 +367,8 @@ public class MainPaneController {
 	@FXML
 	private void handleDefaultRequesterFieldChange() {
 		AppSession.getSession().setDefaultRequester(defaultRequesterField.getText());
+		requesterField.setText(AppSession.getSession().getDefaultRequester());
+		updateDefaultDeptSite();
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
@@ -368,6 +379,7 @@ public class MainPaneController {
 	@FXML
 	private void handleDefaultAssigneeFieldChange() {
 		AppSession.getSession().setDefaultAssignee(defaultAssigneeField.getText());
+		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
@@ -390,41 +402,52 @@ public class MainPaneController {
 		if (isUpToDate) {
 			showAlert("Already Up-to-date", "The data is already up to date.", AlertType.INFORMATION);
 		} else {
-			// https://stackoverflow.com/questions/45863687/javafx-progress-bar-to-show-the-progress-of-the-process
-			Task<Parent> update = new Task<Parent>() {
-			    @Override
-			    public Parent call() throws JsonIOException, IOException {
-					updateMessage("Updating Depts...");
-			    	AppSession.getSession().updateDepts();
-			    	
-					updateMessage("Updating Sites...");
-					AppSession.getSession().updateSites();
-			    	
-			    	updateMessage("Updating Categories...");
-			    	AppSession.getSession().updateCategories();
-			    	
-					updateMessage("Saving Data...");
-					AppSession.getSession().saveData();
-					return null;
-			    }
-			};
-		
-		    //method to set labeltext
-		    updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
-		    updateDataBtn.setDisable(true);
-			update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-				
-				@Override
-				public void handle(WorkerStateEvent event) {
-					showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
-					updateDataBtn.textProperty().unbind();
-					updateDataBtn.setText("Update Data");
-			        updateDataBtn.setDisable(false);
+			Alert alert = new Alert(AlertType.WARNING,
+					"The process is going to take about 4 mins. Proceed?",
+					ButtonType.OK, ButtonType.CANCEL);
+			alert.setTitle(	"Warning");
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK) {
+				// https://stackoverflow.com/questions/45863687/javafx-progress-bar-to-show-the-progress-of-the-process
+				Task<Parent> update = new Task<Parent>() {
+				    @Override
+				    public Parent call() throws JsonIOException, IOException {
+				    	updateMessage("Updating Users...");
+				    	AppSession.getSession().updateUsers();
+				    	
+						updateMessage("Updating Depts...");
+				    	AppSession.getSession().updateDepts();
+				    	
+						updateMessage("Updating Sites...");
+						AppSession.getSession().updateSites();
+				    	
+				    	updateMessage("Updating Categories...");
+				    	AppSession.getSession().updateCategories();
+				    	
+						updateMessage("Saving Data...");
+						AppSession.getSession().saveData();
+						return null;
+				    }
+				};
+			
+			    //method to set labeltext
+			    updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
+			    updateDataBtn.setDisable(true);
+				update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 					
-				}
-			});
-			Thread updateThread = new Thread(update);
-			updateThread.start();
+					@Override
+					public void handle(WorkerStateEvent event) {
+						showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
+						updateDataBtn.textProperty().unbind();
+						updateDataBtn.setText("Update Data");
+				        updateDataBtn.setDisable(false);
+						
+					}
+				});
+				Thread updateThread = new Thread(update);
+				updateThread.start();
+			}
+			
 		}
 	}
 	
@@ -434,10 +457,10 @@ public class MainPaneController {
 	
 	private String toCorrectDomain(String email) {
 		if (!email.contains("@") && !email.trim().equals("")) {
-			return email + "@" + AppSession.getSession().getDefaultDomain();
+			return (email + "@" + AppSession.getSession().getDefaultDomain()).toLowerCase();
 		}
 		else {
-			return email;
+			return email.toLowerCase();
 		}
 	}
 }

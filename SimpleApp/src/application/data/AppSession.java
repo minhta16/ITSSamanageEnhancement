@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.TreeMap;
 
 import com.google.gson.Gson;
@@ -21,13 +22,13 @@ public class AppSession {
 	private String defaultRequester;
 	private User requesterInfo;
 	private transient ArrayList<User> trackedUsers;
-	private ArrayList<String> savedEmails;
 	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
 	private TreeMap<String, ArrayList<String>> categories;
 	private ArrayList<String> departments;
 	private ArrayList<String> sites;
 	private ArrayList<String> priorities;
+	private TreeMap<String, User> users;
 	
 	private AppSession() {
 		userToken = "";
@@ -36,7 +37,7 @@ public class AppSession {
 		defaultRequester = "";
 		requesterInfo = new User();
 		trackedUsers = new ArrayList<User>();
-		savedEmails = new ArrayList<String>();
+		users = new TreeMap<String, User>();
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
 		priorities = new ArrayList<String>();
@@ -51,7 +52,7 @@ public class AppSession {
 		defaultRequester = "";
 		requesterInfo = new User();
 		trackedUsers = new ArrayList<User>();
-		savedEmails = new ArrayList<String>();
+		users = new TreeMap<String, User>();
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
 		priorities = new ArrayList<String>();
@@ -66,10 +67,7 @@ public class AppSession {
 	
 	public void addTrackedUser(User user) throws JsonIOException, IOException {
 		trackedUsers.add(user);
-		if (!savedEmails.contains(user.getEmail().toLowerCase())) {
-			savedEmails.add(user.getEmail().toLowerCase());
-			saveData();
-		}
+		saveData();
 	}
 	
 	public TreeMap<String, ArrayList<String>> getCategories() {
@@ -93,8 +91,12 @@ public class AppSession {
 		return false;
 	}
 	
-	public ArrayList<String> getSavedEmails() {
-		return savedEmails;
+	public TreeMap<String, User> getUsers() {
+		return users;
+	}
+	
+	public Set<String> getSavedEmails() {
+		return users.keySet();
 	}
 	
 	public ArrayList<String> getAssigneeEmails() {
@@ -170,8 +172,10 @@ public class AppSession {
 	}
 	
 	public void setDefaultRequester(String requester) {
-		defaultRequester = requester;
-		updateDefaultRequesterData();
+		if (users.containsKey(toCorrectDomain(requester))) {
+			defaultRequester = requester;
+			updateDefaultRequesterData();
+		}
 	}
 	
 	public String getDefaultRequester() {
@@ -206,32 +210,55 @@ public class AppSession {
 	}
 	
 	public void updateDefaultRequesterData() {
-		requesterInfo = SamanageRequests.getUserByEmail(userToken, defaultRequester);
+		requesterInfo = users.get(toCorrectDomain(defaultRequester));
 	}
 	
 	public boolean isUpToDate() {
-		return SamanageRequests.getTotalElements(userToken, "departments") == departments.size()
-				&& SamanageRequests.getTotalElements(userToken, "sites") == sites.size()
-				&& SamanageRequests.getTotalElements(userToken, "categories") == categories.size();
+		if (SamanageRequests.getTotalElements(userToken, "users") != users.size()) {
+			return false;
+		} else if (SamanageRequests.getTotalElements(userToken, "departments") != departments.size()) {
+			return false;
+		} else if (SamanageRequests.getTotalElements(userToken, "sites") != sites.size()) {
+			return false;
+		} else if (SamanageRequests.getTotalElements(userToken, "categories") != categories.size()) {
+			return false;
+		} else {
+			return true;
+		}
 //				&& SamanageRequests.getTotalElements(userToken, users);
+	}
+
+	public void updateUsers() {
+		if (SamanageRequests.getTotalElements(userToken, "users") != users.size()) {
+			users = SamanageRequests.getAllUsers(userToken);
+		}
 	}
 	
 	public void updateDepts() {
 		if (SamanageRequests.getTotalElements(userToken, "departments") != departments.size()) {
-			AppSession.getSession().setDepartments(SamanageRequests.getDepartments(userToken));
+			departments = SamanageRequests.getDepartments(userToken);
 		}
 	}
 	
 	public void updateSites() {
 		if (SamanageRequests.getTotalElements(userToken, "sites") != sites.size()) {
-	    	AppSession.getSession().setSites(SamanageRequests.getSites(userToken));
+	    	sites = SamanageRequests.getSites(userToken);
 		}
 	}
 	
 	public void updateCategories() {
 		if (SamanageRequests.getTotalElements(userToken, "categories") != categories.size()) {
-			AppSession.getSession().setCategories(SamanageRequests.getCategories(userToken));
+			categories = SamanageRequests.getCategories(userToken);
 		}
 
+	}
+	
+	private String toCorrectDomain(String email) {
+		if (!email.contains("@") && !email.trim().equals("")) {
+			return email + "@" + defaultDomain;
+		}
+		else {
+			return email;
+		}
 	}
 }

@@ -10,6 +10,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.TreeMap;
 
@@ -156,6 +158,78 @@ public class SamanageRequests {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static TreeMap<String, User> getAllUsers(String userToken) {
+		TreeMap<String, User> users = new TreeMap<String, User>();
+
+		boolean hasMore = true;
+		int curPage = 1;
+		while (hasMore) {
+			try {
+	 			//String url = "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
+				String url = "https://api.samanage.com/users.xml?per_page=100&page=" + curPage;
+
+				URL obj = new URL(url);
+				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+				conn.setDoOutput(true);
+
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+				conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+				//conn.setRequestProperty("Content-Type", "text/xml");
+
+				BufferedReader br;
+				if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+					br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				} else {
+					br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+				}
+				StringBuffer xml = new StringBuffer();
+				String output;
+				while ((output = br.readLine()) != null) {
+					xml.append(output);
+				}
+
+				// got from https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+				Element rootElement = document.getDocumentElement();
+			
+				NodeList listOfUsers = rootElement.getElementsByTagName("user");
+				if (listOfUsers.getLength() != 100) {
+					hasMore = false;
+				}
+				
+				for (int i = 0; i < listOfUsers.getLength(); i++) {
+					
+					if (listOfUsers.item(i) instanceof Element)
+				    {
+						Element user = (Element) listOfUsers.item(i);
+						User newUser = new User();
+						String name = getString("name", user);
+						String ID = getString("id", user);
+						String email = getString("email", user).toLowerCase();
+						newUser.setName(name);
+						newUser.setEmail(email);
+						newUser.setDept(getString("name",
+								(Element) user.getElementsByTagName("department").item(0)));
+						newUser.setSite(getString("name",
+								(Element) user.getElementsByTagName("site").item(0)));
+						newUser.setID(ID);
+						users.put(email, newUser);
+				    }
+					
+				}
+				conn.disconnect();
+				curPage++;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return users;
+		//System.err.println(map);
 	}
 
 	public static void updateState(String userToken, String incidentID, String state) {
@@ -434,7 +508,6 @@ public class SamanageRequests {
 						}
 					}
 				}
-				System.err.println(totalEntries);
 			} else {
 				totalEntries = Integer.parseInt(getString("total_entries", rootElement));
 			}

@@ -21,6 +21,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.textfield.CustomPasswordField?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
@@ -103,8 +104,8 @@
                      <center>
                         <GridPane BorderPane.alignment="CENTER">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0000244140625" minWidth="10.0" prefWidth="144.8" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="498.3999816894531" minWidth="10.0" prefWidth="164.40003662109373" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0000244140625" minWidth="10.0" prefWidth="137.2000244140625" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="498.3999816894531" minWidth="10.0" prefWidth="168.39997558593748" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.79998779296875" minWidth="10.0" prefWidth="67.59996337890624" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.79998779296875" minWidth="0.0" prefWidth="127.80000000000001" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.79998779296875" minWidth="10.0" prefWidth="169.40007324218755" />
@@ -112,17 +113,16 @@
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints maxHeight="422.4000244140625" minHeight="10.0" prefHeight="126.60001373291016" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="376.7999694824219" minHeight="0.0" prefHeight="40.399987792968744" />
-                              <RowConstraints maxHeight="308.79999389648435" minHeight="6.399999999999977" prefHeight="46.00001220703126" />
-                              <RowConstraints maxHeight="308.79999389648435" minHeight="10.0" prefHeight="114.40001831054687" />
+                              <RowConstraints maxHeight="376.7999694824219" minHeight="0.0" prefHeight="49.40000610351561" />
+                              <RowConstraints maxHeight="308.79999389648435" minHeight="6.399999999999977" prefHeight="44.399993896484375" />
+                              <RowConstraints maxHeight="308.79999389648435" minHeight="10.0" prefHeight="55.600006103515625" />
+                              <RowConstraints maxHeight="308.79999389648435" minHeight="10.0" prefHeight="62.399981689453114" />
                            </rowConstraints>
                            <children>
                               <Label text="User Token" />
                               <TextArea fx:id="userTokenField" onKeyTyped="#handleUserTokenFieldChange" prefHeight="112.0" prefWidth="270.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="4" />
                               <Label prefHeight="18.0" prefWidth="164.0" text="Default Requester" GridPane.rowIndex="1" />
-                              <TextField fx:id="defaultRequesterField" onKeyTyped="#handleDefaultRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                              <Label text="Default Assignee" GridPane.rowIndex="2" />
-                              <TextField fx:id="defaultAssigneeField" onKeyTyped="#handleDefaultAssigneeFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label text="Default Email domain" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                  <children>
@@ -130,7 +130,9 @@
                                     <TextField fx:id="domainField" onKeyTyped="#handleDefaultDomainChange" />
                                  </children>
                               </FlowPane>
-                              <Button fx:id="updateDataBtn" mnemonicParsing="false" onAction="#handleUpdateDataBtn" prefHeight="36.0" prefWidth="166.0" text="Update Data" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                              <Button fx:id="updateDataBtn" mnemonicParsing="false" onAction="#handleUpdateDataBtn" prefHeight="36.0" prefWidth="166.0" text="Update Data" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                              <CustomPasswordField fx:id="defaultRequesterField" onKeyTyped="#handleDefaultRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <CustomTextField fx:id="defaultAssigneeField" onKeyTyped="#handleDefaultAssigneeFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                            <BorderPane.margin>
                               <Insets />
@@ -221,9 +223,9 @@
                               <Label text="Due On" GridPane.rowIndex="1" />
                               <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label text="Department" GridPane.columnIndex="3" />
-                              <ComboBox fx:id="deptChoiceBox" editable="true" prefWidth="150.0" GridPane.columnIndex="4" />
+                              <ComboBox fx:id="deptComboBox" editable="true" prefWidth="150.0" GridPane.columnIndex="4" />
                               <Label text="Site" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <ComboBox fx:id="siteChoiceBox" editable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="siteComboBox" editable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                            </children>
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" top="10.0" />
