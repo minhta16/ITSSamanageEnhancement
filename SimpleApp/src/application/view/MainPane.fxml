@@ -101,18 +101,20 @@
                      <center>
                         <GridPane BorderPane.alignment="CENTER">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0000244140625" minWidth="10.0" prefWidth="112.00001831054684" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="498.3999816894531" minWidth="10.0" prefWidth="494.3999816894531" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0000244140625" minWidth="10.0" prefWidth="131.19999389648436" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="498.3999816894531" minWidth="10.0" prefWidth="157.60001220703126" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="471.0000061035157" minWidth="10.0" prefWidth="471.0000061035157" />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints maxHeight="422.4000244140625" minHeight="10.0" prefHeight="99.79999237060548" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="376.7999694824219" minHeight="0.0" prefHeight="42.40001220703127" />
-                              <RowConstraints maxHeight="308.79999389648435" minHeight="6.399999999999977" prefHeight="105.59998779296876" />
+                              <RowConstraints maxHeight="422.4000244140625" minHeight="10.0" prefHeight="112.79998779296875" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="376.7999694824219" minHeight="0.0" prefHeight="72.80000610351563" />
+                              <RowConstraints maxHeight="308.79999389648435" minHeight="6.399993896484375" prefHeight="53.59998168945313" />
+                              <RowConstraints maxHeight="308.79999389648435" minHeight="10.0" prefHeight="59.80000610351564" />
+                              <RowConstraints maxHeight="308.79999389648435" minHeight="10.0" prefHeight="40.599993896484364" />
                            </rowConstraints>
                            <children>
                               <Label text="User Token" />
-                              <TextArea fx:id="userTokenField" onKeyTyped="#handleUserTokenFieldChange" prefHeight="112.0" prefWidth="270.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                              <TextArea fx:id="userTokenField" onKeyTyped="#handleUserTokenFieldChange" prefHeight="153.0" prefWidth="625.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" />
                               <Label text="Default Email domain" GridPane.rowIndex="1" />
                               <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
@@ -120,6 +122,8 @@
                                     <TextField fx:id="domainField" />
                                  </children>
                               </FlowPane>
+                              <Label text="Default Assignee Email" GridPane.rowIndex="2" />
+                              <TextField fx:id="defaultAssigneeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                            <BorderPane.margin>
                               <Insets />

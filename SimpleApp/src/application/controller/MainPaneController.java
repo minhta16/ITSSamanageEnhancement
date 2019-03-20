@@ -68,6 +68,8 @@ public class MainPaneController {
 	private TextArea userTokenField;
 	@FXML
 	private TextField domainField;
+	@FXML
+	private TextField defaultAssigneeField;
 	
 	@SuppressWarnings("serial")
 	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
@@ -225,6 +227,7 @@ public class MainPaneController {
 	private void setupEmailAutoComplete() {
 		provider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		new AutoCompletionTextFieldBinding<>(userInputField, provider);
+		assigneeField.setText(toCorrectDomain(AppSession.getSession().getDefaultAssignee()));
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
 	}
