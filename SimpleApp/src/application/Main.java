@@ -25,6 +25,7 @@ public class Main extends Application {
 //        primaryStage.getIcons().add(new Image("file:/resources/img/favicon.jpg"));
         primaryStage.setScene(scene);
         primaryStage.show();
+        controller.showPrompt();
 	
 	}
 	public static void main(String[] args) {

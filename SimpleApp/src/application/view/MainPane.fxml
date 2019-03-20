@@ -130,6 +130,7 @@
                                     <TextField fx:id="domainField" onKeyTyped="#handleDefaultDomainChange" />
                                  </children>
                               </FlowPane>
+                              <Button fx:id="updateDataBtn" mnemonicParsing="false" onAction="#handleUpdateDataBtn" prefHeight="36.0" prefWidth="166.0" text="Update Data" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                            </children>
                            <BorderPane.margin>
                               <Insets />
@@ -199,23 +200,30 @@
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <GridPane>
+                        <GridPane prefHeight="151.0" prefWidth="803.0">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.39996337890625" minWidth="10.0" prefWidth="75.4" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="607.2" minWidth="10.0" prefWidth="178.6" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="548.6000366210938" minWidth="10.0" prefWidth="548.6000366210938" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.39996337890625" minWidth="10.0" prefWidth="65.80000610351563" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="607.2" minWidth="10.0" prefWidth="164.1999938964844" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="548.6000366210938" minWidth="10.0" prefWidth="60.80003662109377" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="548.6000366210938" minWidth="10.0" prefWidth="78.39996337890625" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="548.6000366210938" minWidth="10.0" prefWidth="155.00001831054692" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="548.6000366210938" minWidth="10.0" prefWidth="312.5999816894531" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="50.40002441406251" minHeight="10.0" prefHeight="37.59992523193359" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="43.2000747680664" minHeight="10.0" prefHeight="43.2000747680664" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="24.79996337890624" minHeight="10.0" prefHeight="12.799963378906241" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Label text="Priority" />
                               <ChoiceBox fx:id="priorityChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
-                              <Label text="Due On" GridPane.rowIndex="2" />
-                              <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="Due On" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="Department" GridPane.columnIndex="3" />
+                              <ComboBox fx:id="deptChoiceBox" editable="true" prefWidth="150.0" GridPane.columnIndex="4" />
+                              <Label text="Site" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="siteChoiceBox" editable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                            </children>
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" top="10.0" />

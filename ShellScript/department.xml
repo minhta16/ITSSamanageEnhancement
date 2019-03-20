@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<departments>
+  <department>
+    <id>40556</id>
+    <name>Academic Affairs</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40546</id>
+    <name>Accounting</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40538</id>
+    <name>Admissions</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40534</id>
+    <name>Advancement</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40588</id>
+    <name>Advising</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40562</id>
+    <name>Art</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40583</id>
+    <name>Art Exhibits</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41910</id>
+    <name>Art History</name>
+    <description>Art History</description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40533</id>
+    <name>Athletics</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>46466</id>
+    <name>Augustana College</name>
+    <description>Enterprise or Institution wide</description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40528</id>
+    <name>Biology</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40542</id>
+    <name>Bookstore</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40574</id>
+    <name>Brunner Theatre Center</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40561</id>
+    <name>Business Administration</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>39365</id>
+    <name>Business Office</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>45727</id>
+    <name>Campus</name>
+    <description>Campus Outage</description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40571</id>
+    <name>Campus Ministry</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41814</id>
+    <name>Career Development</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41802</id>
+    <name>Career Engagement Center</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40587</id>
+    <name>Carver PE Center</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40579</id>
+    <name>Catering</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40564</id>
+    <name>Center for Student Life-Dining</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41914</id>
+    <name>Center for Vocational Reflect</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40541</id>
+    <name>Chemistry</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41809</id>
+    <name>Choir</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41882</id>
+    <name>Clas, Eng, Religion</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40553</id>
+    <name>Classics</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40585</id>
+    <name>Coffee House</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40557</id>
+    <name>Communication Science &amp; Disord</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40535</id>
+    <name>Communication Studies</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41911</id>
+    <name>Communications and Marketing Office</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40558</id>
+    <name>Computer Science</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40567</id>
+    <name>Copy Center</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40545</id>
+    <name>Dean of Student Services</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40570</id>
+    <name>Debate</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40548</id>
+    <name>Economics</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40526</id>
+    <name>Education</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>138921</id>
+    <name>Employee</name>
+    <description>Generic Employee Acct for auto creation</description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40758</id>
+    <name>English</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40584</id>
+    <name>Enrichment-Home</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41907</id>
+    <name>Enrollment Management</name>
+    <description>Enrollment Management</description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41913</id>
+    <name>Entrepreneurial Development</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40563</id>
+    <name>Facilities Services Office</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40531</id>
+    <name>Financial Assistance Office</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40573</id>
+    <name>Fryxell Geology Endowment</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40543</id>
+    <name>Geography</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40576</id>
+    <name>Geology</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41912</id>
+    <name>Gerber Center Food Service</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40568</id>
+    <name>Hall Mgmt/Performance Tours</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41803</id>
+    <name>Hist,PolSci,Phil&amp;CS</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40544</id>
+    <name>History</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40565</id>
+    <name>Human Resources</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41812</id>
+    <name>Institutional Research</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40581</id>
+    <name>International Student Life</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41908</id>
+    <name>Internatl &amp; Off Campus Program</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40590</id>
+    <name>Internship Services</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>39102</id>
+    <name>ITS</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40540</id>
+    <name>Kaleidoscope</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40580</id>
+    <name>Learning Commons</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40547</id>
+    <name>Library</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41805</id>
+    <name>LS Liberal Studies</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40560</id>
+    <name>Mailing Center</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40532</id>
+    <name>Mathematics</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41815</id>
+    <name>Motorpool</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40589</id>
+    <name>Multicultural Services/CORE</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40555</id>
+    <name>Music</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>42865</id>
+    <name>Payroll</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40591</id>
+    <name>Pepsico Recreation Center</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40537</id>
+    <name>Philosophy</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41881</id>
+    <name>Physical Education</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41909</id>
+    <name>Physics</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40554</id>
+    <name>Political Science</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40551</id>
+    <name>President's Office</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40569</id>
+    <name>Psychology</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40575</id>
+    <name>Public Health</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41816</id>
+    <name>Receiving</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40566</id>
+    <name>Registrar</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40527</id>
+    <name>Religion</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40530</id>
+    <name>Residential Life</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40529</id>
+    <name>Security Services</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40550</id>
+    <name>Sociology, Anthro&amp;Social Welf</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41808</id>
+    <name>Sociology, Anthro&amp;Social WelfMathematics</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41810</id>
+    <name>Sociology, Anthro&amp;Social WelfMulticultural Services/CORE</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41813</id>
+    <name>Sports Information Office</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40524</id>
+    <name>Student</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40536</id>
+    <name>Student Activities</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40582</id>
+    <name>Student Counseling Office</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41811</id>
+    <name>Swanson Commons</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40578</id>
+    <name>Swedish Immigra. Research Cent</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>41807</id>
+    <name>Theater</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40549</id>
+    <name>Theater Arts</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40572</id>
+    <name>Ticket Office</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40552</id>
+    <name>Upper Mississippi Research Ctr</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40559</id>
+    <name>Web Services</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40539</id>
+    <name>World Lang Lit &amp; Cultures</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <department>
+    <id>40586</id>
+    <name>WVIK</name>
+    <description></description>
+    <default_assignee_id>-1</default_assignee_id>
+  </department>
+  <page>1</page>
+  <per_page>100</per_page>
+  <total_entries>96</total_entries>
+</departments>

@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.controlsfx.control.textfield.TextFields;
+
 import com.google.gson.JsonIOException;
 
 import application.data.AppSession;
@@ -13,8 +15,13 @@ import application.data.SamanageRequests;
 import application.data.User;
 import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
 import impl.org.controlsfx.autocompletion.SuggestionProvider;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -41,6 +48,10 @@ public class MainPaneController {
 	@FXML
 	private ChoiceBox<String> assigneeChoiceBox;
 	@FXML
+	private ComboBox<String> deptChoiceBox;
+	@FXML
+	private ComboBox<String> siteChoiceBox;
+	@FXML
 	private DatePicker datePicker;
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 	@FXML
@@ -65,6 +76,8 @@ public class MainPaneController {
 	@FXML
 	private Button addEmailBtn;
 	@FXML
+	private Button updateDataBtn;
+	@FXML
 	private TableView<User> infoTable;
 
 	@FXML
@@ -75,6 +88,8 @@ public class MainPaneController {
 	private TextField defaultAssigneeField;
 	@FXML
 	private TextField defaultRequesterField;
+	
+	private boolean isUpToDate;
 	
 	@SuppressWarnings("serial")
 	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
@@ -106,8 +121,13 @@ public class MainPaneController {
 		// setup date picker
 		initializeDatePicker();
 		
+		// setup dept and site
+		setupDeptAndSiteChoiceBox();
+		
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
+		
+		isUpToDate = AppSession.getSession().isUpToDate();
 
 		// setup infoTable
 		infoTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -115,6 +135,12 @@ public class MainPaneController {
 		infoTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("time"));
 		infoTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("comment"));
 		infoTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
+	}
+	
+	public void showPrompt() {
+		if (!isUpToDate) {
+			showAlert("Database outdated", "Database is outdated. Please update in Settings", AlertType.WARNING);
+		}
 	}
 	
 	private void setupSettingTab() {
@@ -125,7 +151,7 @@ public class MainPaneController {
 	}
 	
 	private void setupCatChoiceBox() {
-		AppSession.getSession().setCategories(SamanageRequests.getCategories(AppSession.getSession().getUserToken()));
+		AppSession.getSession().setCategories(AppSession.getSession().getCategories());
 		catChoiceBox.getSelectionModel().select(0);
 		subcatChoiceBox.getSelectionModel().select(0);
 		subcatChoiceBox.setDisable(true);
@@ -176,6 +202,18 @@ public class MainPaneController {
 				return null;
 			}
 		});
+	}
+	
+	private void setupDeptAndSiteChoiceBox() {
+		deptChoiceBox.getItems().addAll(AppSession.getSession().getDepartments());
+		deptChoiceBox.getSelectionModel().select(AppSession.getSession()
+				.getDepartments().indexOf(AppSession.getSession().getRequesterInfo().getDept()));
+		TextFields.bindAutoCompletion(deptChoiceBox.getEditor(), deptChoiceBox.getItems());
+		
+		siteChoiceBox.getItems().addAll(AppSession.getSession().getSites());
+		siteChoiceBox.getSelectionModel().select(AppSession.getSession()
+				.getSites().indexOf(AppSession.getSession().getRequesterInfo().getSite()));
+		TextFields.bindAutoCompletion(siteChoiceBox.getEditor(), siteChoiceBox.getItems());
 	}
 	
 	private void setupEmailAutoComplete() {
@@ -320,7 +358,6 @@ public class MainPaneController {
 	@FXML
 	private void handleDefaultRequesterFieldChange() {
 		AppSession.getSession().setDefaultRequester(defaultRequesterField.getText());
-		requesterField.setText(AppSession.getSession().getDefaultRequester());
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
@@ -331,7 +368,6 @@ public class MainPaneController {
 	@FXML
 	private void handleDefaultAssigneeFieldChange() {
 		AppSession.getSession().setDefaultAssignee(defaultAssigneeField.getText());
-		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
@@ -346,6 +382,49 @@ public class MainPaneController {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	private void handleUpdateDataBtn() {
+		if (isUpToDate) {
+			showAlert("Already Up-to-date", "The data is already up to date.", AlertType.INFORMATION);
+		} else {
+			// https://stackoverflow.com/questions/45863687/javafx-progress-bar-to-show-the-progress-of-the-process
+			Task<Parent> update = new Task<Parent>() {
+			    @Override
+			    public Parent call() throws JsonIOException, IOException {
+					updateMessage("Updating Depts...");
+			    	AppSession.getSession().updateDepts();
+			    	
+					updateMessage("Updating Sites...");
+					AppSession.getSession().updateSites();
+			    	
+			    	updateMessage("Updating Categories...");
+			    	AppSession.getSession().updateCategories();
+			    	
+					updateMessage("Saving Data...");
+					AppSession.getSession().saveData();
+					return null;
+			    }
+			};
+		
+		    //method to set labeltext
+		    updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
+		    updateDataBtn.setDisable(true);
+			update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+				
+				@Override
+				public void handle(WorkerStateEvent event) {
+					showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
+					updateDataBtn.textProperty().unbind();
+					updateDataBtn.setText("Update Data");
+			        updateDataBtn.setDisable(false);
+					
+				}
+			});
+			Thread updateThread = new Thread(update);
+			updateThread.start();
 		}
 	}
 	

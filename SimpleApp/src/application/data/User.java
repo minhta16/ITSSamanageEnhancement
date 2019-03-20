@@ -7,7 +7,9 @@ public class User {
 	private String email;
 	private int time;
 	private String comment;
-	private Button removeBtn; //?
+	private String dept;
+	private String site;
+	private transient Button removeBtn; //?
 
 
 	private String ID;
@@ -18,8 +20,11 @@ public class User {
 		ID = "";
 		time = 0;
 		comment = "";
+		dept = "";
+		site = "";
 		removeBtn = new Button("X");
 	}
+	
 	public User(String name, String email, String ID) {
 		this.name = name;
 		this.email = email;
@@ -37,7 +42,20 @@ public class User {
 	public void setID(String iD) {
 		ID = iD;
 	}
-
+	
+	public String getDept() {
+		return dept;
+	}
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	public String getSite() {
+		return site;
+	}
+	public void setSite(String site) {
+		this.site = site;
+	}
+	
 	public String getName() {
 		return name;
 	}

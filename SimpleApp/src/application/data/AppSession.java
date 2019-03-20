@@ -19,11 +19,14 @@ public class AppSession {
 	private String defaultDomain;
 	private String defaultAssignee;
 	private String defaultRequester;
+	private User requesterInfo;
 	private transient ArrayList<User> trackedUsers;
 	private ArrayList<String> savedEmails;
 	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
-	private transient TreeMap<String, ArrayList<String>> categories;
+	private TreeMap<String, ArrayList<String>> categories;
+	private ArrayList<String> departments;
+	private ArrayList<String> sites;
 	private ArrayList<String> priorities;
 	
 	private AppSession() {
@@ -31,24 +34,30 @@ public class AppSession {
 		defaultDomain = "";
 		defaultAssignee = "";
 		defaultRequester = "";
+		requesterInfo = new User();
 		trackedUsers = new ArrayList<User>();
 		savedEmails = new ArrayList<String>();
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
 		priorities = new ArrayList<String>();
 		assigneeEmails = new ArrayList<String>();
+		departments = new ArrayList<String>();
+		sites = new ArrayList<String>();
 	}
 	private AppSession(String userToken) {
 		this.userToken = userToken;
 		defaultDomain = "";
 		defaultAssignee = "";
 		defaultRequester = "";
+		requesterInfo = new User();
 		trackedUsers = new ArrayList<User>();
 		savedEmails = new ArrayList<String>();
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
 		priorities = new ArrayList<String>();
 		assigneeEmails = new ArrayList<String>();
+		departments = new ArrayList<String>();
+		sites = new ArrayList<String>();
 	}
 	
 	public static AppSession getSession() {
@@ -127,7 +136,22 @@ public class AppSession {
 	public void setDefaultDomain(String domain) {
 		defaultDomain = domain;
 	}
+
+	public ArrayList<String> getDepartments() {
+		return departments;
+	}
 	
+	public void setDepartments(ArrayList<String> departments) {
+		this.departments = departments;
+	}
+	
+	public ArrayList<String> getSites() {
+		return sites;
+	}
+	
+	public void setSites(ArrayList<String> sites) {
+		this.sites = sites;
+	}
 	public void clearTrackedUsers() {
 		trackedUsers.clear();
 	}
@@ -147,6 +171,7 @@ public class AppSession {
 	
 	public void setDefaultRequester(String requester) {
 		defaultRequester = requester;
+		updateDefaultRequesterData();
 	}
 	
 	public String getDefaultRequester() {
@@ -157,7 +182,13 @@ public class AppSession {
 		}
 		return defaultRequester;
 	}
-	
+
+	/**
+	 * @return the requesterInfo
+	 */
+	public User getRequesterInfo() {
+		return requesterInfo;
+	}
 	public void loadData() throws IOException {
 		FileReader fd = new FileReader(DATA_LOCATION);
 		JsonReader reader = new JsonReader(fd);
@@ -174,5 +205,33 @@ public class AppSession {
 		fw.close();
 	}
 	
+	public void updateDefaultRequesterData() {
+		requesterInfo = SamanageRequests.getUserByEmail(userToken, defaultRequester);
+	}
 	
+	public boolean isUpToDate() {
+		return SamanageRequests.getTotalElements(userToken, "departments") == departments.size()
+				&& SamanageRequests.getTotalElements(userToken, "sites") == sites.size()
+				&& SamanageRequests.getTotalElements(userToken, "categories") == categories.size();
+//				&& SamanageRequests.getTotalElements(userToken, users);
+	}
+	
+	public void updateDepts() {
+		if (SamanageRequests.getTotalElements(userToken, "departments") != departments.size()) {
+			AppSession.getSession().setDepartments(SamanageRequests.getDepartments(userToken));
+		}
+	}
+	
+	public void updateSites() {
+		if (SamanageRequests.getTotalElements(userToken, "sites") != sites.size()) {
+	    	AppSession.getSession().setSites(SamanageRequests.getSites(userToken));
+		}
+	}
+	
+	public void updateCategories() {
+		if (SamanageRequests.getTotalElements(userToken, "categories") != categories.size()) {
+			AppSession.getSession().setCategories(SamanageRequests.getCategories(userToken));
+		}
+
+	}
 }

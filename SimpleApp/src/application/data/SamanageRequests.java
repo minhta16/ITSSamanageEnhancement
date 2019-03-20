@@ -18,6 +18,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
@@ -143,6 +144,8 @@ public class SamanageRequests {
 					String ID = getString("id", user);
 					newUser.setName(name);
 					newUser.setEmail(email);
+					newUser.setDept(getString("name", (Element) user.getElementsByTagName("department").item(0)));
+					newUser.setSite(getString("name", (Element) user.getElementsByTagName("site").item(0)));
 					newUser.setID(ID);
 				}
 
@@ -228,6 +231,98 @@ public class SamanageRequests {
 		}
 		return null;
 	}
+	
+	public static ArrayList<String> getDepartments(String userToken) {
+		/*
+		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
+		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
+		 * https://api.samanage.com/categories.xml
+		 */
+		boolean hasMore = true;
+		int curPage = 1;
+		ArrayList<String> deptList = new ArrayList<String>();
+		while (hasMore) {
+			try {
+				String url = "https://api.samanage.com/departments.xml?per_page=100&page=" + curPage;
+		
+				URL obj = new URL(url);
+				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+				conn.setDoOutput(true);
+		
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+				conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+				conn.setRequestProperty("Content-Type", "text/xml");
+		
+				Element rootElement = documentFromOutput(conn);
+				NodeList depts = rootElement.getElementsByTagName("department");
+				if (depts.getLength() != 100) {
+					hasMore = false;
+				}
+		
+				for (int i = 0; i < depts.getLength(); i++) {
+					if (depts.item(i) instanceof Element) {
+						Element dept = (Element) depts.item(i);
+						String name = getString("name", dept);
+						deptList.add(name);
+					}
+		
+				}
+		
+				conn.disconnect();
+				curPage++;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return deptList;
+	}
+	
+	public static ArrayList<String> getSites(String userToken) {
+		/*
+		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
+		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
+		 * https://api.samanage.com/categories.xml
+		 */
+		boolean hasMore = true;
+		int curPage = 1;
+		ArrayList<String> siteList = new ArrayList<String>();
+		while (hasMore) {
+			try {
+				String url = "https://api.samanage.com/sites.xml?per_page=100&page=" + curPage;
+		
+				URL obj = new URL(url);
+				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+				conn.setDoOutput(true);
+		
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+				conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+				conn.setRequestProperty("Content-Type", "text/xml");
+		
+				Element rootElement = documentFromOutput(conn);
+				NodeList sites = rootElement.getElementsByTagName("site");
+				if (sites.getLength() != 100) {
+					hasMore = false;
+				}
+		
+				for (int i = 0; i < sites.getLength(); i++) {
+					if (sites.item(i) instanceof Element) {
+						Element site = (Element) sites.item(i);
+						String name = getString("name", site);
+						siteList.add(name);
+					}
+		
+				}
+		
+				conn.disconnect();
+				curPage++;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return siteList;
+	}
 
 	public static String getID(String userToken) {
 		try {
@@ -309,6 +404,46 @@ public class SamanageRequests {
 			e.printStackTrace();
 		}
 		return rootElement;
+	}
+	
+	public static int getTotalElements(String userToken, String type) {
+		try {
+			String url = "https://api.samanage.com/" + type + ".xml";
+
+			URL obj = new URL(url);
+			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+			conn.setDoOutput(true);
+
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+			conn.setRequestProperty("Content-Type", "application/xml");
+
+			Element rootElement = documentFromOutput(conn);
+			
+			int totalEntries = 0;
+			if (getString("total_entries", rootElement) == null) {
+				Node childNode = rootElement.getFirstChild();
+				while (childNode.getNextSibling() != null) {
+					childNode = childNode.getNextSibling();
+					if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element element = (Element) childNode;
+						if (element.getElementsByTagName("parent_id")
+							.item(element.getElementsByTagName("parent_id").getLength() - 1).hasAttributes()) {
+							totalEntries++;
+						}
+					}
+				}
+				System.err.println(totalEntries);
+			} else {
+				totalEntries = Integer.parseInt(getString("total_entries", rootElement));
+			}
+			conn.disconnect();
+			return totalEntries;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	// got from
