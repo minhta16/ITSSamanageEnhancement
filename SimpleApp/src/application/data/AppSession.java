@@ -19,6 +19,7 @@ public class AppSession {
 	private String defaultDomain;
 	private transient ArrayList<User> trackedUsers;
 	private ArrayList<String> savedEmails;
+	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
 	private transient TreeMap<String, ArrayList<String>> categories;
 	private ArrayList<String> priorities;
@@ -31,6 +32,7 @@ public class AppSession {
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
 		priorities = new ArrayList<String>();
+		assigneeEmails = new ArrayList<String>();
 	}
 	private AppSession(String userToken) {
 		this.userToken = userToken;
@@ -40,6 +42,7 @@ public class AppSession {
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
 		priorities = new ArrayList<String>();
+		assigneeEmails = new ArrayList<String>();
 	}
 	
 	public static AppSession getSession() {
@@ -77,6 +80,10 @@ public class AppSession {
 	
 	public ArrayList<String> getSavedEmails() {
 		return savedEmails;
+	}
+	
+	public ArrayList<String> getAssigneeEmails() {
+		return assigneeEmails;
 	}
 
 	public ArrayList<String> getStates() {

@@ -9,7 +9,27 @@
     "nguyentruong17@augustana.edu",
     "duynguyen16@augustana.edu",
     "longtran16@augustana.edu",
-    "chrisvaughan@augustana.edu"
+    "janaarpy@augustana.edu",
+	"bradbjork@augustana.edu",
+	"bonniehewitt@augustana.edu",
+	"lillianbradshaw@augustana.edu",
+	"CentrifyTest@augustana.edu",
+	"chrisvaughan@augustana.edu",
+	"scottdean@augustana.edu",
+	"dianeheist@augustana.edu",
+	"markusharris@augustana.edu",
+	"JustinMcDanel@augustana.edu",
+	"jeffmartin@augustana.edu",
+	"seanmcbride@augustana.edu",
+	"wendyramsdale@augustana.edu",
+	"fernandorios@augustana.edu",
+	"shawnbeattie@augustana.edu",
+	"sophiawu@augustana.edu",
+	"studentque@augustana.edu",
+	"tammymcauliffe@augustana.edu",
+	"suevanwatermeulen@augustana.edu",
+	"kevinwhitemore@augustana.edu",
+	"kristinazimmerman@augustana.edu"
   ],
   "states": [
     "New",
@@ -31,5 +51,29 @@
     "Medium",
     "High",
     "Critical"
+  ],
+  "assigneeEmails": [
+    "janaarpy@augustana.edu",
+	"bradbjork@augustana.edu",
+	"bonniehewitt@augustana.edu",
+	"lillianbradshaw@augustana.edu",
+	"CentrifyTest@augustana.edu",
+	"chrisvaughan@augustana.edu",
+	"scottdean@augustana.edu",
+	"dianeheist@augustana.edu",
+	"markusharris@augustana.edu",
+	"JustinMcDanel@augustana.edu",
+	"jeffmartin@augustana.edu",
+	"seanmcbride@augustana.edu",
+	"wendyramsdale@augustana.edu",
+	"fernandorios@augustana.edu",
+	"shawnbeattie@augustana.edu",
+	"sophiawu@augustana.edu",
+	"studentque@augustana.edu",
+	"tammymcauliffe@augustana.edu",
+	"suevanwatermeulen@augustana.edu",
+	"kevinwhitemore@augustana.edu",
+	"kristinazimmerman@augustana.edu"
   ]
+  
 }
