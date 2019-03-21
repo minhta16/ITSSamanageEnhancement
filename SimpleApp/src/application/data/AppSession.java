@@ -193,6 +193,21 @@ public class AppSession {
 	public User getRequesterInfo() {
 		return requesterInfo;
 	}
+	
+	/**
+	 * @return the requesterInfo
+	 */
+	public boolean hasUser(String email) {
+		return users.containsKey(toCorrectDomain(email.toLowerCase()));
+	}
+	
+	/**
+	 * @return the requesterInfo
+	 */
+	public User getRequesterInfo(String email) {
+		return users.get(toCorrectDomain(email.toLowerCase()));
+	}
+	
 	public void loadData() throws IOException {
 		FileReader fd = new FileReader(DATA_LOCATION);
 		JsonReader reader = new JsonReader(fd);

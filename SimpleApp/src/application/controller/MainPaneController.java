@@ -108,34 +108,34 @@ public class MainPaneController {
 			e.printStackTrace();
 		}
 		System.err.println("end load");
-		// setup setting page
+
+		
+		
+		// setup setting tab
 		setupSettingTab();
-
 		System.err.println("setting");
-		// setup category
-		setupCatChoiceBox();
-
-		System.err.println("cat");
-		// setup state
-		setupStatesChoiceBox();
-
-		System.err.println("state");
+		
+		
 		// setup priority
 		setupPriorityChoiceBox();
-
 		System.err.println("prio");
+		
 		// setup date picker
 		initializeDatePicker();
-
 		System.err.println("date");
+		
 		// setup dept and site
 		setupDeptAndSiteChoiceBox();
-
 		System.err.println("dept");
+		
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
-
 		System.err.println("autocomplete");
+
+		// setup main menu tab
+		setupMainMenuTab();
+		System.err.println("main menu");
+		
 		isUpToDate = AppSession.getSession().isUpToDate();
 
 		// setup infoTable
@@ -150,6 +150,20 @@ public class MainPaneController {
 		if (!isUpToDate) {
 			showAlert("Database outdated", "Database is outdated. Please update in Settings", AlertType.WARNING);
 		}
+	}
+	
+	private void setupMainMenuTab() {
+		// setup state
+		setupStatesChoiceBox();
+		System.err.println("state");
+		
+		// setup category
+		setupCatChoiceBox();
+		System.err.println("cat");
+		
+		// setup incident name
+		updateIncidentNamePrompt();
+		System.err.println("incident name");
 	}
 	
 	private void setupSettingTab() {
@@ -189,6 +203,12 @@ public class MainPaneController {
 		statesChoiceBox.getItems().addAll(AppSession.getSession().getStates());
 		statesChoiceBox.getSelectionModel().select(0);
 	}
+	
+	private void updateIncidentNamePrompt() {
+		if (AppSession.getSession().hasUser(requesterField.getText().toLowerCase())) {
+			incidentNameField.setPromptText(getDefaultIncidentName());
+		}
+	}
 
 	private void setupPriorityChoiceBox() {
 		priorityChoiceBox.getItems().addAll(AppSession.getSession().getPriorities());
@@ -227,11 +247,13 @@ public class MainPaneController {
 	}
 	
 	private void updateDefaultDeptSite() {
-
-		deptComboBox.getSelectionModel().select(AppSession.getSession()
-				.getDepartments().indexOf(AppSession.getSession().getRequesterInfo().getDept()));
-		siteComboBox.getSelectionModel().select(AppSession.getSession()
-				.getSites().indexOf(AppSession.getSession().getRequesterInfo().getSite()));
+		String email = requesterField.getText().toLowerCase();
+		if (AppSession.getSession().hasUser(email)) {
+			deptComboBox.getSelectionModel().select(AppSession.getSession()
+					.getDepartments().indexOf(AppSession.getSession().getRequesterInfo(email).getDept()));
+			siteComboBox.getSelectionModel().select(AppSession.getSession()
+					.getSites().indexOf(AppSession.getSession().getRequesterInfo(email).getSite()));
+		}
 	}
 	
 	private void setupEmailAutoComplete() {
@@ -248,8 +270,6 @@ public class MainPaneController {
 	private void handleSubmitBtn() {
 		if (userTokenField.getText().trim().equals("")) {
 			showAlert("Error", "Please enter user token (Setting)", AlertType.WARNING);
-		} else if (incidentNameField.getText().equals("")) {
-			showAlert("Error", "Please enter incident name", AlertType.WARNING);
 		} else if (requesterField.getText().trim().equals("")) {
 			showAlert("Error", "Please enter a requester email", AlertType.WARNING);
 		} else if (catChoiceBox.getValue() == null) {
@@ -268,9 +288,17 @@ public class MainPaneController {
 		} else {
 			submitBtn.setText("Loading...");
 			submitBtn.setDisable(true);
+
+		
 			new Thread(() -> {
 				try {
-					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), 
+					String incidentName;
+					if (incidentNameField.getText().equals("")) {
+						incidentName = getDefaultIncidentName();
+					} else {
+						incidentName = incidentNameField.getText();
+					}
+					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
 						subcatChoiceBox.getValue(), descField.getText(),
 						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
@@ -316,6 +344,16 @@ public class MainPaneController {
 		}
 	}
 	
+	private String getDefaultIncidentName() {
+		User req;
+		if (requesterField.getText() == "") {
+			req = AppSession.getSession().getRequesterInfo();
+		} else {
+			req = AppSession.getSession().getRequesterInfo(toCorrectDomain(requesterField.getText()));
+		}
+		return req.getDept() + " " + req.getSite();
+	}
+	
 	
 	private void showAlert(String title, String message, AlertType alertType) {
 		Alert alert = new Alert(alertType);
@@ -353,6 +391,10 @@ public class MainPaneController {
 	}
 
 	@FXML
+	private void handleIncidentNameType() {
+		
+	}
+	@FXML
 	private void handleUserTokenFieldChange() {
 		AppSession.getSession().setUserToken(userTokenField.getText());
 		try {
@@ -371,12 +413,17 @@ public class MainPaneController {
 			e.printStackTrace();
 		}
 	}
+	@FXML
+	private void handleRequesterFieldChange() {
+		updateDefaultDeptSite();
+		updateIncidentNamePrompt();
+	}
 	
 	@FXML
 	private void handleDefaultRequesterFieldChange() {
 		AppSession.getSession().setDefaultRequester(defaultRequesterField.getText());
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
-		updateDefaultDeptSite();
+		handleRequesterFieldChange();
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
