@@ -274,7 +274,7 @@ public class MainPaneController {
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
 						subcatChoiceBox.getValue(), descField.getText(),
 						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
-						toCorrectDomain(assigneeField.getText()), toCorrectDomain(defaultRequesterField.getText()));
+						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()));
 				
 				} catch (IOException e) {
 					showAlert("Error", e.getMessage(), AlertType.ERROR);
