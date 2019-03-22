@@ -115,28 +115,22 @@ public class MainPaneController {
 		
 		// setup setting tab
 		setupSettingTab();
-		System.err.println("setting");
 		
 		
 		// setup priority
 		setupPriorityChoiceBox();
-		System.err.println("prio");
 		
 		// setup date picker
 		initializeDatePicker();
-		System.err.println("date");
 		
 		// setup dept and site
 		setupDeptAndSiteChoiceBox();
-		System.err.println("dept");
 		
 		// setup TextFields autocomplete
 		setupEmailAutoComplete();
-		System.err.println("autocomplete");
 
 		// setup main menu tab
 		setupMainMenuTab();
-		System.err.println("main menu");
 		
 		isUpToDate = AppSession.getSession().isUpToDate();
 
