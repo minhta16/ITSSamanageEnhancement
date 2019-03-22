@@ -20,10 +20,11 @@ public class Main extends Application {
         
         MainPaneController controller = (MainPaneController)loader.getController();
         controller.setStageAndSetupListeners(primaryStage);
-        
+
         primaryStage.setTitle("Customized Samanage Experience");
 //        primaryStage.getIcons().add(new Image("file:/resources/img/favicon.jpg"));
         primaryStage.setScene(scene);
+        setUserAgentStylesheet(STYLESHEET_MODENA);
         primaryStage.show();
         controller.showPrompt();
 	

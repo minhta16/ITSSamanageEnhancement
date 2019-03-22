@@ -17,6 +17,7 @@ import application.data.User;
 import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
 import impl.org.controlsfx.autocompletion.SuggestionProvider;
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -100,15 +101,16 @@ public class MainPaneController {
 		
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
-		System.err.println("start load");
+		System.err.println("Loading...");
 		try {
 			AppSession.getSession().loadData();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.err.println("end load");
 
+		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
+		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
 		
 		
 		// setup setting tab
@@ -138,6 +140,8 @@ public class MainPaneController {
 		
 		isUpToDate = AppSession.getSession().isUpToDate();
 
+		System.err.println("Load Complete!");
+		System.err.println("Please do not close this console!");
 		// setup infoTable
 		infoTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
 		infoTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -183,8 +187,11 @@ public class MainPaneController {
 		subcatChoiceBox.setDisable(true);
 		catChoiceBox.getItems().addAll(AppSession.getSession().getCategories().keySet());
 		catChoiceBox.getSelectionModel().selectedItemProperty()
-	    		.addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-	    			updateSubcatChoiceBox();
+	    		.addListener(new ChangeListener<String>() {
+	    			@Override
+	    			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+		    			updateSubcatChoiceBox();
+	    			}
 	    		});
 	}
 	
@@ -253,14 +260,18 @@ public class MainPaneController {
 					.getDepartments().indexOf(AppSession.getSession().getRequesterInfo(email).getDept()));
 			siteComboBox.getSelectionModel().select(AppSession.getSession()
 					.getSites().indexOf(AppSession.getSession().getRequesterInfo(email).getSite()));
+		} else {
+			deptComboBox.getSelectionModel().select(AppSession.getSession()
+					.getDepartments().indexOf(AppSession.getSession().getRequesterInfo().getDept()));
+			siteComboBox.getSelectionModel().select(AppSession.getSession()
+					.getSites().indexOf(AppSession.getSession().getRequesterInfo().getSite()));
+		
 		}
 	}
 	
 	private void setupEmailAutoComplete() {
-		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		new AutoCompletionTextFieldBinding<>(userInputField, savedEmailprovider);
 		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
-		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
 		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
 		new AutoCompletionTextFieldBinding<>(requesterField, savedEmailprovider);
@@ -421,13 +432,16 @@ public class MainPaneController {
 	
 	@FXML
 	private void handleDefaultRequesterFieldChange() {
+		String initDefault = AppSession.getSession().getDefaultRequester();
 		AppSession.getSession().setDefaultRequester(defaultRequesterField.getText());
-		requesterField.setText(AppSession.getSession().getDefaultRequester());
-		handleRequesterFieldChange();
-		try {
-			AppSession.getSession().saveData();
-		} catch (JsonIOException | IOException e) {
-			e.printStackTrace();
+		if (!initDefault.equalsIgnoreCase(AppSession.getSession().getDefaultRequester())) {
+			requesterField.setText(AppSession.getSession().getDefaultRequester());
+			handleRequesterFieldChange();
+			try {
+				AppSession.getSession().saveData();
+			} catch (JsonIOException | IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

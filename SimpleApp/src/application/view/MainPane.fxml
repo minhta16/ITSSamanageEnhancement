@@ -23,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -50,9 +50,9 @@
          <tabs>
             <Tab closable="false" text="Main Menu">
                <content>
-                  <VBox prefHeight="477.0" prefWidth="778.0">
+                  <VBox prefHeight="478.0" prefWidth="898.0">
                      <children>
-                        <GridPane prefHeight="294.0" prefWidth="824.0">
+                        <GridPane prefHeight="342.0" prefWidth="898.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.20001220703125" minWidth="10.0" prefWidth="120.39998016357421" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="417.60000762939455" minWidth="10.0" prefWidth="198.80001220703122" />
@@ -72,19 +72,19 @@
                            <children>
                               <Label text="State" />
                               <ChoiceBox fx:id="statesChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
-                              <Label text="Assignee" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <CustomTextField fx:id="assigneeField" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                              <Label text="Requester" GridPane.rowIndex="1" />
+                              <CustomTextField fx:id="requesterField" onKeyTyped="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label text="Incident Name" GridPane.rowIndex="2" />
                               <TextField fx:id="incidentNameField" onKeyTyped="#handleIncidentNameType" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label text="Description" GridPane.rowIndex="3" />
-                              <TextArea fx:id="descField" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3" />
                               <Label text="Category" GridPane.columnIndex="3" />
                               <ComboBox fx:id="catChoiceBox" layoutX="166.0" layoutY="263.0" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" />
                               <Label text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <ComboBox fx:id="subcatChoiceBox" layoutX="166.0" layoutY="263.0" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <Label text="Assignee" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <CustomTextField fx:id="assigneeField" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                              <Label text="Description" GridPane.rowIndex="3" />
+                              <TextArea fx:id="descField" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3" />
                               <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="42.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-                              <Label text="Requester" GridPane.rowIndex="1" />
-                              <CustomTextField fx:id="requesterField" onKeyTyped="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -121,17 +121,17 @@
                               <Label text="User Token" />
                               <TextArea fx:id="userTokenField" onKeyTyped="#handleUserTokenFieldChange" prefHeight="112.0" prefWidth="270.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="4" />
                               <Label prefHeight="18.0" prefWidth="164.0" text="Default Requester" GridPane.rowIndex="1" />
+                              <CustomTextField fx:id="defaultRequesterField" onKeyTyped="#handleDefaultRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                              <Label text="Default Assignee" GridPane.rowIndex="2" />
+                              <CustomTextField fx:id="defaultAssigneeField" onKeyTyped="#handleDefaultAssigneeFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label text="Default Email domain" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                  <children>
                                     <Label text="\@" />
-                                    <TextField fx:id="domainField" onKeyTyped="#handleDefaultDomainChange" />
+                                    <TextField fx:id="domainField" onKeyTyped="#handleDefaultDomainChange" prefHeight="26.0" prefWidth="145.0" />
                                  </children>
                               </FlowPane>
                               <Button fx:id="updateDataBtn" mnemonicParsing="false" onAction="#handleUpdateDataBtn" prefHeight="36.0" prefWidth="166.0" text="Update Data" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                              <CustomTextField fx:id="defaultRequesterField" onKeyTyped="#handleDefaultRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <CustomTextField fx:id="defaultAssigneeField" onKeyTyped="#handleDefaultAssigneeFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                            <BorderPane.margin>
                               <Insets />
@@ -148,13 +148,13 @@
       </TabPane>
    </center>
    <bottom>
-      <TabPane prefHeight="209.0" prefWidth="824.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane prefHeight="210.0" prefWidth="902.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
             <Tab closable="false" text="Time Track">
                <content>
                   <VBox prefHeight="202.0" prefWidth="824.0">
                      <children>
-                        <GridPane prefHeight="148.0" prefWidth="803.0">
+                        <GridPane prefHeight="148.0" prefWidth="889.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.39996337890625" minWidth="10.0" prefWidth="151.99999542236327" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="607.2" minWidth="10.0" prefWidth="191.7999755859375" />
@@ -177,7 +177,7 @@
                               <TextField fx:id="timeElapsedField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label prefHeight="52.0" prefWidth="162.0" text="Time Track Comment" GridPane.rowIndex="2" />
                               <TextField fx:id="timeTrackCmtField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="113.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TableView fx:id="infoTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowSpan="4">
+                              <TableView fx:id="infoTable" prefHeight="148.0" prefWidth="575.0" GridPane.columnIndex="3" GridPane.rowSpan="4">
                                 <columns>
                                   <TableColumn prefWidth="110.39996641874313" text="Name" />
                                   <TableColumn prefWidth="110.39999389648438" text="Email" />
@@ -188,7 +188,7 @@
                               </TableView>
                               <FlowPane alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <children>
-                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="74.0" text="Add Track" />
+                                    <Button fx:id="addEmailBtn" mnemonicParsing="false" onAction="#handleAddEmailButton" prefHeight="31.0" prefWidth="113.0" text="Add Track" />
                                  </children>
                               </FlowPane>
                            </children>
