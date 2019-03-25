@@ -348,8 +348,12 @@ public class MainPaneController {
 			}
 		}
 	}
-	
+
 	private String getDefaultIncidentName() {
+		return getDefaultCategoryIncidentName();
+	}
+	
+	private String getDefaultDeptSiteIncidentName() {
 		User req;
 		if (requesterField.getText() == "") {
 			req = AppSession.getSession().getRequesterInfo();
@@ -359,6 +363,16 @@ public class MainPaneController {
 		return req.getDept() + " " + req.getSite();
 	}
 	
+	private String getDefaultCategoryIncidentName() {
+		String retStr = "";
+		if (catChoiceBox.getValue() != null) {
+			retStr += catChoiceBox.getValue();
+			if (subcatChoiceBox.getValue() != null) {
+				retStr += " " + subcatChoiceBox.getValue();
+			}
+		}
+		return retStr;
+	}
 	
 	private void showAlert(String title, String message, AlertType alertType) {
 		Alert alert = new Alert(alertType);
