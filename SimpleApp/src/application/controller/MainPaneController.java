@@ -114,24 +114,32 @@ public class MainPaneController {
 		
 		
 		// setup setting tab
+		System.err.println("Setting up Setting Tab");
 		setupSettingTab();
 		
 		
 		// setup priority
+		System.err.println("Setting up Priority");
 		setupPriorityChoiceBox();
 		
 		// setup date picker
+		System.err.println("Setting up Date Picker");
 		initializeDatePicker();
 		
 		// setup dept and site
+		System.err.println("Setting up Depts and Sites");
 		setupDeptAndSiteChoiceBox();
 		
 		// setup TextFields autocomplete
-		setupEmailAutoComplete();
+		System.err.println("Setting up Autocomplete");
 
+		setupEmailAutoComplete();
 		// setup main menu tab
+		System.err.println("Setting up Main Menu");
 		setupMainMenuTab();
 		
+
+		System.err.println("Checking for newer database version...");
 		isUpToDate = AppSession.getSession().isUpToDate();
 
 		System.err.println("Load Complete!");
@@ -152,16 +160,16 @@ public class MainPaneController {
 	
 	private void setupMainMenuTab() {
 		// setup state
+		System.err.println("Setting up State");
 		setupStatesChoiceBox();
-		System.err.println("state");
 		
 		// setup category
+		System.err.println("Setting up Categories");
 		setupCatChoiceBox();
-		System.err.println("cat");
 		
 		// setup incident name
+		System.err.println("Setting up Incident Name Prompt");
 		updateIncidentNamePrompt();
-		System.err.println("incident name");
 	}
 	
 	private void setupSettingTab() {
@@ -266,6 +274,7 @@ public class MainPaneController {
 	private void setupEmailAutoComplete() {
 		new AutoCompletionTextFieldBinding<>(userInputField, savedEmailprovider);
 		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
+		handleAssigneeFieldChange();
 		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
 		new AutoCompletionTextFieldBinding<>(requesterField, savedEmailprovider);
@@ -456,7 +465,8 @@ public class MainPaneController {
 	@FXML
 	private void handleDefaultAssigneeFieldChange() {
 		AppSession.getSession().setDefaultAssignee(defaultAssigneeField.getText());
-		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
+		assigneeField.setText(toShortDomain(AppSession.getSession().getDefaultAssignee()));
+		handleAssigneeFieldChange();
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
@@ -472,6 +482,11 @@ public class MainPaneController {
 		} catch (JsonIOException | IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	private void handleAssigneeFieldChange() {
+		userInputField.setText(assigneeField.getText());
 	}
 	
 	@FXML
@@ -539,5 +554,14 @@ public class MainPaneController {
 		else {
 			return email.toLowerCase();
 		}
+	}
+
+	private String toShortDomain(String email) {
+		if (email.contains("@")) {
+			if (email.split("@")[1].substring(1).equalsIgnoreCase("@" + AppSession.getSession().getDefaultDomain())) {
+				return email.split("@")[0];
+			}
+		}
+		return email;
 	}
 }

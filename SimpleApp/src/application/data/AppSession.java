@@ -159,32 +159,22 @@ public class AppSession {
 	}
 	
 	public void setDefaultAssignee(String assignee) {
-		defaultAssignee = assignee;
+		defaultAssignee = toShortDomain(assignee);
 	}
 	
 	public String getDefaultAssignee() {
-		if (defaultAssignee.contains("@")) {
-			if (defaultAssignee.split("@")[1].substring(1).equalsIgnoreCase(defaultDomain)) {
-				return defaultAssignee.split("@")[0];
-			}
-		}
-		return defaultAssignee;
+		return toShortDomain(defaultAssignee);
 	}
 	
 	public void setDefaultRequester(String requester) {
 		if (users.containsKey(toCorrectDomain(requester))) {
-			defaultRequester = requester;
+			defaultRequester = toShortDomain(requester);
 			updateDefaultRequesterData();
 		}
 	}
 	
 	public String getDefaultRequester() {
-		if (defaultRequester.contains("@")) {
-			if (defaultRequester.split("@")[1].substring(1).equalsIgnoreCase(defaultDomain)) {
-				return defaultRequester.split("@")[0];
-			}
-		}
-		return defaultRequester;
+		return toShortDomain(defaultRequester);
 	}
 
 	/**
@@ -268,6 +258,15 @@ public class AppSession {
 
 	}
 	
+	private String toShortDomain(String email) {
+		if (email.contains("@")) {
+			if (email.split("@")[1].substring(1).equalsIgnoreCase("@" + defaultDomain)) {
+				return email.split("@")[0];
+			}
+		}
+		return email;
+	}
+			
 	private String toCorrectDomain(String email) {
 		if (!email.contains("@") && !email.trim().equals("")) {
 			return email + "@" + defaultDomain;
