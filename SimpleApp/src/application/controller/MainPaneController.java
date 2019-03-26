@@ -28,9 +28,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -39,6 +42,18 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 public class MainPaneController {
+	
+	@FXML
+	private TabPane tabPane;
+	@FXML 
+	private Tab mainMenu;
+	@FXML
+	private Tab incidentEdit;
+	@FXML
+	private Tab settings;
+	
+	@FXML
+	private Button createNewIncident;
 
 	@FXML
 	private ChoiceBox<String> statesChoiceBox;
@@ -90,6 +105,9 @@ public class MainPaneController {
 	private TextField defaultAssigneeField;
 	@FXML
 	private TextField defaultRequesterField;
+	@FXML
+	private CheckBox autoUpdateCheck;
+	
 	
 	private boolean isUpToDate;
 	
@@ -138,6 +156,10 @@ public class MainPaneController {
 		System.err.println("Setting up Main Menu");
 		setupMainMenuTab();
 		
+		// setup tabs
+		System.err.println("Setting up tabs");
+		setupTabs();
+		
 
 		System.err.println("Checking for newer database version...");
 		isUpToDate = AppSession.getSession().isUpToDate();
@@ -157,6 +179,18 @@ public class MainPaneController {
 		if (!isUpToDate) {
 			showAlert("Database outdated", "Database is outdated. Please update in Settings", AlertType.WARNING);
 		}
+	}
+	
+	private void setupTabs() {
+		mainMenu.setDisable(false);
+		incidentEdit.setDisable(true);
+		
+		createNewIncident.setOnAction((e) -> {
+			incidentEdit.setDisable(false);
+			tabPane.getSelectionModel().select(incidentEdit);
+		});
+		
+		
 	}
 	
 	private void setupMainMenuTab() {
@@ -327,8 +361,13 @@ public class MainPaneController {
 			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 			clearInputFields();
 			submitBtn.setText("Submit");
-			submitBtn.setDisable(false);
+			//submitBtn.setDisable(false);
 			incidentNameField.requestFocus();
+			
+			
+			tabPane.getSelectionModel().select(mainMenu);
+			incidentEdit.setDisable(true);
+			
 		}
 	}
 
