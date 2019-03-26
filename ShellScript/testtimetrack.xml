@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <time-tracks type="array">
   <time-track>
-    <id>2789670</id>
-    <name>haha</name>
-    <href>https://api.samanage.com/incidents/36010690/time_tracks/2789670.xml</href>
-    <created_at>2019-03-07T23:00:37Z</created_at>
-    <updated_at>2019-03-07T23:00:37Z</updated_at>
-    <minutes>30</minutes>
+    <id>2850248</id>
+    <name>other names</name>
+    <href>https://api.samanage.com/incidents/36681945/time_tracks/2850248.xml</href>
+    <created_at>2019-03-25T23:16:00Z</created_at>
+    <updated_at>2019-03-26T05:49:40Z</updated_at>
+    <minutes>1800</minutes>
     <parent>
-      <id>36010690</id>
+      <id>36681945</id>
       <class>incident</class>
-      <href>https://api.samanage.com/incidents/36010690.xml</href>
+      <href>https://api.samanage.com/incidents/36681945.xml</href>
     </parent>
     <creator>
       <id>1753326</id>
@@ -19,8 +19,8 @@
       <title></title>
       <email>MINHTA16@augustana.edu</email>
       <created_at>2016-08-11T14:02:59Z</created_at>
-      <updated_at>2019-03-07T22:10:25Z</updated_at>
-      <last_login>2019-03-07T22:10:25Z</last_login>
+      <updated_at>2019-03-12T16:38:51Z</updated_at>
+      <last_login>2019-03-12T16:38:50Z</last_login>
       <phone>84.98861969</phone>
       <mobile_phone></mobile_phone>
       <department>
@@ -59,7 +59,7 @@
         <type>image</type>
         <image_class>avatar_image</image_class>
         <sso_image_class></sso_image_class>
-        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/fac79d347fd307254c23/visa_card.jpg?1551800564</avatar_url>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/73490070742ba57bdbe8/giphy_card.gif?1552028881</avatar_url>
       </avatar>
       <mfa_enabled>false</mfa_enabled>
       <reports_to nil="true"/>

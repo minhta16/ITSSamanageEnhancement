@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents>
+  <incident>
+    <id>36681945</id>
+    <number>17003</number>
+    <name>testing only</name>
+    <description>testing only</description>
+    <description_no_html>testing only</description_no_html>
+    <state>Closed</state>
+    <priority>Medium</priority>
+    <category>
+      <id>408920</id>
+      <name>Meetings  (ITS use only)</name>
+      <default_tags></default_tags>
+      <children>
+        <child>
+          <id>857970</id>
+          <name>Campus Event</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408920</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408992</id>
+          <name>Conference</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408920</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>859014</id>
+          <name>Planning/Consulting/Brainstorming</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408920</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>858999</id>
+          <name>Status/Update</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408920</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408991</id>
+          <name>Training/Workshops</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408920</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408993</id>
+          <name>Vendor</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408920</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408988</id>
+          <name>Z - Department</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408920</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408989</id>
+          <name>Z - ITS Group</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408920</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+        <child>
+          <id>408990</id>
+          <name>Z - Project</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408920</parent_id>
+          <default_assignee_id>-1</default_assignee_id>
+        </child>
+      </children>
+      <parent_id nil="true"/>
+      <default_assignee_id>-1</default_assignee_id>
+    </category>
+    <subcategory>
+      <id>408993</id>
+      <name>Vendor</name>
+      <default_tags></default_tags>
+      <children nil="true"/>
+      <parent_id>408920</parent_id>
+      <default_assignee_id>-1</default_assignee_id>
+    </subcategory>
+    <assignee>
+      <group_id>1953008</group_id>
+      <is_user>true</is_user>
+      <id>1753326</id>
+      <name>Ta, Minh Q</name>
+      <disabled>false</disabled>
+      <title></title>
+      <email>MINHTA16@augustana.edu</email>
+      <created_at>2016-08-11T09:02:59-05:00</created_at>
+      <updated_at>2019-03-12T11:38:51-05:00</updated_at>
+      <last_login>2019-03-12T11:38:50-05:00</last_login>
+      <phone>84.98861969</phone>
+      <mobile_phone></mobile_phone>
+      <department>
+        <id>40524</id>
+        <name>Student</name>
+        <description></description>
+        <default_assignee_id>-1</default_assignee_id>
+      </department>
+      <role>
+        <id>471977</id>
+        <name>Student Intern</name>
+        <description>Almost like an administrator but no access to setup.</description>
+        <portal>false</portal>
+        <show_my_tasks>false</show_my_tasks>
+      </role>
+      <salt>9a9b25cb6848cd98a62588e0b60762e5639fe4ff</salt>
+      <group_ids>
+        <group_id>1953008</group_id>
+      </group_ids>
+      <platform_widget_developer nil="true"/>
+      <custom_fields_values/>
+      <site>
+        <id>43379</id>
+        <name>Freya House 2</name>
+        <location>Freya House 2</location>
+        <description></description>
+        <time_zone></time_zone>
+        <language>-1</language>
+        <business_record>
+          <id>26881</id>
+          <name>Default Business Hours</name>
+          <description>This is your initial business hours record</description>
+        </business_record>
+      </site>
+      <avatar>
+        <type>image</type>
+        <image_class>avatar_image</image_class>
+        <sso_image_class></sso_image_class>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/73490070742ba57bdbe8/giphy_card.gif?1552028881</avatar_url>
+      </avatar>
+      <mfa_enabled>false</mfa_enabled>
+      <reports_to nil="true"/>
+    </assignee>
+    <requester>
+      <id>1530413</id>
+      <account_id>39281</account_id>
+      <user_id>1753326</user_id>
+      <email>MINHTA16@augustana.edu</email>
+      <name>Ta, Minh Q</name>
+      <disabled>false</disabled>
+      <has_gravatar>true</has_gravatar>
+      <customer_satisfaction_survey_time>2019-03-25T18:16:14-05:00</customer_satisfaction_survey_time>
+      <avatar>
+        <type>image</type>
+        <image_class>avatar_image</image_class>
+        <sso_image_class></sso_image_class>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/73490070742ba57bdbe8/giphy_card.gif?1552028881</avatar_url>
+      </avatar>
+    </requester>
+    <created_at>2019-03-25T18:15:46-05:00</created_at>
+    <updated_at>2019-03-25T18:16:18-05:00</updated_at>
+    <due_at>2019-03-25T00:00:00-05:00</due_at>
+    <sla_violations/>
+    <number_of_comments>0</number_of_comments>
+    <user_saw_all_comments>true</user_saw_all_comments>
+    <is_service_request>false</is_service_request>
+    <created_by>
+      <id>1530413</id>
+      <account_id>39281</account_id>
+      <user_id>1753326</user_id>
+      <email>MINHTA16@augustana.edu</email>
+      <name>Ta, Minh Q</name>
+      <disabled>false</disabled>
+      <has_gravatar>true</has_gravatar>
+      <customer_satisfaction_survey_time>2019-03-25T18:16:14-05:00</customer_satisfaction_survey_time>
+      <avatar>
+        <type>image</type>
+        <image_class>avatar_image</image_class>
+        <sso_image_class></sso_image_class>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/73490070742ba57bdbe8/giphy_card.gif?1552028881</avatar_url>
+      </avatar>
+    </created_by>
+    <resolution_description nil="true"/>
+    <resolution_code nil="true"/>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/incidents/36681945-testing-only.xml</href>
+    <site nil="true"/>
+    <department nil="true"/>
+    <cc/>
+    <custom_fields_values/>
+    <comments/>
+    <attachments/>
+    <statistics>
+      <statistic>
+        <statistic_type>State Changed</statistic_type>
+        <time>00:01</time>
+        <time_elapsed>00:01</time_elapsed>
+        <business_time_elapsed>00:01</business_time_elapsed>
+        <value>2019-03-25 23:16:14 UTC</value>
+      </statistic>
+      <statistic>
+        <statistic_type>to_first_response</statistic_type>
+        <time>00:01</time>
+        <time_elapsed>00:01</time_elapsed>
+        <business_time_elapsed>00:01</business_time_elapsed>
+        <value>2019-03-25 23:16:14 UTC</value>
+      </statistic>
+      <statistic>
+        <statistic_type>to_resolve</statistic_type>
+        <time>00:01</time>
+        <time_elapsed>00:01</time_elapsed>
+        <business_time_elapsed>00:01</business_time_elapsed>
+        <value>2019-03-25 23:16:14 UTC</value>
+      </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>00:01</time>
+        <time_elapsed>00:01</time_elapsed>
+        <business_time_elapsed>00:01</business_time_elapsed>
+        <value>2019-03-25 23:16:18 UTC</value>
+      </statistic>
+      <statistic>
+        <statistic_type>assignee_opened_show</statistic_type>
+        <time>00:01</time>
+        <time_elapsed>00:01</time_elapsed>
+        <business_time_elapsed>00:01</business_time_elapsed>
+        <value>1953008</value>
+      </statistic>
+    </statistics>
+    <tags/>
+    <incidents/>
+    <changes/>
+    <solutions/>
+    <associated_sla_names/>
+    <is_customer_satisfied nil="true"/>
+    <customer_satisfaction_response nil="true"/>
+    <total_time_spent>1800</total_time_spent>
+    <resolution nil="true"/>
+    <resolution_type nil="true"/>
+    <tasks/>
+    <time_tracks>
+      <time_track>
+        <id>2850248</id>
+        <href>https://api.samanage.com/incidents/36681945/time_tracks/2850248.xml</href>
+      </time_track>
+    </time_tracks>
+    <assets/>
+    <mobiles/>
+    <other_assets/>
+    <configuration_items/>
+    <purchase_orders/>
+    <request_variables/>
+  </incident>
+</incidents>

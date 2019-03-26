@@ -144,6 +144,7 @@ public class MainPaneController {
 
 		System.err.println("Load Complete!");
 		System.err.println("Please do not close this console!");
+		System.err.println("Booting up App...");
 		// setup infoTable
 		infoTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
 		infoTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("email"));

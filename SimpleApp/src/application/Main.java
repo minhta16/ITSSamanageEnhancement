@@ -24,7 +24,6 @@ public class Main extends Application {
         primaryStage.setTitle("Customized Samanage Experience");
 //        primaryStage.getIcons().add(new Image("file:/resources/img/favicon.jpg"));
         primaryStage.setScene(scene);
-        setUserAgentStylesheet(STYLESHEET_MODENA);
         primaryStage.show();
         controller.showPrompt();
 	
