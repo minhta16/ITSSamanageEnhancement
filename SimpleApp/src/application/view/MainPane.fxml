@@ -255,7 +255,6 @@
                                              </children>
                                           </FlowPane>
                                           <Label GridPane.rowIndex="3" />
-                                          <CheckBox fx:id="autoUpdateCheckBox" mnemonicParsing="false" onMouseClicked="#handleAutoUpdateCheckBox" prefHeight="18.0" prefWidth="189.0" text="Auto check for update?" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                                        </children>
                                        <BorderPane.margin>
                                           <Insets />
@@ -285,7 +284,7 @@
                                  <children>
                                     <Button fx:id="updateDataBtn" mnemonicParsing="false" onAction="#handleUpdateDataBtn" prefHeight="36.0" prefWidth="166.0" text="Update Data" GridPane.rowIndex="1" />
                                     <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="164.0" text="Check for Updates" />
-                                    <CheckBox mnemonicParsing="false" text="Check for Updates at Startup" GridPane.columnIndex="1" />
+                                    <CheckBox fx:id="autoUpdateCheckBox" mnemonicParsing="false" onAction="#handleAutoUpdateCheckBox" text="Check for Updates at Startup" GridPane.columnIndex="1" />
                                  </children>
                                  <padding>
                                     <Insets left="10.0" right="10.0" top="10.0" />
