@@ -29,6 +29,7 @@ public class AppSession {
 	private ArrayList<String> sites;
 	private ArrayList<String> priorities;
 	private TreeMap<String, User> users;
+	private boolean autoupdateCheck;
 	
 	private AppSession() {
 		userToken = "";
@@ -44,6 +45,7 @@ public class AppSession {
 		assigneeEmails = new ArrayList<String>();
 		departments = new ArrayList<String>();
 		sites = new ArrayList<String>();
+		autoupdateCheck = false;
 	}
 	private AppSession(String userToken) {
 		this.userToken = userToken;
@@ -59,6 +61,7 @@ public class AppSession {
 		assigneeEmails = new ArrayList<String>();
 		departments = new ArrayList<String>();
 		sites = new ArrayList<String>();
+		autoupdateCheck = false;
 	}
 	
 	public static AppSession getSession() {
@@ -138,6 +141,15 @@ public class AppSession {
 	public void setDefaultDomain(String domain) {
 		defaultDomain = domain;
 	}
+	
+	public boolean getAutoupdateCheck() {
+		return autoupdateCheck;
+	}
+	
+	public void setAutoupdateCheck(boolean autoupdate) {
+		autoupdateCheck = autoupdate;
+	}
+
 
 	public ArrayList<String> getDepartments() {
 		return departments;
@@ -218,20 +230,26 @@ public class AppSession {
 		requesterInfo = users.get(toCorrectDomain(defaultRequester));
 	}
 	
-	public boolean isUpToDate() {
-		if (SamanageRequests.getTotalElements(userToken, "users") != users.size()) {
-			return false;
-		} else if (SamanageRequests.getTotalElements(userToken, "departments") != departments.size()) {
-			return false;
-		} else if (SamanageRequests.getTotalElements(userToken, "sites") != sites.size()) {
-			return false;
-		} else if (SamanageRequests.getTotalElements(userToken, "categories") != categories.size()) {
-			return false;
-		} else {
-			return true;
+	public String getUpdatePrompt() {
+		String prompt = "";
+		int dbUsers = SamanageRequests.getTotalElements(userToken, "users");
+		int dbDepts = SamanageRequests.getTotalElements(userToken, "departments");
+		int dbSites = SamanageRequests.getTotalElements(userToken, "sites");
+		int dbCats = SamanageRequests.getTotalElements(userToken, "categories");
+		
+		if (dbUsers != users.size()) {
+			prompt += "Local Users: " + users.size() + ", Database Users: " + dbUsers; 
+		} else if (dbDepts != departments.size()) {
+			prompt += "Local Depts: " + departments.size() + ", Database Depts: " + dbDepts; 
+		} else if (dbSites != sites.size()) {
+			prompt += "Local Sites: " + sites.size() + ", Database Sites: " + dbSites; 
+		} else if (dbCats != categories.size()) {
+			prompt += "Local Categories: " + categories.size() + ", Database Categories: " + dbCats; 
 		}
+		return prompt;
 //				&& SamanageRequests.getTotalElements(userToken, users);
 	}
+	
 
 	public void updateUsers() {
 		if (SamanageRequests.getTotalElements(userToken, "users") != users.size()) {

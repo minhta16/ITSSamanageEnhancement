@@ -24,7 +24,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -255,7 +255,7 @@
                                              </children>
                                           </FlowPane>
                                           <Label GridPane.rowIndex="3" />
-                                          <CheckBox fx:id="autoUpdateCheck" mnemonicParsing="false" prefHeight="18.0" prefWidth="189.0" text="Auto check for update?" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                          <CheckBox fx:id="autoupdateCheck" mnemonicParsing="false" prefHeight="18.0" prefWidth="189.0" text="Auto check for update?" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                                        </children>
                                        <BorderPane.margin>
                                           <Insets />

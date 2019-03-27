@@ -106,10 +106,10 @@ public class MainPaneController {
 	@FXML
 	private TextField defaultRequesterField;
 	@FXML
-	private CheckBox autoUpdateCheck;
+	private CheckBox autoupdateCheck;
 	
 	
-	private boolean isUpToDate;
+	private String updatePrompt;
 	
 	@SuppressWarnings("serial")
 	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
@@ -123,7 +123,6 @@ public class MainPaneController {
 		try {
 			AppSession.getSession().loadData();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -132,40 +131,43 @@ public class MainPaneController {
 		
 		
 		// setup setting tab
-		System.err.println("Setting up Setting Tab");
+		System.err.print("Setting up Setting Tab\r");
 		setupSettingTab();
 		
 		
 		// setup priority
-		System.err.println("Setting up Priority");
+		System.err.print("Setting up Priority\r");
 		setupPriorityChoiceBox();
 		
 		// setup date picker
-		System.err.println("Setting up Date Picker");
+		System.err.print("Setting up Date Picker\r");
 		initializeDatePicker();
 		
 		// setup dept and site
-		System.err.println("Setting up Depts and Sites");
+		System.err.print("Setting up Depts and Sites\r");
 		setupDeptAndSiteChoiceBox();
 		
 		// setup TextFields autocomplete
-		System.err.println("Setting up Autocomplete");
+		System.err.print("Setting up Autocomplete\r");
 
 		setupEmailAutoComplete();
 		// setup main menu tab
-		System.err.println("Setting up Main Menu");
+		System.err.print("Setting up Main Menu\r");
 		setupMainMenuTab();
 		
 		// setup tabs
-		System.err.println("Setting up tabs");
+		System.err.print("Setting up tabs\r");
 		setupTabs();
 		
 
-		System.err.println("Checking for newer database version...");
-		isUpToDate = AppSession.getSession().isUpToDate();
+		autoupdateCheck.setSelected(AppSession.getSession().getAutoupdateCheck());
+		if (AppSession.getSession().getAutoupdateCheck()) {
+			System.err.print("Checking for newer database version...\r");
+			updatePrompt = AppSession.getSession().getUpdatePrompt();
+		}
 
 		System.err.println("Load Complete!");
-		System.err.println("Please do not close this console!");
+		System.err.println("DO NOT CLOSE THIS CONSOLE! THE APP WILL CLOSE ALONG WITH IT!");
 		System.err.println("Booting up App...");
 		// setup infoTable
 		infoTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -176,8 +178,13 @@ public class MainPaneController {
 	}
 	
 	public void showPrompt() {
-		if (!isUpToDate) {
-			showAlert("Database outdated", "Database is outdated. Please update in Settings", AlertType.WARNING);
+		if (AppSession.getSession().getAutoupdateCheck()) {
+			if (updatePrompt.equals("")) {
+				showAlert("Database outdated", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
+			}
+		} else {
+			showAlert("Database update check disabled", "Database update check disabled. "
+					+ "Please enable if you want to see updates.", AlertType.WARNING);
 		}
 	}
 	
@@ -530,8 +537,18 @@ public class MainPaneController {
 	}
 	
 	@FXML
+	private void handleAutoupdateCheck() {
+		AppSession.getSession().setAutoupdateCheck(autoupdateCheck.isSelected());
+		try {
+			AppSession.getSession().saveData();
+		} catch (JsonIOException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
 	private void handleUpdateDataBtn() {
-		if (isUpToDate) {
+		if (!updatePrompt.equals("")) {
 			showAlert("Already Up-to-date", "The data is already up to date.", AlertType.INFORMATION);
 		} else {
 			Alert alert = new Alert(AlertType.WARNING,
@@ -573,6 +590,7 @@ public class MainPaneController {
 						updateDataBtn.textProperty().unbind();
 						updateDataBtn.setText("Update Data");
 				        updateDataBtn.setDisable(false);
+					    updatePrompt = "";
 						
 					}
 				});
