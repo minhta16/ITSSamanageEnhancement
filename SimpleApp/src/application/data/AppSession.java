@@ -30,14 +30,13 @@ public class AppSession {
 	private ArrayList<String> sites;
 	private ArrayList<String> priorities;
 	private TreeMap<String, User> users;
-	private boolean autoupdateCheck;
 	
 	private AppSession() {
 		userToken = "";
 		defaultDomain = "";
 		defaultAssignee = "";
 		defaultRequester = "";
-		defaultAutoUpdateCheckChoice = new Boolean(true);
+		defaultAutoUpdateCheckChoice = false;
 		requesterInfo = new User();
 		trackedUsers = new ArrayList<User>();
 		users = new TreeMap<String, User>();
@@ -47,14 +46,13 @@ public class AppSession {
 		assigneeEmails = new ArrayList<String>();
 		departments = new ArrayList<String>();
 		sites = new ArrayList<String>();
-		autoupdateCheck = false;
 	}
 	private AppSession(String userToken) {
 		this.userToken = userToken;
 		defaultDomain = "";
 		defaultAssignee = "";
 		defaultRequester = "";
-		defaultAutoUpdateCheckChoice = new Boolean(true);
+		defaultAutoUpdateCheckChoice = false;
 		requesterInfo = new User();
 		trackedUsers = new ArrayList<User>();
 		users = new TreeMap<String, User>();
@@ -64,7 +62,6 @@ public class AppSession {
 		assigneeEmails = new ArrayList<String>();
 		departments = new ArrayList<String>();
 		sites = new ArrayList<String>();
-		autoupdateCheck = false;
 	}
 	
 	public static AppSession getSession() {
@@ -75,8 +72,6 @@ public class AppSession {
 		trackedUsers.add(user);
 		saveData();
 	}
-	
-	
 	
 	public TreeMap<String, ArrayList<String>> getCategories() {
 		return categories;
