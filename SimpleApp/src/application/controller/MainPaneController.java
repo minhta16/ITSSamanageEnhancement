@@ -46,14 +46,14 @@ public class MainPaneController {
 	@FXML
 	private TabPane tabPane;
 	@FXML 
-	private Tab mainMenu;
+	private Tab mainMenuTab;
 	@FXML
-	private Tab incidentEdit;
+	private Tab incidentEditTab;
 	@FXML
-	private Tab settings;
+	private Tab settingsTab;
 	
 	@FXML
-	private Button createNewIncident;
+	private Button createNewIncidentBtn;
 
 	@FXML
 	private ChoiceBox<String> statesChoiceBox;
@@ -106,7 +106,7 @@ public class MainPaneController {
 	@FXML
 	private TextField defaultRequesterField;
 	@FXML
-	private CheckBox autoupdateCheck;
+	private CheckBox autoUpdateCheckBox;
 	
 	
 	private String updatePrompt;
@@ -159,9 +159,8 @@ public class MainPaneController {
 		System.err.print("Setting up tabs\r");
 		setupTabs();
 		
-
-		autoupdateCheck.setSelected(AppSession.getSession().getAutoupdateCheck());
-		if (AppSession.getSession().getAutoupdateCheck()) {
+		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
+		if (AppSession.getSession().getDefaultAutoUpdateCheck()) {
 			System.err.print("Checking for newer database version...\r");
 			updatePrompt = AppSession.getSession().getUpdatePrompt();
 		}
@@ -178,7 +177,7 @@ public class MainPaneController {
 	}
 	
 	public void showPrompt() {
-		if (AppSession.getSession().getAutoupdateCheck()) {
+		if (AppSession.getSession().getDefaultAutoUpdateCheck()) {
 			if (updatePrompt.equals("")) {
 				showAlert("Database outdated", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
 			}
@@ -189,12 +188,16 @@ public class MainPaneController {
 	}
 	
 	private void setupTabs() {
-		mainMenu.setDisable(false);
-		incidentEdit.setDisable(true);
+		//mainMenu.setDisable(false);
 		
-		createNewIncident.setOnAction((e) -> {
-			incidentEdit.setDisable(false);
-			tabPane.getSelectionModel().select(incidentEdit);
+		
+		if (tabPane.getSelectionModel().getSelectedIndex() == 0) {
+			incidentEditTab.setDisable(true);
+		}
+		
+		createNewIncidentBtn.setOnAction((e) -> {
+			incidentEditTab.setDisable(false);
+			tabPane.getSelectionModel().select(incidentEditTab);
 		});
 		
 		
@@ -213,6 +216,7 @@ public class MainPaneController {
 		System.err.println("Setting up Incident Name Prompt");
 		updateIncidentNamePrompt();
 	}
+
 	
 	private void setupSettingTab() {
 		userTokenField.setText(AppSession.getSession().getUserToken());
@@ -220,9 +224,14 @@ public class MainPaneController {
 		defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
 		
+		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
+		
 		new AutoCompletionTextFieldBinding<>(defaultAssigneeField, savedEmailprovider);
 		new AutoCompletionTextFieldBinding<>(defaultRequesterField, savedEmailprovider);
+		
+		//autoUpdateCheck.get
 	}
+	
 	
 	private void setupCatChoiceBox() {
 		AppSession.getSession().setCategories(AppSession.getSession().getCategories());
@@ -372,8 +381,8 @@ public class MainPaneController {
 			incidentNameField.requestFocus();
 			
 			
-			tabPane.getSelectionModel().select(mainMenu);
-			incidentEdit.setDisable(true);
+			tabPane.getSelectionModel().select(mainMenuTab);
+			incidentEditTab.setDisable(true);
 			
 		}
 	}
@@ -538,7 +547,7 @@ public class MainPaneController {
 	
 	@FXML
 	private void handleAutoupdateCheck() {
-		AppSession.getSession().setAutoupdateCheck(autoupdateCheck.isSelected());
+		AppSession.getSession().setDefaultAutoUpdateCheck(autoUpdateCheckBox.isSelected());
 		try {
 			AppSession.getSession().saveData();
 		} catch (JsonIOException | IOException e) {
@@ -599,6 +608,17 @@ public class MainPaneController {
 			}
 			
 		}
+	}
+	
+	@FXML
+	private void handleAutoUpdateCheckBox() {
+		AppSession.getSession().setDefaultAutoUpdateCheck(autoUpdateCheckBox.selectedProperty().getValue());
+		try {
+			AppSession.getSession().saveData();
+		} catch (JsonIOException | IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	private String convertDate(LocalDate date) {

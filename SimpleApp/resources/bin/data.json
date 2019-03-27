@@ -13,6 +13,7 @@
     "site": "Freya House 2",
     "ID": "1753326"
   },
+  "defaultAutoUpdateCheckChoice": false,
   "assigneeEmails": [
     "janaarpy@augustana.edu",
     "bradbjork@augustana.edu",
