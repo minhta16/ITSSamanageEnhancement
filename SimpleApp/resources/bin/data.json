@@ -4,6 +4,7 @@
   "defaultDomain": "augustana.edu",
   "defaultAssignee": "hainguyen17",
   "defaultRequester": "minhta16@augustana.edu",
+  "autoUpdateCheck": true,
   "requesterInfo": {
     "name": "Ta, Minh Q",
     "email": "minhta16@augustana.edu",

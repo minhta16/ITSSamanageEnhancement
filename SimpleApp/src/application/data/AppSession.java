@@ -21,6 +21,7 @@ public class AppSession {
 	private String defaultAssignee;
 	private String defaultRequester;
 	private User requesterInfo;
+	private Boolean defaultAutoUpdateCheckChoice;
 	private transient ArrayList<User> trackedUsers;
 	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
@@ -35,6 +36,7 @@ public class AppSession {
 		defaultDomain = "";
 		defaultAssignee = "";
 		defaultRequester = "";
+		defaultAutoUpdateCheckChoice = new Boolean(true);
 		requesterInfo = new User();
 		trackedUsers = new ArrayList<User>();
 		users = new TreeMap<String, User>();
@@ -50,6 +52,7 @@ public class AppSession {
 		defaultDomain = "";
 		defaultAssignee = "";
 		defaultRequester = "";
+		defaultAutoUpdateCheckChoice = new Boolean(true);
 		requesterInfo = new User();
 		trackedUsers = new ArrayList<User>();
 		users = new TreeMap<String, User>();
@@ -69,6 +72,8 @@ public class AppSession {
 		trackedUsers.add(user);
 		saveData();
 	}
+	
+	
 	
 	public TreeMap<String, ArrayList<String>> getCategories() {
 		return categories;
@@ -138,6 +143,14 @@ public class AppSession {
 	public void setDefaultDomain(String domain) {
 		defaultDomain = domain;
 	}
+	
+	public Boolean getDefaultAutoUpdateCheck() {
+		return defaultAutoUpdateCheckChoice; 
+	}
+	
+	public void setDefaultAutoUpdateCheck(Boolean choice) {
+		defaultAutoUpdateCheckChoice = choice;
+	}
 
 	public ArrayList<String> getDepartments() {
 		return departments;
@@ -176,6 +189,8 @@ public class AppSession {
 	public String getDefaultRequester() {
 		return toShortDomain(defaultRequester);
 	}
+	
+	
 
 	/**
 	 * @return the requesterInfo

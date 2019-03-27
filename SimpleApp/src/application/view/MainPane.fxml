@@ -49,7 +49,7 @@
    <center>
       <TabPane fx:id="tabPane" prefHeight="295.0" prefWidth="824.0" BorderPane.alignment="CENTER">
          <tabs>
-            <Tab fx:id="mainMenu" closable="false" text="Main Menu">
+            <Tab fx:id="mainMenuTab" closable="false" text="Main Menu">
                <content>
                   <GridPane>
                     <columnConstraints>
@@ -68,12 +68,12 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </padding>
                      <children>
-                        <Button fx:id="createNewIncident" mnemonicParsing="false" text="+ New Incident" GridPane.columnIndex="3" />
+                        <Button fx:id="createNewIncidentBtn" mnemonicParsing="false" text="+ New Incident" GridPane.columnIndex="3" />
                      </children>
                   </GridPane>
                </content>
             </Tab>
-            <Tab fx:id="incidentEdit" closable="false" text="Incident Edit">
+            <Tab fx:id="incidentEditTab" closable="false" text="Incident Edit">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
@@ -216,7 +216,7 @@
                   </BorderPane>
                </content>
             </Tab>
-            <Tab fx:id="settings" closable="false" text="Settings">
+            <Tab fx:id="settingsTab" closable="false" text="Settings">
                <content>
                   <TabPane>
                      <tabs>
@@ -255,7 +255,7 @@
                                              </children>
                                           </FlowPane>
                                           <Label GridPane.rowIndex="3" />
-                                          <CheckBox fx:id="autoUpdateCheck" mnemonicParsing="false" prefHeight="18.0" prefWidth="189.0" text="Auto check for update?" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                          <CheckBox fx:id="autoUpdateCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="189.0" text="Auto check for update?" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                                        </children>
                                        <BorderPane.margin>
                                           <Insets />
