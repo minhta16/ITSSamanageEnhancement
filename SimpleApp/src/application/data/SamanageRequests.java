@@ -6,13 +6,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.Date;
 import java.util.TreeMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -26,6 +23,97 @@ import org.xml.sax.InputSource;
 
 public class SamanageRequests {
 
+	private static final String ACCEPT_VERSION = "application/vnd.samanage.v2.1+xml";
+	// HTML METHOD:
+	// GET
+	public static TreeMap<String, Incident> getIncidents(String userToken, String userEmail) {
+		TreeMap<String, Incident> incidentMap = new TreeMap<String, Incident>();
+
+		boolean hasMore = true;
+		int curPage = 1;
+		while (hasMore) {
+			try {
+				// String url =
+				// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
+				/*
+				 *  curl -H "X-Samanage-Authorization: Bearer TOKEN"
+				 *  -H'Accept: application/vnd.samanage.v2.1+xml'
+				 *  -X GET https://api.samanage.com/incidents.xml
+				 */
+			    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");  
+			    Date date = new Date();  
+				String url = "https://api.samanage.com/incidents.xml"
+						+ "?per_page=100&page=" + curPage + "&email=" + userEmail
+						+ "&created_at=" + sdf.format(date);
+
+				URL obj = new URL(url);
+				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+				conn.setDoOutput(true);
+
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+				conn.setRequestProperty("Accept", ACCEPT_VERSION);
+				// conn.setRequestProperty("Content-Type", "text/xml");
+
+				BufferedReader br;
+				if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+					br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				} else {
+					br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+				}
+				
+				StringBuffer xml = new StringBuffer();
+				String output;
+				while ((output = br.readLine()) != null) {
+					xml.append(output);
+				}
+
+				// got from
+				// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+				Element rootElement = document.getDocumentElement();
+
+				NodeList listOfIncidents = rootElement.getElementsByTagName("incident");
+				if (listOfIncidents.getLength() != 100) {
+					hasMore = false;
+				}
+
+				for (int i = 0; i < listOfIncidents.getLength(); i++) {
+
+					if (listOfIncidents.item(i) instanceof Element) {
+						Element incident = (Element) listOfIncidents.item(i);
+						ArrayList<User> trackedUsers = new ArrayList<User>();
+
+//						ArrayList<User> trackedUsers = getTrackedUsers(incident);
+						
+						String number = getString("number", incident);
+						Incident newIncident = new Incident(number,
+								getString("state", incident),
+								getString("name", incident), 
+								getString("priority", incident),
+								getString("name",  (Element) incident.getElementsByTagName("category").item(0)),
+								getString("name",  (Element) incident.getElementsByTagName("subcategory").item(0)),
+								getString("email",  (Element) incident.getElementsByTagName("assignee").item(0)).toLowerCase(),
+								getString("email",  (Element) incident.getElementsByTagName("requester").item(0)).toLowerCase(),
+								getString("name",  (Element) incident.getElementsByTagName("site").item(0)).toLowerCase(),
+								getString("name",  (Element) incident.getElementsByTagName("department").item(0)).toLowerCase(),
+								trackedUsers);
+						
+						incidentMap.put(number, newIncident);
+					}
+
+				}
+				conn.disconnect();
+				curPage++;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return incidentMap;
+		// System.err.println(map);
+	}
 	// HTML METHOD:
 	// POST
 
@@ -56,7 +144,7 @@ public class SamanageRequests {
 
 		conn.setRequestMethod("POST");
 		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-		conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
 		conn.setRequestProperty("Content-Type", "text/xml");
 
 		String data1 = "<incident>" + " <name>Test</name>" + " <priority>Medium</priority>"
@@ -120,7 +208,7 @@ public class SamanageRequests {
 
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
 			conn.setRequestProperty("Content-Type", "text/xml");
 
 			String data = "<time_track>" + "<name>" + trackCmt + "</name>";
@@ -150,7 +238,7 @@ public class SamanageRequests {
 
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
 			// conn.setRequestProperty("Content-Type", "text/xml");
 
 			BufferedReader br;
@@ -216,7 +304,7 @@ public class SamanageRequests {
 
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-				conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+				conn.setRequestProperty("Accept", ACCEPT_VERSION);
 				// conn.setRequestProperty("Content-Type", "text/xml");
 
 				BufferedReader br;
@@ -285,7 +373,7 @@ public class SamanageRequests {
 
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
 			conn.setRequestProperty("Content-Type", "text/xml");
 
 			Element rootElement = documentFromOutput(conn);
@@ -338,7 +426,7 @@ public class SamanageRequests {
 
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-				conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+				conn.setRequestProperty("Accept", ACCEPT_VERSION);
 				conn.setRequestProperty("Content-Type", "text/xml");
 
 				Element rootElement = documentFromOutput(conn);
@@ -384,7 +472,7 @@ public class SamanageRequests {
 
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-				conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+				conn.setRequestProperty("Accept", ACCEPT_VERSION);
 				conn.setRequestProperty("Content-Type", "text/xml");
 
 				Element rootElement = documentFromOutput(conn);
@@ -421,7 +509,7 @@ public class SamanageRequests {
 
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
 			conn.setRequestProperty("Content-Type", "application/xml");
 
 			Element rootElement = documentFromOutput(conn);
@@ -445,7 +533,7 @@ public class SamanageRequests {
 
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
 			conn.setRequestProperty("Content-Type", "application/xml");
 
 			Element rootElement = documentFromOutput(conn);
@@ -487,7 +575,7 @@ public class SamanageRequests {
 
 			conn.setRequestMethod("PUT");
 			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", "application/vnd.samanage.v2.1+xml");
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
 			conn.setRequestProperty("Content-Type", "text/xml");
 
 			String data = "<incident>" + " <state>" + state + "</state>" + "</incident>";
@@ -520,6 +608,21 @@ public class SamanageRequests {
 
 		return null;
 	}
+	
+	private static ArrayList<User> getTrackedUsers(Element incident) {
+		ArrayList<User> users = new ArrayList<User>();
+		NodeList timeTracks = incident.getElementsByTagName("time_tracks");
+		for (int i = 0; i < timeTracks.getLength(); i++) {
+			if (timeTracks.item(i) instanceof Element) {
+				Element site = (Element) timeTracks.item(i);
+				String name = getString("name", site);
+				users.add(new User());
+			}
+
+		}
+		return null;
+	}
+	
 	
 	public static Element documentFromOutput(HttpURLConnection conn) {
 		Element rootElement = null;

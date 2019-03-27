@@ -16,12 +16,14 @@ public class AppSession {
 	private final String DATA_LOCATION = "./resources/bin/data.json";
 	private static AppSession session = new AppSession();
 	
+	private String userEmail;
 	private String userToken;
 	private String defaultDomain;
 	private String defaultAssignee;
 	private String defaultRequester;
 	private User requesterInfo;
-	private Boolean defaultAutoUpdateCheckChoice;
+	private boolean defaultAutoUpdateCheckChoice;
+	
 	private transient ArrayList<User> trackedUsers;
 	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
@@ -126,6 +128,16 @@ public class AppSession {
 		return trackedUsers;
 	}
 	
+	public void setUserEmail(String email) {
+		if (users.containsKey(toCorrectDomain(email))) {
+			userEmail = toShortDomain(email);
+		}
+	}
+	
+	public String getUserEmail() {
+		return userEmail;
+	}
+	
 	public void setUserToken(String userToken) {
 		this.userToken = userToken;
 	}
@@ -188,8 +200,6 @@ public class AppSession {
 		return toShortDomain(defaultRequester);
 	}
 	
-	
-
 	/**
 	 * @return the requesterInfo
 	 */

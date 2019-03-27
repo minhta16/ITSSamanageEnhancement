@@ -12,6 +12,7 @@ import org.controlsfx.control.textfield.TextFields;
 import com.google.gson.JsonIOException;
 
 import application.data.AppSession;
+import application.data.Incident;
 import application.data.SamanageRequests;
 import application.data.User;
 import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
@@ -96,7 +97,11 @@ public class MainPaneController {
 	private Button updateDataBtn;
 	@FXML
 	private TableView<User> infoTable;
+	@FXML
+	private TableView<Incident> incidentTable;
 
+	@FXML
+	private TextField userEmailField;
 	@FXML
 	private TextArea userTokenField;
 	@FXML
@@ -154,6 +159,9 @@ public class MainPaneController {
 		// setup main menu tab
 		System.err.print("Setting up Main Menu\r");
 		setupMainMenuTab();
+
+		System.err.print("Setting up Incident Editor\r");
+		setupIncidentEditTab();
 		
 		// setup tabs
 		System.err.print("Setting up tabs\r");
@@ -168,12 +176,6 @@ public class MainPaneController {
 		System.err.println("Load Complete!");
 		System.err.println("DO NOT CLOSE THIS CONSOLE! THE APP WILL CLOSE ALONG WITH IT!");
 		System.err.println("Booting up App...");
-		// setup infoTable
-		infoTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
-		infoTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("email"));
-		infoTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("time"));
-		infoTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("comment"));
-		infoTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
 	}
 	
 	public void showPrompt() {
@@ -204,16 +206,33 @@ public class MainPaneController {
 	}
 	
 	private void setupMainMenuTab() {
+		
+		// setup infoTable
+		incidentTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("number"));
+		incidentTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("state"));
+		incidentTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("title"));
+		incidentTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("priority"));
+		incidentTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("cat"));
+		incidentTable.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("subcat"));
+		incidentTable.getColumns().get(6).setCellValueFactory(new PropertyValueFactory<>("assignee"));
+		incidentTable.getColumns().get(7).setCellValueFactory(new PropertyValueFactory<>("requester"));
+		incidentTable.getColumns().get(8).setCellValueFactory(new PropertyValueFactory<>("site"));
+		incidentTable.getColumns().get(9).setCellValueFactory(new PropertyValueFactory<>("dept"));
+		incidentTable.getColumns().get(10).setCellValueFactory(new PropertyValueFactory<>("trackedUsersNum"));
+		incidentTable.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
+	}
+	
+	private void setupIncidentEditTab() {
 		// setup state
-		System.err.println("Setting up State");
+		System.err.print("Setting up State\r");
 		setupStatesChoiceBox();
 		
 		// setup category
-		System.err.println("Setting up Categories");
+		System.err.print("Setting up Categories\r");
 		setupCatChoiceBox();
 		
 		// setup incident name
-		System.err.println("Setting up Incident Name Prompt");
+		System.err.print("Setting up Incident Name Prompt\r");
 		updateIncidentNamePrompt();
 	}
 
@@ -223,13 +242,18 @@ public class MainPaneController {
 		domainField.setText(AppSession.getSession().getDefaultDomain());
 		defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
-		
-		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
-		
+
 		new AutoCompletionTextFieldBinding<>(defaultAssigneeField, savedEmailprovider);
 		new AutoCompletionTextFieldBinding<>(defaultRequesterField, savedEmailprovider);
 		
-		//autoUpdateCheck.get
+		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
+		
+		// setup infoTable
+		infoTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
+		infoTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("email"));
+		infoTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("time"));
+		infoTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("comment"));
+		infoTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
 	}
 	
 	
@@ -492,6 +516,11 @@ public class MainPaneController {
 	}
 
 	@FXML
+	private void handleUpdateListBtn() {
+		
+	}
+	
+	@FXML
 	private void handleIncidentNameType() {
 		
 	}
@@ -523,6 +552,20 @@ public class MainPaneController {
 	@FXML
 	public void handleCatChange() {
 		updateIncidentNamePrompt();
+	}
+	
+	@FXML
+	private void handleUserEmailFieldChange() {
+		String initDefault = AppSession.getSession().getUserEmail();
+		AppSession.getSession().setUserEmail(userEmailField.getText());
+		if (!initDefault.equalsIgnoreCase(AppSession.getSession().getUserEmail())) {
+			userEmailField.setText(AppSession.getSession().getUserEmail());
+			try {
+				AppSession.getSession().saveData();
+			} catch (JsonIOException | IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@FXML
