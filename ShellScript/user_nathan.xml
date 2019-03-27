@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <id>2552404</id>
+    <name>Truong, Nguyen</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>nguyentruong17@augustana.edu</email>
+    <created_at>2017-08-11T11:52:00-05:00</created_at>
+    <updated_at>2019-03-27T14:46:44-05:00</updated_at>
+    <last_login>2019-03-27T14:46:44-05:00</last_login>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>471977</id>
+      <name>Student Intern</name>
+      <description>Almost like an administrator but no access to setup.</description>
+      <portal>false</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>921b3aaeaca01f81eb449020e83a0eec527945b1</salt>
+    <group_ids>
+      <group_id>2753563</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43105</id>
+      <name>Andreen 430</name>
+      <location>Andreen 430</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>image</type>
+      <image_class>avatar_image</image_class>
+      <sso_image_class></sso_image_class>
+      <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/47ae804eabaeed34ec84/duxv0e8_card.gif?1552055759</avatar_url>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <page>1</page>
+  <per_page>100</per_page>
+  <total_entries>1</total_entries>
+</users>

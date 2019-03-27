@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <id>1753326</id>
+    <name>Ta, Minh Q</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>MINHTA16@augustana.edu</email>
+    <created_at>2016-08-11T09:02:59-05:00</created_at>
+    <updated_at>2019-03-26T11:41:28-05:00</updated_at>
+    <last_login>2019-03-26T11:41:28-05:00</last_login>
+    <phone>84.98861969</phone>
+    <mobile_phone></mobile_phone>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>471977</id>
+      <name>Student Intern</name>
+      <description>Almost like an administrator but no access to setup.</description>
+      <portal>false</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>9a9b25cb6848cd98a62588e0b60762e5639fe4ff</salt>
+    <group_ids>
+      <group_id>1953008</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43379</id>
+      <name>Freya House 2</name>
+      <location>Freya House 2</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>image</type>
+      <image_class>avatar_image</image_class>
+      <sso_image_class></sso_image_class>
+      <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/73490070742ba57bdbe8/giphy_card.gif?1552028881</avatar_url>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <page>1</page>
+  <per_page>100</per_page>
+  <total_entries>1</total_entries>
+</users>

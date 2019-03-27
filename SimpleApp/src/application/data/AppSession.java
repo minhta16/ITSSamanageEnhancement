@@ -13,7 +13,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.stream.JsonReader;
 
 public class AppSession {
-	private final String DATA_LOCATION = "./resources/bin/data.json";
+	private static final String DATA_LOCATION = "./resources/bin/data.json";
 	private static AppSession session = new AppSession();
 	
 	private String userEmail;
@@ -23,8 +23,11 @@ public class AppSession {
 	private String defaultRequester;
 	private User requesterInfo;
 	private boolean defaultAutoUpdateCheckChoice;
-	
+
+	private transient TreeMap<String, Incident> currentIncidents;
 	private transient ArrayList<User> trackedUsers;
+	private transient IncidentEditType editType;
+
 	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
 	private TreeMap<String, ArrayList<String>> categories;
@@ -34,28 +37,17 @@ public class AppSession {
 	private TreeMap<String, User> users;
 	
 	private AppSession() {
-		userToken = "";
-		defaultDomain = "";
-		defaultAssignee = "";
-		defaultRequester = "";
-		defaultAutoUpdateCheckChoice = false;
-		requesterInfo = new User();
-		trackedUsers = new ArrayList<User>();
-		users = new TreeMap<String, User>();
-		states = new ArrayList<String>();
-		categories = new TreeMap<String, ArrayList<String>>();
-		priorities = new ArrayList<String>();
-		assigneeEmails = new ArrayList<String>();
-		departments = new ArrayList<String>();
-		sites = new ArrayList<String>();
+		this("");
 	}
 	private AppSession(String userToken) {
+		userEmail = "";
 		this.userToken = userToken;
 		defaultDomain = "";
 		defaultAssignee = "";
 		defaultRequester = "";
 		defaultAutoUpdateCheckChoice = false;
 		requesterInfo = new User();
+		currentIncidents = new TreeMap<String, Incident>();
 		trackedUsers = new ArrayList<User>();
 		users = new TreeMap<String, User>();
 		states = new ArrayList<String>();
@@ -94,6 +86,27 @@ public class AppSession {
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * @return the currentIncidents
+	 */
+	public TreeMap<String, Incident> getCurrentIncidents() {
+		return currentIncidents;
+	}
+	/**
+	 * @param currentIncidents the currentIncidents to set
+	 */
+	public void setCurrentIncidents(TreeMap<String, Incident> currentIncidents) {
+		this.currentIncidents = currentIncidents;
+	}
+
+	
+	/**
+	 * @param users the users to set
+	 */
+	public void setUsers(TreeMap<String, User> users) {
+		this.users = users;
 	}
 	
 	public TreeMap<String, User> getUsers() {
@@ -177,6 +190,20 @@ public class AppSession {
 	public void setSites(ArrayList<String> sites) {
 		this.sites = sites;
 	}
+	
+	/**
+	 * @return the editType
+	 */
+	public IncidentEditType getEditType() {
+		return editType;
+	}
+	/**
+	 * @param editType the editType to set
+	 */
+	public void setEditType(IncidentEditType editType) {
+		this.editType = editType;
+	}
+	
 	public void clearTrackedUsers() {
 		trackedUsers.clear();
 	}
@@ -241,6 +268,13 @@ public class AppSession {
 		requesterInfo = users.get(toCorrectDomain(defaultRequester));
 	}
 	
+	public void updateTodayIncidents() {
+		TreeMap<String, Incident> newIncidents = new TreeMap<String, Incident>();
+		for (String groupID: users.get(toCorrectDomain(userEmail)).getGroupID()) {
+			 newIncidents.putAll(SamanageRequests.getIncidents(userToken, groupID));
+		}
+		currentIncidents = newIncidents;
+	}
 	public String getUpdatePrompt() {
 		String prompt = "";
 		int dbUsers = SamanageRequests.getTotalElements(userToken, "users");
@@ -289,7 +323,6 @@ public class AppSession {
 	
 	private String toShortDomain(String email) {
 		if (email.contains("@")) {
-			System.err.println(email.split("@")[1]);
 			if (email.split("@")[1].equalsIgnoreCase(defaultDomain)) {
 				return email.split("@")[0];
 			}

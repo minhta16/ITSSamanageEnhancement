@@ -15,6 +15,8 @@ public class Incident {
 	private String requester;
 	private String site;
 	private String dept;
+	private String desc;
+
 	private ArrayList<User> trackedUsers;
 	private int trackedUsersNum;
 	private transient Button editBtn;
@@ -30,13 +32,14 @@ public class Incident {
 		requester = "";
 		site = "";
 		dept = "";
+		desc = "";
 		trackedUsers = new ArrayList<User>();
 		setTrackedUsersNum(0);
 		editBtn = new Button("Edit");
 	}
 	public Incident(String number, String state, String title, String priority, String cat
 			, String subcat, String assignee, String requester, String site, String dept
-			, ArrayList<User> trackedUsers) {
+			, String desc, ArrayList<User> trackedUsers) {
 		this.number = number;
 		this.state = state;
 		this.title = title;
@@ -47,6 +50,7 @@ public class Incident {
 		this.requester = requester;
 		this.site = site;
 		this.dept = dept;
+		this.desc = desc;
 		this.trackedUsers = trackedUsers;
 		setTrackedUsersNum(trackedUsers.size());
 		editBtn = new Button("Edit");
@@ -102,7 +106,7 @@ public class Incident {
 	/**
 	 * @return the cat
 	 */
-	public String getCat() {
+	public String getCategory() {
 		return cat;
 	}
 	/**
@@ -114,7 +118,7 @@ public class Incident {
 	/**
 	 * @return the subcat
 	 */
-	public String getSubcat() {
+	public String getSubcategory() {
 		return subcat;
 	}
 	/**
@@ -183,6 +187,31 @@ public class Incident {
 	public void setTrackedUsers(ArrayList<User> trackedUsers) {
 		this.trackedUsers = trackedUsers;
 		updateTrackedUsersNum();
+	}
+
+	/**
+	 * @return the desc
+	 */
+	public String getDescription() {
+		return desc;
+	}
+	/**
+	 * @param desc the desc to set
+	 */
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+	/**
+	 * @return the cat
+	 */
+	public String getCat() {
+		return cat;
+	}
+	/**
+	 * @return the subcat
+	 */
+	public String getSubcat() {
+		return subcat;
 	}
 	/**
 	 * @return the editBtn

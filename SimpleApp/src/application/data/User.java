@@ -1,5 +1,7 @@
 package application.data;
 
+import java.util.ArrayList;
+
 import javafx.scene.control.Button;
 
 public class User {
@@ -13,6 +15,7 @@ public class User {
 
 
 	private String ID;
+	private ArrayList<String> groupID;
 	
 	public User() {
 		name = "";
@@ -22,13 +25,29 @@ public class User {
 		comment = "";
 		dept = "";
 		site = "";
+		groupID = new ArrayList<String>();
 		removeBtn = new Button("X");
 	}
-	
+
 	public User(String name, String email, String ID) {
 		this.name = name;
 		this.email = email;
 		this.ID = ID;
+	}
+
+	
+	/**
+	 * @return the groupID
+	 */
+	public ArrayList<String> getGroupID() {
+		return groupID;
+	}
+
+	/**
+	 * @param groupID the groupID to set
+	 */
+	public void setGroupID(ArrayList<String> groupID) {
+		this.groupID = groupID;
 	}
 	
 	public void setName(String name) {

@@ -13,6 +13,7 @@ import com.google.gson.JsonIOException;
 
 import application.data.AppSession;
 import application.data.Incident;
+import application.data.IncidentEditType;
 import application.data.SamanageRequests;
 import application.data.User;
 import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
@@ -112,9 +113,11 @@ public class MainPaneController {
 	private TextField defaultRequesterField;
 	@FXML
 	private CheckBox autoUpdateCheckBox;
+	@FXML
+	private Button checkForUpdateBtn;
 	
 	
-	private String updatePrompt;
+	private String updatePrompt = "";
 	
 	@SuppressWarnings("serial")
 	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
@@ -124,6 +127,7 @@ public class MainPaneController {
 		
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
+		
 		System.err.println("Loading...");
 		try {
 			AppSession.getSession().loadData();
@@ -138,6 +142,7 @@ public class MainPaneController {
 		// setup setting tab
 		System.err.print("Setting up Setting Tab\r");
 		setupSettingTab();
+		updatePrompt = AppSession.getSession().getUpdatePrompt();
 		
 		
 		// setup priority
@@ -180,7 +185,7 @@ public class MainPaneController {
 	
 	public void showPrompt() {
 		if (AppSession.getSession().getDefaultAutoUpdateCheck()) {
-			if (updatePrompt.equals("")) {
+			if (!updatePrompt.equals("")) {
 				showAlert("Database outdated", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
 			}
 		} else {
@@ -200,14 +205,14 @@ public class MainPaneController {
 		createNewIncidentBtn.setOnAction((e) -> {
 			incidentEditTab.setDisable(false);
 			tabPane.getSelectionModel().select(incidentEditTab);
+			AppSession.getSession().setEditType(IncidentEditType.NEW);
 		});
 		
 		
 	}
 	
 	private void setupMainMenuTab() {
-		
-		// setup infoTable
+		// setup incidentTable
 		incidentTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("number"));
 		incidentTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("state"));
 		incidentTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -238,11 +243,13 @@ public class MainPaneController {
 
 	
 	private void setupSettingTab() {
+		userEmailField.setText(AppSession.getSession().getUserEmail());
 		userTokenField.setText(AppSession.getSession().getUserToken());
 		domainField.setText(AppSession.getSession().getDefaultDomain());
 		defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
 
+		new AutoCompletionTextFieldBinding<>(userEmailField, savedEmailprovider);
 		new AutoCompletionTextFieldBinding<>(defaultAssigneeField, savedEmailprovider);
 		new AutoCompletionTextFieldBinding<>(defaultRequesterField, savedEmailprovider);
 		
@@ -397,31 +404,52 @@ public class MainPaneController {
 		submitBtn.setText("Loading...");
 		submitBtn.setDisable(true);
 
-	
-		new Thread(() -> {
-			try {
-				String incidentName;
-				if (incidentNameField.getText().equals("")) {
-					incidentName = getDefaultIncidentName();
-				} else {
-					incidentName = incidentNameField.getText();
+		if (AppSession.getSession().getEditType() == IncidentEditType.NEW) {
+			new Thread(() -> {
+				try {
+					String incidentName;
+					if (incidentNameField.getText().equals("")) {
+						incidentName = getDefaultIncidentName();
+					} else {
+						incidentName = incidentNameField.getText();
+					}
+					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
+						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
+						subcatChoiceBox.getValue(), descField.getText(),
+						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
+						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()));
+				
+				} catch (IOException e) {
+					showAlert("Error", e.getMessage(), AlertType.ERROR);
+					e.printStackTrace();
 				}
-				SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
-					priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
-					subcatChoiceBox.getValue(), descField.getText(),
-					convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
-					toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()));
+			}).start();
+			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 			
-			} catch (IOException e) {
-				showAlert("Error", e.getMessage(), AlertType.ERROR);
-				e.printStackTrace();
-			}
-		}).start();
-		showAlert("Incident created", "Incident created", AlertType.INFORMATION);
+		} else if (AppSession.getSession().getEditType() == IncidentEditType.EDIT) {
+			new Thread(() -> {
+				try {
+					String incidentName;
+					if (incidentNameField.getText().equals("")) {
+						incidentName = getDefaultIncidentName();
+					} else {
+						incidentName = incidentNameField.getText();
+					}
+					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
+						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
+						subcatChoiceBox.getValue(), descField.getText(),
+						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
+						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()));
+				
+				} catch (IOException e) {
+					showAlert("Error", e.getMessage(), AlertType.ERROR);
+					e.printStackTrace();
+				}
+			}).start();
+			showAlert("Incident saved", "Incident saved", AlertType.INFORMATION);
+		}
 		clearInputFields();
 		submitBtn.setText("Submit");
-		//submitBtn.setDisable(false);
-		incidentNameField.requestFocus();
 		
 		
 		tabPane.getSelectionModel().select(mainMenuTab);
@@ -517,9 +545,43 @@ public class MainPaneController {
 
 	@FXML
 	private void handleUpdateListBtn() {
-		
+		if (AppSession.getSession().getUserEmail().equals("")) {
+			showAlert("User Email not set", "Please setup your user email in Settings", AlertType.WARNING);
+		} else {
+			incidentTable.getItems().clear();
+			AppSession.getSession().updateTodayIncidents();
+			System.err.println(AppSession.getSession().getCurrentIncidents().keySet());
+			addIncidentsToTable();
+		}
 	}
 	
+	private void addIncidentsToTable() {
+		for (String incidentNum: AppSession.getSession().getCurrentIncidents().keySet()) {
+			Incident incident = AppSession.getSession().getCurrentIncidents().get(incidentNum);
+			incident.getEditBtn().setOnAction((e) -> {
+				incidentEditTab.setDisable(false);
+				tabPane.getSelectionModel().select(incidentEditTab);
+				preFetchIncidentInfo(incident.getNumber());
+				AppSession.getSession().setEditType(IncidentEditType.EDIT);
+			});
+			incidentTable.getItems().add(incident);
+		}
+	}
+	
+	private void preFetchIncidentInfo(String number) {
+		Incident incident = AppSession.getSession().getCurrentIncidents().get(number);
+		statesChoiceBox.setValue(incident.getState());
+		requesterField.setText(incident.getRequester());
+		incidentNameField.setText(incident.getTitle());
+		catChoiceBox.setValue(incident.getCategory());
+		subcatChoiceBox.setValue(incident.getSubcategory());
+		assigneeField.setText(incident.getAssignee());
+		descField.setText(incident.getDescription());
+		priorityChoiceBox.setValue(incident.getPriority());
+		deptComboBox.setValue(incident.getDept());
+		siteComboBox.setValue(incident.getSite());
+	}
+
 	@FXML
 	private void handleIncidentNameType() {
 		
@@ -686,6 +748,40 @@ public class MainPaneController {
 			e.printStackTrace();
 		}
 
+	}
+	
+	@FXML
+	private void handleCheckForUpdateBtn() {
+		Task<Parent> updateCheck = new Task<Parent>() {
+		    @Override
+		    public Parent call() throws JsonIOException, IOException {
+		    	updateMessage("Checking...");
+				updatePrompt = AppSession.getSession().getUpdatePrompt();
+		    	
+				return null;
+		    }
+		};
+	
+	    //method to set labeltext
+	    checkForUpdateBtn.textProperty().bind(Bindings.convert(updateCheck.messageProperty()));
+	    checkForUpdateBtn.setDisable(true);
+		updateCheck.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			
+			@Override
+			public void handle(WorkerStateEvent event) {
+				if (updatePrompt.equals("")) {
+					showAlert("Check complete", "Database is Up-to-date." + updatePrompt, AlertType.INFORMATION);
+				} else {
+					showAlert("Check complete", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
+				}
+				checkForUpdateBtn.textProperty().unbind();
+				checkForUpdateBtn.setText("Check for Updates");
+				checkForUpdateBtn.setDisable(false);
+			    updatePrompt = "";
+			}
+		});
+		Thread updateThread = new Thread(updateCheck);
+		updateThread.start();
 	}
 	
 	private String convertDate(LocalDate date) {

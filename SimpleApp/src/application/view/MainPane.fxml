@@ -309,7 +309,7 @@
                                  </rowConstraints>
                                  <children>
                                     <Button fx:id="updateDataBtn" mnemonicParsing="false" onAction="#handleUpdateDataBtn" prefHeight="36.0" prefWidth="166.0" text="Update Data" GridPane.rowIndex="1" GridPane.rowSpan="2" />
-                                    <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="164.0" text="Check for Updates" />
+                                    <Button fx:id="checkForUpdateBtn" mnemonicParsing="false" onAction="#handleCheckForUpdateBtn" prefHeight="39.0" prefWidth="164.0" text="Check for Updates" />
                                     <CheckBox fx:id="autoUpdateCheckBox" mnemonicParsing="false" onAction="#handleAutoUpdateCheckBox" text="Check for Updates at Startup" GridPane.columnIndex="1" GridPane.columnSpan="2" />
                                  </children>
                                  <padding>
