@@ -596,17 +596,13 @@ public class MainPaneController {
 	
 	@FXML
 	private void handleAutoUpdateCheckBox() {
-		autoUpdateCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+		AppSession.getSession().setDefaultAutoUpdateCheck(autoUpdateCheckBox.selectedProperty().getValue());
+		try {
+			AppSession.getSession().saveData();
+		} catch (JsonIOException | IOException e) {
+			e.printStackTrace();
+		}
 
-			@Override
-			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				if (newValue != oldValue) {
-					AppSession.getSession().setDefaultAutoUpdateCheck(newValue);
-				}
-				
-			}
-			
-		});
 	}
 	
 	private String convertDate(LocalDate date) {

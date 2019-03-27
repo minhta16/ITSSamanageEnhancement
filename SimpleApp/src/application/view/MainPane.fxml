@@ -255,7 +255,7 @@
                                              </children>
                                           </FlowPane>
                                           <Label GridPane.rowIndex="3" />
-                                          <CheckBox fx:id="autoUpdateCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="189.0" text="Auto check for update?" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                          <CheckBox fx:id="autoUpdateCheckBox" mnemonicParsing="false" onMouseClicked="#handleAutoUpdateCheckBox" prefHeight="18.0" prefWidth="189.0" text="Auto check for update?" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                                        </children>
                                        <BorderPane.margin>
                                           <Insets />
