@@ -433,7 +433,7 @@ public class MainPaneController {
 		if (catChoiceBox.getValue() != null) {
 			retStr += catChoiceBox.getValue();
 			if (subcatChoiceBox.getValue() != null) {
-				retStr += " " + subcatChoiceBox.getValue();
+				retStr += ", " + subcatChoiceBox.getValue();
 			}
 		}
 		return retStr;
@@ -500,6 +500,11 @@ public class MainPaneController {
 	@FXML
 	private void handleRequesterFieldChange() {
 		updateDefaultDeptSite();
+		updateIncidentNamePrompt();
+	}
+	
+	@FXML
+	public void handleCatChange() {
 		updateIncidentNamePrompt();
 	}
 	
