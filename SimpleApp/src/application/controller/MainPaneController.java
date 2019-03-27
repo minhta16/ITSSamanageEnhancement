@@ -182,8 +182,8 @@ public class MainPaneController {
 				showAlert("Database outdated", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
 			}
 		} else {
-			showAlert("Database update check disabled", "Database update check disabled. "
-					+ "Please enable if you want to see updates.", AlertType.WARNING);
+			showAlert("Database Update Check Disabled", "If you want to check for database changes (users, categories,...)"
+					+ " upon startup,\nplease enable 'Check for Updates at Startup' in Settings/Database.", AlertType.WARNING);
 		}
 	}
 	
@@ -326,8 +326,9 @@ public class MainPaneController {
 		new AutoCompletionTextFieldBinding<>(userInputField, savedEmailprovider);
 		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		handleAssigneeFieldChange();
-		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
+		
+		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
 		new AutoCompletionTextFieldBinding<>(requesterField, savedEmailprovider);
 	}
 	
@@ -351,40 +352,56 @@ public class MainPaneController {
 		} else if (!AppSession.getSession().getSavedEmails().contains(toCorrectDomain(assigneeField.getText()))) {
 			showAlert("Error", "Cannot find any assignee with that email. Try again", AlertType.ERROR);
 		} else {
-			submitBtn.setText("Loading...");
-			submitBtn.setDisable(true);
-
-		
-			new Thread(() -> {
-				try {
-					String incidentName;
-					if (incidentNameField.getText().equals("")) {
-						incidentName = getDefaultIncidentName();
-					} else {
-						incidentName = incidentNameField.getText();
-					}
-					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
-						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
-						subcatChoiceBox.getValue(), descField.getText(),
-						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
-						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()));
-				
-				} catch (IOException e) {
-					showAlert("Error", e.getMessage(), AlertType.ERROR);
-					e.printStackTrace();
+			if (AppSession.getSession().getTrackedUsers().isEmpty()) {
+				Alert alert = new Alert(AlertType.WARNING,
+						"No time tracks have been entered. Proceed?",
+						ButtonType.OK, ButtonType.CANCEL);
+				alert.setTitle(	"Warning");
+				Optional<ButtonType> result = alert.showAndWait();
+				if (result.get() == ButtonType.OK) {
+					submitIncident();
 				}
-			}).start();
-			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
-			clearInputFields();
-			submitBtn.setText("Submit");
-			//submitBtn.setDisable(false);
-			incidentNameField.requestFocus();
+			} else {
+				submitIncident();
+			}
 			
-			
-			tabPane.getSelectionModel().select(mainMenuTab);
-			incidentEditTab.setDisable(true);
 			
 		}
+	}
+	
+	private void submitIncident() {
+		submitBtn.setText("Loading...");
+		submitBtn.setDisable(true);
+
+	
+		new Thread(() -> {
+			try {
+				String incidentName;
+				if (incidentNameField.getText().equals("")) {
+					incidentName = getDefaultIncidentName();
+				} else {
+					incidentName = incidentNameField.getText();
+				}
+				SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
+					priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
+					subcatChoiceBox.getValue(), descField.getText(),
+					convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
+					toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()));
+			
+			} catch (IOException e) {
+				showAlert("Error", e.getMessage(), AlertType.ERROR);
+				e.printStackTrace();
+			}
+		}).start();
+		showAlert("Incident created", "Incident created", AlertType.INFORMATION);
+		clearInputFields();
+		submitBtn.setText("Submit");
+		//submitBtn.setDisable(false);
+		incidentNameField.requestFocus();
+		
+		
+		tabPane.getSelectionModel().select(mainMenuTab);
+		incidentEditTab.setDisable(true);
 	}
 
 	@FXML
@@ -514,6 +531,7 @@ public class MainPaneController {
 		AppSession.getSession().setDefaultRequester(defaultRequesterField.getText());
 		if (!initDefault.equalsIgnoreCase(AppSession.getSession().getDefaultRequester())) {
 			requesterField.setText(AppSession.getSession().getDefaultRequester());
+			defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
 			handleRequesterFieldChange();
 			try {
 				AppSession.getSession().saveData();
@@ -527,6 +545,7 @@ public class MainPaneController {
 	private void handleDefaultAssigneeFieldChange() {
 		AppSession.getSession().setDefaultAssignee(defaultAssigneeField.getText());
 		assigneeField.setText(toShortDomain(AppSession.getSession().getDefaultAssignee()));
+		defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		handleAssigneeFieldChange();
 		try {
 			AppSession.getSession().saveData();
@@ -641,7 +660,7 @@ public class MainPaneController {
 
 	private String toShortDomain(String email) {
 		if (email.contains("@")) {
-			if (email.split("@")[1].substring(1).equalsIgnoreCase("@" + AppSession.getSession().getDefaultDomain())) {
+			if (email.split("@")[1].equalsIgnoreCase(AppSession.getSession().getDefaultDomain())) {
 				return email.split("@")[0];
 			}
 		}

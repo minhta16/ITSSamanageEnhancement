@@ -279,7 +279,8 @@ public class AppSession {
 	
 	private String toShortDomain(String email) {
 		if (email.contains("@")) {
-			if (email.split("@")[1].substring(1).equalsIgnoreCase("@" + defaultDomain)) {
+			System.err.println(email.split("@")[1]);
+			if (email.split("@")[1].equalsIgnoreCase(defaultDomain)) {
 				return email.split("@")[0];
 			}
 		}

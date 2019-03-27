@@ -109,15 +109,15 @@
                                     <Label text="State" />
                                     <ChoiceBox fx:id="statesChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
                                     <Label text="Requester" GridPane.rowIndex="1" />
-                                    <CustomTextField fx:id="requesterField" onKeyTyped="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <CustomTextField fx:id="requesterField" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Incident Name" GridPane.rowIndex="2" />
-                                    <TextField fx:id="incidentNameField" onKeyTyped="#handleIncidentNameType" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="incidentNameField" onKeyReleased="#handleIncidentNameType" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <Label text="Category" GridPane.columnIndex="3" />
                                     <ComboBox fx:id="catChoiceBox" layoutX="166.0" layoutY="263.0" onAction="#handleCatChange" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" />
                                     <Label text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                     <ComboBox fx:id="subcatChoiceBox" layoutX="166.0" layoutY="263.0" onAction="#handleCatChange" prefWidth="150.0" promptText="Select one" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                                     <Label text="Assignee" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                    <CustomTextField fx:id="assigneeField" onKeyPressed="#handleAssigneeFieldChange" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                    <CustomTextField fx:id="assigneeField" onKeyReleased="#handleAssigneeFieldChange" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                                     <Label text="Description" GridPane.rowIndex="3" />
                                     <TextArea fx:id="descField" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3" />
                                     <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="42.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
@@ -255,7 +255,7 @@
                                           <Label prefHeight="18.0" prefWidth="164.0" text="Default Requester" GridPane.rowIndex="1" />
                                           <CustomTextField fx:id="defaultRequesterField" onAction="#handleDefaultRequesterFieldChange" onKeyReleased="#handleDefaultRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                          <Label text="Default Assignee" GridPane.rowIndex="2" />
-                                          <CustomTextField fx:id="defaultAssigneeField" onAction="#handleDefaultAssigneeFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <CustomTextField fx:id="defaultAssigneeField" onAction="#handleDefaultAssigneeFieldChange" onKeyReleased="#handleDefaultAssigneeFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Label text="Default Email domain" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                           <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                              <children>
