@@ -69,6 +69,15 @@
                      </padding>
                      <children>
                         <Button fx:id="createNewIncidentBtn" mnemonicParsing="false" text="+ New Incident" GridPane.columnIndex="3" />
+                        <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Name" />
+                            <TableColumn prefWidth="75.0" text="Assignee" />
+                              <TableColumn prefWidth="75.0" text="Description" />
+                              <TableColumn prefWidth="75.0" text="Requester" />
+                              <TableColumn prefWidth="75.0" text="Edit" />
+                          </columns>
+                        </TableView>
                      </children>
                   </GridPane>
                </content>
