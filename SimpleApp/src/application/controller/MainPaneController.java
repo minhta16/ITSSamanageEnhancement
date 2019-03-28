@@ -727,7 +727,6 @@ public class MainPaneController {
 						showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
 						updateDataBtn.textProperty().unbind();
 						updateDataBtn.setText("Update Data");
-				        updateDataBtn.setDisable(false);
 					    updatePrompt = "";
 						
 					}
@@ -772,12 +771,12 @@ public class MainPaneController {
 				if (updatePrompt.equals("")) {
 					showAlert("Check complete", "Database is Up-to-date." + updatePrompt, AlertType.INFORMATION);
 				} else {
-					showAlert("Check complete", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
+					showAlert("Check complete", "Database Outdated. Press Update to update.\nDetails:\n" + updatePrompt, AlertType.WARNING);
+					updateDataBtn.setDisable(false);
 				}
 				checkForUpdateBtn.textProperty().unbind();
 				checkForUpdateBtn.setText("Check for Updates");
 				checkForUpdateBtn.setDisable(false);
-			    updatePrompt = "";
 			}
 		});
 		Thread updateThread = new Thread(updateCheck);
