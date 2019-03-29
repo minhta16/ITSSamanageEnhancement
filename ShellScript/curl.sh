@@ -33,22 +33,23 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 # ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
 
 # Edit incident -------------------------------------------
-# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
-# <incident>
-#     <state>Resolved</state>
-#     <site>Freya House 2</site>
-# </incident>
-# ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36874389.xml
+curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
+<incident>
+    <state>Resolved</state>
+    <site><name>Freya House 2</name></site>
+    <department><name>Student</name></department>
+</incident>
+' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36874389.xml
 
 # New time track -----------------------------------------------
 ID=36681945
-curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
-<time_track>
-  <name>slow</name>
-  <creator_id>1753326</creator_id>
-  <minutes_parsed>25 minutes</minutes_parsed>
-</time_track>
-' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents/$ID/time_tracks.xml
+# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
+# <time_track>
+#   <name>slow</name>
+#   <creator_id>1753326</creator_id>
+#   <minutes_parsed>25 minutes</minutes_parsed>
+# </time_track>
+# ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents/$ID/time_tracks.xml
 
 # Get time track ----------------------------------------------
 # curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET https://api.samanage.com/incidents/$ID/time_tracks.xml -o testtimetrack.xml
