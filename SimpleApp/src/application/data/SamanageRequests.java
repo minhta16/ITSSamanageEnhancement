@@ -590,8 +590,8 @@ public class SamanageRequests {
 
 			String data = "<incident>";
 			data += " <state>" + state + "</state>";
-			data += " <site>" + site + "</site>";
-			data += " <department>" + dept + "</department>";
+			data += " <site><name>" + site + "</name></site>";
+			data += " <department><name>" + dept + "</name></department>";
 			data += "</incident>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
