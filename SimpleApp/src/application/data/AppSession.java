@@ -277,6 +277,7 @@ public class AppSession {
 		}
 		currentIncidents = newIncidents;
 	}
+	
 	public String getUpdatePrompt() {
 		String prompt = "";
 		int dbUsers = SamanageRequests.getTotalElements(userToken, "users");

@@ -20,7 +20,7 @@ public class Incident {
 	private String desc;
 	private LocalDate dueOn;
 
-	private ArrayList<User> trackedUsers;
+	private ArrayList<TimeTrack> trackedUsers;
 	private int trackedUsersNum;
 	private transient Button editBtn;
 	
@@ -36,13 +36,13 @@ public class Incident {
 		site = "";
 		dept = "";
 		desc = "";
-		trackedUsers = new ArrayList<User>();
+		trackedUsers = new ArrayList<TimeTrack>();
 		setTrackedUsersNum(0);
 		editBtn = new Button("Edit");
 	}
 	public Incident(String number, String state, String title, String priority, String cat
 			, String subcat, String assignee, String requester, String site, String dept
-			, String desc, LocalDate dueOn, ArrayList<User> trackedUsers) {
+			, String desc, LocalDate dueOn, ArrayList<TimeTrack> trackedUsers) {
 		this.number = number;
 		this.state = state;
 		this.title = title;
@@ -194,13 +194,13 @@ public class Incident {
 	/**
 	 * @return the trackedUsers
 	 */
-	public ArrayList<User> getTrackedUsers() {
+	public ArrayList<TimeTrack> getTrackedUsers() {
 		return trackedUsers;
 	}
 	/**
 	 * @param trackedUsers the trackedUsers to set
 	 */
-	public void setTrackedUsers(ArrayList<User> trackedUsers) {
+	public void setTrackedUsers(ArrayList<TimeTrack> trackedUsers) {
 		this.trackedUsers = trackedUsers;
 		updateTrackedUsersNum();
 	}

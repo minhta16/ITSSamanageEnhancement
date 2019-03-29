@@ -25,6 +25,7 @@ import org.xml.sax.InputSource;
 public class SamanageRequests {
 
 	private static final String ACCEPT_VERSION = "application/vnd.samanage.v2.1+xml";
+
 	// HTML METHOD:
 	// GET
 	public static TreeMap<String, Incident> getIncidents(String userToken, String userID) {
@@ -36,18 +37,15 @@ public class SamanageRequests {
 				// String url =
 				// "https://api.samanage.com/incidents.xml?per_page=100&page=1&created%5B%5D=Select%20Date%20Range&created_custom_gte%5B%5D=27/03/2019&created_custom_lte%5B%5D=27/03/2019";
 				/*
-				 *  curl -H "X-Samanage-Authorization: Bearer TOKEN"
-				 *  -H'Accept: application/vnd.samanage.v2.1+xml'
-				 *  -X GET https://api.samanage.com/incidents.xml
+				 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H'Accept:
+				 * application/vnd.samanage.v2.1+xml' -X GET
+				 * https://api.samanage.com/incidents.xml
 				 */
-			    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");  
-			    Date date = new Date();  
-			    String url = "https://api.samanage.com/incidents.xml"
-			    		+ "?per_page=100&page=" + curPage
-			    		+ "&created%5B%5D=Select%20Date%20Range"
-			    		+ "&created_custom_gte%5B%5D=" + sdf.format(date)
-			    		+ "&created_custom_lte%5B%5D=" + sdf.format(date)
-			    		+ "&assigned_to%5B%5D=" + userID;
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date date = new Date();
+				String url = "https://api.samanage.com/incidents.xml" + "?per_page=100&page=" + curPage
+						+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D=" + sdf.format(date)
+						+ "&created_custom_lte%5B%5D=" + sdf.format(date) + "&assigned_to%5B%5D=" + userID;
 
 				URL obj = new URL(url);
 				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -64,7 +62,7 @@ public class SamanageRequests {
 				} else {
 					br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
 				}
-				
+
 				StringBuffer xml = new StringBuffer();
 				String output;
 				while ((output = br.readLine()) != null) {
@@ -87,25 +85,23 @@ public class SamanageRequests {
 
 					if (listOfIncidents.item(i) instanceof Element) {
 						Element incident = (Element) listOfIncidents.item(i);
-						ArrayList<User> trackedUsers = new ArrayList<User>();
+						String id = getString("id", incident);
+						ArrayList<TimeTrack> trackedUsers = getTimeTracks(userToken, id);
 
-//						ArrayList<User> trackedUsers = getTrackedUsers(incident);
-						
 						String number = getString("number", incident);
-						Incident newIncident = new Incident(number,
-								getString("state", incident),
-								getString("name", incident), 
-								getString("priority", incident),
-								getString("name",  (Element) incident.getElementsByTagName("category").item(0)),
-								getString("name",  (Element) incident.getElementsByTagName("subcategory").item(0)),
-								getString("email",  (Element) incident.getElementsByTagName("assignee").item(0)).toLowerCase(),
-								getString("email",  (Element) incident.getElementsByTagName("requester").item(0)).toLowerCase(),
-								getString("name",  (Element) incident.getElementsByTagName("site").item(0)),
-								getString("name",  (Element) incident.getElementsByTagName("department").item(0)),
-								getString("description", incident),
-								toDate(getString("due_at",  incident)),
+						Incident newIncident = new Incident(number, getString("state", incident),
+								getString("name", incident), getString("priority", incident),
+								getString("name", (Element) incident.getElementsByTagName("category").item(0)),
+								getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
+								getString("email", (Element) incident.getElementsByTagName("assignee").item(0))
+										.toLowerCase(),
+								getString("email", (Element) incident.getElementsByTagName("requester").item(0))
+										.toLowerCase(),
+								getString("name", (Element) incident.getElementsByTagName("site").item(0)),
+								getString("name", (Element) incident.getElementsByTagName("department").item(0)),
+								getString("description", incident), toDate(getString("due_at", incident)),
 								trackedUsers);
-						
+
 						incidentMap.put(number, newIncident);
 					}
 
@@ -124,8 +120,7 @@ public class SamanageRequests {
 
 	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority, String category,
 			String subcategory, String description, String dueDate, String state, String assignee, String requester,
-			String dept, String site)
-			throws IOException {
+			String dept, String site) throws IOException {
 		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate,
 				assignee, requester);
 		String incidentID = SamanageRequests.getID(userToken);
@@ -201,8 +196,6 @@ public class SamanageRequests {
 		conn.disconnect();
 
 	}
-	
-	
 
 	public static void addTimeTrack(String userToken, String incidentID, String trackCmt, String creatorID,
 			double time) {
@@ -582,8 +575,7 @@ public class SamanageRequests {
 	// HTML METHOD:
 	// PUT
 
-	public static void updateStateAndDept(String userToken, String incidentID,
-			String state, String dept, String site) {
+	public static void updateStateAndDept(String userToken, String incidentID, String state, String dept, String site) {
 		try {
 			String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
 
@@ -600,7 +592,6 @@ public class SamanageRequests {
 			data += " <state>" + state + "</state>";
 			data += " <site>" + site + "</site>";
 			data += " <department>" + dept + "</department>";
-			System.err.printf("Site:%s Dept:%s", site, dept);
 			data += "</incident>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
@@ -612,11 +603,10 @@ public class SamanageRequests {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	//OTHERS
+
+	// OTHERS
 	//
-	
+
 	protected static LocalDate toDate(String dateString) {
 		if (dateString == "") {
 			return null;
@@ -628,12 +618,13 @@ public class SamanageRequests {
 			return LocalDate.of(yr, month, day);
 		}
 	}
+
 	// got from
 	// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
 	protected static String getString(String tagName, Element element) {
 		return getString(tagName, element, 0);
 	}
-	
+
 	protected static String getString(String tagName, Element element, int item) {
 		NodeList list = element.getElementsByTagName(tagName);
 		if (list != null && list.getLength() > 0) {
@@ -646,22 +637,64 @@ public class SamanageRequests {
 
 		return "";
 	}
-	
-	private static ArrayList<User> getTrackedUsers(Element incident) {
-		ArrayList<User> users = new ArrayList<User>();
-		NodeList timeTracks = incident.getElementsByTagName("time_tracks");
-		for (int i = 0; i < timeTracks.getLength(); i++) {
-			if (timeTracks.item(i) instanceof Element) {
-				Element site = (Element) timeTracks.item(i);
-				String name = getString("name", site);
-				users.add(new User());
+
+	private static ArrayList<TimeTrack> getTimeTracks(String userToken, String incidentId) {
+		ArrayList<TimeTrack> timeTracks = new ArrayList<TimeTrack>();
+
+		try {
+			// String url =
+			// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
+			String url = "https://api.samanage.com/incidents/" + incidentId + "/time_tracks.xml";
+
+			URL obj = new URL(url);
+			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+			conn.setDoOutput(true);
+
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
+			conn.setRequestProperty("Content-Type", "text/xml");
+
+			BufferedReader br;
+			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			} else {
+				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+			}
+			StringBuffer xml = new StringBuffer();
+			String output;
+			while ((output = br.readLine()) != null) {
+				xml.append(output);
 			}
 
+			// got from
+			// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+			Element rootElement = document.getDocumentElement();
+
+			NodeList listOfTracks = rootElement.getElementsByTagName("time-track");
+
+			for (int i = 0; i < listOfTracks.getLength(); i++) {
+
+				if (listOfTracks.item(i) instanceof Element) {
+					Element track = (Element) listOfTracks.item(i);
+					TimeTrack newTrack = new TimeTrack(getString("name", (Element) track.getElementsByTagName("creator").item(0)),
+							Integer.parseInt(getString("minutes", track)),
+							getString("name", track));
+					timeTracks.add(newTrack);
+				}
+
+			}
+			conn.disconnect();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return null;
+
+		return timeTracks;
 	}
-	
-	
+
 	public static Element documentFromOutput(HttpURLConnection conn) {
 		Element rootElement = null;
 		try {

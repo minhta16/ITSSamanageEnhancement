@@ -33,12 +33,12 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 # ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
 
 # Edit incident -------------------------------------------
-curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
-<incident>
-    <state>Resolved</state>
-    <site>Freya House 2</site>
-</incident>
-' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36874389.xml
+# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
+# <incident>
+#     <state>Resolved</state>
+#     <site>Freya House 2</site>
+# </incident>
+# ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36874389.xml
 
 # New time track -----------------------------------------------
 ID=36681945
