@@ -1,6 +1,8 @@
 package application.data;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javafx.scene.control.Button;
 
@@ -16,6 +18,7 @@ public class Incident {
 	private String site;
 	private String dept;
 	private String desc;
+	private LocalDate dueOn;
 
 	private ArrayList<User> trackedUsers;
 	private int trackedUsersNum;
@@ -39,7 +42,7 @@ public class Incident {
 	}
 	public Incident(String number, String state, String title, String priority, String cat
 			, String subcat, String assignee, String requester, String site, String dept
-			, String desc, ArrayList<User> trackedUsers) {
+			, String desc, LocalDate dueOn, ArrayList<User> trackedUsers) {
 		this.number = number;
 		this.state = state;
 		this.title = title;
@@ -51,9 +54,22 @@ public class Incident {
 		this.site = site;
 		this.dept = dept;
 		this.desc = desc;
+		this.dueOn = dueOn;
 		this.trackedUsers = trackedUsers;
 		setTrackedUsersNum(trackedUsers.size());
 		editBtn = new Button("Edit");
+	}
+	/**
+	 * @return the dueOn
+	 */
+	public LocalDate getDueOn() {
+		return dueOn;
+	}
+	/**
+	 * @param dueOn the dueOn to set
+	 */
+	public void setDueOn(LocalDate dueOn) {
+		this.dueOn = dueOn;
 	}
 	/**
 	 * @return the number
@@ -194,12 +210,6 @@ public class Incident {
 	 */
 	public String getDescription() {
 		return desc;
-	}
-	/**
-	 * @param desc the desc to set
-	 */
-	public void setDesc(String desc) {
-		this.desc = desc;
 	}
 	/**
 	 * @return the cat

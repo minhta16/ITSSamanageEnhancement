@@ -209,7 +209,9 @@ public class AppSession {
 	}
 	
 	public void setDefaultAssignee(String assignee) {
-		defaultAssignee = toShortDomain(assignee);
+		if (users.containsKey(toCorrectDomain(assignee))) {
+			defaultAssignee = toShortDomain(assignee);
+		}
 	}
 	
 	public String getDefaultAssignee() {

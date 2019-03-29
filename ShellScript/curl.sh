@@ -9,7 +9,7 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 # curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET "https://api.samanage.com/categories.xml?layout=long" -o categories.xml
 
 # Get users ---------------------------------------------------
-curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET "https://api.samanage.com/users.xml?email%5B%5D=nguyentruong17%40augustana.edu" -o user_nathan.xml
+# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET "https://api.samanage.com/users.xml?email%5B%5D=nguyentruong17%40augustana.edu" -o user_nathan.xml
 
 # Get departments ---------------------------------------------
 # curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET https://api.samanage.com/departments.xml -o department.xml
@@ -31,6 +31,14 @@ curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.sa
 #  <due_at>Mar 20, 2019</due_at>
 # </incident>
 # ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
+
+# Edit incident -------------------------------------------
+curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
+<incident>
+    <state>Resolved</state>
+    <site>Freya House 2</site>
+</incident>
+' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36874389.xml
 
 # New time track -----------------------------------------------
 ID=36681945

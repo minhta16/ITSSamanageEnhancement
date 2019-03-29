@@ -36,6 +36,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -128,7 +129,7 @@ public class MainPaneController {
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
 		
-		System.err.println("Loading...");
+		System.out.println("Loading...");
 		try {
 			AppSession.getSession().loadData();
 		} catch (IOException e) {
@@ -140,47 +141,47 @@ public class MainPaneController {
 		
 		
 		// setup setting tab
-		System.err.print("Setting up Setting Tab\r");
+		System.out.print("Setting up Setting Tab\t\t\t\r");
 		setupSettingTab();
 		updatePrompt = AppSession.getSession().getUpdatePrompt();
 		
 		
 		// setup priority
-		System.err.print("Setting up Priority\r");
+		System.out.print("Setting up Priority\t\t\t\r");
 		setupPriorityChoiceBox();
 		
 		// setup date picker
-		System.err.print("Setting up Date Picker\r");
+		System.out.print("Setting up Date Picker\t\t\t\r");
 		initializeDatePicker();
 		
 		// setup dept and site
-		System.err.print("Setting up Depts and Sites\r");
+		System.out.print("Setting up Depts and Sites\t\t\t\r");
 		setupDeptAndSiteChoiceBox();
 		
 		// setup TextFields autocomplete
-		System.err.print("Setting up Autocomplete\r");
+		System.out.print("Setting up Autocomplete\t\t\t\r");
 
 		setupEmailAutoComplete();
 		// setup main menu tab
-		System.err.print("Setting up Main Menu\r");
+		System.out.print("Setting up Main Menu\t\t\t\r");
 		setupMainMenuTab();
 
-		System.err.print("Setting up Incident Editor\r");
+		System.out.print("Setting up Incident Editor\t\t\t\r");
 		setupIncidentEditTab();
 		
 		// setup tabs
-		System.err.print("Setting up tabs\r");
+		System.out.print("Setting up tabs\t\t\t\r");
 		setupTabs();
 		
 		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
 		if (AppSession.getSession().getDefaultAutoUpdateCheck()) {
-			System.err.print("Checking for newer database version...\r");
+			System.out.print("Checking for newer database version...\t\t\t\r");
 			updatePrompt = AppSession.getSession().getUpdatePrompt();
 		}
 
-		System.err.println("Load Complete!");
-		System.err.println("DO NOT CLOSE THIS CONSOLE! THE APP WILL CLOSE ALONG WITH IT!");
-		System.err.println("Booting up App...");
+		System.out.println("Load Complete!\t\t\t");
+		System.out.println("DO NOT CLOSE THIS CONSOLE! THE APP WILL CLOSE ALONG WITH IT!");
+		System.out.println("Booting up App...");
 	}
 	
 	public void showPrompt() {
@@ -206,6 +207,7 @@ public class MainPaneController {
 			incidentEditTab.setDisable(false);
 			tabPane.getSelectionModel().select(incidentEditTab);
 			AppSession.getSession().setEditType(IncidentEditType.NEW);
+			clearInputFields();
 		});
 		
 		
@@ -229,15 +231,15 @@ public class MainPaneController {
 	
 	private void setupIncidentEditTab() {
 		// setup state
-		System.err.print("Setting up State\r");
+		System.out.print("Setting up State\r");
 		setupStatesChoiceBox();
 		
 		// setup category
-		System.err.print("Setting up Categories\r");
+		System.out.print("Setting up Categories\r");
 		setupCatChoiceBox();
 		
 		// setup incident name
-		System.err.print("Setting up Incident Name Prompt\r");
+		System.out.print("Setting up Incident Name Prompt\r");
 		updateIncidentNamePrompt();
 	}
 
@@ -417,7 +419,9 @@ public class MainPaneController {
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
 						subcatChoiceBox.getValue(), descField.getText(),
 						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
-						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()));
+						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
+						deptComboBox.getValue(),
+						siteComboBox.getValue());
 				
 				} catch (IOException e) {
 					showAlert("Error", e.getMessage(), AlertType.ERROR);
@@ -426,6 +430,7 @@ public class MainPaneController {
 			}).start();
 			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 			
+		// TODO: IMPLEMENT EDIT
 		} else if (AppSession.getSession().getEditType() == IncidentEditType.EDIT) {
 			new Thread(() -> {
 				try {
@@ -439,7 +444,9 @@ public class MainPaneController {
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
 						subcatChoiceBox.getValue(), descField.getText(),
 						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
-						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()));
+						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
+						deptComboBox.getValue(),
+						siteComboBox.getValue());
 				
 				} catch (IOException e) {
 					showAlert("Error", e.getMessage(), AlertType.ERROR);
@@ -487,6 +494,7 @@ public class MainPaneController {
 		return getDefaultCategoryIncidentName();
 	}
 	
+	@SuppressWarnings("unused")
 	private String getDefaultDeptSiteIncidentName() {
 		User req;
 		if (requesterField.getText() == "") {
@@ -541,6 +549,8 @@ public class MainPaneController {
 		incidentNameField.clear();
 		descField.clear();
 		infoTable.getItems().clear();
+		updateDefaultDeptSite();
+		submitBtn.setDisable(false);
 	}
 
 	@FXML
@@ -550,7 +560,6 @@ public class MainPaneController {
 		} else {
 			incidentTable.getItems().clear();
 			AppSession.getSession().updateTodayIncidents();
-			System.err.println(AppSession.getSession().getCurrentIncidents().keySet());
 			addIncidentsToTable();
 		}
 	}
@@ -566,6 +575,10 @@ public class MainPaneController {
 			});
 			incidentTable.getItems().add(incident);
 		}
+		
+		// DEFAULT SORT BY NUMBER
+		incidentTable.getColumns().get(0).setSortType(TableColumn.SortType.DESCENDING);
+		incidentTable.getSortOrder().add(incidentTable.getColumns().get(0));
 	}
 	
 	private void preFetchIncidentInfo(String number) {
@@ -580,6 +593,9 @@ public class MainPaneController {
 		priorityChoiceBox.setValue(incident.getPriority());
 		deptComboBox.setValue(incident.getDept());
 		siteComboBox.setValue(incident.getSite());
+		if (incident.getDueOn() != null) {
+			datePicker.setValue(incident.getDueOn());
+		}
 	}
 
 	@FXML
@@ -635,7 +651,7 @@ public class MainPaneController {
 		String initDefault = AppSession.getSession().getDefaultRequester();
 		AppSession.getSession().setDefaultRequester(defaultRequesterField.getText());
 		if (!initDefault.equalsIgnoreCase(AppSession.getSession().getDefaultRequester())) {
-			requesterField.setText(AppSession.getSession().getDefaultRequester());
+			requesterField.setText(toShortDomain(AppSession.getSession().getDefaultRequester()));
 			defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
 			handleRequesterFieldChange();
 			try {
@@ -648,14 +664,18 @@ public class MainPaneController {
 	
 	@FXML
 	private void handleDefaultAssigneeFieldChange() {
+
+		String initDefault = AppSession.getSession().getDefaultAssignee();
 		AppSession.getSession().setDefaultAssignee(defaultAssigneeField.getText());
-		assigneeField.setText(toShortDomain(AppSession.getSession().getDefaultAssignee()));
-		defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
-		handleAssigneeFieldChange();
-		try {
-			AppSession.getSession().saveData();
-		} catch (JsonIOException | IOException e) {
-			e.printStackTrace();
+		if (!initDefault.equalsIgnoreCase(AppSession.getSession().getDefaultAssignee())) {
+			assigneeField.setText(toShortDomain(AppSession.getSession().getDefaultAssignee()));
+			defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
+			handleAssigneeFieldChange();
+			try {
+				AppSession.getSession().saveData();
+			} catch (JsonIOException | IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

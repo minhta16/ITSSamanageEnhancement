@@ -8,6 +8,7 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.TreeMap;
@@ -91,7 +92,6 @@ public class SamanageRequests {
 //						ArrayList<User> trackedUsers = getTrackedUsers(incident);
 						
 						String number = getString("number", incident);
-						System.err.println(number);
 						Incident newIncident = new Incident(number,
 								getString("state", incident),
 								getString("name", incident), 
@@ -103,6 +103,7 @@ public class SamanageRequests {
 								getString("name",  (Element) incident.getElementsByTagName("site").item(0)),
 								getString("name",  (Element) incident.getElementsByTagName("department").item(0)),
 								getString("description", incident),
+								toDate(getString("due_at",  incident)),
 								trackedUsers);
 						
 						incidentMap.put(number, newIncident);
@@ -122,7 +123,8 @@ public class SamanageRequests {
 	// POST
 
 	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority, String category,
-			String subcategory, String description, String dueDate, String state, String assignee, String requester)
+			String subcategory, String description, String dueDate, String state, String assignee, String requester,
+			String dept, String site)
 			throws IOException {
 		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate,
 				assignee, requester);
@@ -131,7 +133,7 @@ public class SamanageRequests {
 		for (User user : trackedUsers) {
 			SamanageRequests.addTimeTrack(userToken, incidentID, user.getComment(), user.getID(), user.getTime());
 		}
-		SamanageRequests.updateState(userToken, incidentID, state);
+		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site);
 
 		// clear the UI
 		AppSession.getSession().clearTrackedUsers();
@@ -356,7 +358,6 @@ public class SamanageRequests {
 							if (groupIds.item(j) instanceof Element) {
 								String groupID = getString("group_id", (Element) groupIds.item(j));
 								groupIdList.add(groupID);
-								System.err.println(groupID);
 							}
 						}
 						newUser.setGroupID(groupIdList);
@@ -581,7 +582,8 @@ public class SamanageRequests {
 	// HTML METHOD:
 	// PUT
 
-	public static void updateState(String userToken, String incidentID, String state) {
+	public static void updateStateAndDept(String userToken, String incidentID,
+			String state, String dept, String site) {
 		try {
 			String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
 
@@ -594,7 +596,12 @@ public class SamanageRequests {
 			conn.setRequestProperty("Accept", ACCEPT_VERSION);
 			conn.setRequestProperty("Content-Type", "text/xml");
 
-			String data = "<incident>" + " <state>" + state + "</state>" + "</incident>";
+			String data = "<incident>";
+			data += " <state>" + state + "</state>";
+			data += " <site>" + site + "</site>";
+			data += " <department>" + dept + "</department>";
+			System.err.printf("Site:%s Dept:%s", site, dept);
+			data += "</incident>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
 			out.close();
@@ -610,6 +617,17 @@ public class SamanageRequests {
 	//OTHERS
 	//
 	
+	protected static LocalDate toDate(String dateString) {
+		if (dateString == "") {
+			return null;
+		} else {
+			String date = dateString.split("T")[0];
+			int yr = Integer.parseInt(date.split("-")[0]);
+			int month = Integer.parseInt(date.split("-")[1]);
+			int day = Integer.parseInt(date.split("-")[2]);
+			return LocalDate.of(yr, month, day);
+		}
+	}
 	// got from
 	// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
 	protected static String getString(String tagName, Element element) {
