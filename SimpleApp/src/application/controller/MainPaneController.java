@@ -119,7 +119,7 @@ public class MainPaneController {
 	
 	
 	private String updatePrompt = "";
-	
+		
 	public void setStageAndSetupListeners(Stage primaryStage) {
 		
 		System.out.println("Loading...");
@@ -519,7 +519,6 @@ public class MainPaneController {
 	private void addTableItem(User user) {
 		user.setComment(timeTrackCmtField.getText());
 		user.setTime(Integer.parseInt(timeElapsedField.getText()));
-		System.err.println("Time: " + timeElapsedField.getText());
 		user.getRemoveBtn().setOnAction((e) -> {
 			AppSession.getSession().removeTrackedUser(user.getEmail());
 			infoTable.getItems().remove(user);
@@ -796,6 +795,7 @@ public class MainPaneController {
 		Thread updateThread = new Thread(updateCheck);
 		updateThread.start();
 	}
+	
 	
 	private String toCorrectDomain(String email) {
 		if (!email.contains("@") && !email.trim().equals("")) {
