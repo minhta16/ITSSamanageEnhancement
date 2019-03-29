@@ -214,7 +214,7 @@ public class SamanageRequests {
 
 			String data = "<time_track>" + "<name>" + trackCmt + "</name>";
 			data += "<creator_id>" + creatorID + "</creator_id>";
-			data += "<minutes_parsed>" + time + "</minutes_parsed>" + "</time_track>";
+			data += "<minutes_parsed>" + time + "minutes</minutes_parsed>" + "</time_track>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
 			out.close();
