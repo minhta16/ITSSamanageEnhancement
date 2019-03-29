@@ -74,7 +74,7 @@ public class MainPaneController {
 	private ComboBox<String> siteComboBox;
 	@FXML
 	private DatePicker datePicker;
-	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	@FXML
 	private TextField incidentNameField;
 	@FXML
@@ -120,13 +120,6 @@ public class MainPaneController {
 	
 	private String updatePrompt = "";
 	
-	@SuppressWarnings("serial")
-	private final Map<Integer, String> calendar = new HashMap<Integer, String>() {{
-		put(1,"Jan"); put(2,"Feb"); put(3,"Mar"); put(4,"Apr"); put(5,"May"); put(6,"June"); 
-		put(7,"July"); put(8,"Aug"); put(9,"Sept"); put(10,"Oct"); put(11,"Nov"); put(12, "Dec");
-		}};
-		
-
 	public void setStageAndSetupListeners(Stage primaryStage) {
 		
 		System.out.println("Loading...");
@@ -418,7 +411,7 @@ public class MainPaneController {
 					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
 						subcatChoiceBox.getValue(), descField.getText(),
-						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
+						datePicker.getValue().toString(), statesChoiceBox.getValue(),
 						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
 						deptComboBox.getValue(),
 						siteComboBox.getValue());
@@ -443,7 +436,7 @@ public class MainPaneController {
 					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
 						subcatChoiceBox.getValue(), descField.getText(),
-						convertDate(datePicker.getValue()), statesChoiceBox.getValue(),
+						datePicker.getValue().toString(), statesChoiceBox.getValue(),
 						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
 						deptComboBox.getValue(),
 						siteComboBox.getValue());
@@ -526,6 +519,7 @@ public class MainPaneController {
 	private void addTableItem(User user) {
 		user.setComment(timeTrackCmtField.getText());
 		user.setTime(Integer.parseInt(timeElapsedField.getText()));
+		System.err.println("Time: " + timeElapsedField.getText());
 		user.getRemoveBtn().setOnAction((e) -> {
 			AppSession.getSession().removeTrackedUser(user.getEmail());
 			infoTable.getItems().remove(user);
@@ -801,10 +795,6 @@ public class MainPaneController {
 		});
 		Thread updateThread = new Thread(updateCheck);
 		updateThread.start();
-	}
-	
-	private String convertDate(LocalDate date) {
-		return calendar.get(date.getMonthValue()) + date.getDayOfMonth() + ", " + date.getYear();
 	}
 	
 	private String toCorrectDomain(String email) {
