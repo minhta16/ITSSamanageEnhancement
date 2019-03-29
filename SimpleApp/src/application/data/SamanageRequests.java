@@ -97,8 +97,8 @@ public class SamanageRequests {
 										.toLowerCase(),
 								getString("email", (Element) incident.getElementsByTagName("requester").item(0))
 										.toLowerCase(),
-								getString("name", (Element) incident.getElementsByTagName("site").item(0)),
-								getString("name", (Element) incident.getElementsByTagName("department").item(0)),
+								getString("name", (Element) incident.getElementsByTagName("site").item(incident.getElementsByTagName("site").getLength() - 1)),
+								getString("name", (Element) incident.getElementsByTagName("department").item(incident.getElementsByTagName("site").getLength() - 1)),
 								getString("description", incident), toDate(getString("due_at", incident)),
 								trackedUsers);
 
