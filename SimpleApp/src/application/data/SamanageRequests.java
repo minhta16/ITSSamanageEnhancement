@@ -27,95 +27,6 @@ public class SamanageRequests {
 	private static final String ACCEPT_VERSION = "application/vnd.samanage.v2.1+xml";
 
 	// HTML METHOD:
-	// GET
-	public static TreeMap<String, Incident> getIncidents(String userToken, String userID) {
-		TreeMap<String, Incident> incidentMap = new TreeMap<String, Incident>();
-		boolean hasMore = true;
-		int curPage = 1;
-		while (hasMore) {
-			try {
-				// String url =
-				// "https://api.samanage.com/incidents.xml?per_page=100&page=1&created%5B%5D=Select%20Date%20Range&created_custom_gte%5B%5D=27/03/2019&created_custom_lte%5B%5D=27/03/2019";
-				/*
-				 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H'Accept:
-				 * application/vnd.samanage.v2.1+xml' -X GET
-				 * https://api.samanage.com/incidents.xml
-				 */
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-				Date date = new Date();
-				String url = "https://api.samanage.com/incidents.xml" + "?per_page=100&page=" + curPage
-						+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D=" + sdf.format(date)
-						+ "&created_custom_lte%5B%5D=" + sdf.format(date) + "&assigned_to%5B%5D=" + userID;
-
-				URL obj = new URL(url);
-				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-				conn.setDoOutput(true);
-
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-				conn.setRequestProperty("Accept", ACCEPT_VERSION);
-				// conn.setRequestProperty("Content-Type", "text/xml");
-
-				BufferedReader br;
-				if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
-					br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-				} else {
-					br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-				}
-
-				StringBuffer xml = new StringBuffer();
-				String output;
-				while ((output = br.readLine()) != null) {
-					xml.append(output);
-				}
-
-				// got from
-				// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
-				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder builder = factory.newDocumentBuilder();
-				Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
-				Element rootElement = document.getDocumentElement();
-
-				NodeList listOfIncidents = rootElement.getElementsByTagName("incident");
-				if (listOfIncidents.getLength() != 100) {
-					hasMore = false;
-				}
-
-				for (int i = 0; i < listOfIncidents.getLength(); i++) {
-
-					if (listOfIncidents.item(i) instanceof Element) {
-						Element incident = (Element) listOfIncidents.item(i);
-						String id = getString("id", incident);
-						ArrayList<TimeTrack> trackedUsers = getTimeTracks(userToken, id);
-
-						String number = getString("number", incident);
-						Incident newIncident = new Incident(number, getString("state", incident),
-								getString("name", incident), getString("priority", incident),
-								getString("name", (Element) incident.getElementsByTagName("category").item(0)),
-								getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
-								getString("email", (Element) incident.getElementsByTagName("assignee").item(0))
-										.toLowerCase(),
-								getString("email", (Element) incident.getElementsByTagName("requester").item(0))
-										.toLowerCase(),
-								getString("name", (Element) incident.getElementsByTagName("site").item(incident.getElementsByTagName("site").getLength() - 1)),
-								getString("name", (Element) incident.getElementsByTagName("department").item(incident.getElementsByTagName("site").getLength() - 1)),
-								getString("description", incident), toDate(getString("due_at", incident)),
-								trackedUsers);
-
-						incidentMap.put(number, newIncident);
-					}
-
-				}
-				conn.disconnect();
-				curPage++;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return incidentMap;
-		// System.err.println(map);
-	}
-	// HTML METHOD:
 	// POST
 
 	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority, String category,
@@ -228,6 +139,94 @@ public class SamanageRequests {
 
 	// HTML METHOD:
 	// GET
+	
+	public static TreeMap<String, Incident> getIncidents(String userToken, String userID) {
+		TreeMap<String, Incident> incidentMap = new TreeMap<String, Incident>();
+		boolean hasMore = true;
+		int curPage = 1;
+		while (hasMore) {
+			try {
+				// String url =
+				// "https://api.samanage.com/incidents.xml?per_page=100&page=1&created%5B%5D=Select%20Date%20Range&created_custom_gte%5B%5D=27/03/2019&created_custom_lte%5B%5D=27/03/2019";
+				/*
+				 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H'Accept:
+				 * application/vnd.samanage.v2.1+xml' -X GET
+				 * https://api.samanage.com/incidents.xml
+				 */
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date date = new Date();
+				String url = "https://api.samanage.com/incidents.xml" + "?per_page=100&page=" + curPage
+						+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D=" + sdf.format(date)
+						+ "&created_custom_lte%5B%5D=" + sdf.format(date) + "&assigned_to%5B%5D=" + userID;
+
+				URL obj = new URL(url);
+				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+				conn.setDoOutput(true);
+
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+				conn.setRequestProperty("Accept", ACCEPT_VERSION);
+				// conn.setRequestProperty("Content-Type", "text/xml");
+
+				BufferedReader br;
+				if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+					br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				} else {
+					br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+				}
+
+				StringBuffer xml = new StringBuffer();
+				String output;
+				while ((output = br.readLine()) != null) {
+					xml.append(output);
+				}
+
+				// got from
+				// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+				Element rootElement = document.getDocumentElement();
+
+				NodeList listOfIncidents = rootElement.getElementsByTagName("incident");
+				if (listOfIncidents.getLength() != 100) {
+					hasMore = false;
+				}
+
+				for (int i = 0; i < listOfIncidents.getLength(); i++) {
+
+					if (listOfIncidents.item(i) instanceof Element) {
+						Element incident = (Element) listOfIncidents.item(i);
+						String id = getString("id", incident);
+						ArrayList<TimeTrack> trackedUsers = getTimeTracks(userToken, id);
+						String ID = getString("id", incident);
+						String number = getString("number", incident);
+						Incident newIncident = new Incident(ID, number, getString("state", incident),
+								getString("name", incident), getString("priority", incident),
+								getString("name", (Element) incident.getElementsByTagName("category").item(0)),
+								getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
+								getString("email", (Element) incident.getElementsByTagName("assignee").item(0))
+										.toLowerCase(),
+								getString("email", (Element) incident.getElementsByTagName("requester").item(0))
+										.toLowerCase(),
+								getString("name", (Element) incident.getElementsByTagName("site").item(incident.getElementsByTagName("site").getLength() - 1)),
+								getString("name", (Element) incident.getElementsByTagName("department").item(incident.getElementsByTagName("site").getLength() - 1)),
+								getString("description", incident), toDate(getString("due_at", incident)),
+								trackedUsers);
+
+						incidentMap.put(number, newIncident);
+					}
+
+				}
+				conn.disconnect();
+				curPage++;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return incidentMap;
+		// System.err.println(map);
+	}
 
 	public static User getUserByEmail(String userToken, String email) {
 		try {
@@ -603,6 +602,86 @@ public class SamanageRequests {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void updateIncidentWithTimeTrack(String userToken, String incidentName, String incidentID, String priority, String category,
+			String subcategory, String description, String dueDate, String state, String assignee, String requester,
+			String dept, String site) throws IOException {
+		SamanageRequests.updateIncident(userToken, incidentName, incidentID, priority, category, subcategory, description, dueDate,
+				assignee, requester);
+		//String incidentID = SamanageRequests.getID(userToken);
+		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
+		for (User user : trackedUsers) {
+			SamanageRequests.addTimeTrack(userToken, incidentID, user.getComment(), user.getID(), user.getTime());
+		}
+		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site);
+
+		// clear the UI
+		AppSession.getSession().clearTrackedUsers();
+	}
+	
+	public static void updateIncident(String userToken, String incidentName, String incidentID, String priority, String category,
+			String subcategory, String description, String dueDate, String assignee, String requester)
+			throws IOException {
+		String url = "https://api.samanage.com/" + incidentID + ".xml";
+
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
+
+		conn.setRequestMethod("PUT");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		conn.setRequestProperty("Content-Type", "text/xml");
+
+		String data1 = "<incident>" + " <name>Test</name>" + " <priority>Medium</priority>"
+				+ " <requester><email>MINHTA16@augustana.edu</email></requester>"
+				+ " <category><name>Meetings  (ITS use only)</name></category>" + " <subcategory>"
+				+ "      <name>Training/Workshops</name>" + " </subcategory>" + " <cc type=\"array\">"
+				+ "   <cc>MINHTA16@augustana.edu</cc>" + " </cc>" + " <description>" + description + "</description>"
+				+ " <due_at>Mar 8, 2019</due_at>" + " <assignee><email>MINHTA16@augustana.edu</email></assignee>"
+				+ " <incidents type=\"array\">" + "   <incident><number>1474</number></incident>"
+				+ "   <incident><number>1475</number></incident>" + " </incidents>" + " <assets type=\"array\">"
+				+ "   <asset><id>275498</id></asset>" + " </assets>" + " <problem><number>445</number></problem>"
+				+ " <solutions type=\"array\">" + "   <solution><number>34</number></solution>" + " </solutions>"
+				+ " <configuration_items type=\"array\">"
+				+ "   <configuratioexpn_item><id>27234</id></configuration_item>" + " </configuration_items>"
+				+ " <custom_fields_values>" + "   <custom_fields_value>" + "     <name>field name</name>"
+				+ "     <value>content</value>" + "   </custom_fields_value>" + "   <custom_fields_value>"
+				+ "     <name>field name</name>" + "     <value>content</value>" + "   </custom_fields_value>"
+				+ " </custom_fields_values>" + "</incident>";
+
+		String data = "<incident>";
+		data += " <name>" + incidentName + "</name>";
+		data += " <priority>" + priority + "</priority>";
+		data += " <requester><email>" + requester + "</email></requester>";
+		data += " <category><name>" + category + "</name></category>";
+		if (!subcategory.equals("")) {
+			data += " <subcategory>" + "      <name>" + subcategory + "</name>" + " </subcategory>";
+		}
+		data += " <description>" + description + "</description>";
+		data += " <due_at>" + dueDate + "</due_at>";
+		data += " <assignee><email>" + assignee + "</email></assignee>" + "</incident>";
+
+		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+		out.write(data);
+		out.close();
+
+		BufferedReader br;
+		if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+			br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		}
+		StringBuffer xml = new StringBuffer();
+		String output;
+		while ((output = br.readLine()) != null) {
+			xml.append(output);
+		}
+
+		conn.disconnect();
+
+	}
+
 
 	// OTHERS
 	//

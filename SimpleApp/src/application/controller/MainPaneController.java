@@ -119,6 +119,8 @@ public class MainPaneController {
 	
 	
 	private String updatePrompt = "";
+	
+	private String curUpdateIncidentID = "";
 		
 	public void setStageAndSetupListeners(Stage primaryStage) {
 		
@@ -386,6 +388,8 @@ public class MainPaneController {
 				Optional<ButtonType> result = alert.showAndWait();
 				if (result.get() == ButtonType.OK) {
 					submitIncident();
+					timeElapsedField.clear();
+					timeTrackCmtField.clear();
 				}
 			} else {
 				submitIncident();
@@ -427,26 +431,27 @@ public class MainPaneController {
 		} else if (AppSession.getSession().getEditType() == IncidentEditType.EDIT) {
 			new Thread(() -> {
 				try {
-					String incidentName;
-					if (incidentNameField.getText().equals("")) {
-						incidentName = getDefaultIncidentName();
-					} else {
-						incidentName = incidentNameField.getText();
-					}
-					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
+					//String incidentName;
+					/*
+					 * if (incidentNameField.getText().equals("")) { incidentName =
+					 * getDefaultIncidentName(); } else { incidentName =
+					 * incidentNameField.getText(); }
+					 */
+					SamanageRequests.updateIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), curUpdateIncidentID,
 						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
 						subcatChoiceBox.getValue(), descField.getText(),
 						datePicker.getValue().toString(), statesChoiceBox.getValue(),
 						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
 						deptComboBox.getValue(),
 						siteComboBox.getValue());
+					
 				
 				} catch (IOException e) {
 					showAlert("Error", e.getMessage(), AlertType.ERROR);
 					e.printStackTrace();
 				}
 			}).start();
-			showAlert("Incident saved", "Incident saved", AlertType.INFORMATION);
+			showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
 		}
 		clearInputFields();
 		submitBtn.setText("Submit");
@@ -562,6 +567,7 @@ public class MainPaneController {
 			Incident incident = AppSession.getSession().getCurrentIncidents().get(incidentNum);
 			incident.getEditBtn().setOnAction((e) -> {
 				incidentEditTab.setDisable(false);
+				curUpdateIncidentID = incident.getID();
 				tabPane.getSelectionModel().select(incidentEditTab);
 				preFetchIncidentInfo(incident.getNumber());
 				AppSession.getSession().setEditType(IncidentEditType.EDIT);

@@ -7,6 +7,7 @@ import java.util.Date;
 import javafx.scene.control.Button;
 
 public class Incident {
+	private String ID;
 	private String number;
 	private String state;
 	private String title;
@@ -25,6 +26,7 @@ public class Incident {
 	private transient Button editBtn;
 	
 	public Incident() {
+		ID = "";
 		number = "";
 		state = "";
 		title = "";
@@ -40,9 +42,10 @@ public class Incident {
 		setTrackedUsersNum(0);
 		editBtn = new Button("Edit");
 	}
-	public Incident(String number, String state, String title, String priority, String cat
+	public Incident(String ID, String number, String state, String title, String priority, String cat
 			, String subcat, String assignee, String requester, String site, String dept
 			, String desc, LocalDate dueOn, ArrayList<TimeTrack> trackedUsers) {
+		this.ID = ID;
 		this.number = number;
 		this.state = state;
 		this.title = title;
@@ -59,6 +62,11 @@ public class Incident {
 		setTrackedUsersNum(trackedUsers.size());
 		editBtn = new Button("Edit");
 	}
+	
+	public String getID() {
+		return ID;
+	}
+	
 	/**
 	 * @return the dueOn
 	 */
