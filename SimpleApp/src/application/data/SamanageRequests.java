@@ -131,7 +131,7 @@ public class SamanageRequests {
 
 			String data = "<time_track>" + "<name>" + trackCmt + "</name>";
 			data += "<creator_id>" + creatorID + "</creator_id>";
-			data += "<minutes_parsed>" + time + "minutes</minutes_parsed>" + "</time_track>";
+			data += "<minutes_parsed>" + time + " m</minutes_parsed>" + "</time_track>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
 			out.close();
@@ -825,8 +825,7 @@ public class SamanageRequests {
 									getString("email", (Element) track.getElementsByTagName("creator").item(0))
 											.toLowerCase(),
 									getString("id", (Element) track.getElementsByTagName("creator").item(0))),
-							// convert to minutes
-							Integer.parseInt(getString("minutes", track)) / 60, getString("name", track));
+							Integer.parseInt(getString("minutes", track)), getString("name", track));
 					timeTracks.add(newTrack);
 				}
 
