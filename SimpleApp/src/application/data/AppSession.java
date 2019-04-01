@@ -306,6 +306,15 @@ public class AppSession {
 		return groupNames;
 	}
 	
+	public String getGroupId(String groupName) {
+		for (String group: groups.keySet()) {
+			if (groups.get(group).getName().equals(groupName)) {
+				return group;
+			}
+		}
+		return "";
+	}
+	
 	public void updateDefaultRequesterData() {
 		requesterInfo = users.get(toCorrectDomain(defaultRequester));
 	}

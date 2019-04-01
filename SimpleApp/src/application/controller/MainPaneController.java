@@ -415,7 +415,9 @@ public class MainPaneController {
 						}
 						String assignee = assigneeField.getText();
 						if (!AppSession.getSession().hasGroup(assignee)) {
-							assignee = toCorrectDomain(assigneeField.getText());
+							assignee = toCorrectDomain(assignee);
+						} else {
+							assignee = AppSession.getSession().getGroupId(assignee);
 						}
 						SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName,
 								priorityChoiceBox.getValue(), catChoiceBox.getValue(), subcatChoiceBox.getValue(),
@@ -468,13 +470,15 @@ public class MainPaneController {
 						}
 						String assignee = assigneeField.getText();
 						if (!AppSession.getSession().hasGroup(assignee)) {
-							assignee = toCorrectDomain(assigneeField.getText());
+							assignee = toCorrectDomain(assignee);
+						} else {
+							assignee = AppSession.getSession().getGroupId(assignee);
 						}
 						SamanageRequests.updateIncidentWithTimeTrack(AppSession.getSession().getUserToken(),
 								incidentName, curUpdateIncidentID, priorityChoiceBox.getValue(),
 								catChoiceBox.getValue(), subcatChoiceBox.getValue(), descField.getText(),
 								datePicker.getValue().toString(), statesChoiceBox.getValue(),
-								toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
+								assignee, toCorrectDomain(requesterField.getText()),
 								deptComboBox.getValue(), siteComboBox.getValue());
 
 						updateMessage("Submit");
@@ -650,7 +654,9 @@ public class MainPaneController {
 			}
 			incidentTable.getItems().add(incident);
 		}
-
+		if (AppSession.getSession().getCurrentIncidents().keySet().isEmpty()) {
+			incidentTable.setPlaceholder(new Label("You have no assigned incidents today."));
+		}
 		// DEFAULT SORT BY NUMBER
 		incidentTable.getColumns().get(0).setSortType(TableColumn.SortType.DESCENDING);
 		incidentTable.getSortOrder().add(incidentTable.getColumns().get(0));

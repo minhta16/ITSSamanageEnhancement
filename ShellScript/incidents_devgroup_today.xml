@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <incidents>
   <incident>
-    <id>36926359</id>
-    <number>17118</number>
-    <name>Colleague Software Update 1980-IT</name>
-    <description> Colleague software update </description>
-    <description_no_html>Colleague software update</description_no_html>
-    <state>New</state>
+    <id>36949345</id>
+    <number>17135</number>
+    <name>Load WinPDT file </name>
+    <description> Load WinPDT file into our WinPrism system  </description>
+    <description_no_html>Load WinPDT file into our WinPrism system</description_no_html>
+    <state>Assigned</state>
     <priority>Medium</priority>
     <category>
       <id>408915</id>
@@ -106,8 +106,8 @@
       <default_assignee_id>-1</default_assignee_id>
     </category>
     <subcategory>
-      <id>862557</id>
-      <name>Maintenance</name>
+      <id>858292</id>
+      <name>Data Transfer</name>
       <default_tags></default_tags>
       <children nil="true"/>
       <parent_id>408915</parent_id>
@@ -157,50 +157,50 @@
       </memberships>
     </assignee>
     <requester>
-      <id>1145731</id>
+      <id>1238681</id>
       <account_id>39281</account_id>
-      <user_id>1376124</user_id>
-      <email>bradbjork@augustana.edu</email>
-      <name>Bjork, Brad</name>
+      <user_id>1527305</user_id>
+      <email>MaxineBultynck@augustana.edu</email>
+      <name>Bultynck, Maxine M</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-03-26T16:52:16-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-01T13:22:36-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
-        <color>#fa7911</color>
-        <initials>BB</initials>
+        <color>#0089c9</color>
+        <initials>BM</initials>
       </avatar>
     </requester>
-    <created_at>2019-04-01T09:10:16-05:00</created_at>
-    <updated_at>2019-04-01T09:10:18-05:00</updated_at>
+    <created_at>2019-04-01T14:10:04-05:00</created_at>
+    <updated_at>2019-04-01T14:39:49-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
     <user_saw_all_comments>true</user_saw_all_comments>
     <is_service_request>false</is_service_request>
     <created_by>
-      <id>1145731</id>
+      <id>1238681</id>
       <account_id>39281</account_id>
-      <user_id>1376124</user_id>
-      <email>bradbjork@augustana.edu</email>
-      <name>Bjork, Brad</name>
+      <user_id>1527305</user_id>
+      <email>MaxineBultynck@augustana.edu</email>
+      <name>Bultynck, Maxine M</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-03-26T16:52:16-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-01T13:22:36-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
-        <color>#fa7911</color>
-        <initials>BB</initials>
+        <color>#0089c9</color>
+        <initials>BM</initials>
       </avatar>
     </created_by>
     <resolution_description nil="true"/>
     <resolution_code nil="true"/>
-    <custom>2019-04-01 14:10:17.859411</custom>
-    <href>https://api.samanage.com/incidents/36926359-colleague-software-update-1980-it.xml</href>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/incidents/36949345-load-winpdt-file.xml</href>
     <site>
-      <id>49746</id>
-      <name>Sorensen 130</name>
-      <location>Sorensen 130</location>
+      <id>49526</id>
+      <name>College Center Book Store</name>
+      <location>College Center Book Store</location>
       <description></description>
       <time_zone></time_zone>
       <language>-1</language>
@@ -211,18 +211,18 @@
       </business_record>
     </site>
     <department>
-      <id>39102</id>
-      <name>ITS</name>
+      <id>40542</id>
+      <name>Bookstore</name>
       <description></description>
       <default_assignee_id>-1</default_assignee_id>
     </department>
     <cc/>
     <custom_fields_values>
       <custom_fields_value>
-        <id>84713849</id>
+        <id>84767062</id>
         <custom_field_id>18424</custom_field_id>
         <name>Software</name>
-        <value>Colleague</value>
+        <value>Wimprism</value>
         <options>Notifi&lt;br&gt;Microsoft Silverlight&lt;br&gt;Firefox&lt;br&gt;Safari&lt;br&gt;Viking Score&lt;br&gt;Omnilert&lt;br&gt;OneCause&lt;br&gt;Acquia&lt;br&gt;Active Directory&lt;br&gt;Ad-Astra&lt;br&gt;Adobe Acrobat Pro&lt;br&gt;Adobe Creative Cloud&lt;br&gt;Adobe Creative Suite&lt;br&gt;Adobe Flash&lt;br&gt;Adobe Reader&lt;br&gt;AIMS&lt;br&gt;AugieChoice&lt;br&gt;AugieHub&lt;br&gt;Authorize.Net&lt;br&gt;Campaign Enterprise&lt;br&gt;Capture&lt;br&gt;CashNet&lt;br&gt;Check I'm Here&lt;br&gt;Class List&lt;br&gt;Co-Curricular Transcript&lt;br&gt;Colleague&lt;br&gt;Core Client Database&lt;br&gt;Course Master&lt;br&gt;CMAP&lt;br&gt;Dell&lt;br&gt;DHCP&lt;br&gt;DNS&lt;br&gt;Drop Verify&lt;br&gt;Extron&lt;br&gt;EZproxy&lt;br&gt;FERPA Compliance&lt;br&gt;Folder Rights&lt;br&gt;FrontRush&lt;br&gt;G Suite&lt;br&gt;Gmail&lt;br&gt;Google File Stream&lt;br&gt;GoToProfair&lt;br&gt;Hiatus (MSAccess)&lt;br&gt;IIS&lt;br&gt;Ingeniux&lt;br&gt;ISE - Scheduler&lt;br&gt;JMP&lt;br&gt;macOS&lt;br&gt;Maxient&lt;br&gt;Mediacom&lt;br&gt;Moodle&lt;br&gt;MP2&lt;br&gt;MS-Access&lt;br&gt;MSDS&lt;br&gt;Netreg&lt;br&gt;Noel Levitz&lt;br&gt;Office&lt;br&gt;OMC&lt;br&gt;Other&lt;br&gt;Palantir&lt;br&gt;PaperCut&lt;br&gt;Performance Appraisal&lt;br&gt;ProWatch&lt;br&gt;Reporting Services&lt;br&gt;Ruffalo Cody&lt;br&gt;Samanage&lt;br&gt;SAS&lt;br&gt;Simple Campus&lt;br&gt;Slate&lt;br&gt;SPSS&lt;br&gt;SSRPM&lt;br&gt;Starfish&lt;br&gt;Symantec&lt;br&gt;TimeClock Plus&lt;br&gt;Titanium Scheduling&lt;br&gt;Vectorworks&lt;br&gt;Veeam&lt;br&gt;VLC&lt;br&gt;VMware&lt;br&gt;Wealth Engine&lt;br&gt;WebAdvisor&lt;br&gt;Website&lt;br&gt;Wimprism&lt;br&gt;Windows 7/10&lt;br&gt;Winsdows SUS Server&lt;br&gt;Windows Server&lt;br&gt;Windstream&lt;br&gt;WordPress&lt;br&gt;eScrip-Safe&lt;br&gt;Lynda/LinkedIn Learning&lt;br&gt;FortisBlue&lt;br&gt;ArcGIS&lt;br&gt;Faronics Insight&lt;br&gt;Faronics DeepFreeze&lt;br&gt;Synergy</options>
         <type>2</type>
         <type_name>Dropdown</type_name>
@@ -231,7 +231,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84713850</id>
+        <id>84767063</id>
         <custom_field_id>96890</custom_field_id>
         <name>Customer Priority</name>
         <value>-1</value>
@@ -243,7 +243,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84713851</id>
+        <id>84767064</id>
         <custom_field_id>18547</custom_field_id>
         <name>Phone number</name>
         <value></value>
@@ -255,7 +255,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84713852</id>
+        <id>84767065</id>
         <custom_field_id>98681</custom_field_id>
         <name>Error message</name>
         <value></value>
@@ -267,7 +267,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84713853</id>
+        <id>84767066</id>
         <custom_field_id>18358</custom_field_id>
         <name>Building</name>
         <value>-1</value>
@@ -279,7 +279,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84713854</id>
+        <id>84767067</id>
         <custom_field_id>20407</custom_field_id>
         <name>Room</name>
         <value></value>
@@ -303,116 +303,116 @@
     <purchase_orders/>
   </incident>
   <incident>
-    <id>36513832</id>
-    <number>16942</number>
-    <name>Chinese Placement</name>
-    <description></description>
-    <description_no_html></description_no_html>
+    <id>36935362</id>
+    <number>17126</number>
+    <name>Hardware, Computer Lab/Classroom</name>
+    <description>test tracks</description>
+    <description_no_html>test tracks</description_no_html>
     <state>Closed</state>
     <priority>Medium</priority>
     <category>
-      <id>408915</id>
-      <name>Software</name>
+      <id>408914</id>
+      <name>Hardware</name>
       <default_tags></default_tags>
       <children>
         <child>
-          <id>408938</id>
-          <name>Data Reports</name>
+          <id>408928</id>
+          <name>Computer Lab/Classroom</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408915</parent_id>
+          <parent_id>408914</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>858292</id>
-          <name>Data Transfer</name>
+          <id>408926</id>
+          <name>Desktop Computer</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408915</parent_id>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>1564650</default_assignee_id>
+        </child>
+        <child>
+          <id>408929</id>
+          <name>Instructor Console</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>408936</id>
-          <name>Error/Bug</name>
+          <id>408932</id>
+          <name>Keyboard/Mouse/Cable/Accessory</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408915</parent_id>
+          <parent_id>408914</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>862222</id>
-          <name>ITS Website Updates (ITS use only)</name>
+          <id>862552</id>
+          <name>Laptop/Tablet Computer</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408915</parent_id>
-          <default_assignee_id>1564651</default_assignee_id>
-        </child>
-        <child>
-          <id>629965</id>
-          <name>License</name>
-          <default_tags></default_tags>
-          <children nil="true"/>
-          <parent_id>408915</parent_id>
+          <parent_id>408914</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>862557</id>
-          <name>Maintenance</name>
+          <id>408935</id>
+          <name>Monitor/TV</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408915</parent_id>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>1564650</default_assignee_id>
+        </child>
+        <child>
+          <id>408930</id>
+          <name>MultiMedia (Sound/Projector)</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>408943</id>
-          <name>New Installation</name>
+          <id>859024</id>
+          <name>Personal Device</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408915</parent_id>
+          <parent_id>408914</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>523760</id>
-          <name>User Process</name>
+          <id>408927</id>
+          <name>Printer</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408915</parent_id>
+          <parent_id>408914</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>408941</id>
+          <id>408931</id>
+          <name>Relocate/Disposal</name>
+          <default_tags></default_tags>
+          <children nil="true"/>
+          <parent_id>408914</parent_id>
+          <default_assignee_id>1564650</default_assignee_id>
+        </child>
+        <child>
+          <id>408934</id>
           <name>Vendor Product Support</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408915</parent_id>
-          <default_assignee_id>-1</default_assignee_id>
-        </child>
-        <child>
-          <id>408940</id>
-          <name>Version Update</name>
-          <default_tags></default_tags>
-          <children nil="true"/>
-          <parent_id>408915</parent_id>
-          <default_assignee_id>-1</default_assignee_id>
-        </child>
-        <child>
-          <id>408937</id>
-          <name>Z - Report - New</name>
-          <default_tags></default_tags>
-          <children nil="true"/>
-          <parent_id>408915</parent_id>
+          <parent_id>408914</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
       </children>
       <parent_id nil="true"/>
-      <default_assignee_id>-1</default_assignee_id>
+      <default_assignee_id>1564650</default_assignee_id>
     </category>
     <subcategory>
-      <id>408940</id>
-      <name>Version Update</name>
+      <id>408928</id>
+      <name>Computer Lab/Classroom</name>
       <default_tags></default_tags>
       <children nil="true"/>
-      <parent_id>408915</parent_id>
+      <parent_id>408914</parent_id>
       <default_assignee_id>-1</default_assignee_id>
     </subcategory>
     <assignee>
@@ -459,52 +459,52 @@
       </memberships>
     </assignee>
     <requester>
-      <id>1145734</id>
+      <id>1530413</id>
       <account_id>39281</account_id>
-      <user_id>1376127</user_id>
-      <email>JustinMcDanel@augustana.edu</email>
-      <name>Justin McDanel</name>
+      <user_id>1753326</user_id>
+      <email>MINHTA16@augustana.edu</email>
+      <name>Ta, Minh Q</name>
       <disabled>false</disabled>
-      <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-03-20T15:44:28-05:00</customer_satisfaction_survey_time>
+      <has_gravatar>true</has_gravatar>
+      <customer_satisfaction_survey_time>2019-03-29T15:14:02-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
         <sso_image_class></sso_image_class>
-        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/8b7a288420737de8f274/avatar_a692c0254dbd_128_card.png?1456767915</avatar_url>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/73490070742ba57bdbe8/giphy_card.gif?1552028881</avatar_url>
       </avatar>
     </requester>
-    <created_at>2019-03-20T15:43:41-05:00</created_at>
-    <updated_at>2019-03-20T15:45:00-05:00</updated_at>
-    <due_at nil="true"/>
+    <created_at>2019-04-01T10:45:00-05:00</created_at>
+    <updated_at>2019-04-01T14:46:50-05:00</updated_at>
+    <due_at>2019-04-01T00:00:00-05:00</due_at>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
     <user_saw_all_comments>true</user_saw_all_comments>
     <is_service_request>false</is_service_request>
     <created_by>
-      <id>1145734</id>
+      <id>1530413</id>
       <account_id>39281</account_id>
-      <user_id>1376127</user_id>
-      <email>JustinMcDanel@augustana.edu</email>
-      <name>Justin McDanel</name>
+      <user_id>1753326</user_id>
+      <email>MINHTA16@augustana.edu</email>
+      <name>Ta, Minh Q</name>
       <disabled>false</disabled>
-      <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-03-20T15:44:28-05:00</customer_satisfaction_survey_time>
+      <has_gravatar>true</has_gravatar>
+      <customer_satisfaction_survey_time>2019-03-29T15:14:02-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
         <sso_image_class></sso_image_class>
-        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/8b7a288420737de8f274/avatar_a692c0254dbd_128_card.png?1456767915</avatar_url>
+        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/73490070742ba57bdbe8/giphy_card.gif?1552028881</avatar_url>
       </avatar>
     </created_by>
     <resolution_description nil="true"/>
-    <resolution_code>Done</resolution_code>
-    <custom>2019-03-20 20:43:42.679644</custom>
-    <href>https://api.samanage.com/incidents/36513832-chinese-placement.xml</href>
+    <resolution_code nil="true"/>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/incidents/36935362-hardware-computer-lab-classroom.xml</href>
     <site>
-      <id>49741</id>
-      <name>Sorensen 108</name>
-      <location>Sorensen 108</location>
+      <id>43379</id>
+      <name>Freya House 2</name>
+      <location>Freya House 2</location>
       <description></description>
       <time_zone></time_zone>
       <language>-1</language>
@@ -515,93 +515,20 @@
       </business_record>
     </site>
     <department>
-      <id>39102</id>
-      <name>ITS</name>
+      <id>40524</id>
+      <name>Student</name>
       <description></description>
       <default_assignee_id>-1</default_assignee_id>
     </department>
     <cc/>
-    <custom_fields_values>
-      <custom_fields_value>
-        <id>83717249</id>
-        <custom_field_id>18424</custom_field_id>
-        <name>Software</name>
-        <value>Other</value>
-        <options>Notifi&lt;br&gt;Microsoft Silverlight&lt;br&gt;Firefox&lt;br&gt;Safari&lt;br&gt;Viking Score&lt;br&gt;Omnilert&lt;br&gt;OneCause&lt;br&gt;Acquia&lt;br&gt;Active Directory&lt;br&gt;Ad-Astra&lt;br&gt;Adobe Acrobat Pro&lt;br&gt;Adobe Creative Cloud&lt;br&gt;Adobe Creative Suite&lt;br&gt;Adobe Flash&lt;br&gt;Adobe Reader&lt;br&gt;AIMS&lt;br&gt;AugieChoice&lt;br&gt;AugieHub&lt;br&gt;Authorize.Net&lt;br&gt;Campaign Enterprise&lt;br&gt;Capture&lt;br&gt;CashNet&lt;br&gt;Check I'm Here&lt;br&gt;Class List&lt;br&gt;Co-Curricular Transcript&lt;br&gt;Colleague&lt;br&gt;Core Client Database&lt;br&gt;Course Master&lt;br&gt;CMAP&lt;br&gt;Dell&lt;br&gt;DHCP&lt;br&gt;DNS&lt;br&gt;Drop Verify&lt;br&gt;Extron&lt;br&gt;EZproxy&lt;br&gt;FERPA Compliance&lt;br&gt;Folder Rights&lt;br&gt;FrontRush&lt;br&gt;G Suite&lt;br&gt;Gmail&lt;br&gt;Google File Stream&lt;br&gt;GoToProfair&lt;br&gt;Hiatus (MSAccess)&lt;br&gt;IIS&lt;br&gt;Ingeniux&lt;br&gt;ISE - Scheduler&lt;br&gt;JMP&lt;br&gt;macOS&lt;br&gt;Maxient&lt;br&gt;Mediacom&lt;br&gt;Moodle&lt;br&gt;MP2&lt;br&gt;MS-Access&lt;br&gt;MSDS&lt;br&gt;Netreg&lt;br&gt;Noel Levitz&lt;br&gt;Office&lt;br&gt;OMC&lt;br&gt;Other&lt;br&gt;Palantir&lt;br&gt;PaperCut&lt;br&gt;Performance Appraisal&lt;br&gt;ProWatch&lt;br&gt;Reporting Services&lt;br&gt;Ruffalo Cody&lt;br&gt;Samanage&lt;br&gt;SAS&lt;br&gt;Simple Campus&lt;br&gt;Slate&lt;br&gt;SPSS&lt;br&gt;SSRPM&lt;br&gt;Starfish&lt;br&gt;Symantec&lt;br&gt;TimeClock Plus&lt;br&gt;Titanium Scheduling&lt;br&gt;Vectorworks&lt;br&gt;Veeam&lt;br&gt;VLC&lt;br&gt;VMware&lt;br&gt;Wealth Engine&lt;br&gt;WebAdvisor&lt;br&gt;Website&lt;br&gt;Wimprism&lt;br&gt;Windows 7/10&lt;br&gt;Winsdows SUS Server&lt;br&gt;Windows Server&lt;br&gt;Windstream&lt;br&gt;WordPress&lt;br&gt;eScrip-Safe&lt;br&gt;Lynda/LinkedIn Learning&lt;br&gt;FortisBlue&lt;br&gt;ArcGIS&lt;br&gt;Faronics Insight&lt;br&gt;Faronics DeepFreeze&lt;br&gt;Synergy</options>
-        <type>2</type>
-        <type_name>Dropdown</type_name>
-        <show_on_portal>true</show_on_portal>
-        <mandatory>true</mandatory>
-        <user nil="true"/>
-      </custom_fields_value>
-      <custom_fields_value>
-        <id>83717250</id>
-        <custom_field_id>96890</custom_field_id>
-        <name>Customer Priority</name>
-        <value>-1</value>
-        <options>NONE - No set timeframe (i.e. proposal)&lt;br&gt;LOW - Completion longer than a week&lt;br&gt;MED - Standard times apply&lt;br&gt;HIGH - Within next 24 hours&lt;br&gt;CRITICAL - Please call IT Helpdesk</options>
-        <type>2</type>
-        <type_name>Dropdown</type_name>
-        <show_on_portal>true</show_on_portal>
-        <mandatory>false</mandatory>
-        <user nil="true"/>
-      </custom_fields_value>
-      <custom_fields_value>
-        <id>83717251</id>
-        <custom_field_id>18547</custom_field_id>
-        <name>Phone number</name>
-        <value></value>
-        <options></options>
-        <type>1</type>
-        <type_name>Text</type_name>
-        <show_on_portal>true</show_on_portal>
-        <mandatory>false</mandatory>
-        <user nil="true"/>
-      </custom_fields_value>
-      <custom_fields_value>
-        <id>83717252</id>
-        <custom_field_id>98681</custom_field_id>
-        <name>Error message</name>
-        <value></value>
-        <options></options>
-        <type>1</type>
-        <type_name>Text</type_name>
-        <show_on_portal>true</show_on_portal>
-        <mandatory>false</mandatory>
-        <user nil="true"/>
-      </custom_fields_value>
-      <custom_fields_value>
-        <id>83717253</id>
-        <custom_field_id>18358</custom_field_id>
-        <name>Building</name>
-        <value>-1</value>
-        <options>No Building&lt;br&gt;Abbey House&lt;br&gt;Abbey Studio&lt;br&gt;Andeberg House&lt;br&gt;Anderson &amp; Bartholomew Houses&lt;br&gt;Andreen&lt;br&gt;Ansvar House&lt;br&gt;Arbaugh &amp; Naeseth Townhouses&lt;br&gt;Art Studios&lt;br&gt;Art-Pottery&lt;br&gt;Asgard House&lt;br&gt;Austin House&lt;br&gt;Black Culture House&lt;br&gt;Baldur House&lt;br&gt;Baseball Stadium&lt;br&gt;Bellman House&lt;br&gt;Bergendoff&lt;br&gt;Bergman House&lt;br&gt;Bostad House&lt;br&gt;Branting House&lt;br&gt;Bremer House A/B&lt;br&gt;Brew by the Slough&lt;br&gt;Brunner Theatre Center @ College Center&lt;br&gt;Brodahl&lt;br&gt;Carlsson Hall&lt;br&gt;Carriage House&lt;br&gt;Carver PE Center&lt;br&gt;Casa Latina&lt;br&gt;Celsius House&lt;br&gt;Centennial Hall&lt;br&gt;College Center&lt;br&gt;Delling House&lt;br&gt;Denkmann&lt;br&gt;Erfara House&lt;br&gt;Erickson Residence Center&lt;br&gt;Esbjorn House&lt;br&gt;Evald Hall&lt;br&gt;Flats&lt;br&gt;Forseti House&lt;br&gt;Founders Hall&lt;br&gt;Freya House&lt;br&gt;Gavle in Gerber Center&lt;br&gt;Gerber Center&lt;br&gt;Gustav House&lt;br&gt;Hansen House&lt;br&gt;Hanson Science Building&lt;br&gt;Hedin House&lt;br&gt;Heimdall House&lt;br&gt;House On The Hill&lt;br&gt;Idun House&lt;br&gt;Jansson House&lt;br&gt;JD Planetarium&lt;br&gt;Karsten House&lt;br&gt;Ken Anderson Center&lt;br&gt;Larsson House&lt;br&gt;Levander House&lt;br&gt;Lindgren House A/B&lt;br&gt;Local Culture House One&lt;br&gt;Lundholm House&lt;br&gt;Luther House&lt;br&gt;Martinson House A/B&lt;br&gt;Milles House&lt;br&gt;Moberg House&lt;br&gt;Music&lt;br&gt;Music Annex&lt;br&gt;Nobel House&lt;br&gt;Oden House&lt;br&gt;Old Main&lt;br&gt;Olin Center&lt;br&gt;Ostara House&lt;br&gt;Pagoda House&lt;br&gt;Parkander Residence Centers&lt;br&gt;Pepsico&lt;br&gt;Pool&lt;br&gt;President's House&lt;br&gt;Quad Outdoors&lt;br&gt;Roslin House&lt;br&gt;Ryden House&lt;br&gt;Sanning House&lt;br&gt;Seminary Hall&lt;br&gt;Sif House&lt;br&gt;Skadi House&lt;br&gt;Sorensen&lt;br&gt;Swanson Commons&lt;br&gt;Swendenborg House&lt;br&gt;Swenson Geosciences&lt;br&gt;Thor House&lt;br&gt;Ticket Office&lt;br&gt;Tredway Library&lt;br&gt;Tyr House&lt;br&gt;Vidar House&lt;br&gt;Viking House&lt;br&gt;Wallenberg Hall&lt;br&gt;Westerlin Residence Center&lt;br&gt;Wicksell House&lt;br&gt;Wilson Center&lt;br&gt;WVIK&lt;br&gt;Zander House&lt;br&gt;Zorn&lt;br&gt;Chicago Office&lt;br&gt;Tredway House</options>
-        <type>2</type>
-        <type_name>Dropdown</type_name>
-        <show_on_portal>true</show_on_portal>
-        <mandatory>false</mandatory>
-        <user nil="true"/>
-      </custom_fields_value>
-      <custom_fields_value>
-        <id>83717254</id>
-        <custom_field_id>20407</custom_field_id>
-        <name>Room</name>
-        <value></value>
-        <options></options>
-        <type>1</type>
-        <type_name>Text</type_name>
-        <show_on_portal>true</show_on_portal>
-        <mandatory>false</mandatory>
-        <user nil="true"/>
-      </custom_fields_value>
-    </custom_fields_values>
+    <custom_fields_values/>
     <incidents/>
     <changes/>
     <tasks/>
     <time_tracks>
       <time_track>
-        <id>2834455</id>
-        <href>https://api.samanage.com/incidents/36513832/time_tracks/2834455.xml</href>
+        <id>2873360</id>
+        <href>https://api.samanage.com/incidents/36935362/time_tracks/2873360.xml</href>
       </time_track>
     </time_tracks>
     <solutions/>
@@ -613,5 +540,5 @@
   </incident>
   <page>1</page>
   <per_page>2</per_page>
-  <total_entries>280</total_entries>
+  <total_entries>282</total_entries>
 </incidents>

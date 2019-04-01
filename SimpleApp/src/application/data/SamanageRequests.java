@@ -90,7 +90,7 @@ public class SamanageRequests {
 		if (assignee.contains("@")) {
 			data += " <assignee><email>" + assignee + "</email></assignee>";
 		} else {
-			data += " <assignee><name>" + assignee + "</name></assignee>";
+			data += " <assignee_id>" + assignee + "</assignee_id>";
 		}
 		data += "</incident>";
 
@@ -720,7 +720,7 @@ public class SamanageRequests {
 		if (assignee.contains("@")) {
 			data += " <assignee><email>" + assignee + "</email></assignee>";
 		} else {
-			data += " <assignee><name>" + assignee + "</name></assignee>";
+			data += " <assignee_id>" + assignee + "</assignee_id>";
 		}
 		data += "</incident>";
 
