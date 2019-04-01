@@ -2,17 +2,19 @@
   "userEmail": "minhta16",
   "userToken": "TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ\u003d\u003d:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg",
   "defaultDomain": "augustana.edu",
-  "defaultAssignee": "kristinazimmerman@augustana.edu",
-  "defaultRequester": "hainguyen17",
+  "defaultAssignee": "minhta16",
+  "defaultRequester": "minhta16",
   "requesterInfo": {
-    "name": "Nguyen, Hai",
-    "email": "hainguyen17@augustana.edu",
+    "name": "Ta, Minh Q",
+    "email": "minhta16@augustana.edu",
     "time": 0,
     "comment": "",
     "dept": "Student",
-    "site": "Erickson Residence Center EGR1",
-    "ID": "2552133",
-    "groupID": []
+    "site": "Freya House 2",
+    "ID": "1753326",
+    "groupID": [
+      "1953008"
+    ]
   },
   "defaultAutoUpdateCheckChoice": false,
   "assigneeEmails": [
