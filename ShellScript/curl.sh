@@ -35,9 +35,8 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 # Edit incident -------------------------------------------
 curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
 <incident>
-    <state>Resolved</state>
-    <site><name>Freya House 2</name></site>
-    <department><name>Student</name></department>
+    <name>test changing name</name>
+    <assignee><email>nguyentruong17@augustana.edu</email></assignee>
 </incident>
 ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36874389.xml
 

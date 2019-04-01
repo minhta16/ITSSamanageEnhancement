@@ -402,56 +402,94 @@ public class MainPaneController {
 	private void submitIncident() {
 		submitBtn.setText("Loading...");
 		submitBtn.setDisable(true);
-
+	
 		if (AppSession.getSession().getEditType() == IncidentEditType.NEW) {
-			new Thread(() -> {
-				try {
-					String incidentName;
-					if (incidentNameField.getText().equals("")) {
-						incidentName = getDefaultIncidentName();
-					} else {
-						incidentName = incidentNameField.getText();
+			Task<Parent> newIncident = new Task<Parent>() {
+			    @Override
+			    public Parent call() throws JsonIOException, IOException {
+			    	try {
+						String incidentName;
+						if (incidentNameField.getText().equals("")) {
+							incidentName = getDefaultIncidentName();
+						} else {
+							incidentName = incidentNameField.getText();
+						}
+						SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
+							priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
+							subcatChoiceBox.getValue(), descField.getText(),
+							datePicker.getValue().toString(), statesChoiceBox.getValue(),
+							toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
+							deptComboBox.getValue(),
+							siteComboBox.getValue());
+					
+					} catch (IOException e) {
+						showAlert("Error", e.getMessage(), AlertType.ERROR);
+						e.printStackTrace();
 					}
-					SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, 
-						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
-						subcatChoiceBox.getValue(), descField.getText(),
-						datePicker.getValue().toString(), statesChoiceBox.getValue(),
-						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
-						deptComboBox.getValue(),
-						siteComboBox.getValue());
+					return null;
+			    }
+			};
+		
+		    //method to set labeltext
+			submitBtn.textProperty().bind(Bindings.convert(newIncident.messageProperty()));
+			submitBtn.setDisable(true);
+			newIncident.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 				
-				} catch (IOException e) {
-					showAlert("Error", e.getMessage(), AlertType.ERROR);
-					e.printStackTrace();
+				@Override
+				public void handle(WorkerStateEvent event) {
+					showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 				}
-			}).start();
-			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
+			});
+			Thread newIncidentThread = new Thread(newIncident);
+			newIncidentThread.start();
 			
 		// TODO: IMPLEMENT EDIT
 		} else if (AppSession.getSession().getEditType() == IncidentEditType.EDIT) {
-			new Thread(() -> {
-				try {
-					//String incidentName;
-					/*
-					 * if (incidentNameField.getText().equals("")) { incidentName =
-					 * getDefaultIncidentName(); } else { incidentName =
-					 * incidentNameField.getText(); }
-					 */
-					SamanageRequests.updateIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentNameField.getText(), curUpdateIncidentID,
-						priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
-						subcatChoiceBox.getValue(), descField.getText(),
-						datePicker.getValue().toString(), statesChoiceBox.getValue(),
-						toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
-						deptComboBox.getValue(),
-						siteComboBox.getValue());
+			Task<Parent> editIncident = new Task<Parent>() {
+			    @Override
+			    public Parent call() throws JsonIOException, IOException {
+			    	try {
+						//String incidentName;
+						/*
+						 * if (incidentNameField.getText().equals("")) { incidentName =
+						 * getDefaultIncidentName(); } else { incidentName =
+						 * incidentNameField.getText(); }
+						 */
+
+						String incidentName;
+						if (incidentNameField.getText().equals("")) {
+							incidentName = getDefaultIncidentName();
+						} else {
+							incidentName = incidentNameField.getText();
+						}
+						SamanageRequests.updateIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName, curUpdateIncidentID,
+							priorityChoiceBox.getValue(), catChoiceBox.getValue(), 
+							subcatChoiceBox.getValue(), descField.getText(),
+							datePicker.getValue().toString(), statesChoiceBox.getValue(),
+							toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
+							deptComboBox.getValue(),
+							siteComboBox.getValue());
+						
 					
+					} catch (IOException e) {
+						showAlert("Error", e.getMessage(), AlertType.ERROR);
+						e.printStackTrace();
+					}
+					return null;
+			    }
+			};
+		    //method to set labeltext
+			submitBtn.textProperty().bind(Bindings.convert(editIncident.messageProperty()));
+			submitBtn.setDisable(true);
+			editIncident.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 				
-				} catch (IOException e) {
-					showAlert("Error", e.getMessage(), AlertType.ERROR);
-					e.printStackTrace();
+				@Override
+				public void handle(WorkerStateEvent event) {
+					showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
 				}
-			}).start();
-			showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
+			});
+			Thread editIncidentThread = new Thread(editIncident);
+			editIncidentThread.start();
 		}
 		clearInputFields();
 		submitBtn.setText("Submit");

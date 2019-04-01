@@ -2,7 +2,6 @@ package application.data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javafx.scene.control.Button;
 

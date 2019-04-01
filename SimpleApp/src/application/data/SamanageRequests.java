@@ -210,7 +210,7 @@ public class SamanageRequests {
 								getString("email", (Element) incident.getElementsByTagName("requester").item(0))
 										.toLowerCase(),
 								getString("name", (Element) incident.getElementsByTagName("site").item(incident.getElementsByTagName("site").getLength() - 1)),
-								getString("name", (Element) incident.getElementsByTagName("department").item(incident.getElementsByTagName("site").getLength() - 1)),
+								getString("name", (Element) incident.getElementsByTagName("department").item(incident.getElementsByTagName("department").getLength() - 1)),
 								getString("description", incident), toDate(getString("due_at", incident)),
 								trackedUsers);
 
@@ -622,7 +622,7 @@ public class SamanageRequests {
 	public static void updateIncident(String userToken, String incidentName, String incidentID, String priority, String category,
 			String subcategory, String description, String dueDate, String assignee, String requester)
 			throws IOException {
-		String url = "https://api.samanage.com/" + incidentID + ".xml";
+		String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
 
 		URL obj = new URL(url);
 		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
