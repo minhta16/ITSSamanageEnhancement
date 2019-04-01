@@ -33,12 +33,11 @@ curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.sa
 # ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
 
 # Edit incident -------------------------------------------
-# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
-# <incident>
-#     <name>test changing name</name>
-#     <assignee><email>nguyentruong17@augustana.edu</email></assignee>
-# </incident>
-# ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36874389.xml
+curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
+<incident>
+    <assignee><email>minhta16@augustana.edu</email></assignee>
+</incident>
+' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36936313.xml
 
 # New time track -----------------------------------------------
 ID=36681945

@@ -35,6 +35,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -102,6 +103,8 @@ public class MainPaneController {
 	private TableView<TimeTrack> infoTable;
 	@FXML
 	private TableView<Incident> incidentTable;
+	@FXML
+	private Button updateListBtn;
 
 	@FXML
 	private TextField userEmailField;
@@ -133,12 +136,10 @@ public class MainPaneController {
 
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
-		System.err.println(AppSession.getSession().getAssignees());
 
 		// setup setting tab
 		System.out.print("Setting up Setting Tab\t\t\t\r");
 		setupSettingTab();
-		updatePrompt = AppSession.getSession().getUpdatePrompt();
 
 		// setup priority
 		System.out.print("Setting up Priority\t\t\t\r");
@@ -221,6 +222,7 @@ public class MainPaneController {
 		incidentTable.getColumns().get(9).setCellValueFactory(new PropertyValueFactory<>("dept"));
 		incidentTable.getColumns().get(10).setCellValueFactory(new PropertyValueFactory<>("trackedUsersNum"));
 		incidentTable.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
+		incidentTable.setPlaceholder(new Label("Please update list to see the lastest incidents."));
 	}
 
 	private void setupIncidentEditTab() {
@@ -396,7 +398,6 @@ public class MainPaneController {
 	}
 
 	private void submitIncident() {
-		submitBtn.setText("Loading...");
 		submitBtn.setDisable(true);
 
 		if (AppSession.getSession().getEditType() == IncidentEditType.NEW) {
@@ -404,6 +405,7 @@ public class MainPaneController {
 				@Override
 				public Parent call() throws JsonIOException, IOException {
 					try {
+						updateMessage("Loading...");
 						String incidentName;
 						if (incidentNameField.getText().equals("")) {
 							incidentName = getDefaultIncidentName();
@@ -420,6 +422,7 @@ public class MainPaneController {
 								assignee, toCorrectDomain(requesterField.getText()),
 								deptComboBox.getValue(), siteComboBox.getValue());
 
+						updateMessage("Submit");
 					} catch (IOException e) {
 						showAlert("Error", e.getMessage(), AlertType.ERROR);
 						e.printStackTrace();
@@ -437,12 +440,10 @@ public class MainPaneController {
 				public void handle(WorkerStateEvent event) {
 					submitBtn.textProperty().unbind();
 					clearInputFields();
-					submitBtn.setText("Submit");
 				}
 			});
 			Thread newIncidentThread = new Thread(newIncident);
 			newIncidentThread.start();
-			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 
 			// TODO: IMPLEMENT EDIT
 		} else if (AppSession.getSession().getEditType() == IncidentEditType.EDIT) {
@@ -457,11 +458,16 @@ public class MainPaneController {
 						 * incidentNameField.getText(); }
 						 */
 
+						updateMessage("Loading...");
 						String incidentName;
 						if (incidentNameField.getText().equals("")) {
 							incidentName = getDefaultIncidentName();
 						} else {
 							incidentName = incidentNameField.getText();
+						}
+						String assignee = assigneeField.getText();
+						if (!AppSession.getSession().hasGroup(assignee)) {
+							assignee = toCorrectDomain(assigneeField.getText());
 						}
 						SamanageRequests.updateIncidentWithTimeTrack(AppSession.getSession().getUserToken(),
 								incidentName, curUpdateIncidentID, priorityChoiceBox.getValue(),
@@ -470,6 +476,7 @@ public class MainPaneController {
 								toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
 								deptComboBox.getValue(), siteComboBox.getValue());
 
+						updateMessage("Submit");
 					} catch (IOException e) {
 						showAlert("Error", e.getMessage(), AlertType.ERROR);
 						e.printStackTrace();
@@ -487,16 +494,15 @@ public class MainPaneController {
 					submitBtn.textProperty().unbind();
 					clearInputFields();
 					submitBtn.setText("Submit");
-					tabPane.getSelectionModel().select(mainMenuTab);
-					incidentEditTab.setDisable(true);
 				}
 			});
 			Thread editIncidentThread = new Thread(editIncident);
 			editIncidentThread.start();
-			showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
 		}
+		showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
 		tabPane.getSelectionModel().select(mainMenuTab);
 		incidentEditTab.setDisable(true);
+		handleUpdateListBtn();
 
 	}
 
@@ -594,9 +600,31 @@ public class MainPaneController {
 		if (AppSession.getSession().getUserEmail().equals("")) {
 			showAlert("User Email not set", "Please setup your user email in Settings", AlertType.WARNING);
 		} else {
+			
+			incidentTable.setPlaceholder(new Label("Updating incidents..."));
 			incidentTable.getItems().clear();
-			AppSession.getSession().updateTodayIncidents();
-			addIncidentsToTable();
+			Task<Parent> updateIncidentList = new Task<Parent>() {
+				@Override
+				public Parent call() throws JsonIOException, IOException {
+					updateMessage("Loading...");
+					AppSession.getSession().updateTodayIncidents();
+					updateMessage("Update List");
+					return null;
+				}
+			};
+			// method to set labeltext
+			updateListBtn.textProperty().bind(Bindings.convert(updateIncidentList.messageProperty()));
+			updateListBtn.setDisable(true);
+			updateIncidentList.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+
+				@Override
+				public void handle(WorkerStateEvent event) {
+					addIncidentsToTable();
+					submitBtn.textProperty().unbind();
+				}
+			});
+			Thread updateIncidentListThread = new Thread(updateIncidentList);
+			updateIncidentListThread.start();
 		}
 	}
 

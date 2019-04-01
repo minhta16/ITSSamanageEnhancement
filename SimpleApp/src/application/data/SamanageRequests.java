@@ -87,7 +87,12 @@ public class SamanageRequests {
 		}
 		data += " <description>" + description + "</description>";
 		data += " <due_at>" + dueDate + "</due_at>";
-		data += " <assignee><email>" + assignee + "</email></assignee>" + "</incident>";
+		if (assignee.contains("@")) {
+			data += " <assignee><email>" + assignee + "</email></assignee>";
+		} else {
+			data += " <assignee><name>" + assignee + "</name></assignee>";
+		}
+		data += "</incident>";
 
 		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 		out.write(data);
@@ -712,7 +717,12 @@ public class SamanageRequests {
 		}
 		data += " <description>" + description + "</description>";
 		data += " <due_at>" + dueDate + "</due_at>";
-		data += " <assignee><email>" + assignee + "</email></assignee>" + "</incident>";
+		if (assignee.contains("@")) {
+			data += " <assignee><email>" + assignee + "</email></assignee>";
+		} else {
+			data += " <assignee><name>" + assignee + "</name></assignee>";
+		}
+		data += "</incident>";
 
 		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 		out.write(data);
