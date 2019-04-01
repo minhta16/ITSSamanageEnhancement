@@ -201,13 +201,13 @@ public class Incident {
 	/**
 	 * @return the trackedUsers
 	 */
-	public ArrayList<TimeTrack> getTrackedUsers() {
+	public ArrayList<TimeTrack> getTimeTracks() {
 		return trackedUsers;
 	}
 	/**
 	 * @param trackedUsers the trackedUsers to set
 	 */
-	public void setTrackedUsers(ArrayList<TimeTrack> trackedUsers) {
+	public void setTimeTracks(ArrayList<TimeTrack> trackedUsers) {
 		this.trackedUsers = trackedUsers;
 		updateTrackedUsersNum();
 	}

@@ -35,9 +35,9 @@ public class SamanageRequests {
 		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate,
 				assignee, requester);
 		String incidentID = SamanageRequests.getID(userToken);
-		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
-		for (User user : trackedUsers) {
-			SamanageRequests.addTimeTrack(userToken, incidentID, user.getComment(), user.getID(), user.getTime());
+		ArrayList<TimeTrack> timeTracks = AppSession.getSession().getTimeTracks();
+		for (TimeTrack track : timeTracks) {
+			SamanageRequests.addTimeTrack(userToken, incidentID, track.getComment(), track.getUser().getID(), track.getTime());
 		}
 		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site);
 
@@ -609,9 +609,9 @@ public class SamanageRequests {
 		SamanageRequests.updateIncident(userToken, incidentName, incidentID, priority, category, subcategory, description, dueDate,
 				assignee, requester);
 		//String incidentID = SamanageRequests.getID(userToken);
-		ArrayList<User> trackedUsers = AppSession.getSession().getTrackedUsers();
-		for (User user : trackedUsers) {
-			SamanageRequests.addTimeTrack(userToken, incidentID, user.getComment(), user.getID(), user.getTime());
+		ArrayList<TimeTrack> timeTracks = AppSession.getSession().getTimeTracks();
+		for (TimeTrack track : timeTracks) {
+			SamanageRequests.addTimeTrack(userToken, incidentID, track.getComment(), track.getUser().getID(), track.getTime());
 		}
 		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site);
 
@@ -759,7 +759,10 @@ public class SamanageRequests {
 
 				if (listOfTracks.item(i) instanceof Element) {
 					Element track = (Element) listOfTracks.item(i);
-					TimeTrack newTrack = new TimeTrack(getString("name", (Element) track.getElementsByTagName("creator").item(0)),
+					TimeTrack newTrack = new TimeTrack(
+							new User(getString("name", (Element) track.getElementsByTagName("creator").item(0)),
+									getString("email", (Element) track.getElementsByTagName("creator").item(0)),
+									getString("id", (Element) track.getElementsByTagName("creator").item(0))),
 							Integer.parseInt(getString("minutes", track)),
 							getString("name", track));
 					timeTracks.add(newTrack);

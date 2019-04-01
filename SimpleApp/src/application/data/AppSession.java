@@ -25,7 +25,7 @@ public class AppSession {
 	private boolean defaultAutoUpdateCheckChoice;
 
 	private transient TreeMap<String, Incident> currentIncidents;
-	private transient ArrayList<User> trackedUsers;
+	private transient ArrayList<TimeTrack> timeTracks;
 	private transient IncidentEditType editType;
 
 	private ArrayList<String> assigneeEmails;
@@ -48,7 +48,7 @@ public class AppSession {
 		defaultAutoUpdateCheckChoice = false;
 		requesterInfo = new User();
 		currentIncidents = new TreeMap<String, Incident>();
-		trackedUsers = new ArrayList<User>();
+		timeTracks = new ArrayList<TimeTrack>();
 		users = new TreeMap<String, User>();
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
@@ -62,8 +62,8 @@ public class AppSession {
 		return session;
 	}
 	
-	public void addTrackedUser(User user) throws JsonIOException, IOException {
-		trackedUsers.add(user);
+	public void addTrackedUser(TimeTrack track) throws JsonIOException, IOException {
+		timeTracks.add(track);
 		saveData();
 	}
 	
@@ -76,12 +76,12 @@ public class AppSession {
 	}
 	
 	public boolean containTrackedUser(User user) {
-		return trackedUsers.contains(user);
+		return timeTracks.contains(user);
 	}
 	
 	public boolean containTrackedUser(String email) {
-		for (User user: trackedUsers) {
-			if (user.getEmail().equalsIgnoreCase(email)) {
+		for (TimeTrack track: timeTracks) {
+			if (track.getEmail().equalsIgnoreCase(email)) {
 				return true;
 			}
 		}
@@ -129,16 +129,16 @@ public class AppSession {
 		return priorities;
 	}
 	
-	public void removeTrackedUser(String email) {
-		for (int i = trackedUsers.size() - 1; i >= 0; i--) {
-			if (trackedUsers.get(i).getEmail().equalsIgnoreCase(email)) {
-				trackedUsers.remove(trackedUsers.get(i));
+	public void removeTimeTrackByEmail(String email) {
+		for (int i = timeTracks.size() - 1; i >= 0; i--) {
+			if (timeTracks.get(i).getEmail().equalsIgnoreCase(email)) {
+				timeTracks.remove(timeTracks.get(i));
 			}
 		}
 	}
 	
-	public ArrayList<User> getTrackedUsers() {
-		return trackedUsers;
+	public ArrayList<TimeTrack> getTimeTracks() {
+		return timeTracks;
 	}
 	
 	public void setUserEmail(String email) {
@@ -205,7 +205,7 @@ public class AppSession {
 	}
 	
 	public void clearTrackedUsers() {
-		trackedUsers.clear();
+		timeTracks.clear();
 	}
 	
 	public void setDefaultAssignee(String assignee) {

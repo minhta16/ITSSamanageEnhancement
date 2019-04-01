@@ -7,11 +7,8 @@ import javafx.scene.control.Button;
 public class User {
 	private String name;
 	private String email;
-	private int time;
-	private String comment;
 	private String dept;
 	private String site;
-	private transient Button removeBtn; //?
 
 
 	private String ID;
@@ -21,12 +18,9 @@ public class User {
 		name = "";
 		email = "";
 		ID = "";
-		time = 0;
-		comment = "";
 		dept = "";
 		site = "";
 		groupID = new ArrayList<String>();
-		removeBtn = new Button("X");
 	}
 
 	public User(String name, String email, String ID) {
@@ -83,29 +77,11 @@ public class User {
 		return email;
 	}
 
-	public int getTime() {
-		return time;
-	}
-	public void setTime(int time) {
-		this.time = time;
-	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
 	
 	public String getID() {
 		return ID;
 	}
 
-	public Button getRemoveBtn() {
-		return removeBtn;
-	}
-	public void setRemoveBtn(Button removeBtn) {
-		this.removeBtn = removeBtn;
-	}
 	public String toString() {
 		return "User: " + name + " Email: " + email + " ID: " + ID;
 	}
