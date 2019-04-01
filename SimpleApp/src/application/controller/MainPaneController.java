@@ -132,7 +132,8 @@ public class MainPaneController {
 		}
 
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
-		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssigneeEmails());
+		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
+		System.err.println(AppSession.getSession().getAssignees());
 
 		// setup setting tab
 		System.out.print("Setting up Setting Tab\t\t\t\r");
@@ -577,7 +578,7 @@ public class MainPaneController {
 		savedEmailprovider.clearSuggestions();
 		savedEmailprovider.addPossibleSuggestions(AppSession.getSession().getSavedEmails());
 		assigneeProvider.clearSuggestions();
-		assigneeProvider.addPossibleSuggestions(AppSession.getSession().getAssigneeEmails());
+		assigneeProvider.addPossibleSuggestions(AppSession.getSession().getAssignees());
 	}
 
 	private void clearInputFields() {

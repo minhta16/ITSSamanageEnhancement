@@ -78,8 +78,8 @@ public class AppSession {
 		this.categories = categories;
 	}
 	
-	public boolean containTrackedUser(User user) {
-		return timeTracks.contains(user);
+	public boolean containTimeTrack(TimeTrack track) {
+		return timeTracks.contains(track);
 	}
 	
 	public boolean containTrackedUser(String email) {
@@ -120,8 +120,11 @@ public class AppSession {
 		return users.keySet();
 	}
 	
-	public ArrayList<String> getAssigneeEmails() {
-		return assigneeEmails;
+	public ArrayList<String> getAssignees() {
+		ArrayList<String> assignees = new ArrayList<String>();
+		assignees.addAll(getGroupNames());
+		assignees.addAll(assigneeEmails);
+		return assignees;
 	}
 
 	public ArrayList<String> getStates() {
@@ -293,6 +296,14 @@ public class AppSession {
 			}
 		}
 		return false;
+	}
+	
+	public ArrayList<String> getGroupNames() {
+		ArrayList<String> groupNames = new ArrayList<String>();
+		for (String group: groups.keySet()) {
+			groupNames.add(groups.get(group).getName());
+		}
+		return groupNames;
 	}
 	
 	public void updateDefaultRequesterData() {
