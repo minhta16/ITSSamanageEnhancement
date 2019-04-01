@@ -2,8 +2,6 @@ package application.data;
 
 import java.util.ArrayList;
 
-import javafx.scene.control.Button;
-
 public class User {
 	private String name;
 	private String email;
@@ -15,18 +13,16 @@ public class User {
 	private ArrayList<String> groupID;
 	
 	public User() {
-		name = "";
-		email = "";
-		ID = "";
-		dept = "";
-		site = "";
-		groupID = new ArrayList<String>();
+		this("", "", "");
 	}
 
 	public User(String name, String email, String ID) {
 		this.name = name;
 		this.email = email;
 		this.ID = ID;
+		dept = "";
+		site = "";
+		groupID = new ArrayList<String>();
 	}
 
 	

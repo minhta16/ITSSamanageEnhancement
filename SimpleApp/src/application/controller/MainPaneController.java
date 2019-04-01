@@ -372,10 +372,12 @@ public class MainPaneController {
 			showAlert("Error", "Please enter an assignee email", AlertType.WARNING);
 		} else if (!AppSession.getSession().getSavedEmails().contains(toCorrectDomain(requesterField.getText()))) {
 			showAlert("Error", "Cannot find any requester with that email. Try again", AlertType.ERROR);
-		} else if (!AppSession.getSession().getSavedEmails().contains(toCorrectDomain(assigneeField.getText()))) {
-			showAlert("Error", "Cannot find any assignee with that email. Try again", AlertType.ERROR);
+		} else if (!AppSession.getSession().getSavedEmails().contains(toCorrectDomain(assigneeField.getText()))
+				&& !AppSession.getSession().hasGroup(assigneeField.getText())) {
+			showAlert("Error", "Cannot find any assignee with that information. Try again", AlertType.ERROR);
 		} else {
-			if (AppSession.getSession().getTimeTracks().isEmpty()) {
+			// TODO: handle remove all time tracks in EDIT mode
+			if (AppSession.getSession().getTimeTracks().isEmpty() && AppSession.getSession().getEditType() == IncidentEditType.NEW) {
 				Alert alert = new Alert(AlertType.WARNING, "No time tracks have been entered. Proceed?", ButtonType.OK,
 						ButtonType.CANCEL);
 				alert.setTitle("Warning");
@@ -407,11 +409,14 @@ public class MainPaneController {
 						} else {
 							incidentName = incidentNameField.getText();
 						}
-						System.err.println(incidentNameField.getText() + " " + incidentName);
+						String assignee = assigneeField.getText();
+						if (!AppSession.getSession().hasGroup(assignee)) {
+							assignee = toCorrectDomain(assigneeField.getText());
+						}
 						SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName,
 								priorityChoiceBox.getValue(), catChoiceBox.getValue(), subcatChoiceBox.getValue(),
 								descField.getText(), datePicker.getValue().toString(), statesChoiceBox.getValue(),
-								toCorrectDomain(assigneeField.getText()), toCorrectDomain(requesterField.getText()),
+								assignee, toCorrectDomain(requesterField.getText()),
 								deptComboBox.getValue(), siteComboBox.getValue());
 
 					} catch (IOException e) {
@@ -429,7 +434,6 @@ public class MainPaneController {
 
 				@Override
 				public void handle(WorkerStateEvent event) {
-					showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 					submitBtn.textProperty().unbind();
 					clearInputFields();
 					submitBtn.setText("Submit");
@@ -437,6 +441,7 @@ public class MainPaneController {
 			});
 			Thread newIncidentThread = new Thread(newIncident);
 			newIncidentThread.start();
+			showAlert("Incident created", "Incident created", AlertType.INFORMATION);
 
 			// TODO: IMPLEMENT EDIT
 		} else if (AppSession.getSession().getEditType() == IncidentEditType.EDIT) {
@@ -457,7 +462,6 @@ public class MainPaneController {
 						} else {
 							incidentName = incidentNameField.getText();
 						}
-						System.err.println(incidentNameField.getText() + " " + incidentName);
 						SamanageRequests.updateIncidentWithTimeTrack(AppSession.getSession().getUserToken(),
 								incidentName, curUpdateIncidentID, priorityChoiceBox.getValue(),
 								catChoiceBox.getValue(), subcatChoiceBox.getValue(), descField.getText(),
@@ -479,18 +483,20 @@ public class MainPaneController {
 
 				@Override
 				public void handle(WorkerStateEvent event) {
-					showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
 					submitBtn.textProperty().unbind();
 					clearInputFields();
 					submitBtn.setText("Submit");
+					tabPane.getSelectionModel().select(mainMenuTab);
+					incidentEditTab.setDisable(true);
 				}
 			});
 			Thread editIncidentThread = new Thread(editIncident);
 			editIncidentThread.start();
+			showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
 		}
-
 		tabPane.getSelectionModel().select(mainMenuTab);
 		incidentEditTab.setDisable(true);
+
 	}
 
 	@FXML
@@ -603,6 +609,12 @@ public class MainPaneController {
 				preFetchIncidentInfo(incident.getNumber());
 				AppSession.getSession().setEditType(IncidentEditType.EDIT);
 			});
+			
+			if (AppSession.getSession().getGroups().containsKey(incident.getGroupId())
+					&& incident.getAssignee().isEmpty()) {
+				// set Assignee to Group Name
+				incident.setAssignee(AppSession.getSession().getGroups().get(incident.getGroupId()).getName());
+			}
 			incidentTable.getItems().add(incident);
 		}
 
@@ -625,6 +637,14 @@ public class MainPaneController {
 		siteComboBox.setValue(incident.getSite());
 		if (incident.getDueOn() != null) {
 			datePicker.setValue(incident.getDueOn());
+		}
+		for (TimeTrack track: incident.getTimeTracks()) {
+			track.getRemoveBtn().setDisable(true);
+			// TODO: handle this listener to remove tracks
+			track.getRemoveBtn().setOnAction((e) -> {
+//				AppSession.getSession().removeTimeTrackByEmail(track.getEmail());
+//				infoTable.getItems().remove(track);
+			});
 		}
 		infoTable.getItems().clear();
 		infoTable.getItems().addAll(incident.getTimeTracks());
@@ -740,7 +760,7 @@ public class MainPaneController {
 
 	@FXML
 	private void handleUpdateDataBtn() {
-		if (!updatePrompt.equals("")) {
+		if (updatePrompt.equals("")) {
 			showAlert("Already Up-to-date", "The data is already up to date.", AlertType.INFORMATION);
 		} else {
 			Alert alert = new Alert(AlertType.WARNING, "The process is going to take about 4 mins. Proceed?",
@@ -763,6 +783,9 @@ public class MainPaneController {
 
 						updateMessage("Updating Categories...");
 						AppSession.getSession().updateCategories();
+						
+						updateMessage("Updating Groups...");
+						AppSession.getSession().updateGroups();
 
 						updateMessage("Saving Data...");
 						AppSession.getSession().saveData();

@@ -18,6 +18,7 @@ public class Incident {
 	private String site;
 	private String dept;
 	private String desc;
+	private String groupId;
 	private LocalDate dueOn;
 
 	private ArrayList<TimeTrack> trackedUsers;
@@ -25,25 +26,11 @@ public class Incident {
 	private transient Button editBtn;
 	
 	public Incident() {
-		ID = "";
-		number = "";
-		state = "";
-		title = "";
-		priority = "";
-		cat = "";
-		subcat = "";
-		assignee = "";
-		requester = "";
-		site = "";
-		dept = "";
-		desc = "";
-		trackedUsers = new ArrayList<TimeTrack>();
-		setTrackedUsersNum(0);
-		editBtn = new Button("Edit");
 	}
+	
 	public Incident(String ID, String number, String state, String title, String priority, String cat
 			, String subcat, String assignee, String requester, String site, String dept
-			, String desc, LocalDate dueOn, ArrayList<TimeTrack> trackedUsers) {
+			, String desc, LocalDate dueOn, String groupId, ArrayList<TimeTrack> trackedUsers) {
 		this.ID = ID;
 		this.number = number;
 		this.state = state;
@@ -58,8 +45,22 @@ public class Incident {
 		this.desc = desc;
 		this.dueOn = dueOn;
 		this.trackedUsers = trackedUsers;
+		this.groupId = groupId;
 		setTrackedUsersNum(trackedUsers.size());
 		editBtn = new Button("Edit");
+	}
+	
+	/**
+	 * @return the groupId
+	 */
+	public String getGroupId() {
+		return groupId;
+	}
+	/**
+	 * @param groupId the groupId to set
+	 */
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
 	}
 	
 	public String getID() {

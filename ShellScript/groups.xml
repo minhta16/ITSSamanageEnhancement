@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups>
+  <group>
+    <id>1564653</id>
+    <name>Development Group</name>
+    <description></description>
+    <email nil="true"/>
+    <disabled>false</disabled>
+    <is_user>false</is_user>
+    <user_id nil="true"/>
+    <reports_to>
+      <id>-1</id>
+      <href>https://api.samanage.com/groups/-1.xml</href>
+    </reports_to>
+    <avatar>
+      <type>group</type>
+      <color>#fd4165</color>
+    </avatar>
+    <memberships>
+      <membership>
+        <id>1152496</id>
+        <user>Chris Vaughan</user>
+      </membership>
+      <membership>
+        <id>1154572</id>
+        <user>Bjork, Brad</user>
+      </membership>
+      <membership>
+        <id>1154576</id>
+        <user>Justin McDanel</user>
+      </membership>
+      <membership>
+        <id>1228994</id>
+        <user>Tammy McAuliffe</user>
+      </membership>
+      <membership>
+        <id>1242996</id>
+        <user>Bradshaw, Lillian</user>
+      </membership>
+      <membership>
+        <id>2008718</id>
+        <user>Arpy, Jana</user>
+      </membership>
+    </memberships>
+  </group>
+  <group>
+    <id>1564650</id>
+    <name>Hardware Techs</name>
+    <description></description>
+    <email nil="true"/>
+    <disabled>false</disabled>
+    <is_user>false</is_user>
+    <user_id nil="true"/>
+    <reports_to>
+      <id>-1</id>
+      <href>https://api.samanage.com/groups/-1.xml</href>
+    </reports_to>
+    <avatar>
+      <type>group</type>
+      <color>#0bc46f</color>
+    </avatar>
+    <memberships>
+      <membership>
+        <id>1152512</id>
+        <user>Whitemore, Kevin</user>
+      </membership>
+      <membership>
+        <id>1152526</id>
+        <user>Rios, Fernando</user>
+      </membership>
+      <membership>
+        <id>1152540</id>
+        <user>Martin, Jeff</user>
+      </membership>
+    </memberships>
+  </group>
+  <group>
+    <id>1564651</id>
+    <name>Helpdesk group</name>
+    <description></description>
+    <email nil="true"/>
+    <disabled>false</disabled>
+    <is_user>false</is_user>
+    <user_id nil="true"/>
+    <reports_to>
+      <id>-1</id>
+      <href>https://api.samanage.com/groups/-1.xml</href>
+    </reports_to>
+    <avatar>
+      <type>group</type>
+      <color>#dfcd00</color>
+    </avatar>
+    <memberships>
+      <membership>
+        <id>1152503</id>
+        <user>VanWatermeulen, Sue</user>
+      </membership>
+      <membership>
+        <id>1152530</id>
+        <user>Zimmerman, Kristina</user>
+      </membership>
+      <membership>
+        <id>1152534</id>
+        <user>Ramsdale, Wendy (ITS)</user>
+      </membership>
+      <membership>
+        <id>1152757</id>
+        <user>Shawn Beattie</user>
+      </membership>
+      <membership>
+        <id>1301873</id>
+        <user nil="true"/>
+      </membership>
+    </memberships>
+  </group>
+  <group>
+    <id>1820162</id>
+    <name>ITS Department</name>
+    <description></description>
+    <email nil="true"/>
+    <disabled>false</disabled>
+    <is_user>false</is_user>
+    <user_id nil="true"/>
+    <reports_to>
+      <id>1564654</id>
+      <href>https://api.samanage.com/groups/1564654.xml</href>
+    </reports_to>
+    <avatar>
+      <type>group</type>
+      <color>#0bc46f</color>
+    </avatar>
+    <memberships>
+      <membership>
+        <id>1420849</id>
+        <user>Ramsdale, Wendy (ITS)</user>
+      </membership>
+      <membership>
+        <id>1420850</id>
+        <user>Shawn Beattie</user>
+      </membership>
+      <membership>
+        <id>1420853</id>
+        <user>Zimmerman, Kristina</user>
+      </membership>
+      <membership>
+        <id>1420855</id>
+        <user>Whitemore, Kevin</user>
+      </membership>
+      <membership>
+        <id>1420856</id>
+        <user>Rios, Fernando</user>
+      </membership>
+      <membership>
+        <id>1420857</id>
+        <user>Martin, Jeff</user>
+      </membership>
+      <membership>
+        <id>1420858</id>
+        <user>Dean, Scott</user>
+      </membership>
+      <membership>
+        <id>1420859</id>
+        <user>McBride, Sean</user>
+      </membership>
+      <membership>
+        <id>1420861</id>
+        <user>Harris, Markus-ITS Staff</user>
+      </membership>
+      <membership>
+        <id>1420862</id>
+        <user>Bradshaw, Lillian</user>
+      </membership>
+      <membership>
+        <id>1420863</id>
+        <user>Justin McDanel</user>
+      </membership>
+      <membership>
+        <id>1420864</id>
+        <user>Tammy McAuliffe</user>
+      </membership>
+      <membership>
+        <id>1420865</id>
+        <user>Bjork, Brad</user>
+      </membership>
+      <membership>
+        <id>1420868</id>
+        <user>Chris Vaughan</user>
+      </membership>
+      <membership>
+        <id>3895770</id>
+        <user>Arpy, Jana</user>
+      </membership>
+    </memberships>
+  </group>
+  <group>
+    <id>3994078</id>
+    <name>ITS Students</name>
+    <description>ITS Students</description>
+    <email nil="true"/>
+    <disabled>false</disabled>
+    <is_user>false</is_user>
+    <user_id nil="true"/>
+    <reports_to>
+      <id>1564629</id>
+      <href>https://api.samanage.com/groups/1564629.xml</href>
+    </reports_to>
+    <avatar>
+      <type>group</type>
+      <color>#bb5bac</color>
+    </avatar>
+    <memberships>
+      <membership>
+        <id>3702882</id>
+        <user>Workman,Kyle</user>
+      </membership>
+      <membership>
+        <id>3702886</id>
+        <user>Lee, Briana E</user>
+      </membership>
+      <membership>
+        <id>3704096</id>
+        <user>Patwal,Saurabh</user>
+      </membership>
+      <membership>
+        <id>3704097</id>
+        <user>Patwal,Gaurav</user>
+      </membership>
+      <membership>
+        <id>3704100</id>
+        <user>El Mendri, Ghita</user>
+      </membership>
+      <membership>
+        <id>3704102</id>
+        <user>Xu,Zhenwei</user>
+      </membership>
+      <membership>
+        <id>3704104</id>
+        <user>Ngo,Trang</user>
+      </membership>
+      <membership>
+        <id>3704108</id>
+        <user>Nguyen,Mai</user>
+      </membership>
+      <membership>
+        <id>3704160</id>
+        <user>Nawaz, Faisal</user>
+      </membership>
+      <membership>
+        <id>3708509</id>
+        <user>StudentQue</user>
+      </membership>
+    </memberships>
+  </group>
+  <group>
+    <id>1564652</id>
+    <name>Network Group</name>
+    <description></description>
+    <email nil="true"/>
+    <disabled>false</disabled>
+    <is_user>false</is_user>
+    <user_id nil="true"/>
+    <reports_to>
+      <id>-1</id>
+      <href>https://api.samanage.com/groups/-1.xml</href>
+    </reports_to>
+    <avatar>
+      <type>group</type>
+      <color>#fa7911</color>
+    </avatar>
+    <memberships>
+      <membership>
+        <id>1152508</id>
+        <user>Dean, Scott</user>
+      </membership>
+      <membership>
+        <id>1319578</id>
+        <user>McBride, Sean</user>
+      </membership>
+      <membership>
+        <id>1319579</id>
+        <user>Harris, Markus-ITS Staff</user>
+      </membership>
+    </memberships>
+  </group>
+  <group>
+    <id>1639799</id>
+    <name>Phone</name>
+    <description>Phone incidents for Markus and Scott</description>
+    <email nil="true"/>
+    <disabled>false</disabled>
+    <is_user>false</is_user>
+    <user_id nil="true"/>
+    <reports_to>
+      <id>1564661</id>
+      <href>https://api.samanage.com/groups/1564661.xml</href>
+    </reports_to>
+    <avatar>
+      <type>group</type>
+      <color>#ffa21e</color>
+    </avatar>
+    <memberships>
+      <membership>
+        <id>1229406</id>
+        <user>Dean, Scott</user>
+      </membership>
+      <membership>
+        <id>1319576</id>
+        <user>Harris, Markus-ITS Staff</user>
+      </membership>
+    </memberships>
+  </group>
+  <page>1</page>
+  <per_page>100</per_page>
+  <total_entries>7</total_entries>
+</groups>

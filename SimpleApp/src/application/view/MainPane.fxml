@@ -288,7 +288,7 @@
                               </BorderPane>
                            </content>
                         </Tab>
-                        <Tab text="Database">
+                        <Tab closable="false" text="Database">
                           <content>
                               <GridPane>
                                  <columnConstraints>

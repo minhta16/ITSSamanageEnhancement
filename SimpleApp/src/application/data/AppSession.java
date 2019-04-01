@@ -28,6 +28,7 @@ public class AppSession {
 	private transient ArrayList<TimeTrack> timeTracks;
 	private transient IncidentEditType editType;
 
+	private TreeMap<String, Group> groups;
 	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
 	private TreeMap<String, ArrayList<String>> categories;
@@ -35,6 +36,7 @@ public class AppSession {
 	private ArrayList<String> sites;
 	private ArrayList<String> priorities;
 	private TreeMap<String, User> users;
+	
 	
 	private AppSession() {
 		this("");
@@ -56,6 +58,7 @@ public class AppSession {
 		assigneeEmails = new ArrayList<String>();
 		departments = new ArrayList<String>();
 		sites = new ArrayList<String>();
+		groups = new TreeMap<String, Group>();
 	}
 	
 	public static AppSession getSession() {
@@ -136,6 +139,10 @@ public class AppSession {
 			}
 		}
 	}
+	
+//	public void removeTimeTrackByEmailOnServer(String email) {
+//		SamanageRequests.add
+//	}
 	
 	public ArrayList<TimeTrack> getTimeTracks() {
 		return timeTracks;
@@ -250,6 +257,19 @@ public class AppSession {
 		return users.get(toCorrectDomain(email.toLowerCase()));
 	}
 	
+	/**
+	 * @return the groups
+	 */
+	public TreeMap<String, Group> getGroups() {
+		return groups;
+	}
+	/**
+	 * @param groups the groups to set
+	 */
+	public void setGroups(TreeMap<String, Group> groups) {
+		this.groups = groups;
+	}
+	
 	public void loadData() throws IOException {
 		FileReader fd = new FileReader(DATA_LOCATION);
 		JsonReader reader = new JsonReader(fd);
@@ -264,6 +284,15 @@ public class AppSession {
 		FileWriter fw = new FileWriter(DATA_LOCATION);
 		gson.toJson(session, fw);
 		fw.close();
+	}
+	
+	public boolean hasGroup(String groupName) {
+		for (String group: groups.keySet()) {
+			if (groups.get(group).getName().toLowerCase().equals(groupName.toLowerCase())) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void updateDefaultRequesterData() {
@@ -284,6 +313,7 @@ public class AppSession {
 		int dbDepts = SamanageRequests.getTotalElements(userToken, "departments");
 		int dbSites = SamanageRequests.getTotalElements(userToken, "sites");
 		int dbCats = SamanageRequests.getTotalElements(userToken, "categories");
+		int dbGroups = SamanageRequests.getTotalElements(userToken, "groups");
 		
 		if (dbUsers != users.size()) {
 			prompt += "Local Users: " + users.size() + ", Database Users: " + dbUsers; 
@@ -293,6 +323,8 @@ public class AppSession {
 			prompt += "Local Sites: " + sites.size() + ", Database Sites: " + dbSites; 
 		} else if (dbCats != categories.size()) {
 			prompt += "Local Categories: " + categories.size() + ", Database Categories: " + dbCats; 
+		} else if (dbGroups != groups.size()) {
+			prompt += "Local Groups: " + groups.size() + ", Database Groups: " + dbGroups; 
 		}
 		return prompt;
 //				&& SamanageRequests.getTotalElements(userToken, users);
@@ -320,6 +352,12 @@ public class AppSession {
 	public void updateCategories() {
 		if (SamanageRequests.getTotalElements(userToken, "categories") != categories.size()) {
 			categories = SamanageRequests.getCategories(userToken);
+		}
+
+	}
+	public void updateGroups() {
+		if (SamanageRequests.getTotalElements(userToken, "groups") != groups.size()) {
+			groups = SamanageRequests.getGroups(userToken);
 		}
 
 	}

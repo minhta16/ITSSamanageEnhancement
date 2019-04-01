@@ -37,7 +37,8 @@ public class SamanageRequests {
 		String incidentID = SamanageRequests.getID(userToken);
 		ArrayList<TimeTrack> timeTracks = AppSession.getSession().getTimeTracks();
 		for (TimeTrack track : timeTracks) {
-			SamanageRequests.addTimeTrack(userToken, incidentID, track.getComment(), track.getUser().getID(), track.getTime());
+			SamanageRequests.addTimeTrack(userToken, incidentID, track.getComment(), track.getUser().getID(),
+					track.getTime());
 		}
 		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site);
 
@@ -139,7 +140,7 @@ public class SamanageRequests {
 
 	// HTML METHOD:
 	// GET
-	
+
 	public static TreeMap<String, Incident> getIncidents(String userToken, String userID) {
 		TreeMap<String, Incident> incidentMap = new TreeMap<String, Incident>();
 		boolean hasMore = true;
@@ -201,17 +202,27 @@ public class SamanageRequests {
 						ArrayList<TimeTrack> trackedUsers = getTimeTracks(userToken, id);
 						String ID = getString("id", incident);
 						String number = getString("number", incident);
+						String assigneeEmail = getString("email", (Element) incident.getElementsByTagName("assignee").item(0))
+								.toLowerCase();
+						String groupId = "";
+						if (assigneeEmail.isEmpty()) {
+							groupId = getString("id", (Element) incident.getElementsByTagName("assignee").item(0));
+						}
 						Incident newIncident = new Incident(ID, number, getString("state", incident),
 								getString("name", incident), getString("priority", incident),
 								getString("name", (Element) incident.getElementsByTagName("category").item(0)),
 								getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
-								getString("email", (Element) incident.getElementsByTagName("assignee").item(0))
-										.toLowerCase(),
+								assigneeEmail,
 								getString("email", (Element) incident.getElementsByTagName("requester").item(0))
 										.toLowerCase(),
-								getString("name", (Element) incident.getElementsByTagName("site").item(incident.getElementsByTagName("site").getLength() - 1)),
-								getString("name", (Element) incident.getElementsByTagName("department").item(incident.getElementsByTagName("department").getLength() - 1)),
+								getString("name",
+										(Element) incident.getElementsByTagName("site")
+												.item(incident.getElementsByTagName("site").getLength() - 1)),
+								getString("name",
+										(Element) incident.getElementsByTagName("department")
+												.item(incident.getElementsByTagName("department").getLength() - 1)),
 								getString("description", incident), toDate(getString("due_at", incident)),
+								groupId,
 								trackedUsers);
 
 						incidentMap.put(number, newIncident);
@@ -508,6 +519,46 @@ public class SamanageRequests {
 		return siteList;
 	}
 
+	public static TreeMap<String, Group> getGroups(String userToken) {
+		/*
+		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
+		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
+		 * https://api.samanage.com/categories.xml
+		 */
+		try {
+			String url = "https://api.samanage.com/groups.xml";
+
+			URL obj = new URL(url);
+			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+			conn.setDoOutput(true);
+
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
+			conn.setRequestProperty("Content-Type", "text/xml");
+
+			Element rootElement = documentFromOutput(conn);
+			NodeList groups = rootElement.getElementsByTagName("group");
+
+			TreeMap<String, Group> groupsMap = new TreeMap<String, Group>();
+			for (int i = 0; i < groups.getLength(); i++) {
+				if (groups.item(i) instanceof Element) {
+					Element group = (Element) groups.item(i);
+					String name = getString("name", group);
+					String groupId = getString("id", group);
+					groupsMap.put(groupId, new Group(name, groupId));
+				}
+
+			}
+
+			conn.disconnect();
+			return groupsMap;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public static String getID(String userToken) {
 		try {
 			String url = "https://api.samanage.com/incidents.xml?per_page=1";
@@ -602,25 +653,26 @@ public class SamanageRequests {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void updateIncidentWithTimeTrack(String userToken, String incidentName, String incidentID, String priority, String category,
-			String subcategory, String description, String dueDate, String state, String assignee, String requester,
-			String dept, String site) throws IOException {
-		SamanageRequests.updateIncident(userToken, incidentName, incidentID, priority, category, subcategory, description, dueDate,
-				assignee, requester);
-		//String incidentID = SamanageRequests.getID(userToken);
+
+	public static void updateIncidentWithTimeTrack(String userToken, String incidentName, String incidentID,
+			String priority, String category, String subcategory, String description, String dueDate, String state,
+			String assignee, String requester, String dept, String site) throws IOException {
+		SamanageRequests.updateIncident(userToken, incidentName, incidentID, priority, category, subcategory,
+				description, dueDate, assignee, requester);
+		// String incidentID = SamanageRequests.getID(userToken);
 		ArrayList<TimeTrack> timeTracks = AppSession.getSession().getTimeTracks();
 		for (TimeTrack track : timeTracks) {
-			SamanageRequests.addTimeTrack(userToken, incidentID, track.getComment(), track.getUser().getID(), track.getTime());
+			SamanageRequests.addTimeTrack(userToken, incidentID, track.getComment(), track.getUser().getID(),
+					track.getTime());
 		}
 		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site);
 
 		// clear the UI
 		AppSession.getSession().clearTrackedUsers();
 	}
-	
-	public static void updateIncident(String userToken, String incidentName, String incidentID, String priority, String category,
-			String subcategory, String description, String dueDate, String assignee, String requester)
+
+	public static void updateIncident(String userToken, String incidentName, String incidentID, String priority,
+			String category, String subcategory, String description, String dueDate, String assignee, String requester)
 			throws IOException {
 		String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
 
@@ -681,7 +733,6 @@ public class SamanageRequests {
 		conn.disconnect();
 
 	}
-
 
 	// OTHERS
 	//
@@ -761,10 +812,11 @@ public class SamanageRequests {
 					Element track = (Element) listOfTracks.item(i);
 					TimeTrack newTrack = new TimeTrack(
 							new User(getString("name", (Element) track.getElementsByTagName("creator").item(0)),
-									getString("email", (Element) track.getElementsByTagName("creator").item(0)),
+									getString("email", (Element) track.getElementsByTagName("creator").item(0))
+											.toLowerCase(),
 									getString("id", (Element) track.getElementsByTagName("creator").item(0))),
-							Integer.parseInt(getString("minutes", track)),
-							getString("name", track));
+							// convert to minutes
+							Integer.parseInt(getString("minutes", track)) / 60, getString("name", track));
 					timeTracks.add(newTrack);
 				}
 
