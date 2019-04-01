@@ -276,8 +276,9 @@ public class MainPaneController {
 
 	private void updateSubcatChoiceBox() {
 		subcatChoiceBox.getItems().clear();
-
-		if (AppSession.getSession().getCategories().get(catChoiceBox.getValue()).isEmpty()) {
+		if (catChoiceBox.getValue() == null) {
+			subcatChoiceBox.setDisable(true);
+		} else if (AppSession.getSession().getCategories().get(catChoiceBox.getValue()).isEmpty()) {
 			subcatChoiceBox.setDisable(true);
 		} else {
 			subcatChoiceBox.setDisable(false);
@@ -591,6 +592,8 @@ public class MainPaneController {
 		incidentNameField.clear();
 		descField.clear();
 		infoTable.getItems().clear();
+		catChoiceBox.setValue(null);
+		subcatChoiceBox.setValue(null);
 		updateDefaultDeptSite();
 		submitBtn.setDisable(false);
 	}
@@ -620,7 +623,8 @@ public class MainPaneController {
 				@Override
 				public void handle(WorkerStateEvent event) {
 					addIncidentsToTable();
-					submitBtn.textProperty().unbind();
+					updateListBtn.setDisable(false);
+					updateListBtn.textProperty().unbind();
 				}
 			});
 			Thread updateIncidentListThread = new Thread(updateIncidentList);
