@@ -523,13 +523,10 @@ public class MainPaneController {
 			} else if (userTokenField.getText().trim().equals("")) {
 				showAlert("Error", "User Token missing", AlertType.ERROR);
 			} else {
-				User user;
-				user = SamanageRequests.getUserByEmail(userTokenField.getText(),
-						toCorrectDomain(userInputField.getText()));
-				if (user == null) {
+				if (!AppSession.getSession().getUsers().keySet().contains(toCorrectDomain(userInputField.getText()))) {
 					showAlert("Error", "Cannot find any users with that email. Try again", AlertType.ERROR);
 				} else {
-					addTableItem(user);
+					addTableItem(AppSession.getSession().getUsers().get(toCorrectDomain(userInputField.getText())));
 					userInputField.requestFocus();
 					userInputField.clear();
 					timeTrackCmtField.clear();
@@ -580,7 +577,7 @@ public class MainPaneController {
 			infoTable.getItems().remove(track);
 		});
 		infoTable.getItems().add(track);
-
+		
 		try {
 			AppSession.getSession().addTrackedUser(track);
 		} catch (JsonIOException | IOException e1) {
