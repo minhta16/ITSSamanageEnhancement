@@ -3,9 +3,12 @@ package application.controller;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
+import java.util.function.Consumer;
 
 import org.controlsfx.control.textfield.TextFields;
 
@@ -26,6 +29,8 @@ import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -35,6 +40,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -47,7 +53,6 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 public class MainPaneController {
-
 	@FXML
 	private TabPane tabPane;
 	@FXML
@@ -185,10 +190,30 @@ public class MainPaneController {
 				showAlert("Database outdated", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
 			}
 		} else {
-			showAlert("Database Update Check Disabled",
-					"If you want to check for database changes (users, categories,...)"
-							+ " upon startup,\nplease enable 'Check for Updates at Startup' in Settings/Database.",
-					AlertType.WARNING);
+
+			if (AppSession.getSession().getDtbUpdateCheckAskAgainCheckBox() == false) {
+				Alert alert = createAlertWithOptOut(AlertType.WARNING, "Database Update Check Disabled",
+						"\"If you want to check for database changes (users, categories,...)\"\r\n"
+								+ "+ \" upon startup,\\nplease enable 'Check for Updates at Startup' in Settings/Database.\"",
+						null, "Do not ask again", e -> {
+							AppSession.getSession().setdtbUpdateCheckAskAgainCheckBox(e.booleanValue());
+							try {
+								System.err.println(e.booleanValue());
+								AppSession.getSession().saveData();
+							} catch (JsonIOException | IOException ex) {
+								ex.printStackTrace();
+							}
+						}, ButtonType.OK);
+				alert.showAndWait();
+			}
+
+			/*
+			 * showAlert("Database Update Check Disabled",
+			 * "If you want to check for database changes (users, categories,...)" +
+			 * " upon startup,\nplease enable 'Check for Updates at Startup' in Settings/Database."
+			 * , AlertType.WARNING);
+			 */
+
 		}
 	}
 
@@ -381,7 +406,8 @@ public class MainPaneController {
 			showAlert("Error", "Cannot find any assignee with that information. Try again", AlertType.ERROR);
 		} else {
 			// TODO: handle remove all time tracks in EDIT mode
-			if (AppSession.getSession().getTimeTracks().isEmpty() && AppSession.getSession().getEditType() == IncidentEditType.NEW) {
+			if (AppSession.getSession().getTimeTracks().isEmpty()
+					&& AppSession.getSession().getEditType() == IncidentEditType.NEW) {
 				Alert alert = new Alert(AlertType.WARNING, "No time tracks have been entered. Proceed?", ButtonType.OK,
 						ButtonType.CANCEL);
 				alert.setTitle("Warning");
@@ -422,8 +448,8 @@ public class MainPaneController {
 						SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName,
 								priorityChoiceBox.getValue(), catChoiceBox.getValue(), subcatChoiceBox.getValue(),
 								descField.getText(), datePicker.getValue().toString(), statesChoiceBox.getValue(),
-								assignee, toCorrectDomain(requesterField.getText()),
-								deptComboBox.getValue(), siteComboBox.getValue());
+								assignee, toCorrectDomain(requesterField.getText()), deptComboBox.getValue(),
+								siteComboBox.getValue());
 
 						updateMessage("Submit");
 					} catch (IOException e) {
@@ -477,9 +503,9 @@ public class MainPaneController {
 						SamanageRequests.updateIncidentWithTimeTrack(AppSession.getSession().getUserToken(),
 								incidentName, curUpdateIncidentID, priorityChoiceBox.getValue(),
 								catChoiceBox.getValue(), subcatChoiceBox.getValue(), descField.getText(),
-								datePicker.getValue().toString(), statesChoiceBox.getValue(),
-								assignee, toCorrectDomain(requesterField.getText()),
-								deptComboBox.getValue(), siteComboBox.getValue());
+								datePicker.getValue().toString(), statesChoiceBox.getValue(), assignee,
+								toCorrectDomain(requesterField.getText()), deptComboBox.getValue(),
+								siteComboBox.getValue());
 
 						updateMessage("Submit");
 					} catch (IOException e) {
@@ -569,6 +595,43 @@ public class MainPaneController {
 		alert.showAndWait();
 	}
 
+	// Got from
+	// https://stackoverflow.com/questions/36949595/how-do-i-create-a-javafx-alert-with-a-check-box-for-do-not-ask-again
+	//
+	// CAN BE USED FURTHER TO ASK THE USER TO UPDATE WHAT THEY WANT?
+
+	public static Alert createAlertWithOptOut(AlertType type, String title, String headerText, String message,
+			String optOutMessage, Consumer<Boolean> optOutAction, ButtonType... buttonTypes) {
+		Alert alert = new Alert(type);
+		// Need to force the alert to layout in order to grab the graphic,
+		// as we are replacing the dialog pane with a custom pane
+		alert.getDialogPane().applyCss();
+		Node graphic = alert.getDialogPane().getGraphic();
+		// Create a new dialog pane that has a checkbox instead of the hide/show details
+		// button
+		// Use the supplied callback for the action of the checkbox
+		alert.setDialogPane(new DialogPane() {
+			@Override
+			protected Node createDetailsButton() {
+				CheckBox optOut = new CheckBox();
+				optOut.setText(optOutMessage);
+				optOut.setOnAction(e -> optOutAction.accept(optOut.isSelected()));
+				return optOut;
+			}
+		});
+		alert.getDialogPane().getButtonTypes().addAll(buttonTypes);
+		alert.getDialogPane().setContentText(message);
+		// Fool the dialog into thinking there is some expandable content
+		// a Group won't take up any space if it has no children
+		alert.getDialogPane().setExpandableContent(new Group());
+		alert.getDialogPane().setExpanded(true);
+		// Reset the dialog graphic using the default style
+		alert.getDialogPane().setGraphic(graphic);
+		alert.setTitle(title);
+		alert.setHeaderText(headerText);
+		return alert;
+	}
+
 	private void addTableItem(User user) {
 		TimeTrack track = new TimeTrack(user, Integer.parseInt(timeElapsedField.getText()),
 				timeTrackCmtField.getText());
@@ -577,7 +640,7 @@ public class MainPaneController {
 			infoTable.getItems().remove(track);
 		});
 		infoTable.getItems().add(track);
-		
+
 		try {
 			AppSession.getSession().addTrackedUser(track);
 		} catch (JsonIOException | IOException e1) {
@@ -604,7 +667,7 @@ public class MainPaneController {
 		if (AppSession.getSession().getUserEmail().equals("")) {
 			showAlert("User Email not set", "Please setup your user email in Settings", AlertType.WARNING);
 		} else {
-			
+
 			incidentTable.setPlaceholder(new Label("Updating incidents..."));
 			incidentTable.getItems().clear();
 			Task<Parent> updateIncidentList = new Task<Parent>() {
@@ -643,7 +706,7 @@ public class MainPaneController {
 				preFetchIncidentInfo(incident.getNumber());
 				AppSession.getSession().setEditType(IncidentEditType.EDIT);
 			});
-			
+
 			if (AppSession.getSession().getGroups().containsKey(incident.getGroupId())
 					&& incident.getAssignee().isEmpty()) {
 				// set Assignee to Group Name
@@ -674,7 +737,7 @@ public class MainPaneController {
 		if (incident.getDueOn() != null) {
 			datePicker.setValue(incident.getDueOn());
 		}
-		for (TimeTrack track: incident.getTimeTracks()) {
+		for (TimeTrack track : incident.getTimeTracks()) {
 			track.getRemoveBtn().setDisable(true);
 			// TODO: handle this listener to remove tracks
 			track.getRemoveBtn().setOnAction((e) -> {
@@ -819,7 +882,7 @@ public class MainPaneController {
 
 						updateMessage("Updating Categories...");
 						AppSession.getSession().updateCategories();
-						
+
 						updateMessage("Updating Groups...");
 						AppSession.getSession().updateGroups();
 

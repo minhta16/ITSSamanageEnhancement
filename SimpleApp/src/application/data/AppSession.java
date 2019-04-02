@@ -22,7 +22,8 @@ public class AppSession {
 	private String defaultAssignee;
 	private String defaultRequester;
 	private User requesterInfo;
-	private boolean defaultAutoUpdateCheckChoice;
+	private boolean defaultAutoUpdateCheckChoice; 
+	private boolean dtbUpdateCheckAskAgainCheckBox;
 
 	private transient TreeMap<String, Incident> currentIncidents;
 	private transient ArrayList<TimeTrack> timeTracks;
@@ -48,6 +49,7 @@ public class AppSession {
 		defaultAssignee = "";
 		defaultRequester = "";
 		defaultAutoUpdateCheckChoice = false;
+		dtbUpdateCheckAskAgainCheckBox = false;
 		requesterInfo = new User();
 		currentIncidents = new TreeMap<String, Incident>();
 		timeTracks = new ArrayList<TimeTrack>();
@@ -184,6 +186,14 @@ public class AppSession {
 	public void setDefaultAutoUpdateCheck(Boolean choice) {
 		defaultAutoUpdateCheckChoice = choice;
 	}
+	
+	public boolean getDtbUpdateCheckAskAgainCheckBox() {
+		return dtbUpdateCheckAskAgainCheckBox;
+	}
+	
+ 	public void setdtbUpdateCheckAskAgainCheckBox(Boolean choice) {
+ 		dtbUpdateCheckAskAgainCheckBox = choice;
+ 	}
 
 	public ArrayList<String> getDepartments() {
 		return departments;
