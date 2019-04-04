@@ -897,12 +897,6 @@ public class MainPaneController {
 				Consumer<Boolean> c = (x) -> {
 					if (x.booleanValue() == true) {
 						r.run();
-						try {
-							AppSession.getSession().saveData();
-						} catch (JsonIOException | IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
 					}
 				};
 				
@@ -915,6 +909,8 @@ public class MainPaneController {
 					"Choose what to update", cmd, ButtonType.OK);
 
 			alert.showAndWait();
+			
+			
 			/*
 			 * Optional<ButtonType> result = alert.showAndWait(); if (result.get() ==
 			 * ButtonType.OK) { //
