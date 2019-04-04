@@ -15,7 +15,7 @@
     ]
   },
   "defaultAutoUpdateCheckChoice": false,
-  "dtbUpdateCheckAskAgainCheckBox": false,
+  "dtbUpdateCheckAskAgainCheckBox": true,
   "groups": {
     "1564650": {
       "name": "Hardware Techs",
@@ -59264,5 +59264,6 @@
         "1953025"
       ]
     }
-  }
+  },
+  "checkFlags": {}
 }

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
@@ -30,6 +31,7 @@ import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -43,6 +45,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -195,7 +198,7 @@ public class MainPaneController {
 				showAlert("Database outdated", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
 			}
 		} else {
-			
+
 			/*
 			 * showAlert("Database Update Check Disabled",
 			 * "If you want to check for database changes (users, categories,...)" +
@@ -608,7 +611,7 @@ public class MainPaneController {
 	// https://stackoverflow.com/questions/36949595/how-do-i-create-a-javafx-alert-with-a-check-box-for-do-not-ask-again
 	//
 	// CAN BE USED FURTHER TO ASK THE USER TO UPDATE WHAT THEY WANT?
-	
+
 	public static Alert createAlertWithOptOuts(AlertType type, String title, String headerText, String message,
 			TreeMap<String, Consumer<Boolean>> optOutActions, ButtonType... buttonTypes) {
 		Alert alert = new Alert(type);
@@ -619,7 +622,7 @@ public class MainPaneController {
 		// Create a new dialog pane that has a checkbox instead of the hide/show details
 		// button
 		// Use the supplied callback for the action of the checkbox
-		
+
 		alert.setDialogPane(new DialogPane() {
 			@Override
 			protected Node createDetailsButton() {
@@ -651,7 +654,6 @@ public class MainPaneController {
 		alert.setHeaderText(headerText);
 		return alert;
 	}
-
 
 	private void addTableItem(User user) {
 		TimeTrack track = new TimeTrack(user, Integer.parseInt(timeElapsedField.getText()),
@@ -880,7 +882,6 @@ public class MainPaneController {
 
 	@FXML
 	private void handleUpdateDataBtn() {
-		//lkj
 		if (updatePrompt.equals("")) {
 			showAlert("Already Up-to-date", "The data is already up to date.", AlertType.INFORMATION);
 		} else {
@@ -889,61 +890,64 @@ public class MainPaneController {
 			 * "The process is going to take about 4 mins. Proceed?", ButtonType.OK,
 			 * ButtonType.CANCEL); alert.setTitle("Warning");
 			 */
-			
+
 			TreeMap<String, Consumer<Boolean>> cmd = new TreeMap<String, Consumer<Boolean>>();
+			List<Runnable> methodsToRun = new ArrayList<>();
 			for (Map.Entry<String, Runnable> entry : AppSession.getSession().getCheckFlags().entrySet()) {
 				String s = entry.getKey();
-				Runnable r = entry.getValue();		
+				Runnable r = entry.getValue();
 				Consumer<Boolean> c = (x) -> {
 					if (x.booleanValue() == true) {
-						r.run();
+						// r.run();
+						methodsToRun.add(r);
 					}
 				};
-				
-				cmd.put(s, c);	
+				cmd.put(s, c);
 			}
-			
-			
-			
-			Alert alert = createAlertWithOptOuts(AlertType.CONFIRMATION, "Warning", updatePrompt,
-					"Choose what to update", cmd, ButtonType.OK);
 
-			alert.showAndWait();
-			
-			
-			/*
-			 * Optional<ButtonType> result = alert.showAndWait(); if (result.get() ==
-			 * ButtonType.OK) { //
-			 * https://stackoverflow.com/questions/45863687/javafx-progress-bar-to-show-the-
-			 * progress-of-the-process Task<Parent> update = new Task<Parent>() {
-			 * 
-			 * @Override public Parent call() throws JsonIOException, IOException {
-			 * updateMessage("Updating Users..."); AppSession.getSession().updateUsers();
-			 * 
-			 * updateMessage("Updating Depts..."); AppSession.getSession().updateDepts();
-			 * 
-			 * updateMessage("Updating Sites..."); AppSession.getSession().updateSites();
-			 * 
-			 * updateMessage("Updating Categories...");
-			 * AppSession.getSession().updateCategories();
-			 * 
-			 * updateMessage("Updating Groups..."); AppSession.getSession().updateGroups();
-			 * 
-			 * updateMessage("Saving Data..."); AppSession.getSession().saveData(); return
-			 * null; } };
-			 * 
-			 * // method to set labeltext
-			 * updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()))
-			 * ; updateDataBtn.setDisable(true); update.setOnSucceeded(new
-			 * EventHandler<WorkerStateEvent>() {
-			 * 
-			 * @Override public void handle(WorkerStateEvent event) { showAlert("Updated",
-			 * "Update Complete!", AlertType.INFORMATION);
-			 * updateDataBtn.textProperty().unbind(); updateDataBtn.setText("Update Data");
-			 * updatePrompt = "";
-			 * 
-			 * } }); Thread updateThread = new Thread(update); updateThread.start(); }
-			 */
+			Alert alert = createAlertWithOptOuts(AlertType.CONFIRMATION, "Warning", updatePrompt,
+					"Choose what to update", cmd, ButtonType.OK, ButtonType.CANCEL);
+
+			Optional<ButtonType> result = alert.showAndWait();
+
+			if (result.get() == ButtonType.OK) {
+
+				if (methodsToRun.size() == 0) {
+					showAlert("Alert", "You haven't updated anything", AlertType.INFORMATION);
+				} else {
+					Task<Parent> update = new Task<Parent>() {
+						@Override
+						public Parent call() throws JsonIOException, IOException {
+							for (Runnable r : methodsToRun) {
+								updateMessage("Updating...");
+								r.run();
+							}
+
+							updateMessage("Saving Data...");
+							// this causes bug... it made the data.json becomes very big (several Gbs)
+							// AppSession.getSession().saveData();
+							return null;
+						}
+					};
+
+					// method to set labeltext
+					updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
+					updateDataBtn.setDisable(true);
+					update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+
+						@Override
+						public void handle(WorkerStateEvent event) {
+							showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
+							updateDataBtn.textProperty().unbind();
+							updateDataBtn.setText("Update Data");
+							updatePrompt = "";
+
+						}
+					});
+					Thread updateThread = new Thread(update);
+					updateThread.start();
+				}
+			}
 
 		}
 	}
