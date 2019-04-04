@@ -897,9 +897,11 @@ public class MainPaneController {
 				String s = entry.getKey();
 				Runnable r = entry.getValue();
 				Consumer<Boolean> c = (x) -> {
-					if (x.booleanValue() == true) {
-						// r.run();
+					if (x.booleanValue() == true && !methodsToRun.contains(r)) {
 						methodsToRun.add(r);
+					}
+					else if (x.booleanValue() == false && methodsToRun.contains(r)) {
+						methodsToRun.remove(r);
 					}
 				};
 				cmd.put(s, c);
@@ -920,12 +922,18 @@ public class MainPaneController {
 						public Parent call() throws JsonIOException, IOException {
 							for (Runnable r : methodsToRun) {
 								updateMessage("Updating...");
+								//AppSession.getSession().getCheckFlags().
 								r.run();
 							}
-
 							updateMessage("Saving Data...");
+							
 							// this causes bug... it made the data.json becomes very big (several Gbs)
-							// AppSession.getSession().saveData();
+		//					try {
+		//						AppSession.getSession().saveData();
+		//					} catch (JsonIOException | IOException e) {
+		//						// TODO Auto-generated catch block
+		//						e.printStackTrace();
+		//					}
 							return null;
 						}
 					};
@@ -934,7 +942,6 @@ public class MainPaneController {
 					updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
 					updateDataBtn.setDisable(true);
 					update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-
 						@Override
 						public void handle(WorkerStateEvent event) {
 							showAlert("Updated", "Update Complete!", AlertType.INFORMATION);

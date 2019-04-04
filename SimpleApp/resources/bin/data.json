@@ -17,10 +17,6 @@
   "defaultAutoUpdateCheckChoice": false,
   "dtbUpdateCheckAskAgainCheckBox": true,
   "groups": {
-    "1564650": {
-      "name": "Hardware Techs",
-      "groupId": "1564650"
-    },
     "1564651": {
       "name": "Helpdesk group",
       "groupId": "1564651"

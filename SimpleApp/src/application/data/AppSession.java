@@ -299,6 +299,7 @@ public class AppSession {
 	}
 	
 	public void saveData() throws JsonIOException, IOException {
+		System.err.println("getting save");
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		FileWriter fw = new FileWriter(DATA_LOCATION);
 		gson.toJson(session, fw);
@@ -353,9 +354,7 @@ public class AppSession {
 		
 		if (dbUsers != users.size()) {
 			prompt += "Local Users: " + users.size() + ", Database Users: " + dbUsers +"\n"; 
-			String s1 = "Update Users";
-			Runnable r1 = () -> updateUsers();
-			checkFlags.put(s1,  r1);
+			checkFlags.put("Update Users",  () -> updateUsers());
 		} if (dbDepts != departments.size()) {
 			prompt += "Local Depts: " + departments.size() + ", Database Depts: " + dbDepts +"\n"; 
 			String s2 = "Update Depts";
