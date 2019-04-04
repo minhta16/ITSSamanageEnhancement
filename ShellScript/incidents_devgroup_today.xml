@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <incidents>
   <incident>
-    <id>36949345</id>
-    <number>17135</number>
-    <name>Load WinPDT file </name>
-    <description> Load WinPDT file into our WinPrism system  </description>
-    <description_no_html>Load WinPDT file into our WinPrism system</description_no_html>
-    <state>Assigned</state>
+    <id>37042732</id>
+    <number>17186</number>
+    <name>Cashnet Daily Settlement Email</name>
+    <description> Add Jill to daily Cashnet Settlement (credit card) email </description>
+    <description_no_html>Add Jill to daily Cashnet Settlement (credit card) email</description_no_html>
+    <state>Resolved</state>
     <priority>Medium</priority>
     <category>
       <id>408915</id>
@@ -106,8 +106,8 @@
       <default_assignee_id>-1</default_assignee_id>
     </category>
     <subcategory>
-      <id>858292</id>
-      <name>Data Transfer</name>
+      <id>408938</id>
+      <name>Data Reports</name>
       <default_tags></default_tags>
       <children nil="true"/>
       <parent_id>408915</parent_id>
@@ -157,50 +157,50 @@
       </memberships>
     </assignee>
     <requester>
-      <id>1238681</id>
+      <id>1237749</id>
       <account_id>39281</account_id>
-      <user_id>1527305</user_id>
-      <email>MaxineBultynck@augustana.edu</email>
-      <name>Bultynck, Maxine M</name>
+      <user_id>1527918</user_id>
+      <email>RhondaVogel@augustana.edu</email>
+      <name>Vogel, Rhonda J</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-01T13:22:36-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-03T09:48:10-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
-        <color>#0089c9</color>
-        <initials>BM</initials>
+        <color>#bb5bac</color>
+        <initials>VJ</initials>
       </avatar>
     </requester>
-    <created_at>2019-04-01T14:10:04-05:00</created_at>
-    <updated_at>2019-04-01T14:39:49-05:00</updated_at>
+    <created_at>2019-04-03T09:46:28-05:00</created_at>
+    <updated_at>2019-04-03T09:48:09-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
     <user_saw_all_comments>true</user_saw_all_comments>
     <is_service_request>false</is_service_request>
     <created_by>
-      <id>1238681</id>
+      <id>1145731</id>
       <account_id>39281</account_id>
-      <user_id>1527305</user_id>
-      <email>MaxineBultynck@augustana.edu</email>
-      <name>Bultynck, Maxine M</name>
+      <user_id>1376124</user_id>
+      <email>bradbjork@augustana.edu</email>
+      <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-01T13:22:36-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-02T10:19:27-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
-        <color>#0089c9</color>
-        <initials>BM</initials>
+        <color>#fa7911</color>
+        <initials>BB</initials>
       </avatar>
     </created_by>
-    <resolution_description nil="true"/>
-    <resolution_code nil="true"/>
-    <custom nil="true"/>
-    <href>https://api.samanage.com/incidents/36949345-load-winpdt-file.xml</href>
+    <resolution_description>This is a setting that is maintained by Cashnet.&lt;br&gt;A request was submitted via https://blackboard.secure.force.com/login</resolution_description>
+    <resolution_code>Not Set</resolution_code>
+    <custom>2019-04-03 14:46:30.265535</custom>
+    <href>https://api.samanage.com/incidents/37042732-cashnet-daily-settlement-email.xml</href>
     <site>
-      <id>49526</id>
-      <name>College Center Book Store</name>
-      <location>College Center Book Store</location>
+      <id>49969</id>
+      <name>Sorensen Business Office</name>
+      <location>Sorensen Business Office</location>
       <description></description>
       <time_zone></time_zone>
       <language>-1</language>
@@ -211,18 +211,18 @@
       </business_record>
     </site>
     <department>
-      <id>40542</id>
-      <name>Bookstore</name>
+      <id>39365</id>
+      <name>Business Office</name>
       <description></description>
       <default_assignee_id>-1</default_assignee_id>
     </department>
     <cc/>
     <custom_fields_values>
       <custom_fields_value>
-        <id>84767062</id>
+        <id>85005841</id>
         <custom_field_id>18424</custom_field_id>
         <name>Software</name>
-        <value>Wimprism</value>
+        <value>CashNet</value>
         <options>Notifi&lt;br&gt;Microsoft Silverlight&lt;br&gt;Firefox&lt;br&gt;Safari&lt;br&gt;Viking Score&lt;br&gt;Omnilert&lt;br&gt;OneCause&lt;br&gt;Acquia&lt;br&gt;Active Directory&lt;br&gt;Ad-Astra&lt;br&gt;Adobe Acrobat Pro&lt;br&gt;Adobe Creative Cloud&lt;br&gt;Adobe Creative Suite&lt;br&gt;Adobe Flash&lt;br&gt;Adobe Reader&lt;br&gt;AIMS&lt;br&gt;AugieChoice&lt;br&gt;AugieHub&lt;br&gt;Authorize.Net&lt;br&gt;Campaign Enterprise&lt;br&gt;Capture&lt;br&gt;CashNet&lt;br&gt;Check I'm Here&lt;br&gt;Class List&lt;br&gt;Co-Curricular Transcript&lt;br&gt;Colleague&lt;br&gt;Core Client Database&lt;br&gt;Course Master&lt;br&gt;CMAP&lt;br&gt;Dell&lt;br&gt;DHCP&lt;br&gt;DNS&lt;br&gt;Drop Verify&lt;br&gt;Extron&lt;br&gt;EZproxy&lt;br&gt;FERPA Compliance&lt;br&gt;Folder Rights&lt;br&gt;FrontRush&lt;br&gt;G Suite&lt;br&gt;Gmail&lt;br&gt;Google File Stream&lt;br&gt;GoToProfair&lt;br&gt;Hiatus (MSAccess)&lt;br&gt;IIS&lt;br&gt;Ingeniux&lt;br&gt;ISE - Scheduler&lt;br&gt;JMP&lt;br&gt;macOS&lt;br&gt;Maxient&lt;br&gt;Mediacom&lt;br&gt;Moodle&lt;br&gt;MP2&lt;br&gt;MS-Access&lt;br&gt;MSDS&lt;br&gt;Netreg&lt;br&gt;Noel Levitz&lt;br&gt;Office&lt;br&gt;OMC&lt;br&gt;Other&lt;br&gt;Palantir&lt;br&gt;PaperCut&lt;br&gt;Performance Appraisal&lt;br&gt;ProWatch&lt;br&gt;Reporting Services&lt;br&gt;Ruffalo Cody&lt;br&gt;Samanage&lt;br&gt;SAS&lt;br&gt;Simple Campus&lt;br&gt;Slate&lt;br&gt;SPSS&lt;br&gt;SSRPM&lt;br&gt;Starfish&lt;br&gt;Symantec&lt;br&gt;TimeClock Plus&lt;br&gt;Titanium Scheduling&lt;br&gt;Vectorworks&lt;br&gt;Veeam&lt;br&gt;VLC&lt;br&gt;VMware&lt;br&gt;Wealth Engine&lt;br&gt;WebAdvisor&lt;br&gt;Website&lt;br&gt;Wimprism&lt;br&gt;Windows 7/10&lt;br&gt;Winsdows SUS Server&lt;br&gt;Windows Server&lt;br&gt;Windstream&lt;br&gt;WordPress&lt;br&gt;eScrip-Safe&lt;br&gt;Lynda/LinkedIn Learning&lt;br&gt;FortisBlue&lt;br&gt;ArcGIS&lt;br&gt;Faronics Insight&lt;br&gt;Faronics DeepFreeze&lt;br&gt;Synergy</options>
         <type>2</type>
         <type_name>Dropdown</type_name>
@@ -231,7 +231,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84767063</id>
+        <id>85005842</id>
         <custom_field_id>96890</custom_field_id>
         <name>Customer Priority</name>
         <value>-1</value>
@@ -243,7 +243,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84767064</id>
+        <id>85005843</id>
         <custom_field_id>18547</custom_field_id>
         <name>Phone number</name>
         <value></value>
@@ -255,7 +255,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84767065</id>
+        <id>85005844</id>
         <custom_field_id>98681</custom_field_id>
         <name>Error message</name>
         <value></value>
@@ -267,7 +267,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84767066</id>
+        <id>85005845</id>
         <custom_field_id>18358</custom_field_id>
         <name>Building</name>
         <value>-1</value>
@@ -279,7 +279,7 @@
         <user nil="true"/>
       </custom_fields_value>
       <custom_fields_value>
-        <id>84767067</id>
+        <id>85005846</id>
         <custom_field_id>20407</custom_field_id>
         <name>Room</name>
         <value></value>
@@ -294,7 +294,12 @@
     <incidents/>
     <changes/>
     <tasks/>
-    <time_tracks/>
+    <time_tracks>
+      <time_track>
+        <id>2883367</id>
+        <href>https://api.samanage.com/incidents/37042732/time_tracks/2883367.xml</href>
+      </time_track>
+    </time_tracks>
     <solutions/>
     <assets/>
     <mobiles/>
@@ -303,116 +308,68 @@
     <purchase_orders/>
   </incident>
   <incident>
-    <id>36935362</id>
-    <number>17126</number>
-    <name>Hardware, Computer Lab/Classroom</name>
-    <description>test tracks</description>
-    <description_no_html>test tracks</description_no_html>
-    <state>Closed</state>
+    <id>37015521</id>
+    <number>17178</number>
+    <name>Colleague Support Server Access</name>
+    <description> I've been filling part of the IR gap in Academic Affairs. Kimberly Dyer taught me how to pull data from the Colleague Support Server using Access. However, when I go to "ODBC Database" in the external data tab of Access, I don't seem to have access to "Colleague Support Server"--or I'm not looking in the right place for this option. I'm looking for assistance in finding this option so I can pull several data sets. </description>
+    <description_no_html>I've been filling part of the IR gap in Academic Affairs. Kimberly Dyer taught me how to pull data from the Colleague Support Server using Access. However, when I go to "ODBC Database" in the external data tab of Access, I don't seem to have access to "Colleague Support Server"--or I'm not looking in the right place for this option. I'm looking for assistance in finding this option so I can pull several data sets.</description_no_html>
+    <state>Assigned</state>
     <priority>Medium</priority>
     <category>
-      <id>408914</id>
-      <name>Hardware</name>
+      <id>408918</id>
+      <name>Account Management</name>
       <default_tags></default_tags>
       <children>
         <child>
-          <id>408928</id>
-          <name>Computer Lab/Classroom</name>
+          <id>408974</id>
+          <name>Account Maintenance</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408914</parent_id>
+          <parent_id>408918</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>408926</id>
-          <name>Desktop Computer</name>
+          <id>409028</id>
+          <name>Account suspension</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408914</parent_id>
-          <default_assignee_id>1564650</default_assignee_id>
-        </child>
-        <child>
-          <id>408929</id>
-          <name>Instructor Console</name>
-          <default_tags></default_tags>
-          <children nil="true"/>
-          <parent_id>408914</parent_id>
+          <parent_id>408918</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>408932</id>
-          <name>Keyboard/Mouse/Cable/Accessory</name>
+          <id>408958</id>
+          <name>Exiting Employee</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408914</parent_id>
+          <parent_id>408918</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>862552</id>
-          <name>Laptop/Tablet Computer</name>
+          <id>408973</id>
+          <name>New Employee</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408914</parent_id>
+          <parent_id>408918</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
         <child>
-          <id>408935</id>
-          <name>Monitor/TV</name>
+          <id>408975</id>
+          <name>Security/Permissions/Passwords</name>
           <default_tags></default_tags>
           <children nil="true"/>
-          <parent_id>408914</parent_id>
-          <default_assignee_id>1564650</default_assignee_id>
-        </child>
-        <child>
-          <id>408930</id>
-          <name>MultiMedia (Sound/Projector)</name>
-          <default_tags></default_tags>
-          <children nil="true"/>
-          <parent_id>408914</parent_id>
-          <default_assignee_id>-1</default_assignee_id>
-        </child>
-        <child>
-          <id>859024</id>
-          <name>Personal Device</name>
-          <default_tags></default_tags>
-          <children nil="true"/>
-          <parent_id>408914</parent_id>
-          <default_assignee_id>-1</default_assignee_id>
-        </child>
-        <child>
-          <id>408927</id>
-          <name>Printer</name>
-          <default_tags></default_tags>
-          <children nil="true"/>
-          <parent_id>408914</parent_id>
-          <default_assignee_id>-1</default_assignee_id>
-        </child>
-        <child>
-          <id>408931</id>
-          <name>Relocate/Disposal</name>
-          <default_tags></default_tags>
-          <children nil="true"/>
-          <parent_id>408914</parent_id>
-          <default_assignee_id>1564650</default_assignee_id>
-        </child>
-        <child>
-          <id>408934</id>
-          <name>Vendor Product Support</name>
-          <default_tags></default_tags>
-          <children nil="true"/>
-          <parent_id>408914</parent_id>
+          <parent_id>408918</parent_id>
           <default_assignee_id>-1</default_assignee_id>
         </child>
       </children>
       <parent_id nil="true"/>
-      <default_assignee_id>1564650</default_assignee_id>
+      <default_assignee_id>-1</default_assignee_id>
     </category>
     <subcategory>
-      <id>408928</id>
-      <name>Computer Lab/Classroom</name>
+      <id>408975</id>
+      <name>Security/Permissions/Passwords</name>
       <default_tags></default_tags>
       <children nil="true"/>
-      <parent_id>408914</parent_id>
+      <parent_id>408918</parent_id>
       <default_assignee_id>-1</default_assignee_id>
     </subcategory>
     <assignee>
@@ -459,52 +416,50 @@
       </memberships>
     </assignee>
     <requester>
-      <id>1530413</id>
+      <id>1237827</id>
       <account_id>39281</account_id>
-      <user_id>1753326</user_id>
-      <email>MINHTA16@augustana.edu</email>
-      <name>Ta, Minh Q</name>
+      <user_id>1527390</user_id>
+      <email>KristinDouglas@augustana.edu</email>
+      <name>Douglas, Kristin R</name>
       <disabled>false</disabled>
-      <has_gravatar>true</has_gravatar>
-      <customer_satisfaction_survey_time>2019-03-29T15:14:02-05:00</customer_satisfaction_survey_time>
+      <has_gravatar>false</has_gravatar>
+      <customer_satisfaction_survey_time>2019-03-12T11:49:40-05:00</customer_satisfaction_survey_time>
       <avatar>
-        <type>image</type>
-        <image_class>avatar_image</image_class>
-        <sso_image_class></sso_image_class>
-        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/73490070742ba57bdbe8/giphy_card.gif?1552028881</avatar_url>
+        <type>initials</type>
+        <color>#bb5bac</color>
+        <initials>DR</initials>
       </avatar>
     </requester>
-    <created_at>2019-04-01T10:45:00-05:00</created_at>
-    <updated_at>2019-04-01T14:46:50-05:00</updated_at>
-    <due_at>2019-04-01T00:00:00-05:00</due_at>
+    <created_at>2019-04-02T17:05:22-05:00</created_at>
+    <updated_at>2019-04-03T08:33:53-05:00</updated_at>
+    <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
     <user_saw_all_comments>true</user_saw_all_comments>
     <is_service_request>false</is_service_request>
     <created_by>
-      <id>1530413</id>
+      <id>1237827</id>
       <account_id>39281</account_id>
-      <user_id>1753326</user_id>
-      <email>MINHTA16@augustana.edu</email>
-      <name>Ta, Minh Q</name>
+      <user_id>1527390</user_id>
+      <email>KristinDouglas@augustana.edu</email>
+      <name>Douglas, Kristin R</name>
       <disabled>false</disabled>
-      <has_gravatar>true</has_gravatar>
-      <customer_satisfaction_survey_time>2019-03-29T15:14:02-05:00</customer_satisfaction_survey_time>
+      <has_gravatar>false</has_gravatar>
+      <customer_satisfaction_survey_time>2019-03-12T11:49:40-05:00</customer_satisfaction_survey_time>
       <avatar>
-        <type>image</type>
-        <image_class>avatar_image</image_class>
-        <sso_image_class></sso_image_class>
-        <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/73490070742ba57bdbe8/giphy_card.gif?1552028881</avatar_url>
+        <type>initials</type>
+        <color>#bb5bac</color>
+        <initials>DR</initials>
       </avatar>
     </created_by>
     <resolution_description nil="true"/>
     <resolution_code nil="true"/>
     <custom nil="true"/>
-    <href>https://api.samanage.com/incidents/36935362-hardware-computer-lab-classroom.xml</href>
+    <href>https://api.samanage.com/incidents/37015521-colleague-support-server-access.xml</href>
     <site>
-      <id>43379</id>
-      <name>Freya House 2</name>
-      <location>Freya House 2</location>
+      <id>49476</id>
+      <name>Founders Hall 116</name>
+      <location>Founders Hall 116</location>
       <description></description>
       <time_zone></time_zone>
       <language>-1</language>
@@ -515,22 +470,66 @@
       </business_record>
     </site>
     <department>
-      <id>40524</id>
-      <name>Student</name>
+      <id>40556</id>
+      <name>Academic Affairs</name>
       <description></description>
       <default_assignee_id>-1</default_assignee_id>
     </department>
     <cc/>
-    <custom_fields_values/>
+    <custom_fields_values>
+      <custom_fields_value>
+        <id>84991016</id>
+        <custom_field_id>18424</custom_field_id>
+        <name>Software</name>
+        <value>Colleague</value>
+        <options>Notifi&lt;br&gt;Microsoft Silverlight&lt;br&gt;Firefox&lt;br&gt;Safari&lt;br&gt;Viking Score&lt;br&gt;Omnilert&lt;br&gt;OneCause&lt;br&gt;Acquia&lt;br&gt;Active Directory&lt;br&gt;Ad-Astra&lt;br&gt;Adobe Acrobat Pro&lt;br&gt;Adobe Creative Cloud&lt;br&gt;Adobe Creative Suite&lt;br&gt;Adobe Flash&lt;br&gt;Adobe Reader&lt;br&gt;AIMS&lt;br&gt;AugieChoice&lt;br&gt;AugieHub&lt;br&gt;Authorize.Net&lt;br&gt;Campaign Enterprise&lt;br&gt;Capture&lt;br&gt;CashNet&lt;br&gt;Check I'm Here&lt;br&gt;Class List&lt;br&gt;Co-Curricular Transcript&lt;br&gt;Colleague&lt;br&gt;Core Client Database&lt;br&gt;Course Master&lt;br&gt;CMAP&lt;br&gt;Dell&lt;br&gt;DHCP&lt;br&gt;DNS&lt;br&gt;Drop Verify&lt;br&gt;Extron&lt;br&gt;EZproxy&lt;br&gt;FERPA Compliance&lt;br&gt;Folder Rights&lt;br&gt;FrontRush&lt;br&gt;G Suite&lt;br&gt;Gmail&lt;br&gt;Google File Stream&lt;br&gt;GoToProfair&lt;br&gt;Hiatus (MSAccess)&lt;br&gt;IIS&lt;br&gt;Ingeniux&lt;br&gt;ISE - Scheduler&lt;br&gt;JMP&lt;br&gt;macOS&lt;br&gt;Maxient&lt;br&gt;Mediacom&lt;br&gt;Moodle&lt;br&gt;MP2&lt;br&gt;MS-Access&lt;br&gt;MSDS&lt;br&gt;Netreg&lt;br&gt;Noel Levitz&lt;br&gt;Office&lt;br&gt;OMC&lt;br&gt;Other&lt;br&gt;Palantir&lt;br&gt;PaperCut&lt;br&gt;Performance Appraisal&lt;br&gt;ProWatch&lt;br&gt;Reporting Services&lt;br&gt;Ruffalo Cody&lt;br&gt;Samanage&lt;br&gt;SAS&lt;br&gt;Simple Campus&lt;br&gt;Slate&lt;br&gt;SPSS&lt;br&gt;SSRPM&lt;br&gt;Starfish&lt;br&gt;Symantec&lt;br&gt;TimeClock Plus&lt;br&gt;Titanium Scheduling&lt;br&gt;Vectorworks&lt;br&gt;Veeam&lt;br&gt;VLC&lt;br&gt;VMware&lt;br&gt;Wealth Engine&lt;br&gt;WebAdvisor&lt;br&gt;Website&lt;br&gt;Wimprism&lt;br&gt;Windows 7/10&lt;br&gt;Winsdows SUS Server&lt;br&gt;Windows Server&lt;br&gt;Windstream&lt;br&gt;WordPress&lt;br&gt;eScrip-Safe&lt;br&gt;Lynda/LinkedIn Learning&lt;br&gt;FortisBlue&lt;br&gt;ArcGIS&lt;br&gt;Faronics Insight&lt;br&gt;Faronics DeepFreeze&lt;br&gt;Synergy</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>84991017</id>
+        <custom_field_id>96890</custom_field_id>
+        <name>Customer Priority</name>
+        <value>-1</value>
+        <options>NONE - No set timeframe (i.e. proposal)&lt;br&gt;LOW - Completion longer than a week&lt;br&gt;MED - Standard times apply&lt;br&gt;HIGH - Within next 24 hours&lt;br&gt;CRITICAL - Please call IT Helpdesk</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>true</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>84991018</id>
+        <custom_field_id>18547</custom_field_id>
+        <name>Phone number</name>
+        <value></value>
+        <options></options>
+        <type>1</type>
+        <type_name>Text</type_name>
+        <show_on_portal>false</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+      <custom_fields_value>
+        <id>84991019</id>
+        <custom_field_id>97564</custom_field_id>
+        <name>Time Spent</name>
+        <value>-1</value>
+        <options>.25&lt;br&gt;.5&lt;br&gt;.75&lt;br&gt;1&lt;br&gt;1.5&lt;br&gt;1.75&lt;br&gt;2&lt;br&gt;2.5&lt;br&gt;2.75&lt;br&gt;3&lt;br&gt;3.5</options>
+        <type>2</type>
+        <type_name>Dropdown</type_name>
+        <show_on_portal>false</show_on_portal>
+        <mandatory>false</mandatory>
+        <user nil="true"/>
+      </custom_fields_value>
+    </custom_fields_values>
     <incidents/>
     <changes/>
     <tasks/>
-    <time_tracks>
-      <time_track>
-        <id>2873360</id>
-        <href>https://api.samanage.com/incidents/36935362/time_tracks/2873360.xml</href>
-      </time_track>
-    </time_tracks>
+    <time_tracks/>
     <solutions/>
     <assets/>
     <mobiles/>
@@ -540,5 +539,5 @@
   </incident>
   <page>1</page>
   <per_page>2</per_page>
-  <total_entries>282</total_entries>
+  <total_entries>285</total_entries>
 </incidents>

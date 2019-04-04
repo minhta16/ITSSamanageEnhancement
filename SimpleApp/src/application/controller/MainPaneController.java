@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.function.Consumer;
 
@@ -31,7 +29,6 @@ import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -45,7 +42,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -146,6 +142,9 @@ public class MainPaneController {
 
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
+		
+		AppSession.getSession().updateSoftwares();
+		System.err.println(AppSession.getSession().getSoftwares());
 
 		// setup setting tab
 		System.out.print("Setting up Setting Tab\t\t\t\r");
@@ -977,6 +976,7 @@ public class MainPaneController {
 			public Parent call() throws JsonIOException, IOException {
 				updateMessage("Checking...");
 				updatePrompt = AppSession.getSession().getUpdatePrompt();
+				updateMessage("Done.");
 
 				return null;
 			}

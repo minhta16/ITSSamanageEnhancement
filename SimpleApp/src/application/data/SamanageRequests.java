@@ -207,8 +207,8 @@ public class SamanageRequests {
 						ArrayList<TimeTrack> trackedUsers = getTimeTracks(userToken, id);
 						String ID = getString("id", incident);
 						String number = getString("number", incident);
-						String assigneeEmail = getString("email", (Element) incident.getElementsByTagName("assignee").item(0))
-								.toLowerCase();
+						String assigneeEmail = getString("email",
+								(Element) incident.getElementsByTagName("assignee").item(0)).toLowerCase();
 						String groupId = "";
 						if (assigneeEmail.isEmpty()) {
 							groupId = getString("id", (Element) incident.getElementsByTagName("assignee").item(0));
@@ -226,8 +226,7 @@ public class SamanageRequests {
 								getString("name",
 										(Element) incident.getElementsByTagName("department")
 												.item(incident.getElementsByTagName("department").getLength() - 1)),
-								getString("description", incident), toDate(getString("due_at", incident)),
-								groupId,
+								getString("description", incident), toDate(getString("due_at", incident)), groupId,
 								trackedUsers);
 
 						incidentMap.put(number, newIncident);
@@ -522,6 +521,46 @@ public class SamanageRequests {
 			}
 		}
 		return siteList;
+	}
+
+																		// 408915 			Software
+	public static TreeMap<String, Software> getSoftwares(String userToken, String typeCode, String type) {
+		TreeMap<String, Software> softwareList = new TreeMap<String, Software>();
+		try {
+			// typeCode is for Category = Software, so that Software custom fields are there
+			String url = "https://api.samanage.com/incidents.xml?per_page=1&page=1&category%5B%5D=" + typeCode;
+
+			URL obj = new URL(url);
+			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+			conn.setDoOutput(true);
+
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
+			conn.setRequestProperty("Content-Type", "text/xml");
+
+			Element rootElement = documentFromOutput(conn);
+			NodeList customFields = rootElement.getElementsByTagName("custom_fields_value");
+
+			for (int i = 0; i < customFields.getLength(); i++) {
+				if (customFields.item(i) instanceof Element) {
+					Element customField = (Element) customFields.item(i);
+					String name = getString("name", customField);
+					if (name.equals(type)) {
+						String[] softwares = getString("options", customField).split("<br>");
+						for (String software : softwares) {
+							softwareList.put(software, new Software(software));
+						}
+					}
+				}
+
+			}
+
+			conn.disconnect();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return softwareList;
 	}
 
 	public static TreeMap<String, Group> getGroups(String userToken) {

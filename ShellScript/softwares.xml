@@ -1,0 +1,3560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<softwares>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/111830674.xml</href>
+    <id>111830674</id>
+    <name>Samanage Agent</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Samanage</name>
+      <id>5288</id>
+      <address1>130 Edinburgh South Drive</address1>
+      <address2>Suite 104</address2>
+      <city>Cary</city>
+      <state>NC</state>
+      <zip>27511</zip>
+      <country>USA</country>
+      <business_phone>1-888-250-8971</business_phone>
+      <tech_support>1-888-250-8971</tech_support>
+      <customer_service>1-888-250-8971</customer_service>
+      <url>www.samanage.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-10-06T09:43:53-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>2015</installs>
+    <version>1.1.303</version>
+    <tag nil="true"/>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-08-15T08:25:52-05:00</created_at>
+    <updated_at>2017-08-15T08:25:52-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/111830674/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/23488590.xml</href>
+    <id>23488590</id>
+    <name>Microsoft Visual C++ 2010  x86 Redistributable - 10.0.40219</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>1623</installs>
+    <version>10.0.40219</version>
+    <tag nil="true"/>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-07-06T10:36:55-05:00</created_at>
+    <updated_at>2016-07-07T10:36:55-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/23488590/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/174326993.xml</href>
+    <id>174326993</id>
+    <name>Google Chrome</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Google</name>
+      <id>3842</id>
+      <address1></address1>
+      <address2></address2>
+      <city>Mountain View</city>
+      <state>CA</state>
+      <zip></zip>
+      <country>UNITED STATES</country>
+      <business_phone></business_phone>
+      <tech_support></tech_support>
+      <customer_service></customer_service>
+      <url></url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at nil="true"/>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>1047</installs>
+    <version>73.0.3683.86</version>
+    <tag nil="true"/>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2019-03-20T17:26:41-05:00</created_at>
+    <updated_at>2019-03-20T17:26:41-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/174326993/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/174879320.xml</href>
+    <id>174879320</id>
+    <name>Google Update Helper</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Google LLC</name>
+      <id>285297</id>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <business_phone nil="true"/>
+      <tech_support nil="true"/>
+      <customer_service nil="true"/>
+      <url nil="true"/>
+      <comments nil="true"/>
+      <created_at>2019-02-06T22:59:54-06:00</created_at>
+      <updated_at>2019-02-06T22:59:54-06:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>1014</installs>
+    <version>1.3.34.7</version>
+    <tag nil="true"/>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2019-03-26T00:02:02-05:00</created_at>
+    <updated_at>2019-03-26T00:02:02-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/174879320/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489108.xml</href>
+    <id>106489108</id>
+    <name>Intel(R) Management Engine Components</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Intel Corporation</name>
+      <id>538</id>
+      <address1>2200 Mission College Blvd</address1>
+      <address2></address2>
+      <city>Santa Clara</city>
+      <state>CA</state>
+      <zip>95052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(408) 765-8080</business_phone>
+      <tech_support>(800) 628-8686 option 3</tech_support>
+      <customer_service>(800) 628-8686</customer_service>
+      <url>www.intel.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at nil="true"/>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>988</installs>
+    <version>1.0.0.0</version>
+    <tag nil="true"/>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489108/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/122431787.xml</href>
+    <id>122431787</id>
+    <name>SSRPM User Client Software</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Tools4ever</name>
+      <id>4065</id>
+      <address1></address1>
+      <address2></address2>
+      <city>Baarn</city>
+      <state></state>
+      <zip></zip>
+      <country>NETHERLANDS</country>
+      <business_phone></business_phone>
+      <tech_support></tech_support>
+      <customer_service></customer_service>
+      <url></url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at nil="true"/>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>860</installs>
+    <version>6.78.1180</version>
+    <tag nil="true"/>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2018-01-17T15:15:52-06:00</created_at>
+    <updated_at>2018-01-17T15:15:52-06:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/122431787/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489100.xml</href>
+    <id>106489100</id>
+    <name>Google Update Helper</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Google</name>
+      <id>3842</id>
+      <address1></address1>
+      <address2></address2>
+      <city>Mountain View</city>
+      <state>CA</state>
+      <zip></zip>
+      <country>UNITED STATES</country>
+      <business_phone></business_phone>
+      <tech_support></tech_support>
+      <customer_service></customer_service>
+      <url></url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at nil="true"/>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>925</installs>
+    <version>1.3.24.15</version>
+    <tag>Google Updater</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489100/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248702.xml</href>
+    <id>17248702</id>
+    <name>Update for Microsoft Office 2010 (KB2825640) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>373</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:51-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248702/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248698.xml</href>
+    <id>17248698</id>
+    <name>Update for Microsoft Office 2010 (KB2760631) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>502</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T13:40:05-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248698/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248693.xml</href>
+    <id>17248693</id>
+    <name>Update for Microsoft Office 2010 (KB2589375) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>359</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:49-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248693/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248695.xml</href>
+    <id>17248695</id>
+    <name>Update for Microsoft Office 2010 (KB2597087) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>359</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248695/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248690.xml</href>
+    <id>17248690</id>
+    <name>Update for Microsoft Office 2010 (KB2589298) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>359</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:51-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248690/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248717.xml</href>
+    <id>17248717</id>
+    <name>Update for Microsoft SharePoint Workspace 2010 (KB2760601) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>359</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:12-06:00</created_at>
+    <updated_at>2016-07-06T10:36:52-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248717/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248686.xml</href>
+    <id>17248686</id>
+    <name>Update for Microsoft InfoPath 2010 (KB2817369) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>360</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:49-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248686/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489084.xml</href>
+    <id>106489084</id>
+    <name>Microsoft Office Proofing (English) 2010</name>
+    <category>
+      <id>23</id>
+      <name>Office Language</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Office 2007 Proofing</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489084/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489086.xml</href>
+    <id>106489086</id>
+    <name>Microsoft Office InfoPath MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>InfoPath 2010 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489086/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248383.xml</href>
+    <id>17248383</id>
+    <name>Security Update for Microsoft Office 2010 (KB2850016) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>358</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:00-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248383/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489060.xml</href>
+    <id>106489060</id>
+    <name>Microsoft Office Access MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Access 2010 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:14-05:00</created_at>
+    <updated_at>2017-05-14T11:18:14-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489060/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248384.xml</href>
+    <id>17248384</id>
+    <name>Security Update for Microsoft Office 2010 (KB2880971) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>357</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:00-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248384/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489062.xml</href>
+    <id>106489062</id>
+    <name>Microsoft Office Excel MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Excel 2010 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489062/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489091.xml</href>
+    <id>106489091</id>
+    <name>Microsoft Office OneNote MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>OneNote 2007 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489091/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489065.xml</href>
+    <id>106489065</id>
+    <name>Microsoft Office PowerPoint MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>PowerPoint 2010 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489065/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248677.xml</href>
+    <id>17248677</id>
+    <name>Service Pack 2 for Microsoft Office 2010 (KB2687455) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>359</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:10-06:00</created_at>
+    <updated_at>2016-07-06T10:36:51-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248677/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489093.xml</href>
+    <id>106489093</id>
+    <name>Microsoft Office Groove MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Groove 2007 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489093/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489067.xml</href>
+    <id>106489067</id>
+    <name>Microsoft Office Publisher MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Publisher 2010 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489067/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489096.xml</href>
+    <id>106489096</id>
+    <name>Microsoft Office Shared Setup Metadata MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Office 2007 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489096/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489070.xml</href>
+    <id>106489070</id>
+    <name>Microsoft Office Outlook MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Outlook 2010 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489070/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489097.xml</href>
+    <id>106489097</id>
+    <name>Microsoft Office Access Setup Metadata MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag nil="true"/>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489097/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489073.xml</href>
+    <id>106489073</id>
+    <name>Microsoft Office Word MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Word 2010 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489073/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489076.xml</href>
+    <id>106489076</id>
+    <name>Microsoft Office Proof (English) 2010</name>
+    <category>
+      <id>23</id>
+      <name>Office Language</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Office 2007 Proofing</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489076/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489078.xml</href>
+    <id>106489078</id>
+    <name>Microsoft Office Proof (French) 2010</name>
+    <category>
+      <id>23</id>
+      <name>Office Language</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Office 2007 Proofing</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489078/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248321.xml</href>
+    <id>17248321</id>
+    <name>Microsoft Office Professional Plus 2010</name>
+    <category>
+      <id>22</id>
+      <name>Office Suite</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>360</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Office 2010 Pro Plus</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:16:58-06:00</created_at>
+    <updated_at>2016-07-07T10:36:54-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248321/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489081.xml</href>
+    <id>106489081</id>
+    <name>Microsoft Office Proof (Spanish) 2010</name>
+    <category>
+      <id>23</id>
+      <name>Office Language</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>679</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Office 2007 Proofing</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489081/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/106489089.xml</href>
+    <id>106489089</id>
+    <name>Microsoft Office Shared MUI (English) 2010</name>
+    <category>
+      <id>24</id>
+      <name>Office Package</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>678</installs>
+    <version>14.0.7015.1000</version>
+    <tag>Office 2007 MUI</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2017-05-14T11:18:15-05:00</created_at>
+    <updated_at>2017-05-14T11:18:15-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>true</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/106489089/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248688.xml</href>
+    <id>17248688</id>
+    <name>Update for Microsoft Office 2010 (KB2553347) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>416</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248688/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248694.xml</href>
+    <id>17248694</id>
+    <name>Update for Microsoft Office 2010 (KB2589386) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>364</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248694/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248687.xml</href>
+    <id>17248687</id>
+    <name>Update for Microsoft Office 2010 (KB2553140) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>365</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248687/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248703.xml</href>
+    <id>17248703</id>
+    <name>Update for Microsoft Office 2010 (KB2883019) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>365</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:51-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248703/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248706.xml</href>
+    <id>17248706</id>
+    <name>Update for Microsoft Office 2010 (KB3054873) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>408</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248706/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248382.xml</href>
+    <id>17248382</id>
+    <name>Security Update for Microsoft Office 2010 (KB2553313) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>410</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:00-06:00</created_at>
+    <updated_at>2016-07-06T10:36:49-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248382/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248715.xml</href>
+    <id>17248715</id>
+    <name>Update for Microsoft Outlook Social Connector 2010 (KB2553308) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>385</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:12-06:00</created_at>
+    <updated_at>2016-07-06T10:36:51-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248715/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17826500.xml</href>
+    <id>17826500</id>
+    <name>Update for Microsoft Office 2010 (KB2494150)</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>610</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-03-07T12:51:36-06:00</created_at>
+    <updated_at>2016-03-07T12:51:36-06:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17826500/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248699.xml</href>
+    <id>17248699</id>
+    <name>Update for Microsoft Office 2010 (KB2791057) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>414</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:49-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248699/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248691.xml</href>
+    <id>17248691</id>
+    <name>Update for Microsoft Office 2010 (KB2589318) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>407</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:49-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248691/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248709.xml</href>
+    <id>17248709</id>
+    <name>Update for Microsoft Office 2010 (KB3055047) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>406</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248709/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248446.xml</href>
+    <id>17248446</id>
+    <name>Security Update KB2698365</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>767</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:03-06:00</created_at>
+    <updated_at>2016-07-07T10:36:59-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248446/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248689.xml</href>
+    <id>17248689</id>
+    <name>Update for Microsoft Office 2010 (KB2553388) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>405</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248689/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248707.xml</href>
+    <id>17248707</id>
+    <name>Update for Microsoft Office 2010 (KB3054886) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>408</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:11-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248707/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248437.xml</href>
+    <id>17248437</id>
+    <name>Security Update KB2667402</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>767</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:02-06:00</created_at>
+    <updated_at>2016-07-07T10:36:59-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248437/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248827.xml</href>
+    <id>17248827</id>
+    <name>Update KB976902</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>764</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:15-06:00</created_at>
+    <updated_at>2016-07-07T10:37:11-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248827/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248491.xml</href>
+    <id>17248491</id>
+    <name>Security Update KB2862330</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>767</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:04-06:00</created_at>
+    <updated_at>2016-07-07T10:37:02-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248491/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248764.xml</href>
+    <id>17248764</id>
+    <name>Update KB2786081</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>767</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:13-06:00</created_at>
+    <updated_at>2016-07-07T10:37:01-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248764/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248509.xml</href>
+    <id>17248509</id>
+    <name>Security Update KB2900986</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>766</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:05-06:00</created_at>
+    <updated_at>2016-07-07T10:37:03-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248509/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248729.xml</href>
+    <id>17248729</id>
+    <name>Update KB2533552</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>764</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:12-06:00</created_at>
+    <updated_at>2016-07-07T10:36:56-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248729/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17423007.xml</href>
+    <id>17423007</id>
+    <name>Update for Microsoft Filter Pack 2.0 (KB2999508) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>409</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-15T17:46:36-06:00</created_at>
+    <updated_at>2016-07-06T10:36:50-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17423007/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17883373.xml</href>
+    <id>17883373</id>
+    <name>Security Update for Microsoft InfoPath 2010 (KB3114414) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>416</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-03-09T09:58:23-06:00</created_at>
+    <updated_at>2016-07-06T10:36:51-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17883373/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/79729756.xml</href>
+    <id>79729756</id>
+    <name>Definition Update for Microsoft Office 2010 (KB3115475) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>601</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-08-18T02:37:55-05:00</created_at>
+    <updated_at>2016-08-18T02:37:55-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/79729756/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248612.xml</href>
+    <id>17248612</id>
+    <name>Security Update KB3059317</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>761</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:08-06:00</created_at>
+    <updated_at>2016-07-07T10:37:08-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248612/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248385.xml</href>
+    <id>17248385</id>
+    <name>Security Update for Microsoft Office 2010 (KB2881029) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>409</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:00-06:00</created_at>
+    <updated_at>2016-07-06T10:36:49-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248385/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248507.xml</href>
+    <id>17248507</id>
+    <name>Security Update KB2894844</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>761</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:05-06:00</created_at>
+    <updated_at>2016-07-07T10:37:03-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248507/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248545.xml</href>
+    <id>17248545</id>
+    <name>Security Update KB2984972</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>761</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:06-06:00</created_at>
+    <updated_at>2016-07-07T10:37:05-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248545/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248559.xml</href>
+    <id>17248559</id>
+    <name>Security Update KB3004375</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>760</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:07-06:00</created_at>
+    <updated_at>2016-07-07T10:37:06-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248559/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248602.xml</href>
+    <id>17248602</id>
+    <name>Security Update KB3046269</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>758</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:08-06:00</created_at>
+    <updated_at>2016-07-07T10:37:08-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248602/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17883374.xml</href>
+    <id>17883374</id>
+    <name>Security Update for Microsoft Office 2010 (KB2956063) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>411</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-03-09T09:58:23-06:00</created_at>
+    <updated_at>2016-07-06T10:36:49-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17883374/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248753.xml</href>
+    <id>17248753</id>
+    <name>Update KB2729094</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>758</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:13-06:00</created_at>
+    <updated_at>2016-07-07T10:37:00-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248753/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248773.xml</href>
+    <id>17248773</id>
+    <name>Update KB2834140</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>758</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:14-06:00</created_at>
+    <updated_at>2016-07-07T10:37:01-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248773/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248776.xml</href>
+    <id>17248776</id>
+    <name>Update KB2841134</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>758</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:14-06:00</created_at>
+    <updated_at>2016-07-07T10:36:55-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248776/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248743.xml</href>
+    <id>17248743</id>
+    <name>Update KB2670838</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>758</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:13-06:00</created_at>
+    <updated_at>2016-07-07T10:36:55-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248743/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248779.xml</href>
+    <id>17248779</id>
+    <name>Update KB2849696</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>758</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:14-06:00</created_at>
+    <updated_at>2016-07-07T10:36:55-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248779/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248780.xml</href>
+    <id>17248780</id>
+    <name>Update KB2849697</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>758</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:14-06:00</created_at>
+    <updated_at>2016-07-07T10:36:55-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248780/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248731.xml</href>
+    <id>17248731</id>
+    <name>Update KB2545698</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>755</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:12-06:00</created_at>
+    <updated_at>2016-07-07T10:36:56-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248731/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248732.xml</href>
+    <id>17248732</id>
+    <name>Update KB2547666</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>756</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:12-06:00</created_at>
+    <updated_at>2016-07-07T10:36:57-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248732/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248746.xml</href>
+    <id>17248746</id>
+    <name>Update KB2685813</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>756</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:13-06:00</created_at>
+    <updated_at>2016-07-07T10:36:59-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248746/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248553.xml</href>
+    <id>17248553</id>
+    <name>Security Update KB3000483</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>754</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:06-06:00</created_at>
+    <updated_at>2016-07-07T10:37:06-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248553/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248348.xml</href>
+    <id>17248348</id>
+    <name>Microsoft Windows 7 Enterprise</name>
+    <category>
+      <id>8</id>
+      <name>Operating System</name>
+    </category>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>323</installs>
+    <version>6.1.7601</version>
+    <tag>Windows 7 Enterprise</tag>
+    <hidden>false</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:16:59-06:00</created_at>
+    <updated_at>2016-02-09T10:16:59-06:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248348/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/62643138.xml</href>
+    <id>62643138</id>
+    <name>Security Update for Microsoft OneNote 2010 (KB3114885) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>540</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-08-10T03:38:05-05:00</created_at>
+    <updated_at>2016-08-10T03:38:05-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/62643138/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248798.xml</href>
+    <id>17248798</id>
+    <name>Update KB2952664</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>735</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:14-06:00</created_at>
+    <updated_at>2016-07-13T10:39:46-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248798/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248760.xml</href>
+    <id>17248760</id>
+    <name>Update KB2761217</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>753</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:13-06:00</created_at>
+    <updated_at>2016-07-07T10:37:00-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248760/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248745.xml</href>
+    <id>17248745</id>
+    <name>Update KB2685811</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>754</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:13-06:00</created_at>
+    <updated_at>2016-07-07T10:36:59-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248745/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248713.xml</href>
+    <id>17248713</id>
+    <name>Update for Microsoft Outlook 2010 (KB2760779) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>395</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:12-06:00</created_at>
+    <updated_at>2016-07-06T10:36:51-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248713/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248793.xml</href>
+    <id>17248793</id>
+    <name>Update KB2919469</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>753</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:14-06:00</created_at>
+    <updated_at>2016-07-07T10:37:04-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248793/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248755.xml</href>
+    <id>17248755</id>
+    <name>Update KB2732059</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>753</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:13-06:00</created_at>
+    <updated_at>2016-07-07T10:37:00-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248755/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248759.xml</href>
+    <id>17248759</id>
+    <name>Update KB2750841</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>753</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:13-06:00</created_at>
+    <updated_at>2016-07-07T10:37:00-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248759/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/21526617.xml</href>
+    <id>21526617</id>
+    <name>Security Update for Microsoft Visio Viewer 2010 (KB2999465) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>516</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-06-24T03:32:08-05:00</created_at>
+    <updated_at>2016-07-06T10:36:51-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/21526617/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/21526619.xml</href>
+    <id>21526619</id>
+    <name>Update for Microsoft Office 2010 (KB2881030) 32-Bit Edition</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>515</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-06-24T03:32:08-05:00</created_at>
+    <updated_at>2016-07-06T10:36:51-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/21526619/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248762.xml</href>
+    <id>17248762</id>
+    <name>Update KB2773072</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>740</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:13-06:00</created_at>
+    <updated_at>2016-07-07T10:37:01-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248762/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248443.xml</href>
+    <id>17248443</id>
+    <name>Security Update KB2690533</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:03-06:00</created_at>
+    <updated_at>2016-07-07T10:36:59-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248443/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248403.xml</href>
+    <id>17248403</id>
+    <name>Security Update KB2506212</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:01-06:00</created_at>
+    <updated_at>2016-07-07T10:36:56-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248403/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248413.xml</href>
+    <id>17248413</id>
+    <name>Security Update KB2564958</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:02-06:00</created_at>
+    <updated_at>2016-07-07T10:36:57-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248413/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248422.xml</href>
+    <id>17248422</id>
+    <name>Security Update KB2620704</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:02-06:00</created_at>
+    <updated_at>2016-07-07T10:36:57-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248422/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248424.xml</href>
+    <id>17248424</id>
+    <name>Security Update KB2621440</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:02-06:00</created_at>
+    <updated_at>2016-07-07T10:36:57-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248424/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248429.xml</href>
+    <id>17248429</id>
+    <name>Security Update KB2654428</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:02-06:00</created_at>
+    <updated_at>2016-07-07T10:36:58-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248429/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248469.xml</href>
+    <id>17248469</id>
+    <name>Security Update KB2813430</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:04-06:00</created_at>
+    <updated_at>2016-07-07T10:37:01-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248469/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248492.xml</href>
+    <id>17248492</id>
+    <name>Security Update KB2862335</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>750</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:04-06:00</created_at>
+    <updated_at>2016-07-07T10:37:02-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248492/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248412.xml</href>
+    <id>17248412</id>
+    <name>Security Update KB2560656</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:01-06:00</created_at>
+    <updated_at>2016-07-07T10:36:57-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248412/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248503.xml</href>
+    <id>17248503</id>
+    <name>Security Update KB2884256</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:05-06:00</created_at>
+    <updated_at>2016-07-07T10:37:03-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248503/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248733.xml</href>
+    <id>17248733</id>
+    <name>Update KB2552343</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:12-06:00</created_at>
+    <updated_at>2016-07-07T10:36:57-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248733/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248506.xml</href>
+    <id>17248506</id>
+    <name>Security Update KB2893294</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>751</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:05-06:00</created_at>
+    <updated_at>2016-07-07T10:37:03-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248506/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248735.xml</href>
+    <id>17248735</id>
+    <name>Update KB2574819</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>755</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:12-06:00</created_at>
+    <updated_at>2016-07-07T10:36:57-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248735/hardwares.xml</hardwares_href>
+  </software>
+  <software>
+    <custom nil="true"/>
+    <href>https://api.samanage.com/softwares/17248736.xml</href>
+    <id>17248736</id>
+    <name>Update KB2592687</name>
+    <category nil="true"/>
+    <vendor>
+      <name>Microsoft</name>
+      <id>2</id>
+      <address1>One Microsoft Way</address1>
+      <address2></address2>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+      <country>UNITED STATES</country>
+      <business_phone>(425) 882-8080</business_phone>
+      <tech_support>(800) 936-5700</tech_support>
+      <customer_service></customer_service>
+      <url>www.microsoft.com</url>
+      <comments></comments>
+      <created_at nil="true"/>
+      <updated_at>2013-03-24T04:30:46-05:00</updated_at>
+      <parent_id nil="true"/>
+    </vendor>
+    <installs>755</installs>
+    <version></version>
+    <tag nil="true"/>
+    <hidden>true</hidden>
+    <greynet nil="true"/>
+    <created_at>2016-02-09T10:17:12-06:00</created_at>
+    <updated_at>2016-07-07T10:36:55-05:00</updated_at>
+    <first_detected nil="true"/>
+    <windows_system_component>false</windows_system_component>
+    <hardwares_href>https://api.samanage.com/softwares/17248736/hardwares.xml</hardwares_href>
+  </software>
+  <page>1</page>
+  <per_page>100</per_page>
+  <total_entries>14197</total_entries>
+</softwares>

@@ -32,6 +32,7 @@ public class AppSession {
 	private transient IncidentEditType editType;
 
 	private TreeMap<String, Group> groups;
+	private TreeMap<String, Software> softwares;
 	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
 	private TreeMap<String, ArrayList<String>> categories;
@@ -67,6 +68,7 @@ public class AppSession {
 		departments = new ArrayList<String>();
 		sites = new ArrayList<String>();
 		groups = new TreeMap<String, Group>();
+		softwares = new TreeMap<String, Software>();
 	}
 	
 	public static AppSession getSession() {
@@ -323,6 +325,10 @@ public class AppSession {
 		return groupNames;
 	}
 	
+	public TreeMap<String, Software> getSoftwares() {
+		return softwares;
+	}
+	
 	public String getGroupId(String groupName) {
 		for (String group: groups.keySet()) {
 			if (groups.get(group).getName().equals(groupName)) {
@@ -412,11 +418,17 @@ public class AppSession {
 		}
 
 	}
+	
 	public void updateGroups() {
 		if (SamanageRequests.getTotalElements(userToken, "groups") != groups.size()) {
 			System.err.println("Updating group...");
 			groups = SamanageRequests.getGroups(userToken);
 		}
+
+	}
+	
+	public void updateSoftwares() {
+		softwares = SamanageRequests.getSoftwares(userToken, "408915", "Software");
 
 	}
 	

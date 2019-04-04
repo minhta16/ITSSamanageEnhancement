@@ -2,7 +2,7 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 #curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+json' -H 'Content-type: application/json' -X GET https://api.samanage.com/incidents.json | python -mjson.tool > "formatted.json
 
 # Get incidents ------------------------------------------------
-curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET "https://api.samanage.com/incidents.xml?per_page=2&page=1&assigned_to%5B%5D=1564653" -o incidents_devgroup_today.xml
+curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET "https://api.samanage.com/incidents.xml?per_page=1&page=1&category%5B%5D=408915" -o software_incident.xml
 
 
 # Get categories ----------------------------------------------
@@ -33,11 +33,14 @@ curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.sa
 # ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
 
 # Edit incident -------------------------------------------
-curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
-<incident>
-    <assignee><email>minhta16@augustana.edu</email></assignee>
-</incident>
-' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36935362.xml
+# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
+# <incident>
+#     <assignee><email>minhta16@augustana.edu</email></assignee>
+# </incident>
+# ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X PUT https://api.samanage.com/incidents/36935362.xml
+
+# Get softwares -------------------------------------------
+# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET "https://api.samanage.com/softwares.xml" -o softwares.xml
 
 # New time track -----------------------------------------------
 ID=36681945
