@@ -19,6 +19,7 @@ public class Incident {
 	private String dept;
 	private String desc;
 	private String groupId;
+	private String software;
 	private LocalDate dueOn;
 
 	private ArrayList<TimeTrack> trackedUsers;
@@ -30,7 +31,7 @@ public class Incident {
 	
 	public Incident(String ID, String number, String state, String title, String priority, String cat
 			, String subcat, String assignee, String requester, String site, String dept
-			, String desc, LocalDate dueOn, String groupId, ArrayList<TimeTrack> trackedUsers) {
+			, String desc, LocalDate dueOn, String groupId, String software, ArrayList<TimeTrack> trackedUsers) {
 		this.ID = ID;
 		this.number = number;
 		this.state = state;
@@ -46,10 +47,25 @@ public class Incident {
 		this.dueOn = dueOn;
 		this.trackedUsers = trackedUsers;
 		this.groupId = groupId;
+		this.software = software;
 		setTrackedUsersNum(trackedUsers.size());
 		editBtn = new Button("Edit");
 	}
 	
+	/**
+	 * @return the software
+	 */
+	public String getSoftware() {
+		return software;
+	}
+
+	/**
+	 * @param software the software to set
+	 */
+	public void setSoftware(String software) {
+		this.software = software;
+	}
+
 	/**
 	 * @return the groupId
 	 */

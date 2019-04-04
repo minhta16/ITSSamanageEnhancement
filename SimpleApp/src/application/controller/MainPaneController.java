@@ -71,6 +71,8 @@ public class MainPaneController {
 	@FXML
 	private ComboBox<String> catChoiceBox;
 	@FXML
+	private Label subcatLabel;
+	@FXML
 	private ComboBox<String> subcatChoiceBox;
 	@FXML
 	private ChoiceBox<String> priorityChoiceBox;
@@ -80,6 +82,10 @@ public class MainPaneController {
 	private ComboBox<String> deptComboBox;
 	@FXML
 	private ComboBox<String> siteComboBox;
+	@FXML
+	private Label softwareLabel;
+	@FXML
+	private ComboBox<String> softwareComboBox;
 	@FXML
 	private DatePicker datePicker;
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -130,6 +136,8 @@ public class MainPaneController {
 	private String updatePrompt = "";
 
 	private String curUpdateIncidentID = "";
+	
+	private boolean updatingIncident;
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
 
@@ -142,9 +150,9 @@ public class MainPaneController {
 
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
-		
+
 		AppSession.getSession().updateSoftwares();
-		System.err.println(AppSession.getSession().getSoftwares());
+		updatingIncident = false;
 
 		// setup setting tab
 		System.out.print("Setting up Setting Tab\t\t\t\r");
@@ -300,7 +308,7 @@ public class MainPaneController {
 		AppSession.getSession().setCategories(AppSession.getSession().getCategories());
 		catChoiceBox.getSelectionModel().select(0);
 		subcatChoiceBox.getSelectionModel().select(0);
-		subcatChoiceBox.setDisable(true);
+		setDisableSubcatChoiceBox(true);
 		catChoiceBox.getItems().addAll(AppSession.getSession().getCategories().keySet());
 		catChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -309,15 +317,29 @@ public class MainPaneController {
 			}
 		});
 	}
+	
+	private void setDisableSubcatChoiceBox(boolean disable) {
+		subcatChoiceBox.setDisable(disable);
+		subcatLabel.setDisable(disable);
+//		subcatLabel.setVisible(!disable);
+//		subcatChoiceBox.setVisible(!disable);
+	}
+	
+	private void setDisableSoftwareComboBox(boolean disable) {
+		softwareComboBox.setDisable(disable);
+		softwareLabel.setDisable(disable);
+//		softwareLabel.setVisible(!disable);
+//		softwareComboBox.setVisible(!disable);
+	}
 
 	private void updateSubcatChoiceBox() {
 		subcatChoiceBox.getItems().clear();
 		if (catChoiceBox.getValue() == null) {
-			subcatChoiceBox.setDisable(true);
+			setDisableSubcatChoiceBox(true);
 		} else if (AppSession.getSession().getCategories().get(catChoiceBox.getValue()).isEmpty()) {
-			subcatChoiceBox.setDisable(true);
+			setDisableSubcatChoiceBox(true);
 		} else {
-			subcatChoiceBox.setDisable(false);
+			setDisableSubcatChoiceBox(false);
 			subcatChoiceBox.getItems().addAll(AppSession.getSession().getCategories().get(catChoiceBox.getValue()));
 		}
 	}
@@ -366,6 +388,10 @@ public class MainPaneController {
 		siteComboBox.getItems().addAll(AppSession.getSession().getSites());
 		TextFields.bindAutoCompletion(siteComboBox.getEditor(), siteComboBox.getItems());
 
+		softwareComboBox.getItems().addAll(AppSession.getSession().getSoftwares().keySet());
+		TextFields.bindAutoCompletion(softwareComboBox.getEditor(), softwareComboBox.getItems());
+		setDisableSoftwareComboBox(true);
+
 		updateDefaultDeptSite();
 	}
 
@@ -410,6 +436,8 @@ public class MainPaneController {
 //			showAlert("Error", "Please choose a due date", AlertType.WARNING);
 		} else if (assigneeField.getText().trim().equals("")) {
 			showAlert("Error", "Please enter an assignee email", AlertType.WARNING);
+		} else if (!softwareComboBox.isDisable() && softwareComboBox.getValue() == null) {
+			showAlert("Error", "Please select a software", AlertType.WARNING);
 		} else if (!AppSession.getSession().getSavedEmails().contains(toCorrectDomain(requesterField.getText()))) {
 			showAlert("Error", "Cannot find any requester with that email. Try again", AlertType.ERROR);
 		} else if (!AppSession.getSession().getSavedEmails().contains(toCorrectDomain(assigneeField.getText()))
@@ -444,6 +472,7 @@ public class MainPaneController {
 				public Parent call() throws JsonIOException, IOException {
 					try {
 						updateMessage("Loading...");
+						updatingIncident = true;
 						String incidentName;
 						if (incidentNameField.getText().equals("")) {
 							incidentName = getDefaultIncidentName();
@@ -460,7 +489,7 @@ public class MainPaneController {
 								priorityChoiceBox.getValue(), catChoiceBox.getValue(), subcatChoiceBox.getValue(),
 								descField.getText(), datePicker.getValue().toString(), statesChoiceBox.getValue(),
 								assignee, toCorrectDomain(requesterField.getText()), deptComboBox.getValue(),
-								siteComboBox.getValue());
+								siteComboBox.getValue(), softwareComboBox.getValue());
 
 						updateMessage("Submit");
 					} catch (IOException e) {
@@ -478,6 +507,7 @@ public class MainPaneController {
 
 				@Override
 				public void handle(WorkerStateEvent event) {
+					updatingIncident = false;
 					submitBtn.textProperty().unbind();
 					clearInputFields();
 				}
@@ -485,7 +515,6 @@ public class MainPaneController {
 			Thread newIncidentThread = new Thread(newIncident);
 			newIncidentThread.start();
 
-			// TODO: IMPLEMENT EDIT
 		} else if (AppSession.getSession().getEditType() == IncidentEditType.EDIT) {
 			Task<Parent> editIncident = new Task<Parent>() {
 				@Override
@@ -516,7 +545,7 @@ public class MainPaneController {
 								catChoiceBox.getValue(), subcatChoiceBox.getValue(), descField.getText(),
 								datePicker.getValue().toString(), statesChoiceBox.getValue(), assignee,
 								toCorrectDomain(requesterField.getText()), deptComboBox.getValue(),
-								siteComboBox.getValue());
+								siteComboBox.getValue(), softwareComboBox.getValue());
 
 						updateMessage("Submit");
 					} catch (IOException e) {
@@ -680,6 +709,7 @@ public class MainPaneController {
 		infoTable.getItems().clear();
 		catChoiceBox.setValue(null);
 		subcatChoiceBox.setValue(null);
+		softwareComboBox.setValue(null);
 		updateDefaultDeptSite();
 		submitBtn.setDisable(false);
 	}
@@ -696,6 +726,13 @@ public class MainPaneController {
 				@Override
 				public Parent call() throws JsonIOException, IOException {
 					updateMessage("Loading...");
+					while (updatingIncident) {
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
 					AppSession.getSession().updateTodayIncidents();
 					updateMessage("Update List");
 					return null;
@@ -756,6 +793,7 @@ public class MainPaneController {
 		priorityChoiceBox.setValue(incident.getPriority());
 		deptComboBox.setValue(incident.getDept());
 		siteComboBox.setValue(incident.getSite());
+		softwareComboBox.setValue(incident.getSoftware());
 		if (incident.getDueOn() != null) {
 			datePicker.setValue(incident.getDueOn());
 		}
@@ -804,6 +842,12 @@ public class MainPaneController {
 
 	@FXML
 	public void handleCatChange() {
+		if (catChoiceBox.getValue() != null) {
+			setDisableSoftwareComboBox(!catChoiceBox.getValue().equals("Software"));
+			if (!catChoiceBox.getValue().equals("Software")) {
+				softwareComboBox.setValue(null);
+			}
+		}
 		updateIncidentNamePrompt();
 	}
 
@@ -898,8 +942,7 @@ public class MainPaneController {
 				Consumer<Boolean> c = (x) -> {
 					if (x.booleanValue() == true && !methodsToRun.contains(r)) {
 						methodsToRun.add(r);
-					}
-					else if (x.booleanValue() == false && methodsToRun.contains(r)) {
+					} else if (x.booleanValue() == false && methodsToRun.contains(r)) {
 						methodsToRun.remove(r);
 					}
 				};
@@ -921,18 +964,17 @@ public class MainPaneController {
 						public Parent call() throws JsonIOException, IOException {
 							for (Runnable r : methodsToRun) {
 								updateMessage("Updating...");
-								//AppSession.getSession().getCheckFlags().
+								// AppSession.getSession().getCheckFlags().
 								r.run();
 							}
 							updateMessage("Saving Data...");
-							
+
 							// this causes bug... it made the data.json becomes very big (several Gbs)
-		//					try {
-		//						AppSession.getSession().saveData();
-		//					} catch (JsonIOException | IOException e) {
-		//						// TODO Auto-generated catch block
-		//						e.printStackTrace();
-		//					}
+							// try {
+							// AppSession.getSession().saveData();
+							// } catch (JsonIOException | IOException e) {
+							// e.printStackTrace();
+							// }
 							return null;
 						}
 					};

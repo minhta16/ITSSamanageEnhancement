@@ -31,9 +31,9 @@ public class SamanageRequests {
 
 	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority, String category,
 			String subcategory, String description, String dueDate, String state, String assignee, String requester,
-			String dept, String site) throws IOException {
+			String dept, String site, String software) throws IOException {
 		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate,
-				assignee, requester);
+				assignee, requester, software);
 		String incidentID = SamanageRequests.getID(userToken);
 		ArrayList<TimeTrack> timeTracks = AppSession.getSession().getTimeTracks();
 		for (TimeTrack track : timeTracks) {
@@ -47,7 +47,7 @@ public class SamanageRequests {
 	}
 
 	public static void newIncident(String userToken, String incidentName, String priority, String category,
-			String subcategory, String description, String dueDate, String assignee, String requester)
+			String subcategory, String description, String dueDate, String assignee, String requester, String software)
 			throws IOException {
 		String url = "https://api.samanage.com/incidents.xml";
 
@@ -59,23 +59,6 @@ public class SamanageRequests {
 		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
 		conn.setRequestProperty("Accept", ACCEPT_VERSION);
 		conn.setRequestProperty("Content-Type", "text/xml");
-
-		String data1 = "<incident>" + " <name>Test</name>" + " <priority>Medium</priority>"
-				+ " <requester><email>MINHTA16@augustana.edu</email></requester>"
-				+ " <category><name>Meetings  (ITS use only)</name></category>" + " <subcategory>"
-				+ "      <name>Training/Workshops</name>" + " </subcategory>" + " <cc type=\"array\">"
-				+ "   <cc>MINHTA16@augustana.edu</cc>" + " </cc>" + " <description>" + description + "</description>"
-				+ " <due_at>Mar 8, 2019</due_at>" + " <assignee><email>MINHTA16@augustana.edu</email></assignee>"
-				+ " <incidents type=\"array\">" + "   <incident><number>1474</number></incident>"
-				+ "   <incident><number>1475</number></incident>" + " </incidents>" + " <assets type=\"array\">"
-				+ "   <asset><id>275498</id></asset>" + " </assets>" + " <problem><number>445</number></problem>"
-				+ " <solutions type=\"array\">" + "   <solution><number>34</number></solution>" + " </solutions>"
-				+ " <configuration_items type=\"array\">"
-				+ "   <configuratioexpn_item><id>27234</id></configuration_item>" + " </configuration_items>"
-				+ " <custom_fields_values>" + "   <custom_fields_value>" + "     <name>field name</name>"
-				+ "     <value>content</value>" + "   </custom_fields_value>" + "   <custom_fields_value>"
-				+ "     <name>field name</name>" + "     <value>content</value>" + "   </custom_fields_value>"
-				+ " </custom_fields_values>" + "</incident>";
 
 		String data = "<incident>";
 		data += " <name>" + incidentName + "</name>";
@@ -91,6 +74,12 @@ public class SamanageRequests {
 			data += " <assignee><email>" + assignee + "</email></assignee>";
 		} else {
 			data += " <assignee_id>" + assignee + "</assignee_id>";
+		}
+		if (!software.isEmpty()) {
+			data += "<custom_fields_values>";
+			data += "<custom_fields_value><name>Software</name>";
+			data += "<value>" + software + "</value></custom_fields_value>";
+			data += "</custom_fields_values>";
 		}
 		data += "</incident>";
 
@@ -207,15 +196,27 @@ public class SamanageRequests {
 						ArrayList<TimeTrack> trackedUsers = getTimeTracks(userToken, id);
 						String ID = getString("id", incident);
 						String number = getString("number", incident);
+						String category = getString("name",
+								(Element) incident.getElementsByTagName("category").item(0));
 						String assigneeEmail = getString("email",
 								(Element) incident.getElementsByTagName("assignee").item(0)).toLowerCase();
 						String groupId = "";
 						if (assigneeEmail.isEmpty()) {
 							groupId = getString("id", (Element) incident.getElementsByTagName("assignee").item(0));
 						}
+						String software = "";
+						if (category.equals("Software")) {
+							for (int j = 0; j < incident.getElementsByTagName("custom_fields_value").getLength(); j++) {
+								if (getString("name",
+										(Element) incident.getElementsByTagName("custom_fields_value").item(j))
+												.equals("Software")) {
+									software = getString("value",
+											(Element) incident.getElementsByTagName("custom_fields_value").item(j));
+								}
+							}
+						}
 						Incident newIncident = new Incident(ID, number, getString("state", incident),
-								getString("name", incident), getString("priority", incident),
-								getString("name", (Element) incident.getElementsByTagName("category").item(0)),
+								getString("name", incident), getString("priority", incident), category,
 								getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
 								assigneeEmail,
 								getString("email", (Element) incident.getElementsByTagName("requester").item(0))
@@ -227,7 +228,7 @@ public class SamanageRequests {
 										(Element) incident.getElementsByTagName("department")
 												.item(incident.getElementsByTagName("department").getLength() - 1)),
 								getString("description", incident), toDate(getString("due_at", incident)), groupId,
-								trackedUsers);
+								software, trackedUsers);
 
 						incidentMap.put(number, newIncident);
 					}
@@ -523,7 +524,7 @@ public class SamanageRequests {
 		return siteList;
 	}
 
-																		// 408915 			Software
+	// 408915 Software
 	public static TreeMap<String, Software> getSoftwares(String userToken, String typeCode, String type) {
 		TreeMap<String, Software> softwareList = new TreeMap<String, Software>();
 		try {
@@ -700,9 +701,9 @@ public class SamanageRequests {
 
 	public static void updateIncidentWithTimeTrack(String userToken, String incidentName, String incidentID,
 			String priority, String category, String subcategory, String description, String dueDate, String state,
-			String assignee, String requester, String dept, String site) throws IOException {
+			String assignee, String requester, String dept, String site, String software) throws IOException {
 		SamanageRequests.updateIncident(userToken, incidentName, incidentID, priority, category, subcategory,
-				description, dueDate, assignee, requester);
+				description, dueDate, assignee, requester, software);
 		// String incidentID = SamanageRequests.getID(userToken);
 		ArrayList<TimeTrack> timeTracks = AppSession.getSession().getTimeTracks();
 		for (TimeTrack track : timeTracks) {
@@ -716,8 +717,8 @@ public class SamanageRequests {
 	}
 
 	public static void updateIncident(String userToken, String incidentName, String incidentID, String priority,
-			String category, String subcategory, String description, String dueDate, String assignee, String requester)
-			throws IOException {
+			String category, String subcategory, String description, String dueDate, String assignee, String requester,
+			String software) throws IOException {
 		String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
 
 		URL obj = new URL(url);
@@ -728,23 +729,6 @@ public class SamanageRequests {
 		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
 		conn.setRequestProperty("Accept", ACCEPT_VERSION);
 		conn.setRequestProperty("Content-Type", "text/xml");
-
-		String data1 = "<incident>" + " <name>Test</name>" + " <priority>Medium</priority>"
-				+ " <requester><email>MINHTA16@augustana.edu</email></requester>"
-				+ " <category><name>Meetings  (ITS use only)</name></category>" + " <subcategory>"
-				+ "      <name>Training/Workshops</name>" + " </subcategory>" + " <cc type=\"array\">"
-				+ "   <cc>MINHTA16@augustana.edu</cc>" + " </cc>" + " <description>" + description + "</description>"
-				+ " <due_at>Mar 8, 2019</due_at>" + " <assignee><email>MINHTA16@augustana.edu</email></assignee>"
-				+ " <incidents type=\"array\">" + "   <incident><number>1474</number></incident>"
-				+ "   <incident><number>1475</number></incident>" + " </incidents>" + " <assets type=\"array\">"
-				+ "   <asset><id>275498</id></asset>" + " </assets>" + " <problem><number>445</number></problem>"
-				+ " <solutions type=\"array\">" + "   <solution><number>34</number></solution>" + " </solutions>"
-				+ " <configuration_items type=\"array\">"
-				+ "   <configuratioexpn_item><id>27234</id></configuration_item>" + " </configuration_items>"
-				+ " <custom_fields_values>" + "   <custom_fields_value>" + "     <name>field name</name>"
-				+ "     <value>content</value>" + "   </custom_fields_value>" + "   <custom_fields_value>"
-				+ "     <name>field name</name>" + "     <value>content</value>" + "   </custom_fields_value>"
-				+ " </custom_fields_values>" + "</incident>";
 
 		String data = "<incident>";
 		data += " <name>" + incidentName + "</name>";
@@ -760,6 +744,12 @@ public class SamanageRequests {
 			data += " <assignee><email>" + assignee + "</email></assignee>";
 		} else {
 			data += " <assignee_id>" + assignee + "</assignee_id>";
+		}
+		if (!software.isEmpty()) {
+			data += "<custom_fields_values>";
+			data += "<custom_fields_value><name>Software</name>";
+			data += "<value>" + software + "</value></custom_fields_value>";
+			data += "</custom_fields_values>";
 		}
 		data += "</incident>";
 
@@ -805,6 +795,9 @@ public class SamanageRequests {
 	}
 
 	protected static String getString(String tagName, Element element, int item) {
+		if (element == null) {
+			return "";
+		}
 		NodeList list = element.getElementsByTagName(tagName);
 		if (list != null && list.getLength() > 0) {
 			NodeList subList = list.item(item).getChildNodes();
