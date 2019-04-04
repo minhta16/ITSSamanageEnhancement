@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.function.Consumer;
 
@@ -49,6 +50,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -184,35 +186,42 @@ public class MainPaneController {
 		System.out.println("Booting up App...");
 	}
 
+	/**
+	 * 
+	 */
 	public void showPrompt() {
 		if (AppSession.getSession().getDefaultAutoUpdateCheck()) {
 			if (!updatePrompt.equals("")) {
 				showAlert("Database outdated", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
 			}
 		} else {
-
-			if (AppSession.getSession().getDtbUpdateCheckAskAgainCheckBox() == false) {
-				Alert alert = createAlertWithOptOut(AlertType.WARNING, "Database Update Check Disabled",
-						"\"If you want to check for database changes (users, categories,...)\"\r\n"
-								+ "+ \" upon startup,\\nplease enable 'Check for Updates at Startup' in Settings/Database.\"",
-						null, "Do not ask again", e -> {
-							AppSession.getSession().setdtbUpdateCheckAskAgainCheckBox(e.booleanValue());
-							try {
-								System.err.println(e.booleanValue());
-								AppSession.getSession().saveData();
-							} catch (JsonIOException | IOException ex) {
-								ex.printStackTrace();
-							}
-						}, ButtonType.OK);
-				alert.showAndWait();
-			}
-
+			
 			/*
 			 * showAlert("Database Update Check Disabled",
 			 * "If you want to check for database changes (users, categories,...)" +
 			 * " upon startup,\nplease enable 'Check for Updates at Startup' in Settings/Database."
 			 * , AlertType.WARNING);
 			 */
+			if (AppSession.getSession().getDtbUpdateCheckAskAgainCheckBox() == false) {
+				String msg = "If you want to check for database changes (users, categories,...) upon startup,\n"
+						+ "  please enable 'Check for Updates at Startup' in Settings/Database.";
+				TreeMap<String, Consumer<Boolean>> test = new TreeMap<String, Consumer<Boolean>>();
+				String s1 = "Do not show again?";
+				Consumer<Boolean> c1 = (x) -> {
+					// System.err.println(x);
+					AppSession.getSession().setdtbUpdateCheckAskAgainCheckBox(x.booleanValue());
+					try {
+						AppSession.getSession().saveData();
+					} catch (JsonIOException | IOException e) {
+						e.printStackTrace();
+					}
+
+				};
+				test.put(s1, c1);
+				Alert alert = createAlertWithOptOuts(AlertType.CONFIRMATION, "Database Update Check Disabled", msg,
+						null, test, ButtonType.OK);
+				alert.showAndWait();
+			}
 
 		}
 	}
@@ -599,9 +608,9 @@ public class MainPaneController {
 	// https://stackoverflow.com/questions/36949595/how-do-i-create-a-javafx-alert-with-a-check-box-for-do-not-ask-again
 	//
 	// CAN BE USED FURTHER TO ASK THE USER TO UPDATE WHAT THEY WANT?
-
-	public static Alert createAlertWithOptOut(AlertType type, String title, String headerText, String message,
-			String optOutMessage, Consumer<Boolean> optOutAction, ButtonType... buttonTypes) {
+	
+	public static Alert createAlertWithOptOuts(AlertType type, String title, String headerText, String message,
+			TreeMap<String, Consumer<Boolean>> optOutActions, ButtonType... buttonTypes) {
 		Alert alert = new Alert(type);
 		// Need to force the alert to layout in order to grab the graphic,
 		// as we are replacing the dialog pane with a custom pane
@@ -610,14 +619,25 @@ public class MainPaneController {
 		// Create a new dialog pane that has a checkbox instead of the hide/show details
 		// button
 		// Use the supplied callback for the action of the checkbox
+		
 		alert.setDialogPane(new DialogPane() {
 			@Override
 			protected Node createDetailsButton() {
-				CheckBox optOut = new CheckBox();
-				optOut.setText(optOutMessage);
-				optOut.setOnAction(e -> optOutAction.accept(optOut.isSelected()));
-				return optOut;
+				VBox vBox = new VBox();
+				for (Map.Entry<String, Consumer<Boolean>> entry : optOutActions.entrySet()) {
+					String key = entry.getKey();
+					Consumer<Boolean> value = entry.getValue();
+					CheckBox optOut = new CheckBox();
+					vBox.getChildren().add(optOut);
+					optOut.setText(key);
+					optOut.setOnAction(e -> value.accept(optOut.isSelected()));
+					// return optOut;
+				}
+
+				return vBox;
+
 			}
+
 		});
 		alert.getDialogPane().getButtonTypes().addAll(buttonTypes);
 		alert.getDialogPane().setContentText(message);
@@ -631,6 +651,7 @@ public class MainPaneController {
 		alert.setHeaderText(headerText);
 		return alert;
 	}
+
 
 	private void addTableItem(User user) {
 		TimeTrack track = new TimeTrack(user, Integer.parseInt(timeElapsedField.getText()),
@@ -859,56 +880,74 @@ public class MainPaneController {
 
 	@FXML
 	private void handleUpdateDataBtn() {
+		//lkj
 		if (updatePrompt.equals("")) {
 			showAlert("Already Up-to-date", "The data is already up to date.", AlertType.INFORMATION);
 		} else {
-			Alert alert = new Alert(AlertType.WARNING, "The process is going to take about 4 mins. Proceed?",
-					ButtonType.OK, ButtonType.CANCEL);
-			alert.setTitle("Warning");
-			Optional<ButtonType> result = alert.showAndWait();
-			if (result.get() == ButtonType.OK) {
-				// https://stackoverflow.com/questions/45863687/javafx-progress-bar-to-show-the-progress-of-the-process
-				Task<Parent> update = new Task<Parent>() {
-					@Override
-					public Parent call() throws JsonIOException, IOException {
-						updateMessage("Updating Users...");
-						AppSession.getSession().updateUsers();
-
-						updateMessage("Updating Depts...");
-						AppSession.getSession().updateDepts();
-
-						updateMessage("Updating Sites...");
-						AppSession.getSession().updateSites();
-
-						updateMessage("Updating Categories...");
-						AppSession.getSession().updateCategories();
-
-						updateMessage("Updating Groups...");
-						AppSession.getSession().updateGroups();
-
-						updateMessage("Saving Data...");
-						AppSession.getSession().saveData();
-						return null;
+			/*
+			 * Alert alert = new Alert(AlertType.WARNING,
+			 * "The process is going to take about 4 mins. Proceed?", ButtonType.OK,
+			 * ButtonType.CANCEL); alert.setTitle("Warning");
+			 */
+			
+			TreeMap<String, Consumer<Boolean>> cmd = new TreeMap<String, Consumer<Boolean>>();
+			for (Map.Entry<String, Runnable> entry : AppSession.getSession().getCheckFlags().entrySet()) {
+				String s = entry.getKey();
+				Runnable r = entry.getValue();		
+				Consumer<Boolean> c = (x) -> {
+					if (x.booleanValue() == true) {
+						r.run();
+						try {
+							AppSession.getSession().saveData();
+						} catch (JsonIOException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				};
-
-				// method to set labeltext
-				updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
-				updateDataBtn.setDisable(true);
-				update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-
-					@Override
-					public void handle(WorkerStateEvent event) {
-						showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
-						updateDataBtn.textProperty().unbind();
-						updateDataBtn.setText("Update Data");
-						updatePrompt = "";
-
-					}
-				});
-				Thread updateThread = new Thread(update);
-				updateThread.start();
+				
+				cmd.put(s, c);	
 			}
+			
+			
+			
+			Alert alert = createAlertWithOptOuts(AlertType.CONFIRMATION, "Warning", updatePrompt,
+					"Choose what to update", cmd, ButtonType.OK);
+
+			alert.showAndWait();
+			/*
+			 * Optional<ButtonType> result = alert.showAndWait(); if (result.get() ==
+			 * ButtonType.OK) { //
+			 * https://stackoverflow.com/questions/45863687/javafx-progress-bar-to-show-the-
+			 * progress-of-the-process Task<Parent> update = new Task<Parent>() {
+			 * 
+			 * @Override public Parent call() throws JsonIOException, IOException {
+			 * updateMessage("Updating Users..."); AppSession.getSession().updateUsers();
+			 * 
+			 * updateMessage("Updating Depts..."); AppSession.getSession().updateDepts();
+			 * 
+			 * updateMessage("Updating Sites..."); AppSession.getSession().updateSites();
+			 * 
+			 * updateMessage("Updating Categories...");
+			 * AppSession.getSession().updateCategories();
+			 * 
+			 * updateMessage("Updating Groups..."); AppSession.getSession().updateGroups();
+			 * 
+			 * updateMessage("Saving Data..."); AppSession.getSession().saveData(); return
+			 * null; } };
+			 * 
+			 * // method to set labeltext
+			 * updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()))
+			 * ; updateDataBtn.setDisable(true); update.setOnSucceeded(new
+			 * EventHandler<WorkerStateEvent>() {
+			 * 
+			 * @Override public void handle(WorkerStateEvent event) { showAlert("Updated",
+			 * "Update Complete!", AlertType.INFORMATION);
+			 * updateDataBtn.textProperty().unbind(); updateDataBtn.setText("Update Data");
+			 * updatePrompt = "";
+			 * 
+			 * } }); Thread updateThread = new Thread(update); updateThread.start(); }
+			 */
 
 		}
 	}

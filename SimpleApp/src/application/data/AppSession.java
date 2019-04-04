@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -37,6 +39,10 @@ public class AppSession {
 	private ArrayList<String> sites;
 	private ArrayList<String> priorities;
 	private TreeMap<String, User> users;
+
+	private Map<String, Runnable> checkFlags = new HashMap<String, Runnable>();
+	
+	
 	
 	
 	private AppSession() {
@@ -346,47 +352,70 @@ public class AppSession {
 		int dbGroups = SamanageRequests.getTotalElements(userToken, "groups");
 		
 		if (dbUsers != users.size()) {
-			prompt += "Local Users: " + users.size() + ", Database Users: " + dbUsers; 
-		} else if (dbDepts != departments.size()) {
-			prompt += "Local Depts: " + departments.size() + ", Database Depts: " + dbDepts; 
-		} else if (dbSites != sites.size()) {
-			prompt += "Local Sites: " + sites.size() + ", Database Sites: " + dbSites; 
-		} else if (dbCats != categories.size()) {
-			prompt += "Local Categories: " + categories.size() + ", Database Categories: " + dbCats; 
-		} else if (dbGroups != groups.size()) {
+			prompt += "Local Users: " + users.size() + ", Database Users: " + dbUsers +"\n"; 
+			String s1 = "Update Users";
+			Runnable r1 = () -> updateUsers();
+			checkFlags.put(s1,  r1);
+		} if (dbDepts != departments.size()) {
+			prompt += "Local Depts: " + departments.size() + ", Database Depts: " + dbDepts +"\n"; 
+			String s2 = "Update Depts";
+			Runnable r2 = () -> updateDepts();
+			checkFlags.put(s2,  r2);
+		} if (dbSites != sites.size()) {
+			prompt += "Local Sites: " + sites.size() + ", Database Sites: " + dbSites +"\n"; 
+			String s3 = "Update Sites";
+			Runnable r3 = () -> updateSites();
+			checkFlags.put(s3,  r3);
+		} if (dbCats != categories.size()) {
+			prompt += "Local Categories: " + categories.size() + ", Database Categories: " + dbCats +"\n"; 
+			String s4 = "Update Categories";
+			Runnable r4 = () -> updateCategories();
+			checkFlags.put(s4,  r4);
+		} if (dbGroups != groups.size()) {
 			prompt += "Local Groups: " + groups.size() + ", Database Groups: " + dbGroups; 
+			String s5 = "Update Groups";
+			Runnable r5 = () -> updateGroups();
+			checkFlags.put(s5,  r5);
 		}
 		return prompt;
 //				&& SamanageRequests.getTotalElements(userToken, users);
 	}
 	
+	public Map<String, Runnable> getCheckFlags() {
+		return checkFlags;
+	}
 
 	public void updateUsers() {
 		if (SamanageRequests.getTotalElements(userToken, "users") != users.size()) {
+			System.err.println("Updating user...");
 			users = SamanageRequests.getAllUsers(userToken);
 		}
 	}
 	
 	public void updateDepts() {
 		if (SamanageRequests.getTotalElements(userToken, "departments") != departments.size()) {
+			System.err.println("Updating depts...");
 			departments = SamanageRequests.getDepartments(userToken);
 		}
 	}
 	
 	public void updateSites() {
 		if (SamanageRequests.getTotalElements(userToken, "sites") != sites.size()) {
+			System.err.println("Updating sites...");
 	    	sites = SamanageRequests.getSites(userToken);
 		}
 	}
 	
 	public void updateCategories() {
 		if (SamanageRequests.getTotalElements(userToken, "categories") != categories.size()) {
+			System.err.println("Updating categories...");
 			categories = SamanageRequests.getCategories(userToken);
 		}
 
 	}
 	public void updateGroups() {
 		if (SamanageRequests.getTotalElements(userToken, "groups") != groups.size()) {
+			System.err.println("Updating group...");
 			groups = SamanageRequests.getGroups(userToken);
 		}
 
