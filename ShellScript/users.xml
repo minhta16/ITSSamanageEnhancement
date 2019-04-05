@@ -1,0 +1,4676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <id>1524673</id>
+    <name>Aasen, Bailey</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>BAILEYAASEN15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:21-05:00</created_at>
+    <updated_at>2018-12-07T11:58:03-06:00</updated_at>
+    <last_login>2018-12-07T11:58:03-06:00</last_login>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>5b23f04543e90011f760e07ca591a3a4d6510955</salt>
+    <group_ids>
+      <group_id>1718812</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43249</id>
+      <name>Erickson Residence Center C117</name>
+      <location>Erickson Residence Center C117</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752741</id>
+    <name>Abaddi, Ibrahim</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>IBRAHIMABADDI16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:02-05:00</created_at>
+    <updated_at>2018-08-02T16:24:08-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>2.12661E+11</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>8217812caa3221cff58ee027cf3168e650b2afd0</salt>
+    <group_ids>
+      <group_id>1952423</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43492</id>
+      <name>Nobel House 2</name>
+      <location>Nobel House 2</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AI</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551533</id>
+    <name>Abbassi, Mohamed Hamza</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>mhamzaabbassi17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:28-05:00</created_at>
+    <updated_at>2018-08-02T16:28:41-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>1b1c109d7c3ca17752e1705008fd933ef870d446</salt>
+    <group_ids>
+      <group_id>2752692</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43246</id>
+      <name>Erickson Residence Center C114</name>
+      <location>Erickson Residence Center C114</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AH</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752742</id>
+    <name>Abbinanti, Alexis R</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ALEXISABBINANTI16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:03-05:00</created_at>
+    <updated_at>2018-08-02T17:44:03-05:00</updated_at>
+    <last_login>2018-05-02T10:05:43-05:00</last_login>
+    <phone>773-595-5965</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>174cdee1df3c7f2901a01ac67496734b2bd41178</salt>
+    <group_ids>
+      <group_id>1952424</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42960</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 7C1</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 7C1</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AR</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551534</id>
+    <name>Abbinanti, Allyson</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>allysonabbinanti17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:30-05:00</created_at>
+    <updated_at>2019-04-01T13:56:48-05:00</updated_at>
+    <last_login>2019-04-01T13:56:48-05:00</last_login>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>3e489b45bd7a5d9913a1427abaefbd92d505e8cf</salt>
+    <group_ids>
+      <group_id>2752693</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42967</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 7D4</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 7D4</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AA</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551536</id>
+    <name>Abbott, Leraaen</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>leraaenabbott17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:32-05:00</created_at>
+    <updated_at>2018-08-02T16:26:32-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>d6694a5f6da7db17e4f3dce6b5d6a7f0e01ade23</salt>
+    <group_ids>
+      <group_id>2752695</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43394</id>
+      <name>Flats 201B</name>
+      <location>Flats 201B</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500960</id>
+    <name>Abbs, Brandon</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>brandonabbs18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:41-05:00</created_at>
+    <updated_at>2018-10-23T11:27:27-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>630-406-0431</phone>
+    <mobile_phone></mobile_phone>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>d00358f9b77c051b4f5612abf04b8947519a7006</salt>
+    <group_ids>
+      <group_id>3734300</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43582</id>
+      <name>Seminary Hall 215</name>
+      <location>Seminary Hall 215</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752645</id>
+    <name>Abdel Qader, Mohammad</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>MOHAMMADABDELQADER16@augustana.edu</email>
+    <created_at>2016-08-11T08:24:14-05:00</created_at>
+    <updated_at>2016-08-11T08:24:14-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>961.7649278</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>e486c217c5dbb188372b32cd25c70d41469d3f12</salt>
+    <group_ids>
+      <group_id>1952328</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43583</id>
+      <name>Seminary Hall 216</name>
+      <location>Seminary Hall 216</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551537</id>
+    <name>Abdelkarim, Samir</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>samirabdelkarim17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:32-05:00</created_at>
+    <updated_at>2017-08-11T11:43:32-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>f1d4ce20e38527b7dcfabe372351898c1984825f</salt>
+    <group_ids>
+      <group_id>2752696</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AS</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524674</id>
+    <name>Abdul Kader, Abdul Rahman W</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ARABDULKADER13@augustana.edu</email>
+    <created_at>2016-03-21T09:33:22-05:00</created_at>
+    <updated_at>2016-03-21T09:33:22-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>4671fcaa0524104699b162273adaec60fae28780</salt>
+    <group_ids>
+      <group_id>1718813</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42257</id>
+      <name>Arbaugh &amp; Naeseth Townhouses</name>
+      <location>Arbaugh &amp; Naeseth Townhouses</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AW</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3503000</id>
+    <name>Abebe,Ezana</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ezanaabebe18@augustana.edu</email>
+    <created_at>2018-08-02T18:04:02-05:00</created_at>
+    <updated_at>2018-08-02T18:04:03-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>2.51911E+11</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>09bf40f533c4c9acfe21fb53d39821e29008548f</salt>
+    <group_ids>
+      <group_id>3736359</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3503001</id>
+    <name>Abebe,Sizana</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>sizanaabebe18@augustana.edu</email>
+    <created_at>2018-08-02T18:04:03-05:00</created_at>
+    <updated_at>2018-08-02T18:04:03-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>2.51911E+11</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>5b85ca90134246c4945dcb11a80f02fd4da37694</salt>
+    <group_ids>
+      <group_id>3736360</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>4096340</id>
+    <name>Abel-Ghani, Hassan</name>
+    <disabled>false</disabled>
+    <title>Student</title>
+    <email>hassanabdel-ghani18@augustana.edu</email>
+    <created_at>2018-10-29T08:22:14-05:00</created_at>
+    <updated_at>2018-10-29T08:22:14-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department nil="true"/>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>1dfcfa647d2d3f1649d423f3a36a303d621e1de4</salt>
+    <group_ids>
+      <group_id>4341472</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AH</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500962</id>
+    <name>Aberha,Eyosiyas</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>eyosiyasaberha18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:43-05:00</created_at>
+    <updated_at>2018-08-02T12:32:43-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>55d5e5955dda8d844f2e335eaa7e59c364c90a2b</salt>
+    <group_ids>
+      <group_id>3734302</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43089</id>
+      <name>Andreen 334</name>
+      <location>Andreen 334</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524675</id>
+    <name>Ables, Shawna M</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>SHAWNAABLES13@augustana.edu</email>
+    <created_at>2016-03-21T09:33:23-05:00</created_at>
+    <updated_at>2016-03-21T09:33:23-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>d83fbf01fe97be2ce67fcf8b317e1c9a10ac045c</salt>
+    <group_ids>
+      <group_id>1718814</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42290</id>
+      <name>Swanson Commons</name>
+      <location>Swanson Commons</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752743</id>
+    <name>Abonce, Jatzari</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>JATZARIABONCE16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:04-05:00</created_at>
+    <updated_at>2018-10-22T22:47:15-05:00</updated_at>
+    <last_login>2018-10-22T22:47:14-05:00</last_login>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>870cbff7ba597aa2e19ccaed4420cc57b92dfde9</salt>
+    <group_ids>
+      <group_id>1952425</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43125</id>
+      <name>Ansvar House 2</name>
+      <location>Ansvar House 2</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AJ</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524676</id>
+    <name>Abraham,Justin</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>JUSTINABRAHAM14@augustana.edu</email>
+    <created_at>2016-03-21T09:33:24-05:00</created_at>
+    <updated_at>2016-08-25T09:40:05-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>1c7d43e7036e8f8cd3d8038a31c4042a45264395</salt>
+    <group_ids>
+      <group_id>1718815</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42657</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 5C1</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 5C1</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524677</id>
+    <name>Absher, Devyn H</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>DEVYNABSHER13@augustana.edu</email>
+    <created_at>2016-03-21T09:33:24-05:00</created_at>
+    <updated_at>2016-03-21T09:33:25-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>babb3c06737ed190d081b3ae3174b7f6398a9475</salt>
+    <group_ids>
+      <group_id>1718816</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42257</id>
+      <name>Arbaugh &amp; Naeseth Townhouses</name>
+      <location>Arbaugh &amp; Naeseth Townhouses</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AH</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752744</id>
+    <name>Achilli, Rebecca</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>REBECCAACHILLI16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:05-05:00</created_at>
+    <updated_at>2018-10-05T16:38:55-05:00</updated_at>
+    <last_login>2018-08-30T12:08:35-05:00</last_login>
+    <phone>815-289-2538</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>f1ef1c7b3927b0797d1b398eab1199aac42a919b</salt>
+    <group_ids>
+      <group_id>1952426</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>93932</id>
+      <name>Sanning House 2</name>
+      <location>Sanning House 2</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AR</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524678</id>
+    <name>Achs,Peyton</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>PEYTONACHS15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:25-05:00</created_at>
+    <updated_at>2016-08-25T09:40:06-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>ce93d4f900e137147ef87a8161a0697f70178d6d</salt>
+    <group_ids>
+      <group_id>1718817</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42971</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 8A4</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 8A4</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AC</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524679</id>
+    <name>Acitelli,Anthony</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ANTHONYACITELLI15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:26-05:00</created_at>
+    <updated_at>2016-08-25T10:34:44-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>6dced8b320a6aa8da5f0e5fbfd174fd7929e559c</salt>
+    <group_ids>
+      <group_id>1718818</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43333</id>
+      <name>Erickson Residence Center D217</name>
+      <location>Erickson Residence Center D217</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AC</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524680</id>
+    <name>Ackerman,Allison</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ALLISONACKERMAN14@augustana.edu</email>
+    <created_at>2016-03-21T09:33:27-05:00</created_at>
+    <updated_at>2016-11-22T11:28:50-06:00</updated_at>
+    <last_login>2016-11-22T11:28:50-06:00</last_login>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>c5b142ecf4c68097b6da4ff6a2660168a7a71c31</salt>
+    <group_ids>
+      <group_id>1718819</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43507</id>
+      <name>Parkander Residence Centers NB2</name>
+      <location>Parkander Residence Centers NB2</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AC</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>4688762</id>
+    <name>Acquaviva, Emily</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>emilyacquaviva19@augustana.edu</email>
+    <created_at>2019-04-03T08:02:43-05:00</created_at>
+    <updated_at>2019-04-03T08:02:43-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>51f5823806b6b0a08a07274b0193930581fd5bcb</salt>
+    <group_ids>
+      <group_id>4955007</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AE</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1527205</id>
+    <name>Adam, Zihour</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>zihouradam@augustana.edu</email>
+    <created_at>2016-03-21T11:17:16-05:00</created_at>
+    <updated_at>2016-03-21T11:17:17-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>7271</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40564</id>
+      <name>Center for Student Life-Dining</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>0962821edd3aae71c3105c761963ab7dde98e428</salt>
+    <group_ids>
+      <group_id>1721348</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AZ</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3503002</id>
+    <name>Adam,Gisma</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>gismaadam18@augustana.edu</email>
+    <created_at>2018-08-02T18:04:04-05:00</created_at>
+    <updated_at>2018-08-02T18:04:04-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>309-278-3249</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>66992602cd54bc578837348b28b7f28be7b2a716</salt>
+    <group_ids>
+      <group_id>3736361</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3503003</id>
+    <name>Adame-Agustiniano,Luis</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ladame-agustinian18@augustana.edu</email>
+    <created_at>2018-08-02T18:04:05-05:00</created_at>
+    <updated_at>2018-08-02T18:04:05-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>309-798-6725</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>841566f6e809bf891e0e7468af9df70efaa92409</salt>
+    <group_ids>
+      <group_id>3736362</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1526380</id>
+    <name>Adamick, Lauren A</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>LAURENADAMICK12@augustana.edu</email>
+    <created_at>2016-03-21T10:32:07-05:00</created_at>
+    <updated_at>2016-03-21T10:32:08-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>630-659-5852</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>d23da2a793ec3dfe0923423e80089d61dfdccd9b</salt>
+    <group_ids>
+      <group_id>1720520</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AA</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3591040</id>
+    <name>Adams, Brian</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>brianadams@augustana.edu</email>
+    <created_at>2018-08-16T14:42:50-05:00</created_at>
+    <updated_at>2018-12-20T15:03:58-06:00</updated_at>
+    <last_login>2018-12-20T15:03:58-06:00</last_login>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department nil="true"/>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>748bbb0904884d88f3fe08cd2150d9c693e8df1a</salt>
+    <group_ids>
+      <group_id>3825543</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524683</id>
+    <name>Adams, Carly R</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>CARLYADAMS13@augustana.edu</email>
+    <created_at>2016-03-21T09:33:29-05:00</created_at>
+    <updated_at>2016-03-21T09:33:30-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>1cd427e0b0efbeb2385f8e8b31456a6bd4d35d5e</salt>
+    <group_ids>
+      <group_id>1718822</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42285</id>
+      <name>Parkander Residence Centers</name>
+      <location>Parkander Residence Centers</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AR</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1526381</id>
+    <name>Adams, Leslie B</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>LESLIEADAMS12@augustana.edu</email>
+    <created_at>2016-03-21T10:32:09-05:00</created_at>
+    <updated_at>2016-03-21T10:32:09-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>815-388-4119</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>79080456e67e22906634de7c6d028e9bb5cfe8b4</salt>
+    <group_ids>
+      <group_id>1720521</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752745</id>
+    <name>Adams, Nicole R</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>NICOLEADAMS16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:05-05:00</created_at>
+    <updated_at>2018-08-02T16:29:04-05:00</updated_at>
+    <last_login>2017-05-09T20:46:19-05:00</last_login>
+    <phone>224-456-7806</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>1e44d544a8e9a977b14d77d75b43d5ea62cbcd77</salt>
+    <group_ids>
+      <group_id>1952427</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43453</id>
+      <name>Jansson House 2</name>
+      <location>Jansson House 2</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AR</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524681</id>
+    <name>Adams,Andrew</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ANDREWADAMS14@augustana.edu</email>
+    <created_at>2016-03-21T09:33:28-05:00</created_at>
+    <updated_at>2016-08-25T09:40:06-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>672c775743cf09734fd897e53bca403a50b26fb8</salt>
+    <group_ids>
+      <group_id>1718820</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42650</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 5A2</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 5A2</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524682</id>
+    <name>Adams,Ashley</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ASHLEYADAMS14@augustana.edu</email>
+    <created_at>2016-03-21T09:33:29-05:00</created_at>
+    <updated_at>2017-01-29T17:17:04-06:00</updated_at>
+    <last_login>2017-01-29T17:17:04-06:00</last_login>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>250d7843754708bdf0575152dfea44aa750f496e</salt>
+    <group_ids>
+      <group_id>1718821</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43657</id>
+      <name>Swanson Commons 129B</name>
+      <location>Swanson Commons 129B</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524684</id>
+    <name>Adams,Michael</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>MICHAELADAMS15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:30-05:00</created_at>
+    <updated_at>2018-12-11T14:40:26-06:00</updated_at>
+    <last_login>2018-12-11T14:40:25-06:00</last_login>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>5b4fa874f1fe3905523051f6d9e3a683e7c4c191</salt>
+    <group_ids>
+      <group_id>1718823</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43225</id>
+      <name>Erickson Residence Center B314</name>
+      <location>Erickson Residence Center B314</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>4688671</id>
+    <name>Adcock, Brayden</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>braydenadcock19@augustana.edu</email>
+    <created_at>2019-04-03T07:59:39-05:00</created_at>
+    <updated_at>2019-04-03T07:59:39-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>d4e954413f242dececa856755b37164a005aef99</salt>
+    <group_ids>
+      <group_id>4954916</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752746</id>
+    <name>Adcock, Bryson B</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>BRYSONADCOCK16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:06-05:00</created_at>
+    <updated_at>2018-08-02T16:21:49-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>319-430-1775</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>2e9ead74c14793362b7e7a4c61dbddc2f2d34b03</salt>
+    <group_ids>
+      <group_id>1952428</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43503</id>
+      <name>Parkander Residence Centers NA2</name>
+      <location>Parkander Residence Centers NA2</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AB</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551538</id>
+    <name>Ade, Mary</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>maryade17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:33-05:00</created_at>
+    <updated_at>2018-10-05T16:28:53-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>506d6e58091b5643284c07b525c92a8bc65228e0</salt>
+    <group_ids>
+      <group_id>2752697</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>93905</id>
+      <name>Lutheran House 1</name>
+      <location>Lutheran House 1</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1527206</id>
+    <name>Aden, Christine D</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>christineaden@augustana.edu</email>
+    <created_at>2016-03-21T11:17:18-05:00</created_at>
+    <updated_at>2019-03-05T08:10:17-06:00</updated_at>
+    <last_login>2019-03-05T08:10:16-06:00</last_login>
+    <phone>7819</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40547</id>
+      <name>Library</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>1fc754879e7d292ee9b2ede300a78f9945f96ee3</salt>
+    <group_ids>
+      <group_id>1721349</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42308</id>
+      <name>Library</name>
+      <location>Library</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>image</type>
+      <image_class>avatar_image</image_class>
+      <sso_image_class></sso_image_class>
+      <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/cccd4bda5ab3a5a8ea6a/69eacfc2459f7ac1485476377ccf822e_card.jpeg?1224881757</avatar_url>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752747</id>
+    <name>Adeszko, Katherine L</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>KATHERINEADESZKO16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:06-05:00</created_at>
+    <updated_at>2018-10-05T11:29:52-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>630-258-8028</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>95a7c54afa27e17c79ac0d0d88eddeb0def61e38</salt>
+    <group_ids>
+      <group_id>1952429</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43756</id>
+      <name>Swanson Commons 325B</name>
+      <location>Swanson Commons 325B</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551540</id>
+    <name>Adhikari, Sanjaya</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>sanjayaadhikari17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:33-05:00</created_at>
+    <updated_at>2017-08-11T11:43:34-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>2c46399d0dcb5016b766c0f2d4d467acc57bf3d5</salt>
+    <group_ids>
+      <group_id>2752699</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AS</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500963</id>
+    <name>Adhikari,Ashim</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ashimadhikari18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:43-05:00</created_at>
+    <updated_at>2018-08-02T12:32:44-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>9fa76ec1691d4b539ce224db9d9887d9ae783e74</salt>
+    <group_ids>
+      <group_id>3734303</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43039</id>
+      <name>Andreen 223</name>
+      <location>Andreen 223</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752748</id>
+    <name>Adili, Yassine</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>YASSINEADILI16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:07-05:00</created_at>
+    <updated_at>2016-08-11T08:57:07-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>548e408597a27e2b74c34afa7c263867ad91d002</salt>
+    <group_ids>
+      <group_id>1952430</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43062</id>
+      <name>Andreen 307</name>
+      <location>Andreen 307</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AY</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2424648</id>
+    <name>Adlfinger, Lucy G</name>
+    <disabled>false</disabled>
+    <title>student</title>
+    <email>lucyadlfinger17@augustana.edu</email>
+    <created_at>2017-06-28T07:51:54-05:00</created_at>
+    <updated_at>2017-09-16T17:42:20-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department nil="true"/>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>de65be255ec2edc445fa5560b9c1c0390745d520</salt>
+    <group_ids>
+      <group_id>2623630</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AG</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1470468</id>
+    <name>Admin Dean</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>netguy@augustana.edu</email>
+    <created_at>2016-02-11T15:09:25-06:00</created_at>
+    <updated_at>2017-01-31T15:10:11-06:00</updated_at>
+    <last_login>2016-02-11T15:15:55-06:00</last_login>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department nil="true"/>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>e007a1fe832c343ec000395e1ceb3a97bbbf8e74</salt>
+    <group_ids>
+      <group_id>1662885</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1470915</id>
+    <name>Administrator</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>administrator@augustana.edu</email>
+    <created_at>2016-02-11T18:17:14-06:00</created_at>
+    <updated_at>2019-01-07T13:35:06-06:00</updated_at>
+    <last_login>2016-02-12T11:35:22-06:00</last_login>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department nil="true"/>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>d053ee5d94491a25521e39d242032ce7284c9f74</salt>
+    <group_ids>
+      <group_id>1663335</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500964</id>
+    <name>Adu-Poku,Kirsty</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>kirstyadu-poku18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:44-05:00</created_at>
+    <updated_at>2018-08-02T12:32:44-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>937a5b2b5ab1447de12730acbf7d3aaf9c1776da</salt>
+    <group_ids>
+      <group_id>3734304</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43024</id>
+      <name>Andreen 208</name>
+      <location>Andreen 208</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500965</id>
+    <name>Adu-Poku,Nana Ama</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>nanaamaadu-poku18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:45-05:00</created_at>
+    <updated_at>2018-08-02T12:32:45-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>05da45a2f2b9950aa41148f5d5cbfb0cd3575aa4</salt>
+    <group_ids>
+      <group_id>3734305</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43031</id>
+      <name>Andreen 215</name>
+      <location>Andreen 215</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AA</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551541</id>
+    <name>Afif, Meryem</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>meryemafif17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:34-05:00</created_at>
+    <updated_at>2018-08-02T16:28:28-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>049bdcd28acd727befbb1e383a86c7a44c17199e</salt>
+    <group_ids>
+      <group_id>2752700</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43365</id>
+      <name>Esbjorn House 205</name>
+      <location>Esbjorn House 205</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>4688893</id>
+    <name>Afif, Zineb</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>zinebafif19@augustana.edu</email>
+    <created_at>2019-04-03T08:07:18-05:00</created_at>
+    <updated_at>2019-04-03T08:07:18-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>06e59f66afe09eedee79e865f33a91503f2560cf</salt>
+    <group_ids>
+      <group_id>4955138</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AZ</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752749</id>
+    <name>Aghlaf, Salaheddine</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>SALAHEDDINEAGHLAF16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:07-05:00</created_at>
+    <updated_at>2018-10-05T11:32:49-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>9542f5fdf9f554b8883dfbc82c62b363d5ad5bfa</salt>
+    <group_ids>
+      <group_id>1952431</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43530</id>
+      <name>Parkander Residence Centers SA1</name>
+      <location>Parkander Residence Centers SA1</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AS</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524685</id>
+    <name>Aguilar,Alexis</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ALEXISAGUILAR15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:31-05:00</created_at>
+    <updated_at>2016-08-25T09:26:59-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>858a6e549cf0a87887184cebc997587fe82f06d1</salt>
+    <group_ids>
+      <group_id>1718824</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42567</id>
+      <name>Anderson &amp; Bartholomew Houses 303</name>
+      <location>Anderson &amp; Bartholomew Houses 303</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AG</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551542</id>
+    <name>Aguilera, Aiyana</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>aiyanaaguilera17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:35-05:00</created_at>
+    <updated_at>2017-08-11T11:43:35-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>c067771a1f6bd6fb7dfe53e38042c1029a32ec95</salt>
+    <group_ids>
+      <group_id>2752701</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AA</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524686</id>
+    <name>Agyeben, Marvin M</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>MARVINAGYEBEN13@augustana.edu</email>
+    <created_at>2016-03-21T09:33:32-05:00</created_at>
+    <updated_at>2016-03-21T09:33:32-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>171a91682d5ce853e9e04c1b85d41fbed4ce7bec</salt>
+    <group_ids>
+      <group_id>1718825</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42257</id>
+      <name>Arbaugh &amp; Naeseth Townhouses</name>
+      <location>Arbaugh &amp; Naeseth Townhouses</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500966</id>
+    <name>Ahlberg,Sophia</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>sophiaahlberg18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:46-05:00</created_at>
+    <updated_at>2018-08-02T12:32:46-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>630-880-3375</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>5def883b5e20b690ae28d76619399f363cdbbb50</salt>
+    <group_ids>
+      <group_id>3734306</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43982</id>
+      <name>Westerlin Residence Center J226</name>
+      <location>Westerlin Residence Center J226</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AH</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524687</id>
+    <name>Ahmann, Alexander J</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ALEXANDERAHMANN13@augustana.edu</email>
+    <created_at>2016-03-21T09:33:33-05:00</created_at>
+    <updated_at>2016-03-21T09:33:33-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>2b78c0780955f1716cd342ad901ed4cfcca08e95</salt>
+    <group_ids>
+      <group_id>1718826</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42257</id>
+      <name>Arbaugh &amp; Naeseth Townhouses</name>
+      <location>Arbaugh &amp; Naeseth Townhouses</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AJ</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524688</id>
+    <name>Ahuja,Kayli</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>KAYLIAHUJA15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:33-05:00</created_at>
+    <updated_at>2016-08-25T10:34:45-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>0db398015eb828c225112de1bf96d2cf0bc46788</salt>
+    <group_ids>
+      <group_id>1718827</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43252</id>
+      <name>Erickson Residence Center C120</name>
+      <location>Erickson Residence Center C120</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AH</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752750</id>
+    <name>Ainsworth, Gabrielle L</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>GABRIELLEAINSWORTH16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:08-05:00</created_at>
+    <updated_at>2018-08-02T17:43:46-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>815-520-2498</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>43444fac2edb270b1053b7cc18ec54bdceeb65fd</salt>
+    <group_ids>
+      <group_id>1952432</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42644</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 4C4</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 4C4</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752751</id>
+    <name>Ait Benhamou, Iliasse A</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ILIASSEAITBENHAMOU16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:08-05:00</created_at>
+    <updated_at>2017-07-17T15:11:39-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>212.623773</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>8d41b2fef25f288284295b521890c04126aeeade</salt>
+    <group_ids>
+      <group_id>1952433</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>44035</id>
+      <name>Westerlin Residence Center W125</name>
+      <location>Westerlin Residence Center W125</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AA</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500967</id>
+    <name>Akkar,Anas</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>anasakkar18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:46-05:00</created_at>
+    <updated_at>2018-08-02T12:32:47-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>6a2041458549a2e264823462d385cddd76810539</salt>
+    <group_ids>
+      <group_id>3734307</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43049</id>
+      <name>Andreen 233</name>
+      <location>Andreen 233</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AK</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1526383</id>
+    <name>Akmakjian, Rachel A</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>RACHELAKMAKJIAN12@augustana.edu</email>
+    <created_at>2016-03-21T10:32:10-05:00</created_at>
+    <updated_at>2016-03-21T10:32:10-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>970-219-8794</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>9cde2d6a4052cb6f04ba0dbcce1328d9102d5c1e</salt>
+    <group_ids>
+      <group_id>1720523</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AA</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>4688929</id>
+    <name>Akomea-Ampeh, Moreen</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>moreenakomea-ampeh19@augustana.edu</email>
+    <created_at>2019-04-03T08:08:24-05:00</created_at>
+    <updated_at>2019-04-03T08:08:25-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>1548f90dca4fcb889fbbeb17153ad0824a4d29cc</salt>
+    <group_ids>
+      <group_id>4955174</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3503004</id>
+    <name>Akpelu,David</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>davidakpelu18@augustana.edu</email>
+    <created_at>2018-08-02T18:04:05-05:00</created_at>
+    <updated_at>2018-08-02T18:04:06-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>ab1f10b06dcaeefef61e720db2e2821cc212a045</salt>
+    <group_ids>
+      <group_id>3736363</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AK</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1527207</id>
+    <name>Al-Wazedi, Umme</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ummeal-wazedi@augustana.edu</email>
+    <created_at>2016-03-21T11:17:19-05:00</created_at>
+    <updated_at>2018-10-10T16:18:07-05:00</updated_at>
+    <last_login>2016-11-17T14:08:29-06:00</last_login>
+    <phone>8873</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40758</id>
+      <name>English</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>a641ddc0612f2e08e168cc352eb051876a41ae4b</salt>
+    <group_ids>
+      <group_id>1721350</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>49657</id>
+      <name>Old Main 109</name>
+      <location>Old Main 109</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AU</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551543</id>
+    <name>Alanis, Marco</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>marcoalanis17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:36-05:00</created_at>
+    <updated_at>2018-08-02T17:43:22-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>81cdb7831c3c9238939f0f4f33301c101616333c</salt>
+    <group_ids>
+      <group_id>2752702</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42572</id>
+      <name>Anderson &amp; Bartholomew Houses 602</name>
+      <location>Anderson &amp; Bartholomew Houses 602</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524689</id>
+    <name>Alano,Michelle</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>MICHELLEALANO14@augustana.edu</email>
+    <created_at>2016-03-21T09:33:34-05:00</created_at>
+    <updated_at>2016-09-20T15:06:06-05:00</updated_at>
+    <last_login>2016-09-20T15:06:06-05:00</last_login>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>8052f9223b7fa93764bae6eadb4265b0e63e7da3</salt>
+    <group_ids>
+      <group_id>1718828</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42653</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 5B1</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 5B1</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551544</id>
+    <name>Albers, Christianne</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>christiannealbers17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:37-05:00</created_at>
+    <updated_at>2018-08-02T16:22:20-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>08d019bb5dbc6d594f03856122cc1308f03340a7</salt>
+    <group_ids>
+      <group_id>2752703</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43321</id>
+      <name>Erickson Residence Center D205</name>
+      <location>Erickson Residence Center D205</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AC</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551546</id>
+    <name>Albers, Matthew</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>matthewalbers17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:37-05:00</created_at>
+    <updated_at>2018-08-02T16:28:07-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>6293fc2a82839938d65914fc04054c16e96e4ebb</salt>
+    <group_ids>
+      <group_id>2752705</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43382</id>
+      <name>Flats 101B</name>
+      <location>Flats 101B</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752752</id>
+    <name>Albers-Lopez, Emma M</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>EMMAALBERS-LOPEZ16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:09-05:00</created_at>
+    <updated_at>2018-08-02T16:23:18-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>815-641-3781</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>4b3c6e679447ce1b8f1f09ea360fdb9252972c08</salt>
+    <group_ids>
+      <group_id>1952434</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43487</id>
+      <name>Moberg House 1</name>
+      <location>Moberg House 1</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551547</id>
+    <name>Albert, Pierce</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>piercealbert17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:38-05:00</created_at>
+    <updated_at>2018-08-02T16:29:25-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>58ec847a8777915d1744a94ab6778cc36b45c56c</salt>
+    <group_ids>
+      <group_id>2752706</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43244</id>
+      <name>Erickson Residence Center C112</name>
+      <location>Erickson Residence Center C112</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AP</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>4688781</id>
+    <name>Alberts, Cole</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>colealberts19@augustana.edu</email>
+    <created_at>2019-04-03T08:03:12-05:00</created_at>
+    <updated_at>2019-04-03T08:03:12-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>3f6f966f0154904e0c26608608f695280b7716de</salt>
+    <group_ids>
+      <group_id>4955026</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AC</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>4688931</id>
+    <name>Albertsen, Morgan</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>morganalbertsen19@augustana.edu</email>
+    <created_at>2019-04-03T08:08:38-05:00</created_at>
+    <updated_at>2019-04-03T08:08:38-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>ffc73c0a8586d495a1e4480c154c44dacafa0493</salt>
+    <group_ids>
+      <group_id>4955176</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551548</id>
+    <name>Albrecht, Olivia</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>oliviaalbrecht17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:39-05:00</created_at>
+    <updated_at>2018-08-02T16:29:11-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>7df768a6220dea592f3cfb17b831c7c63173e9ce</salt>
+    <group_ids>
+      <group_id>2752707</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43670</id>
+      <name>Swanson Commons 203</name>
+      <location>Swanson Commons 203</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AO</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>4688687</id>
+    <name>Aldridge, Ella</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ellaaldridge19@augustana.edu</email>
+    <created_at>2019-04-03T08:00:00-05:00</created_at>
+    <updated_at>2019-04-03T08:00:01-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>ffe1de14ccd6efd9aeab20f8e6ee3b94a9cc9af7</salt>
+    <group_ids>
+      <group_id>4954932</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AE</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1526384</id>
+    <name>Aldridge, Travon</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>TRAVONALDRIDGE14@augustana.edu</email>
+    <created_at>2016-03-21T10:32:10-05:00</created_at>
+    <updated_at>2016-03-21T10:32:11-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>309-756-7380</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>1e9aaff7069871b712161ee92749a64f294a54a2</salt>
+    <group_ids>
+      <group_id>1720524</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AT</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551549</id>
+    <name>Alex, Peter</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>peteralex17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:39-05:00</created_at>
+    <updated_at>2018-08-02T16:29:23-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>013ddf60dce008724bbc352627c4358af6cbe766</salt>
+    <group_ids>
+      <group_id>2752709</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43418</id>
+      <name>Flats 305C</name>
+      <location>Flats 305C</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AP</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1527208</id>
+    <name>Alexander, Allen D</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>allenalexander@augustana.edu</email>
+    <created_at>2016-03-21T11:17:19-05:00</created_at>
+    <updated_at>2018-10-10T16:19:55-05:00</updated_at>
+    <last_login>2017-03-30T07:59:34-05:00</last_login>
+    <phone>7164</phone>
+    <mobile_phone></mobile_phone>
+    <department>
+      <id>40563</id>
+      <name>Facilities Services Office</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>db71ced18c94ad9f33fa7347a025a46d82f3214c</salt>
+    <group_ids>
+      <group_id>1721351</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>50055</id>
+      <name>Sorensen Structural</name>
+      <location>Sorensen Structural</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AD</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1526385</id>
+    <name>Alexander, John C</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>JOHNALEXANDER12@augustana.edu</email>
+    <created_at>2016-03-21T10:32:11-05:00</created_at>
+    <updated_at>2016-03-21T10:32:11-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>815-494-5996</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>ee02ea5459ee8201986954ba6aca06cb2cc18fb5</salt>
+    <group_ids>
+      <group_id>1720525</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AC</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>4688819</id>
+    <name>Alexander, Sophia</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>sophiaalexander19@augustana.edu</email>
+    <created_at>2019-04-03T08:04:32-05:00</created_at>
+    <updated_at>2019-04-03T08:04:32-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>cec9d673b45943aef6327e605af6729f6876c7bb</salt>
+    <group_ids>
+      <group_id>4955064</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AS</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524690</id>
+    <name>Alexander,Ryan</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>RYANALEXANDER14@augustana.edu</email>
+    <created_at>2016-03-21T09:33:35-05:00</created_at>
+    <updated_at>2016-08-25T09:40:04-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>3f0c53248b7951159fca32dc0f67609d578c7b18</salt>
+    <group_ids>
+      <group_id>1718829</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42957</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 7B2</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 7B2</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752646</id>
+    <name>Alfano, Peter</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>PETERALFANO16@augustana.edu</email>
+    <created_at>2016-08-11T08:24:15-05:00</created_at>
+    <updated_at>2018-08-02T17:43:40-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>309-221-0374</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>254d1e12b1ccf93f5a0f0ccf01481b888c172bdf</salt>
+    <group_ids>
+      <group_id>1952329</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42629</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 3D1</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 3D1</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AP</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500968</id>
+    <name>Alfonso,Timothy</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>timothyalfonso18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:47-05:00</created_at>
+    <updated_at>2018-08-02T12:32:47-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>847-382-1427</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>698424c91ff1159a4fcdb132799179701546f5eb</salt>
+    <group_ids>
+      <group_id>3734308</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>50276</id>
+      <name>Westerlin Residence Center W318</name>
+      <location>Westerlin Residence Center W318</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524691</id>
+    <name>Alfrey, Danielle C</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>DANIELLEALFREY15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:36-05:00</created_at>
+    <updated_at>2016-03-21T09:33:36-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>f2a3c3620a789ea6b0b785993f839d9539fb42d8</salt>
+    <group_ids>
+      <group_id>1718830</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42296</id>
+      <name>Westerlin Residence Center</name>
+      <location>Westerlin Residence Center</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AC</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2119016</id>
+    <name>Ali, Emaan</name>
+    <disabled>false</disabled>
+    <title></title>
+    <email>emaanali16@augustana.edu</email>
+    <created_at>2017-03-03T09:21:45-06:00</created_at>
+    <updated_at>2017-03-03T09:21:45-06:00</updated_at>
+    <last_login nil="true"/>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>04df40f96af85e5343ac343cbfa97e71110e6cc7</salt>
+    <group_ids>
+      <group_id>2325824</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AE</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524692</id>
+    <name>Ali, Fathimath N</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>FATHIMATHALI13@augustana.edu</email>
+    <created_at>2016-03-21T09:33:36-05:00</created_at>
+    <updated_at>2016-03-21T09:33:37-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>3bc145f757a0cf643ad6fc973f5015257c25d5a4</salt>
+    <group_ids>
+      <group_id>1718831</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42257</id>
+      <name>Arbaugh &amp; Naeseth Townhouses</name>
+      <location>Arbaugh &amp; Naeseth Townhouses</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fa7911</color>
+      <initials>AN</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2551551</id>
+    <name>Ali, Zeeshan</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>zeeshanali17@augustana.edu</email>
+    <created_at>2017-08-11T11:43:40-05:00</created_at>
+    <updated_at>2018-08-02T16:31:39-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>f31aea4f27fedc03f613754be574c9a2b608ae89</salt>
+    <group_ids>
+      <group_id>2752710</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43341</id>
+      <name>Erickson Residence Center D304</name>
+      <location>Erickson Residence Center D304</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AZ</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500969</id>
+    <name>Ali,Haider</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>haiderali18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:48-05:00</created_at>
+    <updated_at>2018-08-02T12:32:48-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>630-566-9394</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>b9039457b6462a30a5f23cf141400914c7d56a18</salt>
+    <group_ids>
+      <group_id>3734309</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43853</id>
+      <name>Westerlin Residence Center I412</name>
+      <location>Westerlin Residence Center I412</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3503005</id>
+    <name>Ali,Subah</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>subahali18@augustana.edu</email>
+    <created_at>2018-08-02T18:04:06-05:00</created_at>
+    <updated_at>2018-08-02T18:04:06-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>7e15b57395c9ddaca2ab61483b5737b6d90ad203</salt>
+    <group_ids>
+      <group_id>3736364</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500970</id>
+    <name>Alkevicius,Alexander</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>aalkevicius18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:48-05:00</created_at>
+    <updated_at>2018-08-02T12:32:49-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>630-936-6183</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>1efa8f65b643a303dcbbcbc9c4214c15afdc9e2c</salt>
+    <group_ids>
+      <group_id>3734310</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>44088</id>
+      <name>Westerlin Residence Center W321</name>
+      <location>Westerlin Residence Center W321</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524693</id>
+    <name>Allaman,Andrew</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>ANDREWALLAMAN15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:37-05:00</created_at>
+    <updated_at>2016-08-25T10:34:44-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>e6f092ab8c3137d58252ed97dd12fbc2eea51337</salt>
+    <group_ids>
+      <group_id>1718832</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43329</id>
+      <name>Erickson Residence Center D213</name>
+      <location>Erickson Residence Center D213</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#fd4165</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524694</id>
+    <name>Allbert, Austin M</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>AUSTINALLBERT15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:38-05:00</created_at>
+    <updated_at>2016-03-21T09:33:38-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>f177ec7e3baa0264d0b030cedde4a4b5a3d81b94</salt>
+    <group_ids>
+      <group_id>1718833</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42296</id>
+      <name>Westerlin Residence Center</name>
+      <location>Westerlin Residence Center</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AM</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2115242</id>
+    <name>Allbert, Trevor</name>
+    <disabled>false</disabled>
+    <title>Student16</title>
+    <email>trevorallbert16@augustana.edu</email>
+    <created_at>2017-02-28T11:35:05-06:00</created_at>
+    <updated_at>2017-03-07T07:08:11-06:00</updated_at>
+    <last_login nil="true"/>
+    <phone></phone>
+    <mobile_phone></mobile_phone>
+    <department nil="true"/>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>669ff7041357ac2d860545214f559ee4c6739c43</salt>
+    <group_ids>
+      <group_id>2321859</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AT</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524695</id>
+    <name>Allegretti,Daniel</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>DANALLEGRETTI15@augustana.edu</email>
+    <created_at>2016-03-21T09:33:39-05:00</created_at>
+    <updated_at>2016-08-25T10:39:03-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>622441e84a71d9868b1079742dc10ab846016513</salt>
+    <group_ids>
+      <group_id>1718834</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43612</id>
+      <name>Swanson Commons 101</name>
+      <location>Swanson Commons 101</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1570470</id>
+    <name>Allen, Ashley</name>
+    <disabled>false</disabled>
+    <title>Admission Counselor</title>
+    <email>ashleyallen@augustana.edu</email>
+    <created_at>2016-04-21T15:24:03-05:00</created_at>
+    <updated_at>2018-12-17T09:38:26-06:00</updated_at>
+    <last_login>2018-12-17T09:38:26-06:00</last_login>
+    <phone>7574</phone>
+    <mobile_phone></mobile_phone>
+    <department>
+      <id>40538</id>
+      <name>Admissions</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>6be6b1e00515195e58f033d835f29d7877363f4c</salt>
+    <group_ids>
+      <group_id>1765740</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>49927</id>
+      <name>Gerber Center 416</name>
+      <location>Gerber Center 416</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AA</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752753</id>
+    <name>Allen, Matthew T</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>MATTHEWTALLEN16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:09-05:00</created_at>
+    <updated_at>2018-08-02T17:43:36-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>630-740-4712</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>723cba2fd27a7b1923e5823c185913de2209e644</salt>
+    <group_ids>
+      <group_id>1952435</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>42616</id>
+      <name>Arbaugh &amp; Naeseth Townhouses 2D4</name>
+      <location>Arbaugh &amp; Naeseth Townhouses 2D4</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0089c9</color>
+      <initials>AT</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3500971</id>
+    <name>Allen,Lucy</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>lucyallen18@augustana.edu</email>
+    <created_at>2018-08-02T12:32:49-05:00</created_at>
+    <updated_at>2018-08-02T12:32:49-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>309-360-2402</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>cf55b231a228cbb63767438bcd2b9b9501777522</salt>
+    <group_ids>
+      <group_id>3734311</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43070</id>
+      <name>Andreen 315</name>
+      <location>Andreen 315</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#dfcd00</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3503006</id>
+    <name>Allen,Sarah</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>sarahallen18@augustana.edu</email>
+    <created_at>2018-08-02T18:04:07-05:00</created_at>
+    <updated_at>2018-08-02T18:04:07-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>309-781-8623</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>7688b709e4f9b033004639de62f504cb518f615e</salt>
+    <group_ids>
+      <group_id>3736365</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#bb5bac</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1524696</id>
+    <name>Allen,Victoria</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>VICTORIAALLEN14@augustana.edu</email>
+    <created_at>2016-03-21T09:33:40-05:00</created_at>
+    <updated_at>2016-08-25T10:39:04-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>4041c6e9b1da59bf3b174f19cf302e7bc06390cd</salt>
+    <group_ids>
+      <group_id>1718835</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43699</id>
+      <name>Swanson Commons 225D</name>
+      <location>Swanson Commons 225D</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>3503007</id>
+    <name>Allison,Bailey</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>baileyallison18@augustana.edu</email>
+    <created_at>2018-08-02T18:04:07-05:00</created_at>
+    <updated_at>2018-08-02T18:04:08-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone>309-781-2341</phone>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>ee105438b2458d0752cbf5f4b94b62219ef7a85f</salt>
+    <group_ids>
+      <group_id>3736366</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#ffa21e</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>2052792</id>
+    <name>allisonmikyska16@augustana.edu</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>allisonmikyska16@augustana.edu</email>
+    <created_at>2017-01-30T10:39:05-06:00</created_at>
+    <updated_at>2017-01-30T11:00:34-06:00</updated_at>
+    <last_login>2017-01-30T11:00:34-06:00</last_login>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department nil="true"/>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>10c299e6b0982ef039c7a077792d807a8068aec4</salt>
+    <group_ids>
+      <group_id>2257865</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site nil="true"/>
+    <avatar>
+      <type>initials</type>
+      <color>#2eabcf</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <user>
+    <id>1752754</id>
+    <name>Allmond, Avery L</name>
+    <disabled>false</disabled>
+    <title nil="true"/>
+    <email>AVERYALLMOND16@augustana.edu</email>
+    <created_at>2016-08-11T08:57:10-05:00</created_at>
+    <updated_at>2016-08-11T08:57:10-05:00</updated_at>
+    <last_login nil="true"/>
+    <phone nil="true"/>
+    <mobile_phone nil="true"/>
+    <department>
+      <id>40524</id>
+      <name>Student</name>
+      <description></description>
+      <default_assignee_id>-1</default_assignee_id>
+    </department>
+    <role>
+      <id>242158</id>
+      <name>Requester</name>
+      <description>Requester role to view and submit service request.</description>
+      <portal>true</portal>
+      <show_my_tasks>false</show_my_tasks>
+    </role>
+    <salt>cbd22651cba4b66da100f9175275e680ad75ae46</salt>
+    <group_ids>
+      <group_id>1952436</group_id>
+    </group_ids>
+    <platform_widget_developer nil="true"/>
+    <custom_fields_values/>
+    <site>
+      <id>43587</id>
+      <name>Seminary Hall 303</name>
+      <location>Seminary Hall 303</location>
+      <description></description>
+      <time_zone></time_zone>
+      <language>-1</language>
+      <business_record>
+        <id>26881</id>
+        <name>Default Business Hours</name>
+        <description>This is your initial business hours record</description>
+      </business_record>
+    </site>
+    <avatar>
+      <type>initials</type>
+      <color>#0bc46f</color>
+      <initials>AL</initials>
+    </avatar>
+    <mfa_enabled>false</mfa_enabled>
+    <reports_to nil="true"/>
+  </user>
+  <page>1</page>
+  <per_page>100</per_page>
+  <total_entries>6066</total_entries>
+</users>

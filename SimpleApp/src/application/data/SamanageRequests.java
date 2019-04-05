@@ -411,8 +411,7 @@ public class SamanageRequests {
 			for (int i = 0; i < categories.getLength(); i++) {
 				if (categories.item(i) instanceof Element) {
 					Element category = (Element) categories.item(i);
-					if (category.getElementsByTagName("parent_id")
-							.item(category.getElementsByTagName("parent_id").getLength() - 1).hasAttributes()) {
+					if (getString("parent_id", category).equals("")) {
 						String name = getString("name", category);
 						categoriesMap.put(name, new ArrayList<String>());
 						NodeList subcat = category.getElementsByTagName("child");
@@ -639,19 +638,17 @@ public class SamanageRequests {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
 			conn.setRequestProperty("Accept", ACCEPT_VERSION);
-			conn.setRequestProperty("Content-Type", "application/xml");
+//			conn.setRequestProperty("Content-Type", "text/xml");
 
 			Element rootElement = documentFromOutput(conn);
-
 			int totalEntries = 0;
-			if (getString("total_entries", rootElement) == "") {
-				Node childNode = rootElement.getFirstChild();
-				while (childNode.getNextSibling() != null) {
-					childNode = childNode.getNextSibling();
-					if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+			if (getString("total_entries", rootElement).equals("")) {
+				NodeList nodes = rootElement.getChildNodes();
+				for (int i = 0; i < nodes.getLength(); i++) {
+					Node childNode = nodes.item(i);
+					if (childNode instanceof Element) {
 						Element element = (Element) childNode;
-						if (element.getElementsByTagName("parent_id")
-								.item(element.getElementsByTagName("parent_id").getLength() - 1).hasAttributes()) {
+						if (getString("parent_id", element).equals("")) {
 							totalEntries++;
 						}
 					}
@@ -795,9 +792,6 @@ public class SamanageRequests {
 	}
 
 	protected static String getString(String tagName, Element element, int item) {
-		if (element == null) {
-			return "";
-		}
 		NodeList list = element.getElementsByTagName(tagName);
 		if (list != null && list.getLength() > 0) {
 			NodeList subList = list.item(item).getChildNodes();

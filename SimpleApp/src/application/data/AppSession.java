@@ -41,7 +41,7 @@ public class AppSession {
 	private ArrayList<String> priorities;
 	private TreeMap<String, User> users;
 
-	private Map<String, Runnable> checkFlags = new HashMap<String, Runnable>();
+	private transient Map<String, Runnable> updateCheckboxList;
 	
 	
 	
@@ -69,6 +69,8 @@ public class AppSession {
 		sites = new ArrayList<String>();
 		groups = new TreeMap<String, Group>();
 		softwares = new TreeMap<String, Software>();
+		updateCheckboxList = new HashMap<String, Runnable>();
+		updateCheckboxList.put("All", () -> updateAll());
 	}
 	
 	public static AppSession getSession() {
@@ -301,7 +303,6 @@ public class AppSession {
 	}
 	
 	public void saveData() throws JsonIOException, IOException {
-		System.err.println("getting save");
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		FileWriter fw = new FileWriter(DATA_LOCATION);
 		gson.toJson(session, fw);
@@ -356,38 +357,43 @@ public class AppSession {
 		int dbDepts = SamanageRequests.getTotalElements(userToken, "departments");
 		int dbSites = SamanageRequests.getTotalElements(userToken, "sites");
 		int dbCats = SamanageRequests.getTotalElements(userToken, "categories");
+		System.err.println(dbCats);
 		int dbGroups = SamanageRequests.getTotalElements(userToken, "groups");
 		
 		if (dbUsers != users.size()) {
 			prompt += "Local Users: " + users.size() + ", Database Users: " + dbUsers +"\n"; 
-			checkFlags.put("Update Users",  () -> updateUsers());
-		} if (dbDepts != departments.size()) {
+			updateCheckboxList.put("Update Users",  () -> updateUsers());
+		}
+		if (dbDepts != departments.size()) {
 			prompt += "Local Depts: " + departments.size() + ", Database Depts: " + dbDepts +"\n"; 
 			String s2 = "Update Depts";
 			Runnable r2 = () -> updateDepts();
-			checkFlags.put(s2,  r2);
-		} if (dbSites != sites.size()) {
+			updateCheckboxList.put(s2,  r2);
+		}
+		if (dbSites != sites.size()) {
 			prompt += "Local Sites: " + sites.size() + ", Database Sites: " + dbSites +"\n"; 
 			String s3 = "Update Sites";
 			Runnable r3 = () -> updateSites();
-			checkFlags.put(s3,  r3);
-		} if (dbCats != categories.size()) {
+			updateCheckboxList.put(s3,  r3);
+		}
+		if (dbCats != categories.size()) {
 			prompt += "Local Categories: " + categories.size() + ", Database Categories: " + dbCats +"\n"; 
 			String s4 = "Update Categories";
 			Runnable r4 = () -> updateCategories();
-			checkFlags.put(s4,  r4);
-		} if (dbGroups != groups.size()) {
+			updateCheckboxList.put(s4,  r4);
+		}
+		if (dbGroups != groups.size()) {
 			prompt += "Local Groups: " + groups.size() + ", Database Groups: " + dbGroups; 
 			String s5 = "Update Groups";
 			Runnable r5 = () -> updateGroups();
-			checkFlags.put(s5,  r5);
+			updateCheckboxList.put(s5,  r5);
 		}
 		return prompt;
 //				&& SamanageRequests.getTotalElements(userToken, users);
 	}
 	
 	public Map<String, Runnable> getCheckFlags() {
-		return checkFlags;
+		return updateCheckboxList;
 	}
 
 	public void updateUsers() {
@@ -430,6 +436,15 @@ public class AppSession {
 	public void updateSoftwares() {
 		softwares = SamanageRequests.getSoftwares(userToken, "408915", "Software");
 
+	}
+	
+	public void updateAll() {
+		updateUsers();
+		updateDepts();
+		updateSites();
+		updateCategories();
+		updateGroups();
+		updateSoftwares();
 	}
 	
 	private String toShortDomain(String email) {

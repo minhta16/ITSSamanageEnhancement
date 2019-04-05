@@ -212,11 +212,11 @@ public class MainPaneController {
 			 * " upon startup,\nplease enable 'Check for Updates at Startup' in Settings/Database."
 			 * , AlertType.WARNING);
 			 */
-			if (AppSession.getSession().getDtbUpdateCheckAskAgainCheckBox() == false) {
+			if (!AppSession.getSession().getDtbUpdateCheckAskAgainCheckBox()) {
 				String msg = "If you want to check for database changes (users, categories,...) upon startup,\n"
 						+ "  please enable 'Check for Updates at Startup' in Settings/Database.";
 				TreeMap<String, Consumer<Boolean>> test = new TreeMap<String, Consumer<Boolean>>();
-				String s1 = "Do not show again?";
+				String s1 = "Do not show again";
 				Consumer<Boolean> c1 = (x) -> {
 					// System.err.println(x);
 					AppSession.getSession().setdtbUpdateCheckAskAgainCheckBox(x.booleanValue());
@@ -655,15 +655,28 @@ public class MainPaneController {
 			@Override
 			protected Node createDetailsButton() {
 				VBox vBox = new VBox();
+				CheckBox all = new CheckBox();
+				ArrayList<CheckBox> others = new ArrayList<CheckBox>();
 				for (Map.Entry<String, Consumer<Boolean>> entry : optOutActions.entrySet()) {
 					String key = entry.getKey();
 					Consumer<Boolean> value = entry.getValue();
-					CheckBox optOut = new CheckBox();
+					CheckBox optOut = new CheckBox(key);
 					vBox.getChildren().add(optOut);
-					optOut.setText(key);
 					optOut.setOnAction(e -> value.accept(optOut.isSelected()));
+					if (!key.equals("All")) {
+						others.add(optOut);
+					} else {
+						all = optOut;
+					}
 					// return optOut;
 				}
+
+				all.setOnAction(e -> {
+					for(CheckBox other: others) {
+						other.fire();
+						other.setSelected(((CheckBox) e.getSource()).isSelected());
+					}
+				});
 
 				return vBox;
 
@@ -940,9 +953,9 @@ public class MainPaneController {
 				String s = entry.getKey();
 				Runnable r = entry.getValue();
 				Consumer<Boolean> c = (x) -> {
-					if (x.booleanValue() == true && !methodsToRun.contains(r)) {
+					if (x.booleanValue() && !methodsToRun.contains(r)) {
 						methodsToRun.add(r);
-					} else if (x.booleanValue() == false && methodsToRun.contains(r)) {
+					} else if (!x.booleanValue() && methodsToRun.contains(r)) {
 						methodsToRun.remove(r);
 					}
 				};
@@ -964,17 +977,15 @@ public class MainPaneController {
 						public Parent call() throws JsonIOException, IOException {
 							for (Runnable r : methodsToRun) {
 								updateMessage("Updating...");
-								// AppSession.getSession().getCheckFlags().
 								r.run();
 							}
 							updateMessage("Saving Data...");
 
-							// this causes bug... it made the data.json becomes very big (several Gbs)
-							// try {
-							// AppSession.getSession().saveData();
-							// } catch (JsonIOException | IOException e) {
-							// e.printStackTrace();
-							// }
+							try {
+								AppSession.getSession().saveData();
+							} catch (JsonIOException | IOException e) {
+								e.printStackTrace();
+							}
 							return null;
 						}
 					};

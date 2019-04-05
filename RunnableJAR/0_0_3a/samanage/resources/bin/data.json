@@ -15,12 +15,8 @@
     ]
   },
   "defaultAutoUpdateCheckChoice": false,
-  "dtbUpdateCheckAskAgainCheckBox": false,
+  "dtbUpdateCheckAskAgainCheckBox": true,
   "groups": {
-    "1564650": {
-      "name": "Hardware Techs",
-      "groupId": "1564650"
-    },
     "1564651": {
       "name": "Helpdesk group",
       "groupId": "1564651"
@@ -44,483 +40,6 @@
     "3994078": {
       "name": "ITS Students",
       "groupId": "3994078"
-    }
-  },
-  "softwares": {
-    "AIMS": {
-      "name": "AIMS",
-      "id": "",
-      "vendor": ""
-    },
-    "Acquia": {
-      "name": "Acquia",
-      "id": "",
-      "vendor": ""
-    },
-    "Active Directory": {
-      "name": "Active Directory",
-      "id": "",
-      "vendor": ""
-    },
-    "Ad-Astra": {
-      "name": "Ad-Astra",
-      "id": "",
-      "vendor": ""
-    },
-    "Adobe Acrobat Pro": {
-      "name": "Adobe Acrobat Pro",
-      "id": "",
-      "vendor": ""
-    },
-    "Adobe Creative Cloud": {
-      "name": "Adobe Creative Cloud",
-      "id": "",
-      "vendor": ""
-    },
-    "Adobe Creative Suite": {
-      "name": "Adobe Creative Suite",
-      "id": "",
-      "vendor": ""
-    },
-    "Adobe Flash": {
-      "name": "Adobe Flash",
-      "id": "",
-      "vendor": ""
-    },
-    "Adobe Reader": {
-      "name": "Adobe Reader",
-      "id": "",
-      "vendor": ""
-    },
-    "ArcGIS": {
-      "name": "ArcGIS",
-      "id": "",
-      "vendor": ""
-    },
-    "AugieChoice": {
-      "name": "AugieChoice",
-      "id": "",
-      "vendor": ""
-    },
-    "AugieHub": {
-      "name": "AugieHub",
-      "id": "",
-      "vendor": ""
-    },
-    "Authorize.Net": {
-      "name": "Authorize.Net",
-      "id": "",
-      "vendor": ""
-    },
-    "CMAP": {
-      "name": "CMAP",
-      "id": "",
-      "vendor": ""
-    },
-    "Campaign Enterprise": {
-      "name": "Campaign Enterprise",
-      "id": "",
-      "vendor": ""
-    },
-    "Capture": {
-      "name": "Capture",
-      "id": "",
-      "vendor": ""
-    },
-    "CashNet": {
-      "name": "CashNet",
-      "id": "",
-      "vendor": ""
-    },
-    "Check I\u0027m Here": {
-      "name": "Check I\u0027m Here",
-      "id": "",
-      "vendor": ""
-    },
-    "Class List": {
-      "name": "Class List",
-      "id": "",
-      "vendor": ""
-    },
-    "Co-Curricular Transcript": {
-      "name": "Co-Curricular Transcript",
-      "id": "",
-      "vendor": ""
-    },
-    "Colleague": {
-      "name": "Colleague",
-      "id": "",
-      "vendor": ""
-    },
-    "Core Client Database": {
-      "name": "Core Client Database",
-      "id": "",
-      "vendor": ""
-    },
-    "Course Master": {
-      "name": "Course Master",
-      "id": "",
-      "vendor": ""
-    },
-    "DHCP": {
-      "name": "DHCP",
-      "id": "",
-      "vendor": ""
-    },
-    "DNS": {
-      "name": "DNS",
-      "id": "",
-      "vendor": ""
-    },
-    "Dell": {
-      "name": "Dell",
-      "id": "",
-      "vendor": ""
-    },
-    "Drop Verify": {
-      "name": "Drop Verify",
-      "id": "",
-      "vendor": ""
-    },
-    "EZproxy": {
-      "name": "EZproxy",
-      "id": "",
-      "vendor": ""
-    },
-    "Extron": {
-      "name": "Extron",
-      "id": "",
-      "vendor": ""
-    },
-    "FERPA Compliance": {
-      "name": "FERPA Compliance",
-      "id": "",
-      "vendor": ""
-    },
-    "Faronics DeepFreeze": {
-      "name": "Faronics DeepFreeze",
-      "id": "",
-      "vendor": ""
-    },
-    "Faronics Insight": {
-      "name": "Faronics Insight",
-      "id": "",
-      "vendor": ""
-    },
-    "Firefox": {
-      "name": "Firefox",
-      "id": "",
-      "vendor": ""
-    },
-    "Folder Rights": {
-      "name": "Folder Rights",
-      "id": "",
-      "vendor": ""
-    },
-    "FortisBlue": {
-      "name": "FortisBlue",
-      "id": "",
-      "vendor": ""
-    },
-    "FrontRush": {
-      "name": "FrontRush",
-      "id": "",
-      "vendor": ""
-    },
-    "G Suite": {
-      "name": "G Suite",
-      "id": "",
-      "vendor": ""
-    },
-    "Gmail": {
-      "name": "Gmail",
-      "id": "",
-      "vendor": ""
-    },
-    "GoToProfair": {
-      "name": "GoToProfair",
-      "id": "",
-      "vendor": ""
-    },
-    "Google File Stream": {
-      "name": "Google File Stream",
-      "id": "",
-      "vendor": ""
-    },
-    "Hiatus (MSAccess)": {
-      "name": "Hiatus (MSAccess)",
-      "id": "",
-      "vendor": ""
-    },
-    "IIS": {
-      "name": "IIS",
-      "id": "",
-      "vendor": ""
-    },
-    "ISE - Scheduler": {
-      "name": "ISE - Scheduler",
-      "id": "",
-      "vendor": ""
-    },
-    "Ingeniux": {
-      "name": "Ingeniux",
-      "id": "",
-      "vendor": ""
-    },
-    "JMP": {
-      "name": "JMP",
-      "id": "",
-      "vendor": ""
-    },
-    "Lynda/LinkedIn Learning": {
-      "name": "Lynda/LinkedIn Learning",
-      "id": "",
-      "vendor": ""
-    },
-    "MP2": {
-      "name": "MP2",
-      "id": "",
-      "vendor": ""
-    },
-    "MS-Access": {
-      "name": "MS-Access",
-      "id": "",
-      "vendor": ""
-    },
-    "MSDS": {
-      "name": "MSDS",
-      "id": "",
-      "vendor": ""
-    },
-    "Maxient": {
-      "name": "Maxient",
-      "id": "",
-      "vendor": ""
-    },
-    "Mediacom": {
-      "name": "Mediacom",
-      "id": "",
-      "vendor": ""
-    },
-    "Microsoft Silverlight": {
-      "name": "Microsoft Silverlight",
-      "id": "",
-      "vendor": ""
-    },
-    "Moodle": {
-      "name": "Moodle",
-      "id": "",
-      "vendor": ""
-    },
-    "Netreg": {
-      "name": "Netreg",
-      "id": "",
-      "vendor": ""
-    },
-    "Noel Levitz": {
-      "name": "Noel Levitz",
-      "id": "",
-      "vendor": ""
-    },
-    "Notifi": {
-      "name": "Notifi",
-      "id": "",
-      "vendor": ""
-    },
-    "OMC": {
-      "name": "OMC",
-      "id": "",
-      "vendor": ""
-    },
-    "Office": {
-      "name": "Office",
-      "id": "",
-      "vendor": ""
-    },
-    "Omnilert": {
-      "name": "Omnilert",
-      "id": "",
-      "vendor": ""
-    },
-    "OneCause": {
-      "name": "OneCause",
-      "id": "",
-      "vendor": ""
-    },
-    "Other": {
-      "name": "Other",
-      "id": "",
-      "vendor": ""
-    },
-    "Palantir": {
-      "name": "Palantir",
-      "id": "",
-      "vendor": ""
-    },
-    "PaperCut": {
-      "name": "PaperCut",
-      "id": "",
-      "vendor": ""
-    },
-    "Performance Appraisal": {
-      "name": "Performance Appraisal",
-      "id": "",
-      "vendor": ""
-    },
-    "ProWatch": {
-      "name": "ProWatch",
-      "id": "",
-      "vendor": ""
-    },
-    "Reporting Services": {
-      "name": "Reporting Services",
-      "id": "",
-      "vendor": ""
-    },
-    "Ruffalo Cody": {
-      "name": "Ruffalo Cody",
-      "id": "",
-      "vendor": ""
-    },
-    "SAS": {
-      "name": "SAS",
-      "id": "",
-      "vendor": ""
-    },
-    "SPSS": {
-      "name": "SPSS",
-      "id": "",
-      "vendor": ""
-    },
-    "SSRPM": {
-      "name": "SSRPM",
-      "id": "",
-      "vendor": ""
-    },
-    "Safari": {
-      "name": "Safari",
-      "id": "",
-      "vendor": ""
-    },
-    "Samanage": {
-      "name": "Samanage",
-      "id": "",
-      "vendor": ""
-    },
-    "Simple Campus": {
-      "name": "Simple Campus",
-      "id": "",
-      "vendor": ""
-    },
-    "Slate": {
-      "name": "Slate",
-      "id": "",
-      "vendor": ""
-    },
-    "Starfish": {
-      "name": "Starfish",
-      "id": "",
-      "vendor": ""
-    },
-    "Symantec": {
-      "name": "Symantec",
-      "id": "",
-      "vendor": ""
-    },
-    "Synergy": {
-      "name": "Synergy",
-      "id": "",
-      "vendor": ""
-    },
-    "TimeClock Plus": {
-      "name": "TimeClock Plus",
-      "id": "",
-      "vendor": ""
-    },
-    "Titanium Scheduling": {
-      "name": "Titanium Scheduling",
-      "id": "",
-      "vendor": ""
-    },
-    "VLC": {
-      "name": "VLC",
-      "id": "",
-      "vendor": ""
-    },
-    "VMware": {
-      "name": "VMware",
-      "id": "",
-      "vendor": ""
-    },
-    "Vectorworks": {
-      "name": "Vectorworks",
-      "id": "",
-      "vendor": ""
-    },
-    "Veeam": {
-      "name": "Veeam",
-      "id": "",
-      "vendor": ""
-    },
-    "Viking Score": {
-      "name": "Viking Score",
-      "id": "",
-      "vendor": ""
-    },
-    "Wealth Engine": {
-      "name": "Wealth Engine",
-      "id": "",
-      "vendor": ""
-    },
-    "WebAdvisor": {
-      "name": "WebAdvisor",
-      "id": "",
-      "vendor": ""
-    },
-    "Website": {
-      "name": "Website",
-      "id": "",
-      "vendor": ""
-    },
-    "Wimprism": {
-      "name": "Wimprism",
-      "id": "",
-      "vendor": ""
-    },
-    "Windows 7/10": {
-      "name": "Windows 7/10",
-      "id": "",
-      "vendor": ""
-    },
-    "Windows Server": {
-      "name": "Windows Server",
-      "id": "",
-      "vendor": ""
-    },
-    "Windstream": {
-      "name": "Windstream",
-      "id": "",
-      "vendor": ""
-    },
-    "Winsdows SUS Server": {
-      "name": "Winsdows SUS Server",
-      "id": "",
-      "vendor": ""
-    },
-    "WordPress": {
-      "name": "WordPress",
-      "id": "",
-      "vendor": ""
-    },
-    "eScrip-Safe": {
-      "name": "eScrip-Safe",
-      "id": "",
-      "vendor": ""
-    },
-    "macOS": {
-      "name": "macOS",
-      "id": "",
-      "vendor": ""
     }
   },
   "assigneeEmails": [
@@ -633,16 +152,17 @@
     "Project": [
       "Calendar Transition",
       "Colleague Server Migration",
-      "Colleague UI 5.0 upgrade",
       "Document Management",
       "Electronic Gift Receipts",
-      "Managed Print",
+      "Managed Print RFP Process",
+      "Material Safety Data Sheets",
       "Moodle Upgrade",
-      "Orientation 2019/2020",
       "PCard Review process",
       "Performance Engagement",
+      "Pre-Registration",
       "Risk Assessment",
       "Wage Grade Implementation ",
+      "Website Hosting RFP",
       "Windows 10 Migration",
       "Wireless expansion",
       "Work Order Processing"
@@ -3396,16 +2916,6 @@
       "ID": "2551823",
       "groupID": [
         "2752982"
-      ]
-    },
-    "ahmedjlaidi19@augustana.edu": {
-      "name": "Jlaidi, Ahmed",
-      "email": "ahmedjlaidi19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693486",
-      "groupID": [
-        "4959952"
       ]
     },
     "aidamohammed18@augustana.edu": {
@@ -6639,16 +6149,6 @@
       "ID": "1753106",
       "groupID": [
         "1952788"
-      ]
-    },
-    "anarbolderdenebold19@augustana.edu": {
-      "name": "Erdenebold, Anarbold",
-      "email": "anarbolderdenebold19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693485",
-      "groupID": [
-        "4959951"
       ]
     },
     "anarios@augustana.edu": {
@@ -12764,16 +12264,6 @@
         "3734509"
       ]
     },
-    "cameronbartmann19@augustana.edu": {
-      "name": "Bartmann, Cameron",
-      "email": "cameronbartmann19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693483",
-      "groupID": [
-        "4959949"
-      ]
-    },
     "cameronduffy18@augustana.edu": {
       "name": "Duffy,Cameron",
       "email": "cameronduffy18@augustana.edu",
@@ -14502,16 +13992,6 @@
       "ID": "2552397",
       "groupID": [
         "2753556"
-      ]
-    },
-    "chivu19@augustana.edu": {
-      "name": "Vu, Chi",
-      "email": "chivu19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693488",
-      "groupID": [
-        "4959954"
       ]
     },
     "chloeanderson17@augustana.edu": {
@@ -25630,16 +25110,6 @@
         "2753293"
       ]
     },
-    "hannguyen19@augustana.edu": {
-      "name": "Nguyen, Han",
-      "email": "hannguyen19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693484",
-      "groupID": [
-        "4959950"
-      ]
-    },
     "hanseljohn18@augustana.edu": {
       "name": "John,Hansel",
       "email": "hanseljohn18@augustana.edu",
@@ -27720,16 +27190,6 @@
       "ID": "1525783",
       "groupID": [
         "1719922"
-      ]
-    },
-    "jacobpauley19@augustana.edu": {
-      "name": "Pauley, Jacob",
-      "email": "jacobpauley19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693477",
-      "groupID": [
-        "4959943"
       ]
     },
     "jacobpecaut15@augustana.edu": {
@@ -31904,16 +31364,6 @@
       "ID": "1753347",
       "groupID": [
         "1953029"
-      ]
-    },
-    "johnvotaw19@augustana.edu": {
-      "name": "Votaw, John",
-      "email": "johnvotaw19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693481",
-      "groupID": [
-        "4959947"
       ]
     },
     "johnwhitson12@augustana.edu": {
@@ -36158,16 +35608,6 @@
         "1952704"
       ]
     },
-    "kellimcneice19@augustana.edu": {
-      "name": "McNeice, Kelli",
-      "email": "kellimcneice19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693480",
-      "groupID": [
-        "4959946"
-      ]
-    },
     "kelliommundson12@augustana.edu": {
       "name": "Ommundson, Kelli L",
       "email": "kelliommundson12@augustana.edu",
@@ -39304,16 +38744,6 @@
         "1923711"
       ]
     },
-    "laurenwols19@augustana.edu": {
-      "name": "Wols, Lauren",
-      "email": "laurenwols19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693479",
-      "groupID": [
-        "4959945"
-      ]
-    },
     "laurinhopping17@augustana.edu": {
       "name": "Hopping, Laurin",
       "email": "laurinhopping17@augustana.edu",
@@ -41894,16 +41324,6 @@
       "ID": "2552137",
       "groupID": [
         "2753296"
-      ]
-    },
-    "mainguyen19@augustana.edu": {
-      "name": "Nguyen, Mai",
-      "email": "mainguyen19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693482",
-      "groupID": [
-        "4959948"
       ]
     },
     "maissiemusick14@augustana.edu": {
@@ -49546,16 +48966,6 @@
       "ID": "3141908",
       "groupID": [
         "3363742"
-      ]
-    },
-    "nthaothinguyen1@augustana.edu": {
-      "name": "Nguyen, Nguyen Thao Thi",
-      "email": "nthaothinguyen1@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693487",
-      "groupID": [
-        "4959953"
       ]
     },
     "ntheresemendoza14@augustana.edu": {
@@ -60628,16 +60038,6 @@
         "3734813"
       ]
     },
-    "tristynescobedo19@augustana.edu": {
-      "name": "Escobedo, Tristyn",
-      "email": "tristynescobedo19@augustana.edu",
-      "dept": "Student",
-      "site": "",
-      "ID": "4693478",
-      "groupID": [
-        "4959944"
-      ]
-    },
     "trongnguyen13@augustana.edu": {
       "name": "Nguyen, Trong",
       "email": "trongnguyen13@augustana.edu",
@@ -63171,5 +62571,6 @@
         "1953025"
       ]
     }
-  }
+  },
+  "checkFlags": {}
 }
