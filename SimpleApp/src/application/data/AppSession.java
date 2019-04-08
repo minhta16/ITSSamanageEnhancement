@@ -40,6 +40,8 @@ public class AppSession {
 	private ArrayList<String> sites;
 	private ArrayList<String> priorities;
 	private TreeMap<String, User> users;
+	
+	private ArrayList<Incident> templates;
 
 	private transient Map<String, Runnable> updateCheckboxList;
 	

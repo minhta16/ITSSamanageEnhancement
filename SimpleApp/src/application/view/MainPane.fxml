@@ -324,6 +324,176 @@
                   </TabPane>
                </content>
             </Tab>
+            <Tab fx:id="incidentEditTab1" closable="false" text="Templates">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <GridPane BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="276.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="0.0" prefWidth="19.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="672.0" minWidth="10.0" prefWidth="633.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="208.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="24.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="408.0" minHeight="10.0" prefHeight="355.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="212.0" minHeight="10.0" prefHeight="212.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TableView prefHeight="200.0" prefWidth="254.0" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                                <columns>
+                                  <TableColumn prefWidth="185.99996948242188" text="Name" />
+                                  <TableColumn prefWidth="54.0" text="Edit" />
+                                    <TableColumn prefWidth="36.0" text="x" />
+                                </columns>
+                              </TableView>
+                              <Label text="Available Templates" />
+                              <BorderPane style="-fx-border-color: gray;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                                 <center>
+                                    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                                      <tabs>
+                                        <Tab closable="false" text="+Create">
+                                          <content>
+                                                <GridPane>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="181.0" minWidth="10.0" prefWidth="141.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="10.0" prefWidth="243.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="32.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="144.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="246.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints maxHeight="93.0" minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="207.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="295.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="306.0" minHeight="10.0" prefHeight="128.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <padding>
+                                                      <Insets left="20.0" right="20.0" top="10.0" />
+                                                   </padding>
+                                                   <children>
+                                                      <Label text="State" />
+                                                      <Label text="Category" GridPane.columnIndex="3" />
+                                                      <Label text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                      <ComboBox prefWidth="150.0" GridPane.columnIndex="4" />
+                                                      <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
+                                                      <ComboBox prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                      <Label text="Software" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                      <ComboBox editable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                                      <Label text="Requester" GridPane.rowIndex="1" />
+                                                      <Label text="Assignee" GridPane.rowIndex="2" />
+                                                      <Label text="Incident Name" GridPane.rowIndex="3" />
+                                                      <CustomTextField fx:id="requesterField1" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <CustomTextField fx:id="requesterField11" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <CustomTextField fx:id="requesterField12" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <Label text="Description" GridPane.rowIndex="4" />
+                                                      <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+                                                      <FlowPane alignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                                         <children>
+                                                            <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="107.0" text="Save" />
+                                                         </children>
+                                                      </FlowPane>
+                                                   </children>
+                                                </GridPane>
+                                          </content>
+                                        </Tab>
+                                      </tabs>
+                                    </TabPane>
+                                 </center>
+                                 <bottom>
+                                    <TabPane prefHeight="194.0" prefWidth="839.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                                      <tabs>
+                                        <Tab text="Time Track">
+                                          <content>
+                                                <GridPane>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="99.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="374.0" minWidth="10.0" prefWidth="205.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="517.0" minWidth="10.0" prefWidth="58.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="451.0" minWidth="10.0" prefWidth="451.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                   <children>
+                                                      <Label text="Email" />
+                                                      <Label text="Comment" GridPane.rowIndex="1" />
+                                                      <Label text="Time Elapsed" GridPane.rowIndex="2" />
+                                                      <CustomTextField GridPane.columnIndex="1" />
+                                                      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowSpan="4">
+                                                        <columns>
+                                                          <TableColumn prefWidth="75.0" text="C1" />
+                                                          <TableColumn prefWidth="75.0" text="C2" />
+                                                        </columns>
+                                                      </TableView>
+                                                      <FlowPane alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                         <children>
+                                                            <Button mnemonicParsing="false" text="Add Track" />
+                                                         </children>
+                                                      </FlowPane>
+                                                   </children>
+                                                </GridPane>
+                                          </content>
+                                        </Tab>
+                                        <Tab text="Other Settings">
+                                             <content>
+                                                <GridPane prefHeight="151.0" prefWidth="803.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.39996337890625" minWidth="10.0" prefWidth="65.80000610351563" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="607.2" minWidth="10.0" prefWidth="164.1999938964844" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="548.6000366210938" minWidth="10.0" prefWidth="60.80003662109377" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="548.6000366210938" minWidth="10.0" prefWidth="112.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="548.6000366210938" minWidth="10.0" prefWidth="204.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="548.6000366210938" minWidth="10.0" prefWidth="222.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="50.40002441406251" minHeight="10.0" prefHeight="37.59992523193359" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="43.2000747680664" minHeight="10.0" prefHeight="43.2000747680664" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="24.79996337890624" minHeight="10.0" prefHeight="12.799963378906241" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Label text="Priority" />
+                                                      <ChoiceBox fx:id="priorityChoiceBox1" prefHeight="31.0" prefWidth="222.0" GridPane.columnIndex="1" />
+                                                      <Label text="Due On" GridPane.rowIndex="1" />
+                                                      <DatePicker fx:id="datePicker1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Label text="Department" GridPane.columnIndex="3" />
+                                                      <ComboBox fx:id="deptComboBox1" editable="true" prefWidth="150.0" GridPane.columnIndex="4" />
+                                                      <Label text="Site" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                      <ComboBox fx:id="siteComboBox1" editable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="10.0" right="10.0" top="5.0" />
+                                                   </padding>
+                                                </GridPane>
+                                             </content>
+                                        </Tab>
+                                      </tabs>
+                                    </TabPane>
+                                 </bottom>
+                              </BorderPane>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets left="20.0" right="20.0" top="10.0" />
+                           </BorderPane.margin>
+                        </GridPane>
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
          </tabs>
       </TabPane>
    </center>
