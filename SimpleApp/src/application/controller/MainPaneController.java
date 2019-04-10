@@ -65,6 +65,9 @@ public class MainPaneController {
 	private Tab settingsTab;
 
 	@FXML
+	private ComboBox<String> templateChoiceBox;
+	
+	@FXML
 	private Button createNewIncidentBtn;
 
 	@FXML
@@ -188,7 +191,6 @@ public class MainPaneController {
 		System.out.print("Setting up Incident Editor\t\t\t\r");
 		setupIncidentEditTab();
 
-
 		// setup tabs
 		System.out.print("Setting up tabs\t\t\t\r");
 		setupTabs();
@@ -253,12 +255,6 @@ public class MainPaneController {
 			incidentEditTab.setDisable(true);
 		}
 
-		createNewIncidentBtn.setOnAction((e) -> {
-			incidentEditTab.setDisable(false);
-			tabPane.getSelectionModel().select(incidentEditTab);
-			AppSession.getSession().setEditType(IncidentEditType.NEW);
-			clearInputFields();
-		});
 
 	}
 
@@ -470,6 +466,14 @@ public class MainPaneController {
 		new AutoCompletionTextFieldBinding<>(requesterField, savedEmailprovider);
 	}
 
+	@FXML
+	private void handleNewIncidentBtn() {
+		incidentEditTab.setDisable(false);
+		tabPane.getSelectionModel().select(incidentEditTab);
+		AppSession.getSession().setEditType(IncidentEditType.NEW);
+		clearInputFields();
+	}
+	
 	@FXML
 	private void handleSubmitBtn() {
 		if (userTokenField.getText().trim().equals("")) {
@@ -1151,6 +1155,8 @@ public class MainPaneController {
 	private DatePicker tempDatePicker;
 	@FXML
 	private BorderPane templatePane;
+	@FXML
+	private Tab templateTab;
 
 	private IncidentEditType templateEdit;
 
@@ -1158,28 +1164,27 @@ public class MainPaneController {
 
 	@FXML
 	private void handleTemplateSaveBtn() {
-		String id;
+		String number;
 		if (AppSession.getSession().getTemplates().isEmpty()) {
-			id = "0";
+			number = "0";
 		} else {
 			if (templateEdit == IncidentEditType.EDIT) {
-				id = currentTemplate.getNumber();
+				number = currentTemplate.getNumber();
 			} else {
-				id = "" + Integer.parseInt(AppSession.getSession().getTemplates().lastKey()) + 1;
+				number = "" + Integer.parseInt(AppSession.getSession().getTemplates().lastKey()) + 1;
 			}
 		}
-		Incident template = new Incident(tempNameField.getText(),
-				id,
-				tempStateComboBox.getValue(), tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(),
-				tempCatComboBox.getValue(), tempSubcatComboBox.getValue(), tempAsgField.getText(),
-				tempReqField.getText(), tempSiteComboBox.getValue(), tempDeptComboBox.getValue(),
-				tempDescField.getText(), tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(),
+		Incident template = new Incident(tempNameField.getText(), number, tempStateComboBox.getValue(),
+				tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(), tempCatComboBox.getValue(),
+				tempSubcatComboBox.getValue(), tempAsgField.getText(), tempReqField.getText(),
+				tempSiteComboBox.getValue(), tempDeptComboBox.getValue(), tempDescField.getText(),
+				tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(),
 				AppSession.getSession().getTemplateTimeTracks());
 
 		if (templateEdit == IncidentEditType.NEW) {
-			AppSession.getSession().addTemplate(id, template);
+			AppSession.getSession().addTemplate(number, template);
 		} else {
-			AppSession.getSession().addTemplate(id, template);
+			AppSession.getSession().addTemplate(number, template);
 		}
 		clearTemplate();
 		updateTemplatesTable();
@@ -1187,8 +1192,10 @@ public class MainPaneController {
 
 	@FXML
 	private void handleNewTemplateBtn() {
-		templatePane.setDisable(false);
+		clearTemplate();
 		templateEdit = IncidentEditType.NEW;
+		templateTab.setText("+ Create");
+		templatePane.setDisable(false);
 	}
 
 	@FXML
@@ -1210,6 +1217,12 @@ public class MainPaneController {
 		templateTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("ID"));
 		templateTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
 		templateTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("rmBtn"));
+
+		tempTrackTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
+		tempTrackTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("email"));
+		tempTrackTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("time"));
+		tempTrackTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("comment"));
+		tempTrackTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
 
 		tempDatePicker.setConverter(new StringConverter<LocalDate>() {
 			@Override
@@ -1235,17 +1248,15 @@ public class MainPaneController {
 
 	private void updateTemplatesTable() {
 		templateTable.getItems().clear();
-		for (String id : AppSession.getSession().getTemplates().keySet()) {
-			Incident template = AppSession.getSession().getTemplates().get(id);
+		for (String number : AppSession.getSession().getTemplates().keySet()) {
+			Incident template = AppSession.getSession().getTemplates().get(number);
 			template.getEditBtn().setOnAction((e) -> {
-				templatePane.setDisable(false);
-				fetchTemplateInfo();
-				templateEdit = IncidentEditType.EDIT;
-				currentTemplate = template;
+				initializeEditTemplate(template);
+
 			});
 			template.getRmBtn().setOnAction((e) -> {
-				AppSession.getSession().removeTemplate(id);
-				updateTemplatesTable();
+				AppSession.getSession().removeTemplate(number);
+//				tempTrackTable.refresh();
 			});
 			templateTable.getItems().add(template);
 		}
@@ -1257,8 +1268,40 @@ public class MainPaneController {
 		templateTable.getSortOrder().add(templateTable.getColumns().get(0));
 	}
 
-	private void fetchTemplateInfo() {
+	private void initializeEditTemplate(Incident template) {
+		templateEdit = IncidentEditType.EDIT;
+		currentTemplate = template;
+		fetchTemplateInfo();
+		templateTab.setText("Edit: " + currentTemplate.getID());
+		templatePane.setDisable(false);
+	}
 
+	private void fetchTemplateInfo() {
+		clearTemplate();
+		tempNameField.setText(currentTemplate.getID());
+		tempStateComboBox.setValue(currentTemplate.getState());
+		tempCatComboBox.setValue(currentTemplate.getCategory());
+		tempSubcatComboBox.setValue(currentTemplate.getSubcategory());
+		tempSoftwareComboBox.setValue(currentTemplate.getSoftware());
+		tempReqField.setText(currentTemplate.getRequester());
+		tempAsgField.setText(currentTemplate.getAssignee());
+		tempIncidentNameField.setText(currentTemplate.getTitle());
+		tempDescField.setText(currentTemplate.getDescription());
+
+		// TODO: fetch track table
+		for (int i = 0; i < currentTemplate.getTimeTracks().size(); i++) {
+			TimeTrack track = currentTemplate.getTimeTracks().get(i);
+			int index = i;
+			track.getRemoveBtn().setOnAction((e) -> {
+				currentTemplate.getTimeTracks().remove(index);
+			});
+			tempTrackTable.getItems().add(track);
+		}
+
+		tempPriorityChoiceBox.setValue(currentTemplate.getPriority());
+		tempDeptComboBox.setValue(currentTemplate.getDept());
+		tempSiteComboBox.setValue(currentTemplate.getSite());
+		tempDatePicker.setValue(currentTemplate.getDueOn());
 	}
 
 	private void clearTemplate() {
@@ -1276,6 +1319,7 @@ public class MainPaneController {
 		tempTrackCmtField.setText("");
 		tempTrackTimeField.setText("");
 
+		tempTrackTable.getItems().clear();
 
 		tempPriorityChoiceBox.setValue(null);
 		tempDeptComboBox.setValue(null);
