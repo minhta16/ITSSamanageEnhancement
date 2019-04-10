@@ -3,6 +3,7 @@ package application.data;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +32,10 @@ public class AppSession {
 	private transient ArrayList<TimeTrack> timeTracks;
 	private transient IncidentEditType editType;
 
+
+	private TreeMap<String, Incident> templates;
+	private transient ArrayList<TimeTrack> templateTimeTracks;
+	
 	private TreeMap<String, Group> groups;
 	private TreeMap<String, Software> softwares;
 	private ArrayList<String> assigneeEmails;
@@ -41,7 +46,6 @@ public class AppSession {
 	private ArrayList<String> priorities;
 	private TreeMap<String, User> users;
 	
-	private ArrayList<Incident> templates;
 
 	private transient Map<String, Runnable> updateCheckboxList;
 	
@@ -62,6 +66,7 @@ public class AppSession {
 		requesterInfo = new User();
 		currentIncidents = new TreeMap<String, Incident>();
 		timeTracks = new ArrayList<TimeTrack>();
+		templateTimeTracks = new ArrayList<TimeTrack>();
 		users = new TreeMap<String, User>();
 		states = new ArrayList<String>();
 		categories = new TreeMap<String, ArrayList<String>>();
@@ -75,13 +80,47 @@ public class AppSession {
 		updateCheckboxList.put("All", () -> updateAll());
 	}
 	
+	/**
+	 * @return the templateTimeTracks
+	 */
+	public ArrayList<TimeTrack> getTemplateTimeTracks() {
+		return templateTimeTracks;
+	}
+	/**
+	 * @param templateTimeTracks the templateTimeTracks to set
+	 */
+	public void setTemplateTimeTracks(ArrayList<TimeTrack> templateTimeTracks) {
+		this.templateTimeTracks = templateTimeTracks;
+	}
+
+	public void removeTemplateTimeTrackByEmail(String email) {
+		for (int i = templateTimeTracks.size() - 1; i >= 0; i--) {
+			if (templateTimeTracks.get(i).getEmail().equalsIgnoreCase(email)) {
+				templateTimeTracks.remove(templateTimeTracks.get(i));
+			}
+		}
+	}
+
+
+	/**
+	 * @return the templates
+	 */
+	public TreeMap<String, Incident> getTemplates() {
+		return templates;
+	}
+	/**
+	 * @param templates the templates to set
+	 */
+	public void setTemplates(TreeMap<String, Incident> templates) {
+		this.templates = templates;
+	}
+	
 	public static AppSession getSession() {
 		return session;
 	}
 	
 	public void addTrackedUser(TimeTrack track) throws JsonIOException, IOException {
 		timeTracks.add(track);
-		saveData();
 	}
 	
 	public TreeMap<String, ArrayList<String>> getCategories() {
@@ -104,6 +143,7 @@ public class AppSession {
 		}
 		return false;
 	}
+	
 	
 	/**
 	 * @return the currentIncidents
@@ -300,7 +340,6 @@ public class AppSession {
 		JsonReader reader = new JsonReader(fd);
 		Gson gson = new Gson();
 		session = gson.fromJson(reader, AppSession.class);
-		System.err.println(userToken);
 		fd.close();
 	}
 	
@@ -345,10 +384,10 @@ public class AppSession {
 		requesterInfo = users.get(toCorrectDomain(defaultRequester));
 	}
 	
-	public void updateTodayIncidents() {
+	public void updateListIncidents(LocalDate from, LocalDate to) {
 		TreeMap<String, Incident> newIncidents = new TreeMap<String, Incident>();
 		for (String groupID: users.get(toCorrectDomain(userEmail)).getGroupID()) {
-			 newIncidents.putAll(SamanageRequests.getIncidents(userToken, groupID));
+			 newIncidents.putAll(SamanageRequests.getIncidents(userToken, groupID, from, to));
 		}
 		currentIncidents = newIncidents;
 	}
@@ -359,7 +398,6 @@ public class AppSession {
 		int dbDepts = SamanageRequests.getTotalElements(userToken, "departments");
 		int dbSites = SamanageRequests.getTotalElements(userToken, "sites");
 		int dbCats = SamanageRequests.getTotalElements(userToken, "categories");
-		System.err.println(dbCats);
 		int dbGroups = SamanageRequests.getTotalElements(userToken, "groups");
 		
 		if (dbUsers != users.size()) {
@@ -447,6 +485,28 @@ public class AppSession {
 		updateCategories();
 		updateGroups();
 		updateSoftwares();
+	}
+	
+	public void addTemplate(Incident template) {
+		templates.put(templates.lastKey() + 1, template);
+		try {
+			saveData();
+		} catch (JsonIOException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		templateTimeTracks.clear();
+	}
+
+	public void replaceTemplate(String id, Incident template) {
+		templates.put(id, template);
+		try {
+			saveData();
+		} catch (JsonIOException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		templateTimeTracks.clear();
 	}
 	
 	private String toShortDomain(String email) {

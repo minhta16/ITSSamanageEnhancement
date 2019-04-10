@@ -2,14 +2,14 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 #curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+json' -H 'Content-type: application/json' -X GET https://api.samanage.com/incidents.json | python -mjson.tool > "formatted.json
 
 # Get incidents ------------------------------------------------
-# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET "https://api.samanage.com/incidents.xml?per_page=1&page=1&category%5B%5D=408915" -o software_incident.xml
+curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET "https://api.samanage.com/incidents.xml?per_page=1&page=1&category%5B%5D=408915" -o software_incident.xml
 
 
 # Get categories ----------------------------------------------
 # curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET "https://api.samanage.com/categories.xml" -o categories.xml
 
 # Get users ---------------------------------------------------
-curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET "https://api.samanage.com/users.xml" -o users.xml
+# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET "https://api.samanage.com/users.xml" -o users.xml
 
 # Get departments ---------------------------------------------
 # curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET https://api.samanage.com/departments.xml -o department.xml

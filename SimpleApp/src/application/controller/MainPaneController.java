@@ -86,9 +86,15 @@ public class MainPaneController {
 	private Label softwareLabel;
 	@FXML
 	private ComboBox<String> softwareComboBox;
+
+	@FXML
+	private DatePicker updateFromDatePicker;
+	@FXML
+	private DatePicker updateToDatePicker;
+
 	@FXML
 	private DatePicker datePicker;
-	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 	@FXML
 	private TextField incidentNameField;
 	@FXML
@@ -136,7 +142,7 @@ public class MainPaneController {
 	private String updatePrompt = "";
 
 	private String curUpdateIncidentID = "";
-	
+
 	private boolean updatingIncident;
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
@@ -180,6 +186,9 @@ public class MainPaneController {
 
 		System.out.print("Setting up Incident Editor\t\t\t\r");
 		setupIncidentEditTab();
+
+		System.out.print("Setting up Template Editor\t\t\t\r");
+		setupTemplateMenu();
 
 		// setup tabs
 		System.out.print("Setting up tabs\t\t\t\r");
@@ -317,14 +326,14 @@ public class MainPaneController {
 			}
 		});
 	}
-	
+
 	private void setDisableSubcatChoiceBox(boolean disable) {
 		subcatChoiceBox.setDisable(disable);
 		subcatLabel.setDisable(disable);
 //		subcatLabel.setVisible(!disable);
 //		subcatChoiceBox.setVisible(!disable);
 	}
-	
+
 	private void setDisableSoftwareComboBox(boolean disable) {
 		softwareComboBox.setDisable(disable);
 		softwareLabel.setDisable(disable);
@@ -363,6 +372,45 @@ public class MainPaneController {
 	private void initializeDatePicker() {
 		datePicker.setValue(LocalDate.now());
 		datePicker.setConverter(new StringConverter<LocalDate>() {
+			@Override
+			public String toString(LocalDate t) {
+				if (t != null) {
+					return formatter.format(t);
+				}
+				return null;
+			}
+
+			@Override
+			public LocalDate fromString(String string) {
+				if (string != null && !string.trim().isEmpty()) {
+					return LocalDate.parse(string, formatter);
+				}
+				return null;
+			}
+		});
+
+//		updateFromDatePicker.get
+		updateFromDatePicker.setValue(LocalDate.now());
+		updateFromDatePicker.setConverter(new StringConverter<LocalDate>() {
+			@Override
+			public String toString(LocalDate t) {
+				if (t != null) {
+					return formatter.format(t);
+				}
+				return null;
+			}
+
+			@Override
+			public LocalDate fromString(String string) {
+				if (string != null && !string.trim().isEmpty()) {
+					return LocalDate.parse(string, formatter);
+				}
+				return null;
+			}
+		});
+
+		updateToDatePicker.setValue(LocalDate.now());
+		updateToDatePicker.setConverter(new StringConverter<LocalDate>() {
 			@Override
 			public String toString(LocalDate t) {
 				if (t != null) {
@@ -672,7 +720,7 @@ public class MainPaneController {
 				}
 
 				all.setOnAction(e -> {
-					for(CheckBox other: others) {
+					for (CheckBox other : others) {
 						other.fire();
 						other.setSelected(((CheckBox) e.getSource()).isSelected());
 					}
@@ -746,7 +794,8 @@ public class MainPaneController {
 							e.printStackTrace();
 						}
 					}
-					AppSession.getSession().updateTodayIncidents();
+					AppSession.getSession().updateListIncidents(updateFromDatePicker.getValue(),
+							updateToDatePicker.getValue());
 					updateMessage("Update List");
 					return null;
 				}
@@ -1056,6 +1105,167 @@ public class MainPaneController {
 		});
 		Thread updateThread = new Thread(updateCheck);
 		updateThread.start();
+	}
+
+	// TEMPLATES ------------------------------------------------
+	@FXML
+	private TableView<Incident> templateTable;
+	@FXML
+	private ComboBox<String> tempStateComboBox;
+	@FXML
+	private ComboBox<String> tempCatComboBox;
+	@FXML
+	private ComboBox<String> tempSubcatComboBox;
+	@FXML
+	private ComboBox<String> tempSoftwareComboBox;
+
+	@FXML
+	private TextField tempNameField;
+	@FXML
+	private TextField tempReqField;
+	@FXML
+	private TextField tempAsgField;
+	@FXML
+	private TextField tempIncidentNameField;
+	@FXML
+	private TextArea tempDescField;
+
+	@FXML
+	private TextField tempTrackEmailField;
+	@FXML
+	private TextField tempTrackCmtField;
+	@FXML
+	private TextField tempTrackTimeField;
+
+	@FXML
+	private TableView<TimeTrack> tempTrackTable;
+
+	@FXML
+	private ChoiceBox<String> tempPriorityChoiceBox;
+	@FXML
+	private ComboBox<String> tempDeptComboBox;
+	@FXML
+	private ComboBox<String> tempSiteComboBox;
+	@FXML
+	private DatePicker tempDatePicker;
+	@FXML
+	private TabPane templateTabPane;
+
+	private IncidentEditType templateEdit;
+
+	private Incident currentTemplate;
+
+	@FXML
+	private void handleTemplateSaveBtn() {
+		Incident template = new Incident(tempNameField.getText(),
+				"" + Integer.parseInt(AppSession.getSession().getTemplates().lastKey()) + 1,
+				tempStateComboBox.getValue(), tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(),
+				tempCatComboBox.getValue(), tempSubcatComboBox.getValue(), tempAsgField.getText(),
+				tempReqField.getText(), tempSiteComboBox.getValue(), tempDeptComboBox.getValue(),
+				tempDescField.getText(), tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(),
+				AppSession.getSession().getTemplateTimeTracks());
+
+		if (templateEdit == IncidentEditType.NEW) {
+			AppSession.getSession().addTemplate(template);
+		} else {
+			AppSession.getSession().replaceTemplate(currentTemplate.getNumber(), template);
+		}
+		clearTemplate();
+	}
+
+	@FXML
+	private void handleNewTemplateBtn() {
+		templateTabPane.setDisable(false);
+		templateEdit = IncidentEditType.NEW;
+	}
+
+	@FXML
+	private void handleTempAddTrackBtn() {
+		User user = AppSession.getSession().getUsers().get(toCorrectDomain(tempTrackEmailField.getText()));
+		TimeTrack track = new TimeTrack(user, Integer.parseInt(tempTrackTimeField.getText()),
+				tempTrackCmtField.getText());
+		track.getRemoveBtn().setOnAction((e) -> {
+			AppSession.getSession().removeTemplateTimeTrackByEmail(track.getEmail());
+			tempTrackTable.getItems().remove(track);
+		});
+		tempTrackTable.getItems().add(track);
+
+		AppSession.getSession().getTemplateTimeTracks().add(track);
+	}
+
+	private void setupTemplateMenu() {
+		templateTabPane.setDisable(true);
+		templateTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("ID"));
+		templateTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
+//		templateTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
+
+		tempDatePicker.setConverter(new StringConverter<LocalDate>() {
+			@Override
+			public String toString(LocalDate t) {
+				if (t != null) {
+					return formatter.format(t);
+				}
+				return "";
+			}
+
+			@Override
+			public LocalDate fromString(String string) {
+				if (string != null && !string.trim().isEmpty()) {
+					return LocalDate.parse(string, formatter);
+				}
+				return null;
+			}
+		});
+
+		updateTemplatesTable();
+
+	}
+
+	private void updateTemplatesTable() {
+		templateTable.getItems().clear();
+		for (String id : AppSession.getSession().getTemplates().keySet()) {
+			Incident template = AppSession.getSession().getTemplates().get(id);
+			template.getEditBtn().setOnAction((e) -> {
+				templateTabPane.setDisable(false);
+				fetchTemplateInfo();
+				templateEdit = IncidentEditType.EDIT;
+				currentTemplate = template;
+			});
+			templateTable.getItems().add(template);
+		}
+		if (AppSession.getSession().getCurrentIncidents().keySet().isEmpty()) {
+			templateTable.setPlaceholder(new Label("You have no templates."));
+		}
+		// DEFAULT SORT BY NUMBER
+		templateTable.getColumns().get(0).setSortType(TableColumn.SortType.ASCENDING);
+		templateTable.getSortOrder().add(templateTable.getColumns().get(0));
+	}
+
+	private void fetchTemplateInfo() {
+
+	}
+
+	private void clearTemplate() {
+		tempStateComboBox.setValue(null);
+		tempCatComboBox.setValue(null);
+		tempSubcatComboBox.setValue(null);
+		tempSoftwareComboBox.setValue(null);
+		tempReqField.setText("");
+		tempAsgField.setText("");
+		tempIncidentNameField.setText("");
+		tempDescField.setText("");
+
+		tempTrackEmailField.setText("");
+		tempTrackCmtField.setText("");
+		tempTrackTimeField.setText("");
+
+		tempTrackTable.getItems().clear();
+
+		tempPriorityChoiceBox.setValue(null);
+		tempDeptComboBox.setValue(null);
+		tempSiteComboBox.setValue(null);
+		tempDatePicker.setValue(null);
+		templateTabPane.setDisable(true);
 	}
 
 	private String toCorrectDomain(String email) {

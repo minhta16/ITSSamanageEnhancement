@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.TreeMap;
@@ -135,7 +136,7 @@ public class SamanageRequests {
 	// HTML METHOD:
 	// GET
 
-	public static TreeMap<String, Incident> getIncidents(String userToken, String userID) {
+	public static TreeMap<String, Incident> getIncidents(String userToken, String userID, LocalDate fromDate, LocalDate toDate) {
 		TreeMap<String, Incident> incidentMap = new TreeMap<String, Incident>();
 		boolean hasMore = true;
 		int curPage = 1;
@@ -148,11 +149,9 @@ public class SamanageRequests {
 				 * application/vnd.samanage.v2.1+xml' -X GET
 				 * https://api.samanage.com/incidents.xml
 				 */
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-				Date date = new Date();
 				String url = "https://api.samanage.com/incidents.xml" + "?per_page=100&page=" + curPage
-						+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D=" + sdf.format(date)
-						+ "&created_custom_lte%5B%5D=" + sdf.format(date) + "&assigned_to%5B%5D=" + userID;
+						+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D=" + fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+						+ "&created_custom_lte%5B%5D=" + toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&assigned_to%5B%5D=" + userID;
 
 				URL obj = new URL(url);
 				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
