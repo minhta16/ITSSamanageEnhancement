@@ -49,6 +49,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -187,13 +188,13 @@ public class MainPaneController {
 		System.out.print("Setting up Incident Editor\t\t\t\r");
 		setupIncidentEditTab();
 
-		System.out.print("Setting up Template Editor\t\t\t\r");
-		setupTemplateMenu();
 
 		// setup tabs
 		System.out.print("Setting up tabs\t\t\t\r");
 		setupTabs();
 
+		System.out.print("Setting up Template Editor\t\t\t\r");
+		setupTemplateMenu();
 		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
 		if (AppSession.getSession().getDefaultAutoUpdateCheck()) {
 			System.out.print("Checking for newer database version...\t\t\t\r");
@@ -1149,7 +1150,7 @@ public class MainPaneController {
 	@FXML
 	private DatePicker tempDatePicker;
 	@FXML
-	private TabPane templateTabPane;
+	private BorderPane templatePane;
 
 	private IncidentEditType templateEdit;
 
@@ -1157,8 +1158,18 @@ public class MainPaneController {
 
 	@FXML
 	private void handleTemplateSaveBtn() {
+		String id;
+		if (AppSession.getSession().getTemplates().isEmpty()) {
+			id = "0";
+		} else {
+			if (templateEdit == IncidentEditType.EDIT) {
+				id = currentTemplate.getNumber();
+			} else {
+				id = "" + Integer.parseInt(AppSession.getSession().getTemplates().lastKey()) + 1;
+			}
+		}
 		Incident template = new Incident(tempNameField.getText(),
-				"" + Integer.parseInt(AppSession.getSession().getTemplates().lastKey()) + 1,
+				id,
 				tempStateComboBox.getValue(), tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(),
 				tempCatComboBox.getValue(), tempSubcatComboBox.getValue(), tempAsgField.getText(),
 				tempReqField.getText(), tempSiteComboBox.getValue(), tempDeptComboBox.getValue(),
@@ -1166,16 +1177,17 @@ public class MainPaneController {
 				AppSession.getSession().getTemplateTimeTracks());
 
 		if (templateEdit == IncidentEditType.NEW) {
-			AppSession.getSession().addTemplate(template);
+			AppSession.getSession().addTemplate(id, template);
 		} else {
-			AppSession.getSession().replaceTemplate(currentTemplate.getNumber(), template);
+			AppSession.getSession().addTemplate(id, template);
 		}
 		clearTemplate();
+		updateTemplatesTable();
 	}
 
 	@FXML
 	private void handleNewTemplateBtn() {
-		templateTabPane.setDisable(false);
+		templatePane.setDisable(false);
 		templateEdit = IncidentEditType.NEW;
 	}
 
@@ -1194,10 +1206,10 @@ public class MainPaneController {
 	}
 
 	private void setupTemplateMenu() {
-		templateTabPane.setDisable(true);
+		templatePane.setDisable(true);
 		templateTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("ID"));
 		templateTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
-//		templateTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
+		templateTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("rmBtn"));
 
 		tempDatePicker.setConverter(new StringConverter<LocalDate>() {
 			@Override
@@ -1226,10 +1238,14 @@ public class MainPaneController {
 		for (String id : AppSession.getSession().getTemplates().keySet()) {
 			Incident template = AppSession.getSession().getTemplates().get(id);
 			template.getEditBtn().setOnAction((e) -> {
-				templateTabPane.setDisable(false);
+				templatePane.setDisable(false);
 				fetchTemplateInfo();
 				templateEdit = IncidentEditType.EDIT;
 				currentTemplate = template;
+			});
+			template.getRmBtn().setOnAction((e) -> {
+				AppSession.getSession().removeTemplate(id);
+				updateTemplatesTable();
 			});
 			templateTable.getItems().add(template);
 		}
@@ -1246,6 +1262,7 @@ public class MainPaneController {
 	}
 
 	private void clearTemplate() {
+		tempNameField.setText("");
 		tempStateComboBox.setValue(null);
 		tempCatComboBox.setValue(null);
 		tempSubcatComboBox.setValue(null);
@@ -1259,13 +1276,12 @@ public class MainPaneController {
 		tempTrackCmtField.setText("");
 		tempTrackTimeField.setText("");
 
-		tempTrackTable.getItems().clear();
 
 		tempPriorityChoiceBox.setValue(null);
 		tempDeptComboBox.setValue(null);
 		tempSiteComboBox.setValue(null);
 		tempDatePicker.setValue(null);
-		templateTabPane.setDisable(true);
+		templatePane.setDisable(true);
 	}
 
 	private String toCorrectDomain(String email) {

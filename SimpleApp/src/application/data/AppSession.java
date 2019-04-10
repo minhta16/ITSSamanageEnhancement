@@ -486,19 +486,8 @@ public class AppSession {
 		updateGroups();
 		updateSoftwares();
 	}
-	
-	public void addTemplate(Incident template) {
-		templates.put(templates.lastKey() + 1, template);
-		try {
-			saveData();
-		} catch (JsonIOException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		templateTimeTracks.clear();
-	}
 
-	public void replaceTemplate(String id, Incident template) {
+	public void addTemplate(String id, Incident template) {
 		templates.put(id, template);
 		try {
 			saveData();
@@ -507,6 +496,15 @@ public class AppSession {
 			e.printStackTrace();
 		}
 		templateTimeTracks.clear();
+	}
+	public void removeTemplate(String id) {
+		templates.remove(id);
+		try {
+			saveData();
+		} catch (JsonIOException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private String toShortDomain(String email) {

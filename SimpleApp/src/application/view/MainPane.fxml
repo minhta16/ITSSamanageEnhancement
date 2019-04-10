@@ -337,7 +337,7 @@
                   </TabPane>
                </content>
             </Tab>
-            <Tab fx:id="incidentEditTab1" closable="false" text="Templates">
+            <Tab fx:id="templateTab" closable="false" text="Templates">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
@@ -364,7 +364,7 @@
                                 </columns>
                               </TableView>
                               <Label text="Available Templates" />
-                              <BorderPane style="-fx-border-color: gray;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                              <BorderPane fx:id="templatePane" style="-fx-border-color: gray;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                                  <center>
                                     <TabPane fx:id="templateTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                                       <tabs>
@@ -391,18 +391,20 @@
                                                    </padding>
                                                    <children>
                                                       <Label text="State" GridPane.columnIndex="3" />
-                                                      <Label text="Category" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                      <Label text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                      <ComboBox fx:id="tempCatComboBox" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                                                       <ComboBox fx:id="tempStateComboBox" prefWidth="150.0" GridPane.columnIndex="4" />
+                                                      <Label text="Category" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                      <ComboBox fx:id="tempCatComboBox" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                      <Label text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                       <ComboBox fx:id="tempSubcatComboBox" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                                                       <Label text="Software" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                                                       <ComboBox fx:id="tempSoftwareComboBox" editable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                                      <Label text="Template Name" />
+                                                      <CustomTextField fx:id="tempNameField" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" />
                                                       <Label text="Requester" GridPane.rowIndex="1" />
-                                                      <Label text="Assignee" GridPane.rowIndex="2" />
-                                                      <Label text="Incident Name" GridPane.rowIndex="3" />
                                                       <CustomTextField fx:id="tempReqField" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Label text="Assignee" GridPane.rowIndex="2" />
                                                       <CustomTextField fx:id="tempAsgField" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <Label text="Incident Name" GridPane.rowIndex="3" />
                                                       <CustomTextField fx:id="tempIncidentNameField" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                       <Label text="Description" GridPane.rowIndex="4" />
                                                       <TextArea fx:id="tempDescField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4" />
@@ -411,8 +413,6 @@
                                                             <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTemplateSaveBtn" prefHeight="65.0" prefWidth="107.0" text="Save" />
                                                          </children>
                                                       </FlowPane>
-                                                      <Label text="Template Name" />
-                                                      <CustomTextField fx:id="tempNameField" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" />
                                                    </children>
                                                 </GridPane>
                                           </content>
@@ -443,10 +443,10 @@
                                                    </padding>
                                                    <children>
                                                       <Label text="Email" />
-                                                      <Label text="Comment" GridPane.rowIndex="1" />
-                                                      <Label text="Time Elapsed" GridPane.rowIndex="2" />
                                                       <CustomTextField fx:id="tempTrackEmailField" GridPane.columnIndex="1" />
+                                                      <Label text="Comment" GridPane.rowIndex="1" />
                                                       <TextField fx:id="tempTrackCmtField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Label text="Time Elapsed" GridPane.rowIndex="2" />
                                                       <TextField fx:id="tempTrackTimeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowSpan="4">
                                                         <columns>
