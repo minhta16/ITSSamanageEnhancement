@@ -65,8 +65,8 @@ public class MainPaneController {
 	private Tab settingsTab;
 
 	@FXML
-	private ComboBox<String> templateChoiceBox;
-	
+	private ComboBox<String> templateComboBox;
+
 	@FXML
 	private Button createNewIncidentBtn;
 
@@ -98,7 +98,7 @@ public class MainPaneController {
 
 	@FXML
 	private DatePicker datePicker;
-	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	@FXML
 	private TextField incidentNameField;
 	@FXML
@@ -255,7 +255,6 @@ public class MainPaneController {
 			incidentEditTab.setDisable(true);
 		}
 
-
 	}
 
 	private void setupMainMenuTab() {
@@ -273,6 +272,10 @@ public class MainPaneController {
 		incidentTable.getColumns().get(10).setCellValueFactory(new PropertyValueFactory<>("trackedUsersNum"));
 		incidentTable.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
 		incidentTable.setPlaceholder(new Label("Please update list to see the lastest incidents."));
+
+		templateComboBox.getSelectionModel().select(0);
+		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
+
 	}
 
 	private void setupIncidentEditTab() {
@@ -473,7 +476,7 @@ public class MainPaneController {
 		AppSession.getSession().setEditType(IncidentEditType.NEW);
 		clearInputFields();
 	}
-	
+
 	@FXML
 	private void handleSubmitBtn() {
 		if (userTokenField.getText().trim().equals("")) {
@@ -1112,7 +1115,7 @@ public class MainPaneController {
 		updateThread.start();
 	}
 
-	// TEMPLATES ------------------------------------------------
+	// LINEBREAK TEMPLATES ------------------------------------------------
 	@FXML
 	private TableView<Incident> templateTable;
 	@FXML
@@ -1181,10 +1184,13 @@ public class MainPaneController {
 				tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(),
 				AppSession.getSession().getTemplateTimeTracks());
 
-		if (templateEdit == IncidentEditType.NEW) {
-			AppSession.getSession().addTemplate(number, template);
+		if ((templateEdit == IncidentEditType.NEW
+				|| (templateEdit == IncidentEditType.EDIT && (!template.getID().equals(currentTemplate.getID()))))
+				&& AppSession.getSession().getTemplates().keySet().contains(tempNameField.getText())) {
+			showAlert("Warning", "A template called " + tempNameField.getText()
+					+ " already exists.\nPlease choose a different name.", AlertType.WARNING);
 		} else {
-			AppSession.getSession().addTemplate(number, template);
+			AppSession.getSession().addTemplate(tempNameField.getText(), template);
 		}
 		clearTemplate();
 		updateTemplatesTable();
@@ -1256,7 +1262,7 @@ public class MainPaneController {
 			});
 			template.getRmBtn().setOnAction((e) -> {
 				AppSession.getSession().removeTemplate(number);
-//				tempTrackTable.refresh();
+				updateTemplatesTable();
 			});
 			templateTable.getItems().add(template);
 		}
@@ -1288,7 +1294,6 @@ public class MainPaneController {
 		tempIncidentNameField.setText(currentTemplate.getTitle());
 		tempDescField.setText(currentTemplate.getDescription());
 
-		// TODO: fetch track table
 		for (int i = 0; i < currentTemplate.getTimeTracks().size(); i++) {
 			TimeTrack track = currentTemplate.getTimeTracks().get(i);
 			int index = i;

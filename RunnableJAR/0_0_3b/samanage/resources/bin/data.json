@@ -16,6 +16,74 @@
   },
   "defaultAutoUpdateCheckChoice": false,
   "dtbUpdateCheckAskAgainCheckBox": false,
+  "templates": {
+    "0": {
+      "ID": "lol 2",
+      "number": "0",
+      "state": "",
+      "title": "",
+      "priority": "",
+      "cat": "",
+      "subcat": "",
+      "assignee": "",
+      "requester": "",
+      "site": "",
+      "dept": "",
+      "desc": "",
+      "groupId": "",
+      "software": "",
+      "trackedUsers": [
+        {
+          "user": {
+            "name": "Ta, Minh Q",
+            "email": "minhta16@augustana.edu",
+            "dept": "Student",
+            "site": "Freya House 2",
+            "ID": "1753326",
+            "groupID": [
+              "1953008"
+            ]
+          },
+          "time": 30,
+          "comment": "xong"
+        }
+      ],
+      "trackedUsersNum": 1
+    },
+    "01": {
+      "ID": "minh ta",
+      "number": "01",
+      "state": "",
+      "title": "minh",
+      "priority": "",
+      "cat": "",
+      "subcat": "",
+      "assignee": "minh",
+      "requester": "minh",
+      "site": "",
+      "dept": "",
+      "desc": "asdlaksld",
+      "groupId": "",
+      "software": "",
+      "trackedUsers": [
+        {
+          "user": {
+            "name": "Ta, Minh Q",
+            "email": "minhta16@augustana.edu",
+            "dept": "Student",
+            "site": "Freya House 2",
+            "ID": "1753326",
+            "groupID": [
+              "1953008"
+            ]
+          },
+          "time": 30,
+          "comment": "xong"
+        }
+      ],
+      "trackedUsersNum": 1
+    }
+  },
   "groups": {
     "1564650": {
       "name": "Hardware Techs",

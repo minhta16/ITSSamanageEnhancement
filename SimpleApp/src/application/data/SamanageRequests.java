@@ -54,8 +54,8 @@ public class SamanageRequests {
 
 		URL obj = new URL(url);
 		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-		conn.setDoOutput(true);
 
+		conn.setDoOutput(true);
 		conn.setRequestMethod("POST");
 		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
 		conn.setRequestProperty("Accept", ACCEPT_VERSION);
@@ -66,8 +66,10 @@ public class SamanageRequests {
 		data += " <priority>" + priority + "</priority>";
 		data += " <requester><email>" + requester + "</email></requester>";
 		data += " <category><name>" + category + "</name></category>";
-		if (!subcategory.equals("")) {
-			data += " <subcategory>" + "      <name>" + subcategory + "</name>" + " </subcategory>";
+		if (!subcategory.isEmpty()) {
+			data += " <subcategory>";
+			data += "<name>" + subcategory + "</name>";
+			data += " </subcategory>";
 		}
 		data += " <description>" + description + "</description>";
 		data += " <due_at>" + dueDate + "</due_at>";
@@ -76,11 +78,14 @@ public class SamanageRequests {
 		} else {
 			data += " <assignee_id>" + assignee + "</assignee_id>";
 		}
-		if (!software.isEmpty()) {
+		if (software != null && !software.isEmpty()) {
 			data += "<custom_fields_values>";
-			data += "<custom_fields_value><name>Software</name>";
-			data += "<value>" + software + "</value></custom_fields_value>";
+			data += "<custom_fields_value>";
+			data += "<name>Software</name>";
+			data += "<value>" + software + "</value>";
+			data += "</custom_fields_value>";
 			data += "</custom_fields_values>";
+
 		}
 		data += "</incident>";
 
@@ -136,7 +141,8 @@ public class SamanageRequests {
 	// HTML METHOD:
 	// GET
 
-	public static TreeMap<String, Incident> getIncidents(String userToken, String userID, LocalDate fromDate, LocalDate toDate) {
+	public static TreeMap<String, Incident> getIncidents(String userToken, String userID, LocalDate fromDate,
+			LocalDate toDate) {
 		TreeMap<String, Incident> incidentMap = new TreeMap<String, Incident>();
 		boolean hasMore = true;
 		int curPage = 1;
@@ -150,8 +156,9 @@ public class SamanageRequests {
 				 * https://api.samanage.com/incidents.xml
 				 */
 				String url = "https://api.samanage.com/incidents.xml" + "?per_page=100&page=" + curPage
-						+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D=" + fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-						+ "&created_custom_lte%5B%5D=" + toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&assigned_to%5B%5D=" + userID;
+						+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
+						+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
+						+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&assigned_to%5B%5D=" + userID;
 
 				URL obj = new URL(url);
 				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -667,6 +674,11 @@ public class SamanageRequests {
 	// PUT
 
 	public static void updateStateAndDept(String userToken, String incidentID, String state, String dept, String site) {
+		if (state == dept && dept == site ) {
+			return;
+		} else if (state.isEmpty() && dept.isEmpty() && site.isEmpty()) {
+			return;
+		}
 		try {
 			String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
 
@@ -680,9 +692,15 @@ public class SamanageRequests {
 			conn.setRequestProperty("Content-Type", "text/xml");
 
 			String data = "<incident>";
-			data += " <state>" + state + "</state>";
-			data += " <site><name>" + site + "</name></site>";
-			data += " <department><name>" + dept + "</name></department>";
+			if (state != null && !state.isEmpty()) {
+				data += " <state>" + state + "</state>";
+			}
+			if (site != null && !site.isEmpty()) {
+				data += " <site><name>" + site + "</name></site>";
+			}
+			if (dept != null && !dept.isEmpty()) {
+				data += " <department><name>" + dept + "</name></department>";
+			}
 			data += "</incident>";
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 			out.write(data);
