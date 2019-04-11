@@ -160,7 +160,7 @@ public class MainPaneController {
 
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
-
+		
 		AppSession.getSession().updateSoftwares();
 		updatingIncident = false;
 
@@ -1165,58 +1165,6 @@ public class MainPaneController {
 
 	private Incident currentTemplate;
 
-	@FXML
-	private void handleTemplateSaveBtn() {
-		String number;
-		if (AppSession.getSession().getTemplates().isEmpty()) {
-			number = "0";
-		} else {
-			if (templateEdit == IncidentEditType.EDIT) {
-				number = currentTemplate.getNumber();
-			} else {
-				number = "" + Integer.parseInt(AppSession.getSession().getTemplates().lastKey()) + 1;
-			}
-		}
-		Incident template = new Incident(tempNameField.getText(), number, tempStateComboBox.getValue(),
-				tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(), tempCatComboBox.getValue(),
-				tempSubcatComboBox.getValue(), tempAsgField.getText(), tempReqField.getText(),
-				tempSiteComboBox.getValue(), tempDeptComboBox.getValue(), tempDescField.getText(),
-				tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(),
-				AppSession.getSession().getTemplateTimeTracks());
-
-		if ((templateEdit == IncidentEditType.NEW
-				|| (templateEdit == IncidentEditType.EDIT && (!template.getID().equals(currentTemplate.getID()))))
-				&& AppSession.getSession().getTemplates().keySet().contains(tempNameField.getText())) {
-			showAlert("Warning", "A template called " + tempNameField.getText()
-					+ " already exists.\nPlease choose a different name.", AlertType.WARNING);
-		} else {
-			AppSession.getSession().addTemplate(tempNameField.getText(), template);
-		}
-		clearTemplate();
-		updateTemplatesTable();
-	}
-
-	@FXML
-	private void handleNewTemplateBtn() {
-		clearTemplate();
-		templateEdit = IncidentEditType.NEW;
-		templateTab.setText("+ Create");
-		templatePane.setDisable(false);
-	}
-
-	@FXML
-	private void handleTempAddTrackBtn() {
-		User user = AppSession.getSession().getUsers().get(toCorrectDomain(tempTrackEmailField.getText()));
-		TimeTrack track = new TimeTrack(user, Integer.parseInt(tempTrackTimeField.getText()),
-				tempTrackCmtField.getText());
-		track.getRemoveBtn().setOnAction((e) -> {
-			AppSession.getSession().removeTemplateTimeTrackByEmail(track.getEmail());
-			tempTrackTable.getItems().remove(track);
-		});
-		tempTrackTable.getItems().add(track);
-
-		AppSession.getSession().getTemplateTimeTracks().add(track);
-	}
 
 	private void setupTemplateMenu() {
 		templatePane.setDisable(true);
@@ -1247,9 +1195,57 @@ public class MainPaneController {
 				return null;
 			}
 		});
+		
+
+		TextFields.bindAutoCompletion(templateComboBox.getEditor(), templateComboBox.getItems());
 
 		updateTemplatesTable();
 
+	}
+	@FXML
+	private void handleTemplateSaveBtn() {
+		Incident template = new Incident(tempNameField.getText(), "0", tempStateComboBox.getValue(),
+				tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(), tempCatComboBox.getValue(),
+				tempSubcatComboBox.getValue(), tempAsgField.getText(), tempReqField.getText(),
+				tempSiteComboBox.getValue(), tempDeptComboBox.getValue(), tempDescField.getText(),
+				tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(),
+				AppSession.getSession().getTemplateTimeTracks());
+
+		if ((templateEdit == IncidentEditType.NEW
+				|| (templateEdit == IncidentEditType.EDIT && (!template.getID().equals(currentTemplate.getID()))))
+				&& AppSession.getSession().getTemplates().keySet().contains(tempNameField.getText())) {
+			showAlert("Warning", "A template called " + tempNameField.getText()
+					+ " already exists.\nPlease choose a different name.", AlertType.WARNING);
+		} else {
+			AppSession.getSession().addTemplate(tempNameField.getText(), template);
+		}
+		clearTemplate();
+		updateTemplatesTable();
+		templateComboBox.getItems().clear();
+		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
+		
+	}
+
+	@FXML
+	private void handleNewTemplateBtn() {
+		clearTemplate();
+		templateEdit = IncidentEditType.NEW;
+		templateTab.setText("+ Create");
+		templatePane.setDisable(false);
+	}
+
+	@FXML
+	private void handleTempAddTrackBtn() {
+		User user = AppSession.getSession().getUsers().get(toCorrectDomain(tempTrackEmailField.getText()));
+		TimeTrack track = new TimeTrack(user, Integer.parseInt(tempTrackTimeField.getText()),
+				tempTrackCmtField.getText());
+		track.getRemoveBtn().setOnAction((e) -> {
+			AppSession.getSession().removeTemplateTimeTrackByEmail(track.getEmail());
+			tempTrackTable.getItems().remove(track);
+		});
+		tempTrackTable.getItems().add(track);
+
+		AppSession.getSession().getTemplateTimeTracks().add(track);
 	}
 
 	private void updateTemplatesTable() {
@@ -1269,9 +1265,10 @@ public class MainPaneController {
 		if (AppSession.getSession().getCurrentIncidents().keySet().isEmpty()) {
 			templateTable.setPlaceholder(new Label("You have no templates."));
 		}
-		// DEFAULT SORT BY NUMBER
+		// DEFAULT SORT BY NAME
 		templateTable.getColumns().get(0).setSortType(TableColumn.SortType.ASCENDING);
 		templateTable.getSortOrder().add(templateTable.getColumns().get(0));
+
 	}
 
 	private void initializeEditTemplate(Incident template) {

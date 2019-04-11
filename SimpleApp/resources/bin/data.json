@@ -16,7 +16,36 @@
   },
   "defaultAutoUpdateCheckChoice": false,
   "dtbUpdateCheckAskAgainCheckBox": false,
-  "templates": {},
+  "templates": {
+    "Test": {
+      "ID": "Test",
+      "number": "0",
+      "title": "",
+      "assignee": "",
+      "requester": "minhta16",
+      "desc": "",
+      "trackedUsers": [],
+      "trackedUsersNum": 0
+    },
+    "Weekly meeting": {
+      "ID": "Weekly meeting",
+      "number": "0",
+      "state": "",
+      "title": "Weekly Meeting",
+      "priority": "",
+      "cat": "",
+      "subcat": "",
+      "assignee": "minhta16",
+      "requester": "minhta16",
+      "site": "",
+      "dept": "",
+      "desc": "",
+      "groupId": "",
+      "software": "",
+      "trackedUsers": [],
+      "trackedUsersNum": 0
+    }
+  },
   "groups": {
     "1564650": {
       "name": "Hardware Techs",

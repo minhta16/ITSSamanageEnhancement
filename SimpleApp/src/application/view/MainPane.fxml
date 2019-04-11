@@ -74,10 +74,10 @@
                         <Button fx:id="createNewIncidentBtn" mnemonicParsing="false" onAction="#handleNewIncidentBtn" text="+ New Incident" GridPane.columnIndex="1" />
                         <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="2">
                            <children>
-                              <VBox prefHeight="74.0" prefWidth="150.0">
+                              <VBox prefHeight="74.0" prefWidth="208.0">
                                  <children>
                                     <Label text="Template" />
-                                    <ComboBox fx:id="templateComboBox" editable="true" prefWidth="150.0" />
+                                    <ComboBox fx:id="templateComboBox" editable="true" prefHeight="31.0" prefWidth="212.0" />
                                  </children>
                               </VBox>
                               <Button mnemonicParsing="false" text="+New Incident using a Template">
