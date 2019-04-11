@@ -2,7 +2,7 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 #curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+json' -H 'Content-type: application/json' -X GET https://api.samanage.com/incidents.json | python -mjson.tool > "formatted.json
 
 # Get incidents ------------------------------------------------
-curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET "https://api.samanage.com/incidents.xml?per_page=1&page=1&category%5B%5D=408915" -o software_incident.xml
+# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET "https://api.samanage.com/incidents.xml?per_page=1&page=1&category%5B%5D=408915" -o software_incident.xml
 
 
 # Get categories ----------------------------------------------
@@ -18,19 +18,19 @@ curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.sa
 # curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -X GET "https://api.samanage.com/sites.xml?name=Andreen" -o sites.xml
 
 # New incident ------------------------------------------------
-# curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
-# <incident>
-#  <name>Test</name>
-#  <priority>Medium</priority>
-#  <requester><email>MINHTA16@augustana.edu</email></requester>
-#   <category><name>Meetings  (ITS use only)</name></category>
-#   <subcategory>
-#        <name>Training/Workshops</name>
-#   </subcategory>
-#  <description>Test curl-ing new incidents</description>
-#  <due_at>Mar 20, 2019</due_at>
-# </incident>
-# ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
+curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
+<incident>
+ <name>Test</name>
+ <priority>Medium</priority>
+ <requester><email>MINHTA16@augustana.edu</email></requester>
+  <category><name>Meetings  (ITS use only)</name></category>
+  <subcategory>
+       <name>Planning/Consulting/Brainstorming</name>
+  </subcategory>
+ <description>Test curl-ing new incidents</description>
+ <due_at>Mar 20, 2019</due_at>
+</incident>
+' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml
 
 # Edit incident -------------------------------------------
 # curl -H "X-Samanage-Authorization: Bearer $TOKEN" -d '
