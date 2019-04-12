@@ -98,7 +98,7 @@ public class MainPaneController {
 
 	@FXML
 	private DatePicker datePicker;
-	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 	@FXML
 	private TextField incidentNameField;
 	@FXML
@@ -541,6 +541,7 @@ public class MainPaneController {
 						} else {
 							assignee = AppSession.getSession().getGroupId(assignee);
 						}
+						incidentEditTab.setDisable(true);
 						SamanageRequests.newIncidentWithTimeTrack(AppSession.getSession().getUserToken(), incidentName,
 								priorityChoiceBox.getValue(), catChoiceBox.getValue(), subcatChoiceBox.getValue(),
 								descField.getText(), datePicker.getValue().toString(), statesChoiceBox.getValue(),
@@ -566,6 +567,9 @@ public class MainPaneController {
 					updatingIncident = false;
 					submitBtn.textProperty().unbind();
 					clearInputFields();
+					showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
+					tabPane.getSelectionModel().select(mainMenuTab);
+					handleUpdateListBtn();
 				}
 			});
 			Thread newIncidentThread = new Thread(newIncident);
@@ -596,6 +600,7 @@ public class MainPaneController {
 						} else {
 							assignee = AppSession.getSession().getGroupId(assignee);
 						}
+						incidentEditTab.setDisable(true);
 						SamanageRequests.updateIncidentWithTimeTrack(AppSession.getSession().getUserToken(),
 								incidentName, curUpdateIncidentID, priorityChoiceBox.getValue(),
 								catChoiceBox.getValue(), subcatChoiceBox.getValue(), descField.getText(),
@@ -620,16 +625,14 @@ public class MainPaneController {
 				public void handle(WorkerStateEvent event) {
 					submitBtn.textProperty().unbind();
 					clearInputFields();
-					submitBtn.setText("Submit");
+					showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
+					tabPane.getSelectionModel().select(mainMenuTab);
+					handleUpdateListBtn();
 				}
 			});
 			Thread editIncidentThread = new Thread(editIncident);
 			editIncidentThread.start();
 		}
-		showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
-		tabPane.getSelectionModel().select(mainMenuTab);
-		incidentEditTab.setDisable(true);
-		handleUpdateListBtn();
 
 	}
 

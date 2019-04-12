@@ -20,10 +20,18 @@
     "Test": {
       "ID": "Test",
       "number": "0",
+      "state": "",
       "title": "",
+      "priority": "",
+      "cat": "",
+      "subcat": "",
       "assignee": "",
       "requester": "minhta16",
+      "site": "",
+      "dept": "",
       "desc": "",
+      "groupId": "",
+      "software": "",
       "trackedUsers": [],
       "trackedUsersNum": 0
     },

@@ -387,6 +387,7 @@ public class AppSession {
 	public void updateListIncidents(LocalDate from, LocalDate to) {
 		TreeMap<String, Incident> newIncidents = new TreeMap<String, Incident>();
 		for (String groupID: users.get(toCorrectDomain(userEmail)).getGroupID()) {
+			System.err.println(groupID);
 			 newIncidents.putAll(SamanageRequests.getIncidents(userToken, groupID, from, to));
 		}
 		currentIncidents = newIncidents;
