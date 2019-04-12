@@ -1,8 +1,8 @@
 {
-  "userEmail": "minhta16",
+  "userEmail": "nguyentruong17",
   "userToken": "TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ\u003d\u003d:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg",
   "defaultDomain": "augustana.edu",
-  "defaultAssignee": "minhta16",
+  "defaultAssignee": "chrisvaughan",
   "defaultRequester": "minhta16",
   "requesterInfo": {
     "name": "Ta, Minh Q",
@@ -55,14 +55,6 @@
     }
   },
   "groups": {
-    "1564650": {
-      "name": "Hardware Techs",
-      "groupId": "1564650"
-    },
-    "1564651": {
-      "name": "Helpdesk group",
-      "groupId": "1564651"
-    },
     "1564652": {
       "name": "Network Group",
       "groupId": "1564652"
@@ -85,11 +77,6 @@
     }
   },
   "softwares": {
-    "AIMS": {
-      "name": "AIMS",
-      "id": "",
-      "vendor": ""
-    },
     "Acquia": {
       "name": "Acquia",
       "id": "",
@@ -207,11 +194,6 @@
     },
     "DNS": {
       "name": "DNS",
-      "id": "",
-      "vendor": ""
-    },
-    "Dell": {
-      "name": "Dell",
       "id": "",
       "vendor": ""
     },
@@ -599,13 +581,6 @@
     "Closed"
   ],
   "categories": {
-    "Account Management": [
-      "Account Maintenance",
-      "Account suspension",
-      "Exiting Employee",
-      "New Employee",
-      "Security/Permissions/Passwords"
-    ],
     "Campus Services": [
       "Audio/Video Conversion",
       "Equipment Loan ",
@@ -684,26 +659,10 @@
       "Windows 10 Migration",
       "Wireless expansion",
       "Work Order Processing"
-    ],
-    "Risks (ITS use only)": [],
-    "Software": [
-      "Data Reports",
-      "Data Transfer",
-      "Error/Bug",
-      "ITS Website Updates (ITS use only)",
-      "License",
-      "Maintenance",
-      "New Installation",
-      "User Process",
-      "Vendor Product Support",
-      "Version Update",
-      "Z - Report - New"
     ]
   },
   "departments": [
     "Academic Affairs",
-    "Accounting",
-    "Admissions",
     "Advancement",
     "Advising",
     "Art",
@@ -726,7 +685,6 @@
     "Center for Vocational Reflect",
     "Chemistry",
     "Choir",
-    "Clas, Eng, Religion",
     "Classics",
     "Coffee House",
     "Communication Science \u0026 Disord",
@@ -803,7 +761,6 @@
     "Abbey House 201",
     "Abbey Studio 3",
     "Andeberg House",
-    "Andeberg House A1",
     "Andeberg House A2",
     "Andeberg House A3",
     "Andeberg House A4",

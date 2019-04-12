@@ -155,9 +155,9 @@
                                     <Label text="Requester" GridPane.rowIndex="1" />
                                     <CustomTextField fx:id="requesterField" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Assignee" GridPane.rowIndex="2" />
-                                    <CustomTextField fx:id="assigneeField" onKeyReleased="#handleAssigneeFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <CustomTextField fx:id="assigneeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <Label text="Incident Name" GridPane.rowIndex="3" />
-                                    <TextField fx:id="incidentNameField" onKeyReleased="#handleIncidentNameType" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="incidentNameField" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                     <Label text="Description" GridPane.rowIndex="4" />
                                     <TextArea fx:id="descField" prefHeight="127.0" prefWidth="881.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="4" />
                                     <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="42.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
@@ -295,9 +295,9 @@
                                           <Label text="User Token" GridPane.rowIndex="1" />
                                           <TextArea fx:id="userTokenField" onKeyTyped="#handleUserTokenFieldChange" prefHeight="112.0" prefWidth="270.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1" />
                                           <Label prefHeight="18.0" prefWidth="164.0" text="Default Requester" GridPane.rowIndex="2" />
-                                          <CustomTextField fx:id="defaultRequesterField" onAction="#handleDefaultRequesterFieldChange" onKeyReleased="#handleDefaultRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <CustomTextField fx:id="defaultRequesterField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                          <Label text="Default Assignee" GridPane.rowIndex="3" />
-                                          <CustomTextField fx:id="defaultAssigneeField" onAction="#handleDefaultAssigneeFieldChange" onKeyReleased="#handleDefaultAssigneeFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <CustomTextField fx:id="defaultAssigneeField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                           <Label text="Default Email domain" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                           <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                              <children>
@@ -307,7 +307,7 @@
                                           </FlowPane>
                                           <Label GridPane.rowIndex="4" />
                                           <Label text="Your Email" />
-                                          <CustomTextField fx:id="userEmailField" onAction="#handleUserEmailFieldChange" onKeyReleased="#handleUserEmailFieldChange" GridPane.columnIndex="1" />
+                                          <CustomTextField fx:id="userEmailField" GridPane.columnIndex="1" />
                                        </children>
                                        <BorderPane.margin>
                                           <Insets />

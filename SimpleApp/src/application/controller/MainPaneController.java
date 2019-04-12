@@ -160,9 +160,8 @@ public class MainPaneController {
 
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
-		
-		AppSession.getSession().updateSoftwares();
-		updatingIncident = false;
+
+		AppSession.getSession().updateEasyStuff();
 
 		// setup setting tab
 		System.out.print("Setting up Setting Tab\t\t\t\r");
@@ -300,8 +299,17 @@ public class MainPaneController {
 		defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
 
 		TextFields.bindAutoCompletion(userEmailField, savedEmailprovider);
+		userEmailField.textProperty().addListener((o, oV, nV) -> {
+			handleUserEmailFieldChange();
+		});
 		TextFields.bindAutoCompletion(defaultAssigneeField, savedEmailprovider);
+		defaultAssigneeField.textProperty().addListener((o, oV, nV) -> {
+			handleDefaultAssigneeFieldChange();
+		});
 		TextFields.bindAutoCompletion(defaultRequesterField, savedEmailprovider);
+		defaultRequesterField.textProperty().addListener((o, oV, nV) -> {
+			handleDefaultRequesterFieldChange();
+		});
 
 		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
 
@@ -466,7 +474,13 @@ public class MainPaneController {
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
 
 		TextFields.bindAutoCompletion(assigneeField, assigneeProvider);
+		assigneeField.textProperty().addListener((o, oV, nV) -> {
+			handleAssigneeFieldChange();
+		});
 		TextFields.bindAutoCompletion(requesterField, savedEmailprovider);
+		requesterField.textProperty().addListener((o, oV, nV) -> {
+			handleRequesterFieldChange();
+		});
 	}
 
 	@FXML
@@ -928,9 +942,8 @@ public class MainPaneController {
 
 	@FXML
 	private void handleUserEmailFieldChange() {
-		String initDefault = AppSession.getSession().getUserEmail();
 		AppSession.getSession().setUserEmail(userEmailField.getText());
-		if (!initDefault.equalsIgnoreCase(AppSession.getSession().getUserEmail())) {
+		if (AppSession.getSession().getUsers().keySet().contains(userEmailField.getText())) {
 			userEmailField.setText(AppSession.getSession().getUserEmail());
 			try {
 				AppSession.getSession().saveData();
@@ -942,9 +955,8 @@ public class MainPaneController {
 
 	@FXML
 	private void handleDefaultRequesterFieldChange() {
-		String initDefault = AppSession.getSession().getDefaultRequester();
 		AppSession.getSession().setDefaultRequester(defaultRequesterField.getText());
-		if (!initDefault.equalsIgnoreCase(AppSession.getSession().getDefaultRequester())) {
+		if (AppSession.getSession().getUsers().keySet().contains(defaultRequesterField.getText())) {
 			requesterField.setText(toShortDomain(AppSession.getSession().getDefaultRequester()));
 			defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
 			handleRequesterFieldChange();
@@ -958,10 +970,8 @@ public class MainPaneController {
 
 	@FXML
 	private void handleDefaultAssigneeFieldChange() {
-
-		String initDefault = AppSession.getSession().getDefaultAssignee();
 		AppSession.getSession().setDefaultAssignee(defaultAssigneeField.getText());
-		if (!initDefault.equalsIgnoreCase(AppSession.getSession().getDefaultAssignee())) {
+		if (AppSession.getSession().getUsers().keySet().contains(defaultAssigneeField.getText())) {
 			assigneeField.setText(toShortDomain(AppSession.getSession().getDefaultAssignee()));
 			defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
 			handleAssigneeFieldChange();
@@ -1039,6 +1049,8 @@ public class MainPaneController {
 						public Parent call() throws JsonIOException, IOException {
 							for (Runnable r : methodsToRun) {
 								updateMessage("Updating...");
+								cmd.keySet()
+										.removeIf(key -> (AppSession.getSession().getCheckFlags().get(key).equals(r)));
 								r.run();
 							}
 							updateMessage("Saving Data...");
@@ -1054,7 +1066,7 @@ public class MainPaneController {
 
 					// method to set labeltext
 					updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
-					updateDataBtn.setDisable(true);
+//					updateDataBtn.setDisable(true);
 					update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 						@Override
 						public void handle(WorkerStateEvent event) {
@@ -1171,7 +1183,6 @@ public class MainPaneController {
 
 	private Incident currentTemplate;
 
-
 	private void setupTemplateMenu() {
 		templatePane.setDisable(true);
 		templateTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("ID"));
@@ -1201,13 +1212,12 @@ public class MainPaneController {
 				return null;
 			}
 		});
-		
 
 		TextFields.bindAutoCompletion(templateComboBox.getEditor(), templateComboBox.getItems());
-
 		updateTemplatesTable();
 
 	}
+
 	@FXML
 	private void handleTemplateSaveBtn() {
 		Incident template = new Incident(tempNameField.getText(), "0", tempStateComboBox.getValue(),
@@ -1229,7 +1239,7 @@ public class MainPaneController {
 		updateTemplatesTable();
 		templateComboBox.getItems().clear();
 		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
-		
+
 	}
 
 	@FXML
