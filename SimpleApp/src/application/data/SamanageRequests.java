@@ -311,7 +311,7 @@ public class SamanageRequests {
 
 	public static TreeMap<String, User> getAllUsers(String userToken) {
 		TreeMap<String, User> users = new TreeMap<String, User>();
-
+		int totalUsers = getTotalElements(userToken, "users");
 		boolean hasMore = true;
 		int curPage = 1;
 		while (hasMore) {
@@ -367,16 +367,18 @@ public class SamanageRequests {
 						newUser.setSite(getString("name", (Element) user.getElementsByTagName("site").item(0)));
 						newUser.setID(ID);
 						ArrayList<String> groupIdList = new ArrayList<String>();
-						NodeList groupIds = user.getElementsByTagName("group_ids");
+						Element groupIdsElement = (Element) user.getElementsByTagName("group_ids").item(0);
+						NodeList groupIds = groupIdsElement.getElementsByTagName("group_id");
 						for (int j = 0; j < groupIds.getLength(); j++) {
 							if (groupIds.item(j) instanceof Element) {
-								String groupID = getString("group_id", (Element) groupIds.item(j));
+								String groupID = groupIds.item(j).getTextContent();
 								groupIdList.add(groupID);
 							}
 						}
 						newUser.setGroupID(groupIdList);
 						users.put(email, newUser);
 					}
+					System.out.print("Updating users: [" + (i + (curPage - 1) * 100) + "/" + totalUsers + "]\t\t\t\r");
 
 				}
 				conn.disconnect();
@@ -674,7 +676,7 @@ public class SamanageRequests {
 	// PUT
 
 	public static void updateStateAndDept(String userToken, String incidentID, String state, String dept, String site) {
-		if (state == dept && dept == site ) {
+		if (state == dept && dept == site) {
 			return;
 		} else if (state.isEmpty() && dept.isEmpty() && site.isEmpty()) {
 			return;
@@ -811,10 +813,10 @@ public class SamanageRequests {
 	protected static String getString(String tagName, Element element, int item) {
 		NodeList list = element.getElementsByTagName(tagName);
 		if (list != null && list.getLength() > 0) {
-			NodeList subList = list.item(item).getChildNodes();
+			NodeList subList = list.item(0).getChildNodes();
 
 			if (subList != null && subList.getLength() > 0) {
-				return subList.item(0).getNodeValue();
+				return subList.item(item).getNodeValue();
 			}
 		}
 

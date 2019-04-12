@@ -1,5 +1,5 @@
 {
-  "userEmail": "minhta16",
+  "userEmail": "chrisvaughan",
   "userToken": "TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ\u003d\u003d:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUzMzI2LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTA2IDE5OjEzOjE5In0.DxvUav8KRxixHbAAMZw5n6Kq19mzOJCc58h2cd1uViFqELmhZ2aj7shKuqR-K6Z58K6BsCLdmP4-XpETCtksfg",
   "defaultDomain": "augustana.edu",
   "defaultAssignee": "minhta16",
@@ -3476,6 +3476,16 @@
         "3734694"
       ]
     },
+    "aidenschmitz19@augustana.edu": {
+      "name": "Schmitz, Aiden",
+      "email": "aidenschmitz19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706279",
+      "groupID": [
+        "4973708"
+      ]
+    },
     "aileenmacdonald12@augustana.edu": {
       "name": "MacDonald, Aileen C",
       "email": "aileenmacdonald12@augustana.edu",
@@ -3866,6 +3876,16 @@
         "1719135"
       ]
     },
+    "alexanderdoonan19@augustana.edu": {
+      "name": "Doonan, Alexander",
+      "email": "alexanderdoonan19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706280",
+      "groupID": [
+        "4973709"
+      ]
+    },
     "alexanderduke17@augustana.edu": {
       "name": "Duke, Alexander",
       "email": "alexanderduke17@augustana.edu",
@@ -4054,6 +4074,16 @@
       "ID": "3501365",
       "groupID": [
         "3734705"
+      ]
+    },
+    "alexandermortenson19@augustana.edu": {
+      "name": "Mortenson, Alexander",
+      "email": "alexandermortenson19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706263",
+      "groupID": [
+        "4973692"
       ]
     },
     "alexanderpanning17@augustana.edu": {
@@ -4324,6 +4354,16 @@
       "ID": "2430925",
       "groupID": [
         "2630009"
+      ]
+    },
+    "alexcruz19@augustana.edu": {
+      "name": "Cruz, Alex",
+      "email": "alexcruz19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706285",
+      "groupID": [
+        "4973714"
       ]
     },
     "alexdisabato17@augustana.edu": {
@@ -5386,6 +5426,16 @@
         "2753464"
       ]
     },
+    "almabackman19@augustana.edu": {
+      "name": "Backman, Alma",
+      "email": "almabackman19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706293",
+      "groupID": [
+        "4973722"
+      ]
+    },
     "almalievanos@augustana.edu": {
       "name": "Lievanos, Alma",
       "email": "almalievanos@augustana.edu",
@@ -5774,6 +5824,16 @@
       "ID": "1552990",
       "groupID": [
         "1747850"
+      ]
+    },
+    "alyssaparisi19@augustana.edu": {
+      "name": "Parisi, Alyssa",
+      "email": "alyssaparisi19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706275",
+      "groupID": [
+        "4973704"
       ]
     },
     "alyssareuter14@augustana.edu": {
@@ -8136,6 +8196,16 @@
         "2640612"
       ]
     },
+    "annikamurrah19@augustana.edu": {
+      "name": "Murrah, Annika",
+      "email": "annikamurrah19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706251",
+      "groupID": [
+        "4973680"
+      ]
+    },
     "annikastrack18@augustana.edu": {
       "name": "Strack,Annika",
       "email": "annikastrack18@augustana.edu",
@@ -9616,6 +9686,16 @@
         "3252214"
       ]
     },
+    "ayradicatron19@augustana.edu": {
+      "name": "Catron, Ayradi",
+      "email": "ayradicatron19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706259",
+      "groupID": [
+        "4973688"
+      ]
+    },
     "azaman18@augustana.edu": {
       "name": "Zaman,Adiba Tabassum Binte",
       "email": "azaman18@augustana.edu",
@@ -9724,6 +9804,16 @@
       "ID": "1524832",
       "groupID": [
         "1718971"
+      ]
+    },
+    "baotran19@augustana.edu": {
+      "name": "Tran, Bao",
+      "email": "baotran19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706295",
+      "groupID": [
+        "4973724"
       ]
     },
     "baovu15@augustana.edu": {
@@ -10523,7 +10613,9 @@
       "site": "Sorensen 130",
       "ID": "1376124",
       "groupID": [
-        "1564653"
+        "1564653",
+        "1566656",
+        "1820162"
       ]
     },
     "bradfoley@augustana.edu": {
@@ -11393,7 +11485,8 @@
       "site": "",
       "ID": "1525535",
       "groupID": [
-        "1719674"
+        "1719674",
+        "3994078"
       ]
     },
     "brianalovell15@augustana.edu": {
@@ -14086,6 +14179,16 @@
         "1721476"
       ]
     },
+    "chadlarson19@augustana.edu": {
+      "name": "Larson, Chad",
+      "email": "chadlarson19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706268",
+      "groupID": [
+        "4973697"
+      ]
+    },
     "chadmartens13@augustana.edu": {
       "name": "Martens, Chad R",
       "email": "chadmartens13@augustana.edu",
@@ -15343,7 +15446,9 @@
       "site": "Sorensen 100",
       "ID": "1374195",
       "groupID": [
-        "1564653"
+        "1564653",
+        "1564654",
+        "1820162"
       ]
     },
     "chriswoods@augustana.edu": {
@@ -18586,6 +18691,16 @@
         "1718896"
       ]
     },
+    "dawitferede19@augustana.edu": {
+      "name": "Ferede, Dawit",
+      "email": "dawitferede19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706294",
+      "groupID": [
+        "4973723"
+      ]
+    },
     "dawnfarmer@augustana.edu": {
       "name": "Farmer, Dawn",
       "email": "dawnfarmer@augustana.edu",
@@ -19324,6 +19439,16 @@
       "ID": "2957591",
       "groupID": [
         "3170829"
+      ]
+    },
+    "diederikvanderbend19@augustana.edu": {
+      "name": "Van Der Bend, Diederik",
+      "email": "diederikvanderbend19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706290",
+      "groupID": [
+        "4973719"
       ]
     },
     "dillondurrett17@augustana.edu": {
@@ -21216,6 +21341,16 @@
         "1719424"
       ]
     },
+    "emilyheideman19@augustana.edu": {
+      "name": "Heideman, Emily",
+      "email": "emilyheideman19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706253",
+      "groupID": [
+        "4973682"
+      ]
+    },
     "emilyhueber15@augustana.edu": {
       "name": "Hueber, Emily H",
       "email": "emilyhueber15@augustana.edu",
@@ -21314,6 +21449,16 @@
       "ID": "1525582",
       "groupID": [
         "1719721"
+      ]
+    },
+    "emilyluming19@augustana.edu": {
+      "name": "Luming, Emily",
+      "email": "emilyluming19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706252",
+      "groupID": [
+        "4973681"
       ]
     },
     "emilymason15@augustana.edu": {
@@ -21536,6 +21681,16 @@
         "1953046"
       ]
     },
+    "emilywenger19@augustana.edu": {
+      "name": "Wenger, Emily",
+      "email": "emilywenger19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706272",
+      "groupID": [
+        "4973701"
+      ]
+    },
     "emilywestermeyer15@augustana.edu": {
       "name": "Westermeyer,Emily",
       "email": "emilywestermeyer15@augustana.edu",
@@ -21644,6 +21799,16 @@
       "ID": "4648049",
       "groupID": [
         "4908809"
+      ]
+    },
+    "emmachandler19@augustana.edu": {
+      "name": "Chandler, Emma",
+      "email": "emmachandler19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706258",
+      "groupID": [
+        "4973687"
       ]
     },
     "emmacintado18@augustana.edu": {
@@ -22963,7 +23128,8 @@
       "site": "Andreen 213",
       "ID": "1753155",
       "groupID": [
-        "1952837"
+        "1952837",
+        "3994078"
       ]
     },
     "faithdanielson18@augustana.edu": {
@@ -23123,7 +23289,9 @@
       "site": "Sorensen 166A",
       "ID": "1374213",
       "groupID": [
-        "1564650"
+        "1564650",
+        "1564672",
+        "1820162"
       ]
     },
     "fernandorivas18@augustana.edu": {
@@ -23783,7 +23951,8 @@
       "site": "",
       "ID": "3503069",
       "groupID": [
-        "3736428"
+        "3736428",
+        "3994078"
       ]
     },
     "gavinwink17@augustana.edu": {
@@ -24013,7 +24182,8 @@
       "site": "Westerlin Residence Center J202",
       "ID": "1752898",
       "groupID": [
-        "1952580"
+        "1952580",
+        "3994078"
       ]
     },
     "giangphamthihong17@augustana.edu": {
@@ -24374,6 +24544,16 @@
       "ID": "1752914",
       "groupID": [
         "1952596"
+      ]
+    },
+    "gracegayhart19@augustana.edu": {
+      "name": "Gayhart, Grace",
+      "email": "gracegayhart19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706256",
+      "groupID": [
+        "4973685"
       ]
     },
     "graceguo18@augustana.edu": {
@@ -26466,6 +26646,16 @@
         "3734734"
       ]
     },
+    "huynguyen19@augustana.edu": {
+      "name": "Nguyen, Huy",
+      "email": "huynguyen19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706288",
+      "groupID": [
+        "4973717"
+      ]
+    },
     "hyeong-gyuchoi@augustana.edu": {
       "name": "Choi, Hyeong-Gyu",
       "email": "hyeong-gyuchoi@augustana.edu",
@@ -28346,6 +28536,16 @@
         "2753002"
       ]
     },
+    "jakoblarson19@augustana.edu": {
+      "name": "Larson, Jakob",
+      "email": "jakoblarson19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706282",
+      "groupID": [
+        "4973711"
+      ]
+    },
     "jakobmcgraw19@augustana.edu": {
       "name": "McGraw, Jakob",
       "email": "jakobmcgraw19@augustana.edu",
@@ -28424,6 +28624,16 @@
       "ID": "1527416",
       "groupID": [
         "1721559"
+      ]
+    },
+    "jamesadamczyk19@augustana.edu": {
+      "name": "Adamczyk, James",
+      "email": "jamesadamczyk19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706265",
+      "groupID": [
+        "4973694"
       ]
     },
     "jamescompere14@augustana.edu": {
@@ -28743,7 +28953,9 @@
       "site": "Sorensen 130B",
       "ID": "2125825",
       "groupID": [
-        "1564653"
+        "1564653",
+        "1820162",
+        "2332918"
       ]
     },
     "janebahls@augustana.edu": {
@@ -28904,6 +29116,16 @@
       "ID": "2551806",
       "groupID": [
         "2752965"
+      ]
+    },
+    "janinerudnicki19@augustana.edu": {
+      "name": "Rudnicki, Janine",
+      "email": "janinerudnicki19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706254",
+      "groupID": [
+        "4973683"
       ]
     },
     "janislonergan@augustana.edu": {
@@ -29633,7 +29855,9 @@
       "site": "Sorensen 166C",
       "ID": "1374220",
       "groupID": [
-        "1564650"
+        "1564650",
+        "1564679",
+        "1820162"
       ]
     },
     "jeffreybell15@augustana.edu": {
@@ -31516,6 +31740,16 @@
         "3734536"
       ]
     },
+    "johngray19@augustana.edu": {
+      "name": "Gray, John",
+      "email": "johngray19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706269",
+      "groupID": [
+        "4973698"
+      ]
+    },
     "johnhallmark14@augustana.edu": {
       "name": "Hallmark,John",
       "email": "johnhallmark14@augustana.edu",
@@ -32744,6 +32978,16 @@
       "ID": "3501529",
       "groupID": [
         "3734869"
+      ]
+    },
+    "josephippolito19@augustana.edu": {
+      "name": "Ippolito, Joseph",
+      "email": "josephippolito19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706267",
+      "groupID": [
+        "4973696"
       ]
     },
     "josephkellen15@augustana.edu": {
@@ -34063,7 +34307,9 @@
       "site": "Sorensen 108",
       "ID": "1376127",
       "groupID": [
-        "1564653"
+        "1564653",
+        "1566659",
+        "1820162"
       ]
     },
     "justinmeyer16@augustana.edu": {
@@ -35976,6 +36222,16 @@
         "2753152"
       ]
     },
+    "kayleymcaninch19@augustana.edu": {
+      "name": "McAninch, Kayley",
+      "email": "kayleymcaninch19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706264",
+      "groupID": [
+        "4973693"
+      ]
+    },
     "kayliahuja15@augustana.edu": {
       "name": "Ahuja,Kayli",
       "email": "kayliahuja15@augustana.edu",
@@ -36094,6 +36350,16 @@
       "ID": "1525991",
       "groupID": [
         "1720131"
+      ]
+    },
+    "keishawatson19@augustana.edu": {
+      "name": "Watson, Keisha",
+      "email": "keishawatson19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706283",
+      "groupID": [
+        "4973712"
       ]
     },
     "keithjohnsen14@augustana.edu": {
@@ -36686,6 +36952,16 @@
         "2752818"
       ]
     },
+    "kennedysawyer19@augustana.edu": {
+      "name": "Sawyer, Kennedy",
+      "email": "kennedysawyer19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706260",
+      "groupID": [
+        "4973689"
+      ]
+    },
     "kennedyware15@augustana.edu": {
       "name": "Ware,Kennedy",
       "email": "kennedyware15@augustana.edu",
@@ -36963,7 +37239,9 @@
       "site": "Sorensen 166B",
       "ID": "1374204",
       "groupID": [
-        "1564650"
+        "1564650",
+        "1564663",
+        "1820162"
       ]
     },
     "kevinzaldivar14@augustana.edu": {
@@ -37466,6 +37744,16 @@
         "4955160"
       ]
     },
+    "koragerber19@augustana.edu": {
+      "name": "Gerber, Kora",
+      "email": "koragerber19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706278",
+      "groupID": [
+        "4973707"
+      ]
+    },
     "kordellbenson15@augustana.edu": {
       "name": "Benson,Kordell",
       "email": "kordellbenson15@augustana.edu",
@@ -37763,7 +38051,9 @@
       "site": "Sorensen 165",
       "ID": "1374214",
       "groupID": [
-        "1564651"
+        "1564651",
+        "1564673",
+        "1820162"
       ]
     },
     "kristindouglas@augustana.edu": {
@@ -38293,7 +38583,8 @@
       "site": "Swanson Commons 304",
       "ID": "1526292",
       "groupID": [
-        "1720432"
+        "1720432",
+        "3994078"
       ]
     },
     "kylezeberlein13@augustana.edu": {
@@ -39833,7 +40124,9 @@
       "site": "Sorensen 135A",
       "ID": "1460915",
       "groupID": [
-        "1564653"
+        "1564653",
+        "1653170",
+        "1820162"
       ]
     },
     "lilliancoleman16@augustana.edu": {
@@ -40134,6 +40427,16 @@
       "ID": "1753199",
       "groupID": [
         "1952881"
+      ]
+    },
+    "lisamarkus19@augustana.edu": {
+      "name": "Markus, Lisa",
+      "email": "lisamarkus19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706271",
+      "groupID": [
+        "4973700"
       ]
     },
     "lisanguyen14@augustana.edu": {
@@ -41246,6 +41549,16 @@
         "3734548"
       ]
     },
+    "madelineherwig19@augustana.edu": {
+      "name": "Herwig, Madeline",
+      "email": "madelineherwig19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706266",
+      "groupID": [
+        "4973695"
+      ]
+    },
     "madelinehimpelmann14@augustana.edu": {
       "name": "Himpelmann,Madeline",
       "email": "madelinehimpelmann14@augustana.edu",
@@ -41913,7 +42226,8 @@
       "site": "Esbjorn House 217",
       "ID": "1525767",
       "groupID": [
-        "1719906"
+        "1719906",
+        "3994078"
       ]
     },
     "mainguyen17@augustana.edu": {
@@ -42776,6 +43090,16 @@
         "1722012"
       ]
     },
+    "marinabelshause19@augustana.edu": {
+      "name": "Belshause, Marina",
+      "email": "marinabelshause19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706270",
+      "groupID": [
+        "4973699"
+      ]
+    },
     "marinadeligiannis13@augustana.edu": {
       "name": "Deligiannis, Marina A",
       "email": "marinadeligiannis13@augustana.edu",
@@ -43233,7 +43557,10 @@
       "site": "Sorensen 111",
       "ID": "1502481",
       "groupID": [
-        "1564652"
+        "1564652",
+        "1639799",
+        "1695707",
+        "1820162"
       ]
     },
     "markvanderheyden15@augustana.edu": {
@@ -48266,6 +48593,16 @@
         "3734331"
       ]
     },
+    "nazrawitesfay19@augustana.edu": {
+      "name": "Tesfay, Nazrawi",
+      "email": "nazrawitesfay19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706287",
+      "groupID": [
+        "4973716"
+      ]
+    },
     "nbuthelezi18@augustana.edu": {
       "name": "Buthelezi,Noluthando",
       "email": "nbuthelezi18@augustana.edu",
@@ -50196,6 +50533,16 @@
         "2753125"
       ]
     },
+    "paigelundborg19@augustana.edu": {
+      "name": "Lundborg, Paige",
+      "email": "paigelundborg19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706255",
+      "groupID": [
+        "4973684"
+      ]
+    },
     "paigeoucheriah15@augustana.edu": {
       "name": "Oucheriah,Paige",
       "email": "paigeoucheriah15@augustana.edu",
@@ -50384,6 +50731,16 @@
       "ID": "1752956",
       "groupID": [
         "1952638"
+      ]
+    },
+    "patriciaplachno19@augustana.edu": {
+      "name": "Plachno, Patricia",
+      "email": "patriciaplachno19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706250",
+      "groupID": [
+        "4973679"
       ]
     },
     "patriciarhea13@augustana.edu": {
@@ -51606,6 +51963,16 @@
         "1719851"
       ]
     },
+    "rachelmurray19@augustana.edu": {
+      "name": "Murray, Rachel",
+      "email": "rachelmurray19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706291",
+      "groupID": [
+        "4973720"
+      ]
+    },
     "rachelneese18@augustana.edu": {
       "name": "Neese,Rachel",
       "email": "rachelneese18@augustana.edu",
@@ -51916,6 +52283,16 @@
         "1952532"
       ]
     },
+    "raquelwajner19@augustana.edu": {
+      "name": "Wajner, Raquel",
+      "email": "raquelwajner19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706276",
+      "groupID": [
+        "4973705"
+      ]
+    },
     "rashaundebord13@augustana.edu": {
       "name": "DeBord, Rashaun D",
       "email": "rashaundebord13@augustana.edu",
@@ -51944,6 +52321,16 @@
       "ID": "1525823",
       "groupID": [
         "1719963"
+      ]
+    },
+    "ravyndavis19@augustana.edu": {
+      "name": "Davis, Ravyn",
+      "email": "ravyndavis19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706257",
+      "groupID": [
+        "4973686"
       ]
     },
     "rayalaguerrero18@augustana.edu": {
@@ -52916,6 +53303,16 @@
         "1720785"
       ]
     },
+    "robertinserra19@augustana.edu": {
+      "name": "Inserra, Robert",
+      "email": "robertinserra19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706289",
+      "groupID": [
+        "4973718"
+      ]
+    },
     "robertjacobson18@augustana.edu": {
       "name": "Jacobson,Robert",
       "email": "robertjacobson18@augustana.edu",
@@ -52934,6 +53331,16 @@
       "ID": "1753012",
       "groupID": [
         "1952694"
+      ]
+    },
+    "robertkibble19@augustana.edu": {
+      "name": "Kibble, Robert",
+      "email": "robertkibble19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706284",
+      "groupID": [
+        "4973713"
       ]
     },
     "robertlanzerotti@augustana.edu": {
@@ -55743,7 +56150,8 @@
       "site": "",
       "ID": "3503070",
       "groupID": [
-        "3736429"
+        "3736429",
+        "3994078"
       ]
     },
     "savanahwylde15@augustana.edu": {
@@ -55863,7 +56271,10 @@
       "site": "Sorensen 109",
       "ID": "1374202",
       "groupID": [
-        "1564652"
+        "1564652",
+        "1564661",
+        "1639799",
+        "1820162"
       ]
     },
     "scottdoberstein12@augustana.edu": {
@@ -56023,7 +56434,9 @@
       "site": "Sorensen 111",
       "ID": "1503208",
       "groupID": [
-        "1564652"
+        "1564652",
+        "1696436",
+        "1820162"
       ]
     },
     "seanmcmahon13@augustana.edu": {
@@ -56124,6 +56537,16 @@
       "ID": "1525266",
       "groupID": [
         "1719405"
+      ]
+    },
+    "serenitysegundo19@augustana.edu": {
+      "name": "Segundo, Serenity",
+      "email": "serenitysegundo19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706262",
+      "groupID": [
+        "4973691"
       ]
     },
     "sergioramirez13@augustana.edu": {
@@ -56483,7 +56906,9 @@
       "site": "Sorensen 163",
       "ID": "1374176",
       "groupID": [
-        "1564629"
+        "1564629",
+        "1564651",
+        "1820162"
       ]
     },
     "shawngeison17@augustana.edu": {
@@ -57286,6 +57711,16 @@
         "2752796"
       ]
     },
+    "sophiasarabasa19@augustana.edu": {
+      "name": "Sarabasa, Sophia",
+      "email": "sophiasarabasa19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706286",
+      "groupID": [
+        "4973715"
+      ]
+    },
     "sophiasimacher16@augustana.edu": {
       "name": "Simacher, Sophia K",
       "email": "sophiasimacher16@augustana.edu",
@@ -58013,7 +58448,8 @@
       "site": "",
       "ID": "1538157",
       "groupID": [
-        "1732595"
+        "1732595",
+        "3994078"
       ]
     },
     "studenttest@augustana.edu": {
@@ -58083,7 +58519,8 @@
       "site": "Sorensen 161",
       "ID": "1374199",
       "groupID": [
-        "1564651"
+        "1564651",
+        "1564658"
       ]
     },
     "suhaibamohiuddin12@augustana.edu": {
@@ -58683,7 +59120,9 @@
       "site": "Sorensen 140",
       "ID": "1447299",
       "groupID": [
-        "1564653"
+        "1564653",
+        "1639388",
+        "1820162"
       ]
     },
     "tammysullivan@augustana.edu": {
@@ -59234,6 +59673,16 @@
       "ID": "2552380",
       "groupID": [
         "2753539"
+      ]
+    },
+    "taylorvanlanduyt19@augustana.edu": {
+      "name": "Vanlanduyt, Taylor",
+      "email": "taylorvanlanduyt19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706261",
+      "groupID": [
+        "4973690"
       ]
     },
     "taylorvaughan14@augustana.edu": {
@@ -60333,7 +60782,8 @@
       "site": "Erickson Residence Center C318",
       "ID": "1525763",
       "groupID": [
-        "1719902"
+        "1719902",
+        "3994078"
       ]
     },
     "trangphan@augustana.edu": {
@@ -60354,6 +60804,16 @@
       "ID": "2551997",
       "groupID": [
         "2753156"
+      ]
+    },
+    "trannguyen19@augustana.edu": {
+      "name": "Nguyen, Tran",
+      "email": "trannguyen19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706274",
+      "groupID": [
+        "4973703"
       ]
     },
     "travisgates16@augustana.edu": {
@@ -61356,6 +61816,16 @@
         "1718935"
       ]
     },
+    "velmaelba19@augustana.edu": {
+      "name": "Elba, Velma",
+      "email": "velmaelba19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706277",
+      "groupID": [
+        "4973706"
+      ]
+    },
     "veraateeq10@augustana.edu": {
       "name": "Ateeq, Vera",
       "email": "veraateeq10@augustana.edu",
@@ -61656,6 +62126,16 @@
         "1720104"
       ]
     },
+    "viniciuslopes19@augustana.edu": {
+      "name": "Lopes, Vinicius",
+      "email": "viniciuslopes19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706292",
+      "groupID": [
+        "4973721"
+      ]
+    },
     "virajitrana18@augustana.edu": {
       "name": "Rana,Virajit",
       "email": "virajitrana18@augustana.edu",
@@ -61853,7 +62333,9 @@
       "site": "Sorensen 162",
       "ID": "1374216",
       "groupID": [
-        "1564651"
+        "1564651",
+        "1564675",
+        "1820162"
       ]
     },
     "wendywood@augustana.edu": {
@@ -62476,6 +62958,16 @@
         "2753290"
       ]
     },
+    "yesseniamercado19@augustana.edu": {
+      "name": "Mercado, Yessenia",
+      "email": "yesseniamercado19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706273",
+      "groupID": [
+        "4973702"
+      ]
+    },
     "yichizhang17@augustana.edu": {
       "name": "Zhang, Yichi",
       "email": "yichizhang17@augustana.edu",
@@ -62746,6 +63238,16 @@
         "1720818"
       ]
     },
+    "zacharykatula19@augustana.edu": {
+      "name": "Katula, Zachary",
+      "email": "zacharykatula19@augustana.edu",
+      "dept": "Student",
+      "site": "",
+      "ID": "4706281",
+      "groupID": [
+        "4973710"
+      ]
+    },
     "zacharykerska13@augustana.edu": {
       "name": "Kerska, Zachary T",
       "email": "zacharykerska13@augustana.edu",
@@ -63013,7 +63515,8 @@
       "site": "Erickson Residence Center B317",
       "ID": "1526302",
       "groupID": [
-        "1720442"
+        "1720442",
+        "3994078"
       ]
     },
     "zhiqingwu14@augustana.edu": {

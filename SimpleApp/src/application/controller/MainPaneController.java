@@ -732,8 +732,8 @@ public class MainPaneController {
 
 				all.setOnAction(e -> {
 					for (CheckBox other : others) {
+						other.setSelected(!((CheckBox) e.getSource()).isSelected());
 						other.fire();
-						other.setSelected(((CheckBox) e.getSource()).isSelected());
 					}
 				});
 
@@ -1098,6 +1098,7 @@ public class MainPaneController {
 		// method to set labeltext
 		checkForUpdateBtn.textProperty().bind(Bindings.convert(updateCheck.messageProperty()));
 		checkForUpdateBtn.setDisable(true);
+		updateDataBtn.setDisable(true);
 		updateCheck.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 
 			@Override
