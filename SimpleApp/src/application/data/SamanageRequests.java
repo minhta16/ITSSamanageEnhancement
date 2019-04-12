@@ -681,7 +681,7 @@ public class SamanageRequests {
 		} else if (state.isEmpty() && dept.isEmpty() && site.isEmpty()) {
 			return;
 		}
-		if (state == "Closed" && notify) {
+		if (state.equalsIgnoreCase("closed") && notify) {
 			// to send out email notification
 			updateStateAndDept(userToken, incidentID, "Resolved", dept, site, notify);
 		}

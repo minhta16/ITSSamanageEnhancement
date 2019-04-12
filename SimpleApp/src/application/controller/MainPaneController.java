@@ -567,7 +567,7 @@ public class MainPaneController {
 					updatingIncident = false;
 					submitBtn.textProperty().unbind();
 					clearInputFields();
-					showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
+					showAlert("Incident Created", "Incident Created", AlertType.INFORMATION);
 					tabPane.getSelectionModel().select(mainMenuTab);
 					handleUpdateListBtn();
 				}
@@ -625,7 +625,7 @@ public class MainPaneController {
 				public void handle(WorkerStateEvent event) {
 					submitBtn.textProperty().unbind();
 					clearInputFields();
-					showAlert("Incident updated", "Incident updated", AlertType.INFORMATION);
+					showAlert("Incident Updated", "Incident Updated", AlertType.INFORMATION);
 					tabPane.getSelectionModel().select(mainMenuTab);
 					handleUpdateListBtn();
 				}
