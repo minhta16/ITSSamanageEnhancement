@@ -32,7 +32,7 @@ public class SamanageRequests {
 
 	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority, String category,
 			String subcategory, String description, String dueDate, String state, String assignee, String requester,
-			String dept, String site, String software) throws IOException {
+			String dept, String site, String software, boolean notify) throws IOException {
 		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate,
 				assignee, requester, software);
 		String incidentID = SamanageRequests.getID(userToken);
@@ -41,7 +41,7 @@ public class SamanageRequests {
 			SamanageRequests.addTimeTrack(userToken, incidentID, track.getComment(), track.getUser().getID(),
 					track.getTime());
 		}
-		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site);
+		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site, notify);
 
 		// clear the UI
 		AppSession.getSession().clearTrackedUsers();
@@ -675,14 +675,21 @@ public class SamanageRequests {
 	// HTML METHOD:
 	// PUT
 
-	public static void updateStateAndDept(String userToken, String incidentID, String state, String dept, String site) {
+	public static void updateStateAndDept(String userToken, String incidentID, String state, String dept, String site, boolean notify) {
 		if (state == dept && dept == site) {
 			return;
 		} else if (state.isEmpty() && dept.isEmpty() && site.isEmpty()) {
 			return;
 		}
+		if (state == "Closed" && notify) {
+			// to send out email notification
+			updateStateAndDept(userToken, incidentID, "Resolved", dept, site, notify);
+		}
 		try {
 			String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
+			if (notify) {
+				url += "?add_callbacks=true";
+			}
 
 			URL obj = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -717,7 +724,7 @@ public class SamanageRequests {
 
 	public static void updateIncidentWithTimeTrack(String userToken, String incidentName, String incidentID,
 			String priority, String category, String subcategory, String description, String dueDate, String state,
-			String assignee, String requester, String dept, String site, String software) throws IOException {
+			String assignee, String requester, String dept, String site, String software, boolean notify) throws IOException {
 		SamanageRequests.updateIncident(userToken, incidentName, incidentID, priority, category, subcategory,
 				description, dueDate, assignee, requester, software);
 		// String incidentID = SamanageRequests.getID(userToken);
@@ -726,7 +733,7 @@ public class SamanageRequests {
 			SamanageRequests.addTimeTrack(userToken, incidentID, track.getComment(), track.getUser().getID(),
 					track.getTime());
 		}
-		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site);
+		SamanageRequests.updateStateAndDept(userToken, incidentID, state, dept, site, notify);
 
 		// clear the UI
 		AppSession.getSession().clearTrackedUsers();

@@ -20,7 +20,6 @@ import application.data.IncidentEditType;
 import application.data.SamanageRequests;
 import application.data.TimeTrack;
 import application.data.User;
-import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
 import impl.org.controlsfx.autocompletion.SuggestionProvider;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -90,7 +89,8 @@ public class MainPaneController {
 	private Label softwareLabel;
 	@FXML
 	private ComboBox<String> softwareComboBox;
-
+	@FXML
+	private CheckBox notifyCheckBox;
 	@FXML
 	private DatePicker updateFromDatePicker;
 	@FXML
@@ -299,9 +299,9 @@ public class MainPaneController {
 		defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
 
-		new AutoCompletionTextFieldBinding<>(userEmailField, savedEmailprovider);
-		new AutoCompletionTextFieldBinding<>(defaultAssigneeField, savedEmailprovider);
-		new AutoCompletionTextFieldBinding<>(defaultRequesterField, savedEmailprovider);
+		TextFields.bindAutoCompletion(userEmailField, savedEmailprovider);
+		TextFields.bindAutoCompletion(defaultAssigneeField, savedEmailprovider);
+		TextFields.bindAutoCompletion(defaultRequesterField, savedEmailprovider);
 
 		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
 
@@ -460,13 +460,13 @@ public class MainPaneController {
 	}
 
 	private void setupEmailAutoComplete() {
-		new AutoCompletionTextFieldBinding<>(userInputField, savedEmailprovider);
+		TextFields.bindAutoCompletion(userInputField, savedEmailprovider);
 		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		handleAssigneeFieldChange();
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
 
-		new AutoCompletionTextFieldBinding<>(assigneeField, assigneeProvider);
-		new AutoCompletionTextFieldBinding<>(requesterField, savedEmailprovider);
+		TextFields.bindAutoCompletion(assigneeField, assigneeProvider);
+		TextFields.bindAutoCompletion(requesterField, savedEmailprovider);
 	}
 
 	@FXML
@@ -546,7 +546,7 @@ public class MainPaneController {
 								priorityChoiceBox.getValue(), catChoiceBox.getValue(), subcatChoiceBox.getValue(),
 								descField.getText(), datePicker.getValue().toString(), statesChoiceBox.getValue(),
 								assignee, toCorrectDomain(requesterField.getText()), deptComboBox.getValue(),
-								siteComboBox.getValue(), softwareComboBox.getValue());
+								siteComboBox.getValue(), softwareComboBox.getValue(), notifyCheckBox.isSelected());
 
 						updateMessage("Submit");
 					} catch (IOException e) {
@@ -606,7 +606,7 @@ public class MainPaneController {
 								catChoiceBox.getValue(), subcatChoiceBox.getValue(), descField.getText(),
 								datePicker.getValue().toString(), statesChoiceBox.getValue(), assignee,
 								toCorrectDomain(requesterField.getText()), deptComboBox.getValue(),
-								siteComboBox.getValue(), softwareComboBox.getValue());
+								siteComboBox.getValue(), softwareComboBox.getValue(), notifyCheckBox.isSelected());
 
 						updateMessage("Submit");
 					} catch (IOException e) {
@@ -783,6 +783,8 @@ public class MainPaneController {
 		subcatChoiceBox.setValue(null);
 		softwareComboBox.setValue(null);
 		updateDefaultDeptSite();
+		// reset tracked email to be default
+		handleAssigneeFieldChange();
 		submitBtn.setDisable(false);
 	}
 
