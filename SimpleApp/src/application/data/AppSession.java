@@ -385,11 +385,19 @@ public class AppSession {
 	}
 	
 	public void updateListIncidents(LocalDate from, LocalDate to) {
-		TreeMap<String, Incident> newIncidents = new TreeMap<String, Incident>();
-		for (String groupID: users.get(toCorrectDomain(userEmail)).getGroupID()) {
-			 newIncidents.putAll(SamanageRequests.getIncidents(userToken, groupID, from, to));
+		currentIncidents = SamanageRequests.getIncidents(userToken, from, to);
+	}
+	
+	public int getTotalTime() {
+		int totalTime = 0;
+		for (String key: currentIncidents.keySet()) {
+			Incident incident = currentIncidents.get(key);
+			for (TimeTrack track: incident.getTimeTracks()) {
+				totalTime += track.getTime();
+			}
+			
 		}
-		currentIncidents = newIncidents;
+		return totalTime;
 	}
 	
 	public String getUpdatePrompt() {

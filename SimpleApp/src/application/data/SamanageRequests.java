@@ -141,7 +141,7 @@ public class SamanageRequests {
 	// HTML METHOD:
 	// GET
 
-	public static TreeMap<String, Incident> getIncidents(String userToken, String userID, LocalDate fromDate,
+	public static TreeMap<String, Incident> getIncidents(String userToken, LocalDate fromDate,
 			LocalDate toDate) {
 		TreeMap<String, Incident> incidentMap = new TreeMap<String, Incident>();
 		boolean hasMore = true;
@@ -158,7 +158,7 @@ public class SamanageRequests {
 				String url = "https://api.samanage.com/incidents.xml" + "?per_page=100&page=" + curPage
 						+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
 						+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
-						+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&assigned_to%5B%5D=" + userID;
+						+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
 				URL obj = new URL(url);
 				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -209,6 +209,8 @@ public class SamanageRequests {
 						String groupId = "";
 						if (assigneeEmail.isEmpty()) {
 							groupId = getString("id", (Element) incident.getElementsByTagName("assignee").item(0));
+						} else {
+							groupId = getString("group_id", (Element) incident.getElementsByTagName("assignee").item(0));
 						}
 						String software = "";
 						if (category.equals("Software")) {
@@ -655,10 +657,7 @@ public class SamanageRequests {
 				for (int i = 0; i < nodes.getLength(); i++) {
 					Node childNode = nodes.item(i);
 					if (childNode instanceof Element) {
-						Element element = (Element) childNode;
-						if (getString("parent_id", element).equals("")) {
-							totalEntries++;
-						}
+						totalEntries++;
 					}
 				}
 			} else {
