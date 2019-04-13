@@ -41,6 +41,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -120,8 +121,6 @@ public class MainPaneController {
 	@FXML
 	private Button addEmailBtn;
 	@FXML
-	private Button updateDataBtn;
-	@FXML
 	private TableView<TimeTrack> infoTable;
 	@FXML
 	private TableView<Incident> incidentTable;
@@ -142,6 +141,9 @@ public class MainPaneController {
 	private CheckBox autoUpdateCheckBox;
 	@FXML
 	private Button checkForUpdateBtn;
+	
+	@FXML
+	private MenuItem updateMenuItem;
 
 	private String updatePrompt = "";
 
@@ -1008,82 +1010,6 @@ public class MainPaneController {
 		}
 	}
 
-	@FXML
-	private void handleUpdateDataBtn() {
-		if (updatePrompt.equals("")) {
-			showAlert("Already Up-to-date", "The data is already up to date.", AlertType.INFORMATION);
-		} else {
-			/*
-			 * Alert alert = new Alert(AlertType.WARNING,
-			 * "The process is going to take about 4 mins. Proceed?", ButtonType.OK,
-			 * ButtonType.CANCEL); alert.setTitle("Warning");
-			 */
-
-			TreeMap<String, Consumer<Boolean>> cmd = new TreeMap<String, Consumer<Boolean>>();
-			List<Runnable> methodsToRun = new ArrayList<>();
-			for (Map.Entry<String, Runnable> entry : AppSession.getSession().getCheckFlags().entrySet()) {
-				String s = entry.getKey();
-				Runnable r = entry.getValue();
-				Consumer<Boolean> c = (x) -> {
-					if (x.booleanValue() && !methodsToRun.contains(r)) {
-						methodsToRun.add(r);
-					} else if (!x.booleanValue() && methodsToRun.contains(r)) {
-						methodsToRun.remove(r);
-					}
-				};
-				cmd.put(s, c);
-			}
-
-			Alert alert = createAlertWithOptOuts(AlertType.CONFIRMATION, "Warning", updatePrompt,
-					"Choose what to update", cmd, ButtonType.OK, ButtonType.CANCEL);
-
-			Optional<ButtonType> result = alert.showAndWait();
-
-			if (result.get() == ButtonType.OK) {
-
-				if (methodsToRun.size() == 0) {
-					showAlert("Alert", "You haven't updated anything", AlertType.INFORMATION);
-				} else {
-					Task<Parent> update = new Task<Parent>() {
-						@Override
-						public Parent call() throws JsonIOException, IOException {
-							for (Runnable r : methodsToRun) {
-								updateMessage("Updating...");
-								cmd.keySet()
-										.removeIf(key -> (AppSession.getSession().getCheckFlags().get(key).equals(r)));
-								r.run();
-							}
-							updateMessage("Saving Data...");
-
-							try {
-								AppSession.getSession().saveData();
-							} catch (JsonIOException | IOException e) {
-								e.printStackTrace();
-							}
-							return null;
-						}
-					};
-
-					// method to set labeltext
-					updateDataBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
-//					updateDataBtn.setDisable(true);
-					update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-						@Override
-						public void handle(WorkerStateEvent event) {
-							showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
-							updateDataBtn.textProperty().unbind();
-							updateDataBtn.setText("Update Data");
-							updatePrompt = "";
-
-						}
-					});
-					Thread updateThread = new Thread(update);
-					updateThread.start();
-				}
-			}
-
-		}
-	}
 
 	@FXML
 	private void handleAutoUpdateCheckBox() {
@@ -1112,7 +1038,6 @@ public class MainPaneController {
 		// method to set labeltext
 		checkForUpdateBtn.textProperty().bind(Bindings.convert(updateCheck.messageProperty()));
 		checkForUpdateBtn.setDisable(true);
-		updateDataBtn.setDisable(true);
 		updateCheck.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 
 			@Override
@@ -1120,13 +1045,73 @@ public class MainPaneController {
 				if (updatePrompt.equals("")) {
 					showAlert("Check complete", "Database is Up-to-date." + updatePrompt, AlertType.INFORMATION);
 				} else {
-					showAlert("Check complete", "Database Outdated. Press Update to update.\nDetails:\n" + updatePrompt,
-							AlertType.WARNING);
-					updateDataBtn.setDisable(false);
+	//				showAlert("Check complete", "Database Outdated. Press Update to update.\nDetails:\n" + updatePrompt,
+	//						AlertType.WARNING);
+	//				updateDataBtn.setDisable(false);
+					
+					TreeMap<String, Consumer<Boolean>> cmd = new TreeMap<String, Consumer<Boolean>>();
+					List<Runnable> methodsToRun = new ArrayList<>();
+					for (Map.Entry<String, Runnable> entry : AppSession.getSession().updateCheckboxList().entrySet()) {
+						String s = entry.getKey();
+						Runnable r = entry.getValue();
+						Consumer<Boolean> c = (x) -> {
+							if (x.booleanValue() && !methodsToRun.contains(r)) {
+								methodsToRun.add(r);
+							} else if (!x.booleanValue() && methodsToRun.contains(r)) {
+								methodsToRun.remove(r);
+							}
+						};
+						cmd.put(s, c);
+					}
+
+					Alert alert = createAlertWithOptOuts(AlertType.CONFIRMATION, "Warning", updatePrompt,
+							"Choose what to update", cmd, ButtonType.OK, ButtonType.CANCEL);
+
+					Optional<ButtonType> result = alert.showAndWait();
+
+					if (result.get() == ButtonType.OK) {
+
+						if (methodsToRun.size() == 0) {
+							showAlert("Alert", "You haven't chosen anything to update!", AlertType.INFORMATION);
+						} else {
+							Task<Parent> update = new Task<Parent>() {
+								@Override
+								public Parent call() throws JsonIOException, IOException {
+									for (Runnable r : methodsToRun) {
+										updateMessage("Updating...");
+										r.run();
+									}
+									updateMessage("Saving Data...");
+									try {
+										AppSession.getSession().saveData();
+									} catch (JsonIOException | IOException e) {
+										e.printStackTrace();
+									}
+									return null;
+								}
+							};
+
+							// method to set labeltext
+							checkForUpdateBtn.textProperty().unbind();
+							checkForUpdateBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
+							checkForUpdateBtn.setDisable(true);
+							update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+								@Override
+								public void handle(WorkerStateEvent event) {
+									showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
+									checkForUpdateBtn.textProperty().unbind();
+									checkForUpdateBtn.setText("Check for Updates");
+									checkForUpdateBtn.setDisable(false);
+									updatePrompt = "";
+
+								}
+							});
+							Thread updateThread = new Thread(update);
+							updateThread.start();
+						}
+					}
 				}
-				checkForUpdateBtn.textProperty().unbind();
-				checkForUpdateBtn.setText("Check for Updates");
-				checkForUpdateBtn.setDisable(false);
+
 			}
 		});
 		Thread updateThread = new Thread(updateCheck);
@@ -1262,6 +1247,51 @@ public class MainPaneController {
 		tempTrackTable.getItems().add(track);
 
 		AppSession.getSession().getTemplateTimeTracks().add(track);
+	}
+	
+	@FXML
+	private void handleUpdateMenuItem() {
+		String lastUpdateDate = AppSession.getSession().getDateOfLastSystemUpdate();
+		Alert alert = new Alert(AlertType.WARNING, "Last system update at: "+lastUpdateDate+"\nThe process is going to take about 4 mins. Proceed?",
+				ButtonType.OK, ButtonType.CANCEL);
+		alert.setTitle("Warning");
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			Task<Parent> update = new Task<Parent>() {
+				@Override
+				public Parent call() throws JsonIOException, IOException {
+					//disable buttons
+					updateMessage("Updating All...");
+					AppSession.getSession().updateAll();
+					LocalDate thisUpdateDate = LocalDate.now();
+					String formattedDate = thisUpdateDate.format(formatter);
+					System.err.println(formattedDate);
+					AppSession.getSession().setDateOfLastSystemUpdate(formattedDate);
+					AppSession.getSession().saveData();
+					return null;
+				}
+			};
+
+			// method to set labeltext
+			checkForUpdateBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
+			checkForUpdateBtn.setDisable(true);
+			update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+
+				@Override
+				public void handle(WorkerStateEvent event) {
+					showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
+					checkForUpdateBtn.textProperty().unbind();
+					checkForUpdateBtn.setText("Check for Updates");
+					checkForUpdateBtn.setDisable(false);
+					updatePrompt = "";
+
+				}
+			});
+			Thread updateThread = new Thread(update);
+			updateThread.start();
+
+		}
+		
 	}
 
 	private void updateTemplatesTable() {

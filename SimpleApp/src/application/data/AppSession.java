@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +47,7 @@ public class AppSession {
 	private TreeMap<String, User> users;
 
 	private transient Map<String, Runnable> updateCheckboxList;
+	private String dateOfLastSystemUpdate;
 
 	private AppSession() {
 		this("");
@@ -75,7 +75,8 @@ public class AppSession {
 		groups = new TreeMap<String, Group>();
 		softwares = new TreeMap<String, Software>();
 		updateCheckboxList = new HashMap<String, Runnable>();
-		updateCheckboxList.put("All", () -> updateAll());
+		//updateCheckboxList.put("All", () -> updateAll());
+		dateOfLastSystemUpdate = "";
 	}
 
 	/**
@@ -334,6 +335,14 @@ public class AppSession {
 	public void setGroups(TreeMap<String, Group> groups) {
 		this.groups = groups;
 	}
+	
+	public String getDateOfLastSystemUpdate() {
+		return dateOfLastSystemUpdate;
+	}
+	
+	public void setDateOfLastSystemUpdate(String date) {
+		this.dateOfLastSystemUpdate = date;
+	}
 
 	public void loadData() throws IOException {
 		FileReader fd = new FileReader(DATA_LOCATION);
@@ -429,23 +438,18 @@ public class AppSession {
 //				&& SamanageRequests.getTotalElements(userToken, users);
 	}
 
-	public Map<String, Runnable> getCheckFlags() {
+	public Map<String, Runnable> updateCheckboxList() {
 		return updateCheckboxList;
 	}
 
 	public void updateUsers() {
 		System.err.println("Loading users...");
-		if (SamanageRequests.getTotalElements(userToken, "users") != users.size()) {
-			users = SamanageRequests.getAllUsers(userToken);
-		}
+		users = SamanageRequests.getAllUsers(userToken);
 	}
 
-
 	public void updateSites() {
-		if (SamanageRequests.getTotalElements(userToken, "sites") != sites.size()) {
-			System.err.println("Loading sites...");
-			sites = SamanageRequests.getSites(userToken);
-		}
+		System.err.println("Loading sites...");
+		sites = SamanageRequests.getSites(userToken);
 	}
 
 	public void updateDepts() {
