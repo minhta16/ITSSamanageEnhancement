@@ -274,10 +274,6 @@ public class MainPaneController {
 		incidentTable.getColumns().get(10).setCellValueFactory(new PropertyValueFactory<>("trackedUsersNum"));
 		incidentTable.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
 		incidentTable.setPlaceholder(new Label("Please update list to see the lastest incidents."));
-
-		templateComboBox.getSelectionModel().select(0);
-		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
-
 	}
 
 	private void setupIncidentEditTab() {
@@ -292,6 +288,12 @@ public class MainPaneController {
 		// setup incident name
 		System.out.print("Setting up Incident Name Prompt\r");
 		updateIncidentNamePrompt();
+		
+		// setup templates
+		System.out.println("Setting up templates\r");
+		templateComboBox.getSelectionModel().select(0);
+		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
+
 	}
 
 	private void setupSettingTab() {
@@ -854,6 +856,7 @@ public class MainPaneController {
 				incidentEditTab.setDisable(false);
 				curUpdateIncidentID = incident.getID();
 				tabPane.getSelectionModel().select(incidentEditTab);
+				//templateComboBox.setDisable(true);
 				preFetchIncidentInfo(incident.getNumber());
 				AppSession.getSession().setEditType(IncidentEditType.EDIT);
 			});
@@ -1226,6 +1229,36 @@ public class MainPaneController {
 		templateComboBox.getItems().clear();
 		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
 
+	}
+	
+	@FXML
+	private void handleTemplateChange() {
+		//awdas
+		if (templateComboBox.getValue() != null) {
+			if (AppSession.getSession().getTemplates().keySet().contains(templateComboBox.getValue())) {
+				System.err.println("Chosen template: " + templateComboBox.getValue());
+				Incident chosenTemplate = AppSession.getSession().getTemplates().get(templateComboBox.getValue());
+				System.err.println(chosenTemplate.toString());
+				statesChoiceBox.setValue(chosenTemplate.getState());
+				requesterField.setText(chosenTemplate.getRequester());
+				incidentNameField.setText(chosenTemplate.getTitle());
+				catChoiceBox.setValue(chosenTemplate.getCategory());
+				subcatChoiceBox.setValue(chosenTemplate.getSubcategory());
+				assigneeField.setText(chosenTemplate.getAssignee());
+				descField.setText(chosenTemplate.getDescription());
+				priorityChoiceBox.setValue(chosenTemplate.getPriority());
+				deptComboBox.setValue(chosenTemplate.getDept());
+				siteComboBox.setValue(chosenTemplate.getSite());
+				softwareComboBox.setValue(chosenTemplate.getSoftware());
+				if (chosenTemplate.getDueOn() != null) {
+					datePicker.setValue(chosenTemplate.getDueOn());
+				}
+
+			} else {
+				System.err.println("There's no such template in the library.");
+			}
+
+		}
 	}
 
 	@FXML
