@@ -442,6 +442,11 @@ public class AppSession {
 		return updateCheckboxList;
 	}
 
+	public void updateUsersMultiThreads(int thread) {
+		System.err.println("Loading users multithread...");
+		users = SamanageRequests.getAllUsersMultiThreads(userToken, thread);
+	}
+	
 	public void updateUsers() {
 		System.err.println("Loading users...");
 		users = SamanageRequests.getAllUsers(userToken);

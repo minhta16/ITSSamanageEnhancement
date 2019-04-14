@@ -23,6 +23,15 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import com.google.gson.JsonIOException;
+
+import javafx.beans.binding.Bindings;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert.AlertType;
+
 public class SamanageRequests {
 
 	private static final String ACCEPT_VERSION = "application/vnd.samanage.v2.1+xml";
@@ -316,6 +325,7 @@ public class SamanageRequests {
 		int totalUsers = getTotalElements(userToken, "users");
 		boolean hasMore = true;
 		int curPage = 1;
+		
 		while (hasMore) {
 			try {
 				// String url =
@@ -391,6 +401,145 @@ public class SamanageRequests {
 		}
 		return users;
 		// System.err.println(map);
+	}
+	
+	public static TreeMap<String, User> getAllUsersMultiThreads(String userToken, int numOfThreads) {
+		TreeMap<String, User> users = new TreeMap<String, User>();
+		int totalUsers = getTotalElements(userToken, "users");
+
+		int totalCalls = (int) totalUsers / 100 + 1;
+		int eachThreadCalls = (int) totalCalls / numOfThreads + 1;
+		Task<Parent> main = new Task<Parent>() {
+
+			@Override
+			protected Parent call() throws Exception {
+				// TODO Auto-generated method stub
+
+				for (int i = 1; i <= numOfThreads; i++) {
+					int current = i;
+					Task<Parent> newThread = new Task<Parent>() {
+						@Override
+						public Parent call() throws JsonIOException, IOException {
+
+							System.out.println("Thread " + current + " is running");
+							// get users
+							int curPage = eachThreadCalls * current;
+							boolean hasMore = true;
+							while (!(curPage > eachThreadCalls * (current + 1)) && hasMore) {
+								try {
+									// String url =
+									// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
+									String url = "https://api.samanage.com/users.xml?per_page=100&page=" + curPage;
+
+									URL obj = new URL(url);
+									HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+									conn.setDoOutput(true);
+
+									conn.setRequestMethod("GET");
+									conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+									conn.setRequestProperty("Accept", ACCEPT_VERSION);
+									// conn.setRequestProperty("Content-Type", "text/xml");
+
+									BufferedReader br;
+									if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+										br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+									} else {
+										br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+									}
+									StringBuffer xml = new StringBuffer();
+									String output;
+									while ((output = br.readLine()) != null) {
+										xml.append(output);
+									}
+
+									// got from
+									// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+									DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+									DocumentBuilder builder = factory.newDocumentBuilder();
+									Document document = builder
+											.parse(new InputSource(new StringReader(xml.toString())));
+									Element rootElement = document.getDocumentElement();
+
+									NodeList listOfUsers = rootElement.getElementsByTagName("user");
+									if (listOfUsers.getLength() != 100) {
+										hasMore = false; // what if the number of user divides 100?
+									}
+
+									for (int i = 0; i < listOfUsers.getLength(); i++) {
+
+										if (listOfUsers.item(i) instanceof Element) {
+											Element user = (Element) listOfUsers.item(i);
+											User newUser = new User();
+											String name = getString("name", user);
+											String ID = getString("id", user);
+											String email = getString("email", user).toLowerCase();
+											newUser.setName(name);
+											newUser.setEmail(email);
+											newUser.setDept(getString("name",
+													(Element) user.getElementsByTagName("department").item(0)));
+											newUser.setSite(getString("name",
+													(Element) user.getElementsByTagName("site").item(0)));
+											newUser.setID(ID);
+											ArrayList<String> groupIdList = new ArrayList<String>();
+											Element groupIdsElement = (Element) user.getElementsByTagName("group_ids")
+													.item(0);
+											NodeList groupIds = groupIdsElement.getElementsByTagName("group_id");
+											for (int j = 0; j < groupIds.getLength(); j++) {
+												if (groupIds.item(j) instanceof Element) {
+													String groupID = groupIds.item(j).getTextContent();
+													groupIdList.add(groupID);
+												}
+											}
+											newUser.setGroupID(groupIdList);
+											users.put(email, newUser);
+										}
+										System.out.print("Updating users with Thread: " + current + " ["
+												+ (i + (curPage - 1) * 100) + "/" + totalUsers + "]\t\t\t\r");
+
+									}
+									conn.disconnect();
+									curPage++;
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+
+							}
+
+							return null;
+						}
+					};
+
+					// method to set labeltext
+
+					newThread.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+
+						@Override
+						public void handle(WorkerStateEvent event) {
+							System.err.println("DONE THREAD " + current);
+
+						}
+					});
+					Thread newUserThread = new Thread(newThread);
+					newUserThread.start();
+				}
+				return null;
+			}
+
+		};
+		main.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+
+			@Override
+			public void handle(WorkerStateEvent event) {
+				System.err.println("DONE! Number of users: " + users.size());
+
+			}
+		});
+		Thread mainThread = new Thread(main);
+		mainThread.start();
+
+		// System.err.println("SIZE: " + users.size());
+		return users;
+
 	}
 
 	public static TreeMap<String, ArrayList<String>> getCategories(String userToken) {

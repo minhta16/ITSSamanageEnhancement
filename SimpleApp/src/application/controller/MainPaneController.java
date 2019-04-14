@@ -164,6 +164,7 @@ public class MainPaneController {
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
 
 		AppSession.getSession().updateEasyStuff();
+		//AppSession.getSession().updateUsersMultiThreads(16);
 
 		// setup setting tab
 		System.out.print("Setting up Setting Tab\t\t\t\r");
