@@ -1239,17 +1239,43 @@ public class MainPaneController {
 				System.err.println("Chosen template: " + templateComboBox.getValue());
 				Incident chosenTemplate = AppSession.getSession().getTemplates().get(templateComboBox.getValue());
 				System.err.println(chosenTemplate.toString());
-				statesChoiceBox.setValue(chosenTemplate.getState());
-				requesterField.setText(chosenTemplate.getRequester());
-				incidentNameField.setText(chosenTemplate.getTitle());
-				catChoiceBox.setValue(chosenTemplate.getCategory());
-				subcatChoiceBox.setValue(chosenTemplate.getSubcategory());
-				assigneeField.setText(chosenTemplate.getAssignee());
-				descField.setText(chosenTemplate.getDescription());
-				priorityChoiceBox.setValue(chosenTemplate.getPriority());
-				deptComboBox.setValue(chosenTemplate.getDept());
-				siteComboBox.setValue(chosenTemplate.getSite());
-				softwareComboBox.setValue(chosenTemplate.getSoftware());
+				if (chosenTemplate.getState() != null) {
+					statesChoiceBox.setValue(chosenTemplate.getState());
+				}
+				
+				if (chosenTemplate.getRequester() != null) {
+					requesterField.setText(chosenTemplate.getRequester());
+				}
+				
+				if (chosenTemplate.getTitle() != null) {
+					incidentNameField.setText(chosenTemplate.getTitle());
+				}
+				if (chosenTemplate.getCategory() != null) {
+					catChoiceBox.setValue(chosenTemplate.getCategory());
+					if (chosenTemplate.getSubcategory() != null) {
+						subcatChoiceBox.setValue(chosenTemplate.getSubcategory());
+					}
+				}
+				
+				if (chosenTemplate.getAssignee() != null) {
+					assigneeField.setText(chosenTemplate.getAssignee());
+				}
+				if (chosenTemplate.getDescription() != null) {
+					descField.setText(chosenTemplate.getDescription());
+				}
+				if (chosenTemplate.getPriority() != null) {
+					priorityChoiceBox.setValue(chosenTemplate.getPriority());
+				}
+				if (chosenTemplate.getDept() != null) {
+					deptComboBox.setValue(chosenTemplate.getDept());
+				}
+				if (chosenTemplate.getSite() != null) {
+					siteComboBox.setValue(chosenTemplate.getSite());
+				}
+				if (chosenTemplate.getSoftware() != null) {
+					softwareComboBox.setValue(chosenTemplate.getSoftware());
+				}
+				
 				if (chosenTemplate.getDueOn() != null) {
 					datePicker.setValue(chosenTemplate.getDueOn());
 				}
