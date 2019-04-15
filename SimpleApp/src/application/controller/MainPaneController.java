@@ -10,7 +10,10 @@ import java.util.Optional;
 import java.util.TreeMap;
 import java.util.function.Consumer;
 
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.controlsfx.control.textfield.TextFields;
+import org.xml.sax.SAXException;
 
 import com.google.gson.JsonIOException;
 
@@ -121,7 +124,7 @@ public class MainPaneController {
 	@FXML
 	private Button addEmailBtn;
 	@FXML
-	private TableView<TimeTrack> infoTable;
+	private TableView<TimeTrack> trackTable;
 	@FXML
 	private TableView<Incident> incidentTable;
 	@FXML
@@ -163,7 +166,13 @@ public class MainPaneController {
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
 
-		AppSession.getSession().updateEasyStuff();
+		try {
+			AppSession.getSession().updateEasyStuff();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			showAlert("ERROR", "ERROR:\n" + e.getStackTrace(), AlertType.ERROR);
+			System.exit(1);
+		}
 		//AppSession.getSession().updateUsersMultiThreads(16);
 
 		// setup setting tab
@@ -198,11 +207,17 @@ public class MainPaneController {
 		setupTabs();
 
 		System.out.print("Setting up Template Editor\t\t\t\r");
-		setupTemplateMenu();
+		setupTemplateTab();
 		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
 		if (AppSession.getSession().getDefaultAutoUpdateCheck()) {
 			System.out.print("Checking for newer database version...\t\t\t\r");
-			updatePrompt = AppSession.getSession().getUpdatePrompt();
+			try {
+				updatePrompt = AppSession.getSession().getUpdatePrompt();
+			} catch (IOException e) {
+				//TODO: handle
+				showAlert("ERROR", "ERROR:\n" + e.getStackTrace(), AlertType.ERROR);
+				System.exit(1);
+			}
 		}
 
 		System.out.println("Load Complete!\t\t\t");
@@ -319,11 +334,11 @@ public class MainPaneController {
 		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
 
 		// setup infoTable
-		infoTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
-		infoTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("email"));
-		infoTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("time"));
-		infoTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("comment"));
-		infoTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
+		trackTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
+		trackTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("email"));
+		trackTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("time"));
+		trackTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("comment"));
+		trackTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
 	}
 
 	private void setupCatChoiceBox() {
@@ -779,9 +794,9 @@ public class MainPaneController {
 				timeTrackCmtField.getText());
 		track.getRemoveBtn().setOnAction((e) -> {
 			AppSession.getSession().removeTimeTrackByEmail(track.getEmail());
-			infoTable.getItems().remove(track);
+			trackTable.getItems().remove(track);
 		});
-		infoTable.getItems().add(track);
+		trackTable.getItems().add(track);
 
 		try {
 			AppSession.getSession().addTrackedUser(track);
@@ -797,7 +812,7 @@ public class MainPaneController {
 	private void clearInputFields() {
 		incidentNameField.clear();
 		descField.clear();
-		infoTable.getItems().clear();
+		trackTable.getItems().clear();
 		catChoiceBox.setValue(null);
 		subcatChoiceBox.setValue(null);
 		softwareComboBox.setValue(null);
@@ -826,8 +841,14 @@ public class MainPaneController {
 							e.printStackTrace();
 						}
 					}
-					AppSession.getSession().updateListIncidents(updateFromDatePicker.getValue(),
-							updateToDatePicker.getValue());
+					try {
+						AppSession.getSession().updateListIncidents(updateFromDatePicker.getValue(),
+								updateToDatePicker.getValue());
+					} catch (SAXException | ParserConfigurationException e) {
+						// TODO Auto-generated catch block
+						showAlert("ERROR", "ERROR:\n" + e.getStackTrace(), AlertType.ERROR);
+						System.exit(1);
+					}
 					updateMessage("Update List");
 					return null;
 				}
@@ -900,8 +921,8 @@ public class MainPaneController {
 //				infoTable.getItems().remove(track);
 			});
 		}
-		infoTable.getItems().clear();
-		infoTable.getItems().addAll(incident.getTimeTracks());
+		trackTable.getItems().clear();
+		trackTable.getItems().addAll(incident.getTimeTracks());
 	}
 
 	@FXML
@@ -1130,7 +1151,11 @@ public class MainPaneController {
 	@FXML
 	private ComboBox<String> tempCatComboBox;
 	@FXML
+	private Label tempSubcatLabel;
+	@FXML
 	private ComboBox<String> tempSubcatComboBox;
+	@FXML
+	private Label tempSoftwareLabel;
 	@FXML
 	private ComboBox<String> tempSoftwareComboBox;
 
@@ -1172,7 +1197,7 @@ public class MainPaneController {
 
 	private Incident currentTemplate;
 
-	private void setupTemplateMenu() {
+	private void setupTemplateTab() {
 		templatePane.setDisable(true);
 		templateTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("ID"));
 		templateTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
@@ -1201,21 +1226,66 @@ public class MainPaneController {
 				return null;
 			}
 		});
-
-		TextFields.bindAutoCompletion(templateComboBox.getEditor(), templateComboBox.getItems());
+		tempStateComboBox.getItems().addAll(AppSession.getSession().getStates());
+		tempCatComboBox.getItems().addAll(AppSession.getSession().getCategories().keySet());
+		tempSoftwareComboBox.getItems().addAll(AppSession.getSession().getSoftwares().keySet());
+		TextFields.bindAutoCompletion(tempSoftwareComboBox.getEditor(), tempSoftwareComboBox.getItems());
+		tempPriorityChoiceBox.getItems().addAll(AppSession.getSession().getPriorities());
+		tempDeptComboBox.getItems().addAll(AppSession.getSession().getDepartments());
+		TextFields.bindAutoCompletion(tempDeptComboBox.getEditor(), tempDeptComboBox.getItems());
+		tempSiteComboBox.getItems().addAll(AppSession.getSession().getSites());
+		TextFields.bindAutoCompletion(tempSiteComboBox.getEditor(), tempSiteComboBox.getItems());
+	
+		
+		TextFields.bindAutoCompletion(tempReqField, savedEmailprovider);
+		TextFields.bindAutoCompletion(tempAsgField, savedEmailprovider);
+		TextFields.bindAutoCompletion(tempTrackEmailField, savedEmailprovider);
 		updateTemplatesTable();
+		
+		tempCatComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				updateTempSubcatChoiceBox();
+				if (newValue != null) {
+					setDisableTempSoftwareComboBox(!newValue.equals("Software"));
+				}
+			}
+		});
+	}
 
+	private void setDisableTempSubcatChoiceBox(boolean disable) {
+		tempSubcatComboBox.setDisable(disable);
+		tempSubcatLabel.setDisable(disable);
+	}
+
+
+	private void updateTempSubcatChoiceBox() {
+		tempSubcatComboBox.getItems().clear();
+		if (tempCatComboBox.getValue() == null) {
+			setDisableTempSubcatChoiceBox(true);
+		} else if (AppSession.getSession().getCategories().get(tempCatComboBox.getValue()).isEmpty()) {
+			setDisableTempSubcatChoiceBox(true);
+		} else {
+			setDisableTempSubcatChoiceBox(false);
+			tempSubcatComboBox.getItems().addAll(AppSession.getSession().getCategories().get(tempCatComboBox.getValue()));
+		}
+	}
+
+	private void setDisableTempSoftwareComboBox(boolean disable) {
+		tempSoftwareComboBox.setDisable(disable);
+		tempSoftwareLabel.setDisable(disable);
 	}
 
 	@FXML
 	private void handleTemplateSaveBtn() {
+		ArrayList<TimeTrack> newTracks = new ArrayList<TimeTrack>();
+		newTracks.addAll(AppSession.getSession().getTemplateTimeTracks());
 		Incident template = new Incident(tempNameField.getText(), "0", tempStateComboBox.getValue(),
 				tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(), tempCatComboBox.getValue(),
 				tempSubcatComboBox.getValue(), tempAsgField.getText(), tempReqField.getText(),
 				tempSiteComboBox.getValue(), tempDeptComboBox.getValue(), tempDescField.getText(),
 				tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(),
-				AppSession.getSession().getTemplateTimeTracks());
-
+				newTracks);
 		if ((templateEdit == IncidentEditType.NEW
 				|| (templateEdit == IncidentEditType.EDIT && (!template.getID().equals(currentTemplate.getID()))))
 				&& AppSession.getSession().getTemplates().keySet().contains(tempNameField.getText())) {
@@ -1279,6 +1349,11 @@ public class MainPaneController {
 				if (chosenTemplate.getDueOn() != null) {
 					datePicker.setValue(chosenTemplate.getDueOn());
 				}
+				
+				if (!chosenTemplate.getTimeTracks().isEmpty()) {
+					trackTable.getItems().clear();
+					trackTable.getItems().addAll(chosenTemplate.getTimeTracks());
+				}
 
 			} else {
 				System.err.println("There's no such template in the library.");
@@ -1301,11 +1376,10 @@ public class MainPaneController {
 		TimeTrack track = new TimeTrack(user, Integer.parseInt(tempTrackTimeField.getText()),
 				tempTrackCmtField.getText());
 		track.getRemoveBtn().setOnAction((e) -> {
-			AppSession.getSession().removeTemplateTimeTrackByEmail(track.getEmail());
+			AppSession.getSession().getTemplateTimeTracks().remove(track);
 			tempTrackTable.getItems().remove(track);
 		});
 		tempTrackTable.getItems().add(track);
-
 		AppSession.getSession().getTemplateTimeTracks().add(track);
 	}
 	

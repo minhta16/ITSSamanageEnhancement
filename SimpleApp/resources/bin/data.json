@@ -17,41 +17,42 @@
   "defaultAutoUpdateCheckChoice": false,
   "dtbUpdateCheckAskAgainCheckBox": true,
   "templates": {
-    "Test": {
-      "ID": "Test",
+    "ITS Meeting": {
+      "ID": "ITS Meeting",
       "number": "0",
-      "state": "",
-      "title": "",
-      "priority": "",
-      "cat": "",
-      "subcat": "",
-      "assignee": "",
-      "requester": "minhta16",
-      "site": "",
-      "dept": "",
-      "desc": "",
-      "groupId": "",
+      "state": "Closed",
+      "title": "Testing template",
+      "priority": "Medium",
+      "cat": "Meetings  (ITS use only)",
+      "subcat": "Planning/Consulting/Brainstorming",
+      "assignee": "minhta16@augustana.edu",
+      "requester": "minhta16@augustana.edu",
+      "site": "Andeberg House A5",
+      "dept": "Academic Affairs",
+      "desc": "Testing template",
       "software": "",
-      "trackedUsers": [],
-      "trackedUsersNum": 0
-    },
-    "Weekly meeting": {
-      "ID": "Weekly meeting",
-      "number": "0",
-      "state": "",
-      "title": "Weekly Meeting",
-      "priority": "",
-      "cat": "",
-      "subcat": "",
-      "assignee": "minhta16",
-      "requester": "minhta16",
-      "site": "",
-      "dept": "",
-      "desc": "",
-      "groupId": "",
-      "software": "",
-      "trackedUsers": [],
-      "trackedUsersNum": 0
+      "dueOn": {
+        "year": 2019,
+        "month": 4,
+        "day": 15
+      },
+      "trackedUsers": [
+        {
+          "user": {
+            "name": "Ta, Minh Q",
+            "email": "minhta16@augustana.edu",
+            "dept": "Student",
+            "site": "Freya House 2",
+            "ID": "1753326",
+            "groupID": [
+              "1953008"
+            ]
+          },
+          "time": 30,
+          "comment": "home"
+        }
+      ],
+      "trackedUsersNum": 1
     }
   },
   "assigneeEmails": [

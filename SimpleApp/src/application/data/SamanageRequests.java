@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -16,12 +18,14 @@ import java.util.TreeMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 import com.google.gson.JsonIOException;
 
@@ -118,152 +122,52 @@ public class SamanageRequests {
 
 	}
 
-	public static void addTimeTrack(String userToken, String incidentID, String trackCmt, String creatorID,
-			double time) {
+	public static void addTimeTrack(String userToken, String incidentID, String trackCmt, String creatorID, double time)
+			throws IOException {
 
-		try {
-			String url = "https://api.samanage.com/incidents/" + incidentID + "/time_tracks.xml";
+		String url = "https://api.samanage.com/incidents/" + incidentID + "/time_tracks.xml";
 
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
 
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", ACCEPT_VERSION);
-			conn.setRequestProperty("Content-Type", "text/xml");
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		conn.setRequestProperty("Content-Type", "text/xml");
 
-			String data = "<time_track>" + "<name>" + trackCmt + "</name>";
-			data += "<creator_id>" + creatorID + "</creator_id>";
-			data += "<minutes_parsed>" + time + " m</minutes_parsed>" + "</time_track>";
-			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
-			out.write(data);
-			out.close();
+		String data = "<time_track>" + "<name>" + trackCmt + "</name>";
+		data += "<creator_id>" + creatorID + "</creator_id>";
+		data += "<minutes_parsed>" + time + " m</minutes_parsed>" + "</time_track>";
+		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+		out.write(data);
+		out.close();
 
-			new InputStreamReader(conn.getInputStream());
-			conn.disconnect();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		new InputStreamReader(conn.getInputStream());
+		conn.disconnect();
+
 	}
 
 	// HTML METHOD:
 	// GET
 
-	public static TreeMap<String, Incident> getIncidents(String userToken, LocalDate fromDate,
-			LocalDate toDate) {
+	public static TreeMap<String, Incident> getIncidents(String userToken, LocalDate fromDate, LocalDate toDate)
+			throws IOException, SAXException, ParserConfigurationException {
 		TreeMap<String, Incident> incidentMap = new TreeMap<String, Incident>();
 		boolean hasMore = true;
 		int curPage = 1;
 		while (hasMore) {
-			try {
-				// String url =
-				// "https://api.samanage.com/incidents.xml?per_page=100&page=1&created%5B%5D=Select%20Date%20Range&created_custom_gte%5B%5D=27/03/2019&created_custom_lte%5B%5D=27/03/2019";
-				/*
-				 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H'Accept:
-				 * application/vnd.samanage.v2.1+xml' -X GET
-				 * https://api.samanage.com/incidents.xml
-				 */
-				String url = "https://api.samanage.com/incidents.xml" + "?per_page=100&page=" + curPage
-						+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
-						+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
-						+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-
-				URL obj = new URL(url);
-				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-				conn.setDoOutput(true);
-
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-				conn.setRequestProperty("Accept", ACCEPT_VERSION);
-				// conn.setRequestProperty("Content-Type", "text/xml");
-
-				BufferedReader br;
-				if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
-					br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-				} else {
-					br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-				}
-
-				StringBuffer xml = new StringBuffer();
-				String output;
-				while ((output = br.readLine()) != null) {
-					xml.append(output);
-				}
-
-				// got from
-				// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
-				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder builder = factory.newDocumentBuilder();
-				Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
-				Element rootElement = document.getDocumentElement();
-
-				NodeList listOfIncidents = rootElement.getElementsByTagName("incident");
-				if (listOfIncidents.getLength() != 100) {
-					hasMore = false;
-				}
-
-				for (int i = 0; i < listOfIncidents.getLength(); i++) {
-
-					if (listOfIncidents.item(i) instanceof Element) {
-						Element incident = (Element) listOfIncidents.item(i);
-						String id = getString("id", incident);
-						ArrayList<TimeTrack> trackedUsers = getTimeTracks(userToken, id);
-						String ID = getString("id", incident);
-						String number = getString("number", incident);
-						String category = getString("name",
-								(Element) incident.getElementsByTagName("category").item(0));
-						String assigneeEmail = getString("email",
-								(Element) incident.getElementsByTagName("assignee").item(0)).toLowerCase();
-						String groupId = "";
-						if (assigneeEmail.isEmpty()) {
-							groupId = getString("id", (Element) incident.getElementsByTagName("assignee").item(0));
-						} else {
-							groupId = getString("group_id", (Element) incident.getElementsByTagName("assignee").item(0));
-						}
-						String software = "";
-						if (category.equals("Software")) {
-							for (int j = 0; j < incident.getElementsByTagName("custom_fields_value").getLength(); j++) {
-								if (getString("name",
-										(Element) incident.getElementsByTagName("custom_fields_value").item(j))
-												.equals("Software")) {
-									software = getString("value",
-											(Element) incident.getElementsByTagName("custom_fields_value").item(j));
-								}
-							}
-						}
-						Incident newIncident = new Incident(ID, number, getString("state", incident),
-								getString("name", incident), getString("priority", incident), category,
-								getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
-								assigneeEmail,
-								getString("email", (Element) incident.getElementsByTagName("requester").item(0))
-										.toLowerCase(),
-								getString("name",
-										(Element) incident.getElementsByTagName("site")
-												.item(incident.getElementsByTagName("site").getLength() - 1)),
-								getString("name",
-										(Element) incident.getElementsByTagName("department")
-												.item(incident.getElementsByTagName("department").getLength() - 1)),
-								getString("description", incident), toDate(getString("due_at", incident)), groupId,
-								software, trackedUsers);
-
-						incidentMap.put(number, newIncident);
-					}
-
-				}
-				conn.disconnect();
-				curPage++;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return incidentMap;
-		// System.err.println(map);
-	}
-
-	public static User getUserByEmail(String userToken, String email) {
-		try {
-			String url = "https://api.samanage.com/users.xml?email=" + email;
+			// String url =
+			// "https://api.samanage.com/incidents.xml?per_page=100&page=1&created%5B%5D=Select%20Date%20Range&created_custom_gte%5B%5D=27/03/2019&created_custom_lte%5B%5D=27/03/2019";
+			/*
+			 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H'Accept:
+			 * application/vnd.samanage.v2.1+xml' -X GET
+			 * https://api.samanage.com/incidents.xml
+			 */
+			String url = "https://api.samanage.com/incidents.xml" + "?per_page=100&page=" + curPage
+					+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
+					+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
+					+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
 			URL obj = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -280,6 +184,7 @@ public class SamanageRequests {
 			} else {
 				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
 			}
+
 			StringBuffer xml = new StringBuffer();
 			String output;
 			while ((output = br.readLine()) != null) {
@@ -293,39 +198,126 @@ public class SamanageRequests {
 			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
 			Element rootElement = document.getDocumentElement();
 
-			NodeList listOfUsers = rootElement.getElementsByTagName("user");
-			if (listOfUsers.getLength() == 0) {
-				return null;
+			NodeList listOfIncidents = rootElement.getElementsByTagName("incident");
+			if (listOfIncidents.getLength() != 100) {
+				hasMore = false;
 			}
 
-			User newUser = new User();
-			for (int i = 0; i < listOfUsers.getLength(); i++) {
-				if (listOfUsers.item(i) instanceof Element) {
-					Element user = (Element) listOfUsers.item(i);
-					String name = getString("name", user);
-					String ID = getString("id", user);
-					newUser.setName(name);
-					newUser.setEmail(email);
-					newUser.setDept(getString("name", (Element) user.getElementsByTagName("department").item(0)));
-					newUser.setSite(getString("name", (Element) user.getElementsByTagName("site").item(0)));
-					newUser.setID(ID);
+			for (int i = 0; i < listOfIncidents.getLength(); i++) {
+
+				if (listOfIncidents.item(i) instanceof Element) {
+					Element incident = (Element) listOfIncidents.item(i);
+					String id = getString("id", incident);
+					ArrayList<TimeTrack> trackedUsers = getTimeTracks(userToken, id);
+					String ID = getString("id", incident);
+					String number = getString("number", incident);
+					String category = getString("name", (Element) incident.getElementsByTagName("category").item(0));
+					String assigneeEmail = getString("email",
+							(Element) incident.getElementsByTagName("assignee").item(0)).toLowerCase();
+					String groupId = "";
+					if (assigneeEmail.isEmpty()) {
+						groupId = getString("id", (Element) incident.getElementsByTagName("assignee").item(0));
+					} else {
+						groupId = getString("group_id", (Element) incident.getElementsByTagName("assignee").item(0));
+					}
+					String software = "";
+					if (category.equals("Software")) {
+						for (int j = 0; j < incident.getElementsByTagName("custom_fields_value").getLength(); j++) {
+							if (getString("name",
+									(Element) incident.getElementsByTagName("custom_fields_value").item(j))
+											.equals("Software")) {
+								software = getString("value",
+										(Element) incident.getElementsByTagName("custom_fields_value").item(j));
+							}
+						}
+					}
+					Incident newIncident = new Incident(ID, number, getString("state", incident),
+							getString("name", incident), getString("priority", incident), category,
+							getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
+							assigneeEmail,
+							getString("email", (Element) incident.getElementsByTagName("requester").item(0))
+									.toLowerCase(),
+							getString("name",
+									(Element) incident.getElementsByTagName("site")
+											.item(incident.getElementsByTagName("site").getLength() - 1)),
+							getString("name",
+									(Element) incident.getElementsByTagName("department")
+											.item(incident.getElementsByTagName("department").getLength() - 1)),
+							getString("description", incident), toDate(getString("due_at", incident)), groupId,
+							software, trackedUsers);
+
+					incidentMap.put(number, newIncident);
 				}
 
 			}
 			conn.disconnect();
-			return newUser;
-		} catch (Exception e) {
-			e.printStackTrace();
+			curPage++;
 		}
-		return null;
+		return incidentMap;
+		// System.err.println(map);
 	}
 
-	public static TreeMap<String, User> getAllUsers(String userToken) {
+	public static User getUserByEmail(String userToken, String email)
+			throws IOException, ParserConfigurationException, SAXException {
+		String url = "https://api.samanage.com/users.xml?email=" + email;
+
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
+
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		// conn.setRequestProperty("Content-Type", "text/xml");
+
+		BufferedReader br;
+		if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+			br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		}
+		StringBuffer xml = new StringBuffer();
+		String output;
+		while ((output = br.readLine()) != null) {
+			xml.append(output);
+		}
+
+		// got from
+		// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+		Element rootElement = document.getDocumentElement();
+
+		NodeList listOfUsers = rootElement.getElementsByTagName("user");
+		if (listOfUsers.getLength() == 0) {
+			return null;
+		}
+
+		User newUser = new User();
+		for (int i = 0; i < listOfUsers.getLength(); i++) {
+			if (listOfUsers.item(i) instanceof Element) {
+				Element user = (Element) listOfUsers.item(i);
+				String name = getString("name", user);
+				String ID = getString("id", user);
+				newUser.setName(name);
+				newUser.setEmail(email);
+				newUser.setDept(getString("name", (Element) user.getElementsByTagName("department").item(0)));
+				newUser.setSite(getString("name", (Element) user.getElementsByTagName("site").item(0)));
+				newUser.setID(ID);
+			}
+
+		}
+		conn.disconnect();
+		return newUser;
+	}
+
+	public static TreeMap<String, User> getAllUsers(String userToken) throws IOException {
 		TreeMap<String, User> users = new TreeMap<String, User>();
 		int totalUsers = getTotalElements(userToken, "users");
 		boolean hasMore = true;
 		int curPage = 1;
-		
+
 		while (hasMore) {
 			try {
 				// String url =
@@ -402,8 +394,8 @@ public class SamanageRequests {
 		return users;
 		// System.err.println(map);
 	}
-	
-	public static TreeMap<String, User> getAllUsersMultiThreads(String userToken, int numOfThreads) {
+
+	public static TreeMap<String, User> getAllUsersMultiThreads(String userToken, int numOfThreads) throws IOException {
 		TreeMap<String, User> users = new TreeMap<String, User>();
 		int totalUsers = getTotalElements(userToken, "users");
 
@@ -542,55 +534,50 @@ public class SamanageRequests {
 
 	}
 
-	public static TreeMap<String, ArrayList<String>> getCategories(String userToken) {
+	public static TreeMap<String, ArrayList<String>> getCategories(String userToken) throws IOException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
 		 * https://api.samanage.com/categories.xml
 		 */
-		try {
-			String url = "https://api.samanage.com/categories.xml";
+		String url = "https://api.samanage.com/categories.xml";
 
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
 
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", ACCEPT_VERSION);
-			conn.setRequestProperty("Content-Type", "text/xml");
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		conn.setRequestProperty("Content-Type", "text/xml");
 
-			Element rootElement = documentFromOutput(conn);
-			NodeList categories = rootElement.getElementsByTagName("incident-type");
-			if (categories.getLength() == 0) {
-				return null;
-			}
+		Element rootElement = documentFromOutput(conn);
+		NodeList categories = rootElement.getElementsByTagName("incident-type");
+		if (categories.getLength() == 0) {
+			return null;
+		}
 
-			TreeMap<String, ArrayList<String>> categoriesMap = new TreeMap<String, ArrayList<String>>();
-			for (int i = 0; i < categories.getLength(); i++) {
-				if (categories.item(i) instanceof Element) {
-					Element category = (Element) categories.item(i);
-					if (getString("parent_id", category).equals("")) {
-						String name = getString("name", category);
-						categoriesMap.put(name, new ArrayList<String>());
-						NodeList subcat = category.getElementsByTagName("child");
-						for (int j = 0; j < subcat.getLength(); j++) {
-							categoriesMap.get(name).add(getString("name", (Element) subcat.item(j)));
-						}
+		TreeMap<String, ArrayList<String>> categoriesMap = new TreeMap<String, ArrayList<String>>();
+		for (int i = 0; i < categories.getLength(); i++) {
+			if (categories.item(i) instanceof Element) {
+				Element category = (Element) categories.item(i);
+				if (getString("parent_id", category).equals("")) {
+					String name = getString("name", category);
+					categoriesMap.put(name, new ArrayList<String>());
+					NodeList subcat = category.getElementsByTagName("child");
+					for (int j = 0; j < subcat.getLength(); j++) {
+						categoriesMap.get(name).add(getString("name", (Element) subcat.item(j)));
 					}
 				}
-
 			}
 
-			conn.disconnect();
-			return categoriesMap;
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-		return null;
+
+		conn.disconnect();
+		return categoriesMap;
 	}
 
-	public static ArrayList<String> getDepartments(String userToken) {
+	public static ArrayList<String> getDepartments(String userToken) throws IOException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -600,43 +587,40 @@ public class SamanageRequests {
 		int curPage = 1;
 		ArrayList<String> deptList = new ArrayList<String>();
 		while (hasMore) {
-			try {
-				String url = "https://api.samanage.com/departments.xml?per_page=100&page=" + curPage;
+			String url = "https://api.samanage.com/departments.xml?per_page=100&page=" + curPage;
 
-				URL obj = new URL(url);
-				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-				conn.setDoOutput(true);
+			URL obj = new URL(url);
+			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+			conn.setDoOutput(true);
 
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-				conn.setRequestProperty("Accept", ACCEPT_VERSION);
-				conn.setRequestProperty("Content-Type", "text/xml");
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
+			conn.setRequestProperty("Content-Type", "text/xml");
 
-				Element rootElement = documentFromOutput(conn);
-				NodeList depts = rootElement.getElementsByTagName("department");
-				if (depts.getLength() != 100) {
-					hasMore = false;
-				}
-
-				for (int i = 0; i < depts.getLength(); i++) {
-					if (depts.item(i) instanceof Element) {
-						Element dept = (Element) depts.item(i);
-						String name = getString("name", dept);
-						deptList.add(name);
-					}
-
-				}
-
-				conn.disconnect();
-				curPage++;
-			} catch (Exception e) {
-				e.printStackTrace();
+			Element rootElement = documentFromOutput(conn);
+			NodeList depts = rootElement.getElementsByTagName("department");
+			if (depts.getLength() != 100) {
+				hasMore = false;
 			}
+
+			for (int i = 0; i < depts.getLength(); i++) {
+				if (depts.item(i) instanceof Element) {
+					Element dept = (Element) depts.item(i);
+					String name = getString("name", dept);
+					deptList.add(name);
+				}
+
+			}
+
+			conn.disconnect();
+			curPage++;
 		}
 		return deptList;
+
 	}
 
-	public static ArrayList<String> getSites(String userToken) {
+	public static ArrayList<String> getSites(String userToken) throws IOException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -646,184 +630,163 @@ public class SamanageRequests {
 		int curPage = 1;
 		ArrayList<String> siteList = new ArrayList<String>();
 		while (hasMore) {
-			try {
-				String url = "https://api.samanage.com/sites.xml?per_page=100&page=" + curPage;
+			String url = "https://api.samanage.com/sites.xml?per_page=100&page=" + curPage;
 
-				URL obj = new URL(url);
-				HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-				conn.setDoOutput(true);
+			URL obj = new URL(url);
+			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+			conn.setDoOutput(true);
 
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-				conn.setRequestProperty("Accept", ACCEPT_VERSION);
-				conn.setRequestProperty("Content-Type", "text/xml");
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+			conn.setRequestProperty("Accept", ACCEPT_VERSION);
+			conn.setRequestProperty("Content-Type", "text/xml");
 
-				Element rootElement = documentFromOutput(conn);
-				NodeList sites = rootElement.getElementsByTagName("site");
-				if (sites.getLength() != 100) {
-					hasMore = false;
-				}
-
-				for (int i = 0; i < sites.getLength(); i++) {
-					if (sites.item(i) instanceof Element) {
-						Element site = (Element) sites.item(i);
-						String name = getString("name", site);
-						siteList.add(name);
-					}
-
-				}
-
-				conn.disconnect();
-				curPage++;
-			} catch (Exception e) {
-				e.printStackTrace();
+			Element rootElement = documentFromOutput(conn);
+			NodeList sites = rootElement.getElementsByTagName("site");
+			if (sites.getLength() != 100) {
+				hasMore = false;
 			}
+
+			for (int i = 0; i < sites.getLength(); i++) {
+				if (sites.item(i) instanceof Element) {
+					Element site = (Element) sites.item(i);
+					String name = getString("name", site);
+					siteList.add(name);
+				}
+
+			}
+
+			conn.disconnect();
+			curPage++;
 		}
 		return siteList;
 	}
 
 	// 408915 Software
-	public static TreeMap<String, Software> getSoftwares(String userToken, String typeCode, String type) {
+	public static TreeMap<String, Software> getSoftwares(String userToken, String typeCode, String type)
+			throws IOException {
 		TreeMap<String, Software> softwareList = new TreeMap<String, Software>();
-		try {
-			// typeCode is for Category = Software, so that Software custom fields are there
-			String url = "https://api.samanage.com/incidents.xml?per_page=1&page=1&category%5B%5D=" + typeCode;
+		// typeCode is for Category = Software, so that Software custom fields are there
+		String url = "https://api.samanage.com/incidents.xml?per_page=1&page=1&category%5B%5D=" + typeCode;
 
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
 
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", ACCEPT_VERSION);
-			conn.setRequestProperty("Content-Type", "text/xml");
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		conn.setRequestProperty("Content-Type", "text/xml");
 
-			Element rootElement = documentFromOutput(conn);
-			NodeList customFields = rootElement.getElementsByTagName("custom_fields_value");
+		Element rootElement = documentFromOutput(conn);
+		NodeList customFields = rootElement.getElementsByTagName("custom_fields_value");
 
-			for (int i = 0; i < customFields.getLength(); i++) {
-				if (customFields.item(i) instanceof Element) {
-					Element customField = (Element) customFields.item(i);
-					String name = getString("name", customField);
-					if (name.equals(type)) {
-						String[] softwares = getString("options", customField).split("<br>");
-						for (String software : softwares) {
-							softwareList.put(software, new Software(software));
-						}
+		for (int i = 0; i < customFields.getLength(); i++) {
+			if (customFields.item(i) instanceof Element) {
+				Element customField = (Element) customFields.item(i);
+				String name = getString("name", customField);
+				if (name.equals(type)) {
+					String[] softwares = getString("options", customField).split("<br>");
+					for (String software : softwares) {
+						softwareList.put(software, new Software(software));
 					}
 				}
-
 			}
 
-			conn.disconnect();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
+
+		conn.disconnect();
 		return softwareList;
 	}
 
-	public static TreeMap<String, Group> getGroups(String userToken) {
+	public static TreeMap<String, Group> getGroups(String userToken) throws IOException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
 		 * https://api.samanage.com/categories.xml
 		 */
-		try {
-			String url = "https://api.samanage.com/groups.xml";
+		String url = "https://api.samanage.com/groups.xml";
 
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
 
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", ACCEPT_VERSION);
-			conn.setRequestProperty("Content-Type", "text/xml");
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		conn.setRequestProperty("Content-Type", "text/xml");
 
-			Element rootElement = documentFromOutput(conn);
-			NodeList groups = rootElement.getElementsByTagName("group");
+		Element rootElement = documentFromOutput(conn);
+		NodeList groups = rootElement.getElementsByTagName("group");
 
-			TreeMap<String, Group> groupsMap = new TreeMap<String, Group>();
-			for (int i = 0; i < groups.getLength(); i++) {
-				if (groups.item(i) instanceof Element) {
-					Element group = (Element) groups.item(i);
-					String name = getString("name", group);
-					String groupId = getString("id", group);
-					groupsMap.put(groupId, new Group(name, groupId));
-				}
-
+		TreeMap<String, Group> groupsMap = new TreeMap<String, Group>();
+		for (int i = 0; i < groups.getLength(); i++) {
+			if (groups.item(i) instanceof Element) {
+				Element group = (Element) groups.item(i);
+				String name = getString("name", group);
+				String groupId = getString("id", group);
+				groupsMap.put(groupId, new Group(name, groupId));
 			}
 
-			conn.disconnect();
-			return groupsMap;
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-		return null;
+
+		conn.disconnect();
+		return groupsMap;
 	}
 
-	public static String getID(String userToken) {
-		try {
-			String url = "https://api.samanage.com/incidents.xml?per_page=1";
+	public static String getID(String userToken) throws IOException {
+		String url = "https://api.samanage.com/incidents.xml?per_page=1";
 
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
 
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", ACCEPT_VERSION);
-			conn.setRequestProperty("Content-Type", "application/xml");
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		conn.setRequestProperty("Content-Type", "application/xml");
 
-			Element rootElement = documentFromOutput(conn);
+		Element rootElement = documentFromOutput(conn);
 
-			String incidentID = getString("id", rootElement);
-			conn.disconnect();
-			return incidentID;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
+		String incidentID = getString("id", rootElement);
+		conn.disconnect();
+		return incidentID;
 	}
 
-	public static int getTotalElements(String userToken, String type) {
-		try {
-			String url = "https://api.samanage.com/" + type + ".xml";
+	public static int getTotalElements(String userToken, String type) throws IOException {
+		String url = "https://api.samanage.com/" + type + ".xml";
 
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
 
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
 //			conn.setRequestProperty("Content-Type", "text/xml");
 
-			Element rootElement = documentFromOutput(conn);
-			int totalEntries = 0;
-			if (getString("total_entries", rootElement).equals("")) {
-				NodeList nodes = rootElement.getChildNodes();
-				for (int i = 0; i < nodes.getLength(); i++) {
-					Node childNode = nodes.item(i);
-					if (childNode instanceof Element) {
-						totalEntries++;
-					}
+		Element rootElement = documentFromOutput(conn);
+		int totalEntries = 0;
+		if (getString("total_entries", rootElement).equals("")) {
+			NodeList nodes = rootElement.getChildNodes();
+			for (int i = 0; i < nodes.getLength(); i++) {
+				Node childNode = nodes.item(i);
+				if (childNode instanceof Element) {
+					totalEntries++;
 				}
-			} else {
-				totalEntries = Integer.parseInt(getString("total_entries", rootElement));
 			}
-			conn.disconnect();
-			return totalEntries;
-		} catch (Exception e) {
-			e.printStackTrace();
+		} else {
+			totalEntries = Integer.parseInt(getString("total_entries", rootElement));
 		}
-		return 0;
+		conn.disconnect();
+		return totalEntries;
 	}
 
 	// HTML METHOD:
 	// PUT
 
-	public static void updateStateAndDept(String userToken, String incidentID, String state, String dept, String site, boolean notify) {
+	public static void updateStateAndDept(String userToken, String incidentID, String state, String dept, String site,
+			boolean notify) throws IOException {
 		if (state == dept && dept == site) {
 			return;
 		} else if (state.isEmpty() && dept.isEmpty() && site.isEmpty()) {
@@ -833,46 +796,43 @@ public class SamanageRequests {
 			// to send out email notification
 			updateStateAndDept(userToken, incidentID, "Resolved", dept, site, notify);
 		}
-		try {
-			String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
-			if (notify) {
-				url += "?add_callbacks=true";
-			}
-
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
-
-			conn.setRequestMethod("PUT");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", ACCEPT_VERSION);
-			conn.setRequestProperty("Content-Type", "text/xml");
-
-			String data = "<incident>";
-			if (state != null && !state.isEmpty()) {
-				data += " <state>" + state + "</state>";
-			}
-			if (site != null && !site.isEmpty()) {
-				data += " <site><name>" + site + "</name></site>";
-			}
-			if (dept != null && !dept.isEmpty()) {
-				data += " <department><name>" + dept + "</name></department>";
-			}
-			data += "</incident>";
-			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
-			out.write(data);
-			out.close();
-
-			new InputStreamReader(conn.getInputStream());
-			conn.disconnect();
-		} catch (Exception e) {
-			e.printStackTrace();
+		String url = "https://api.samanage.com/incidents/" + incidentID + ".xml";
+		if (notify) {
+			url += "?add_callbacks=true";
 		}
+
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
+
+		conn.setRequestMethod("PUT");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		conn.setRequestProperty("Content-Type", "text/xml");
+
+		String data = "<incident>";
+		if (state != null && !state.isEmpty()) {
+			data += " <state>" + state + "</state>";
+		}
+		if (site != null && !site.isEmpty()) {
+			data += " <site><name>" + site + "</name></site>";
+		}
+		if (dept != null && !dept.isEmpty()) {
+			data += " <department><name>" + dept + "</name></department>";
+		}
+		data += "</incident>";
+		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+		out.write(data);
+		out.close();
+
+		new InputStreamReader(conn.getInputStream());
+		conn.disconnect();
 	}
 
 	public static void updateIncidentWithTimeTrack(String userToken, String incidentName, String incidentID,
 			String priority, String category, String subcategory, String description, String dueDate, String state,
-			String assignee, String requester, String dept, String site, String software, boolean notify) throws IOException {
+			String assignee, String requester, String dept, String site, String software, boolean notify)
+			throws IOException {
 		SamanageRequests.updateIncident(userToken, incidentName, incidentID, priority, category, subcategory,
 				description, dueDate, assignee, requester, software);
 		// String incidentID = SamanageRequests.getID(userToken);
@@ -978,62 +938,59 @@ public class SamanageRequests {
 		return "";
 	}
 
-	private static ArrayList<TimeTrack> getTimeTracks(String userToken, String incidentId) {
+	private static ArrayList<TimeTrack> getTimeTracks(String userToken, String incidentId)
+			throws IOException, SAXException, ParserConfigurationException {
 		ArrayList<TimeTrack> timeTracks = new ArrayList<TimeTrack>();
 
-		try {
-			// String url =
-			// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
-			String url = "https://api.samanage.com/incidents/" + incidentId + "/time_tracks.xml";
+		// String url =
+		// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
+		String url = "https://api.samanage.com/incidents/" + incidentId + "/time_tracks.xml";
 
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
 
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", ACCEPT_VERSION);
-			conn.setRequestProperty("Content-Type", "text/xml");
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+		conn.setRequestProperty("Content-Type", "text/xml");
 
-			BufferedReader br;
-			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
-				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			} else {
-				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-			}
-			StringBuffer xml = new StringBuffer();
-			String output;
-			while ((output = br.readLine()) != null) {
-				xml.append(output);
-			}
-
-			// got from
-			// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
-			Element rootElement = document.getDocumentElement();
-
-			NodeList listOfTracks = rootElement.getElementsByTagName("time-track");
-
-			for (int i = 0; i < listOfTracks.getLength(); i++) {
-
-				if (listOfTracks.item(i) instanceof Element) {
-					Element track = (Element) listOfTracks.item(i);
-					TimeTrack newTrack = new TimeTrack(
-							new User(getString("name", (Element) track.getElementsByTagName("creator").item(0)),
-									getString("email", (Element) track.getElementsByTagName("creator").item(0))
-											.toLowerCase(),
-									getString("id", (Element) track.getElementsByTagName("creator").item(0))),
-							Integer.parseInt(getString("minutes", track)), getString("name", track));
-					timeTracks.add(newTrack);
-				}
-
-			}
-			conn.disconnect();
-		} catch (Exception e) {
-			e.printStackTrace();
+		BufferedReader br;
+		if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+			br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
 		}
+		StringBuffer xml = new StringBuffer();
+		String output;
+		while ((output = br.readLine()) != null) {
+			xml.append(output);
+		}
+
+		// got from
+		// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+		Element rootElement = document.getDocumentElement();
+
+		NodeList listOfTracks = rootElement.getElementsByTagName("time-track");
+
+		for (int i = 0; i < listOfTracks.getLength(); i++) {
+
+			if (listOfTracks.item(i) instanceof Element) {
+				Element track = (Element) listOfTracks.item(i);
+				TimeTrack newTrack = new TimeTrack(
+						new User(getString("name", (Element) track.getElementsByTagName("creator").item(0)),
+								getString("email", (Element) track.getElementsByTagName("creator").item(0))
+										.toLowerCase(),
+								getString("id", (Element) track.getElementsByTagName("creator").item(0))),
+						Integer.parseInt(getString("minutes", track)), getString("name", track));
+				timeTracks.add(newTrack);
+			}
+
+		}
+		conn.disconnect();
 
 		return timeTracks;
 	}

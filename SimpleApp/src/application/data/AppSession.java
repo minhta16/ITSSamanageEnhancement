@@ -10,6 +10,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -75,7 +79,7 @@ public class AppSession {
 		groups = new TreeMap<String, Group>();
 		softwares = new TreeMap<String, Software>();
 		updateCheckboxList = new HashMap<String, Runnable>();
-		//updateCheckboxList.put("All", () -> updateAll());
+		// updateCheckboxList.put("All", () -> updateAll());
 		dateOfLastSystemUpdate = "";
 	}
 
@@ -92,6 +96,7 @@ public class AppSession {
 	public void setTemplateTimeTracks(ArrayList<TimeTrack> templateTimeTracks) {
 		this.templateTimeTracks = templateTimeTracks;
 	}
+	
 
 	public void removeTemplateTimeTrackByEmail(String email) {
 		for (int i = templateTimeTracks.size() - 1; i >= 0; i--) {
@@ -202,6 +207,10 @@ public class AppSession {
 
 	public ArrayList<TimeTrack> getTimeTracks() {
 		return timeTracks;
+	}
+
+	public void setTimeTracks(ArrayList<TimeTrack> newTracks) {
+		timeTracks = newTracks;
 	}
 
 	public void setUserEmail(String email) {
@@ -335,11 +344,11 @@ public class AppSession {
 	public void setGroups(TreeMap<String, Group> groups) {
 		this.groups = groups;
 	}
-	
+
 	public String getDateOfLastSystemUpdate() {
 		return dateOfLastSystemUpdate;
 	}
-	
+
 	public void setDateOfLastSystemUpdate(String date) {
 		this.dateOfLastSystemUpdate = date;
 	}
@@ -393,7 +402,7 @@ public class AppSession {
 		requesterInfo = users.get(toCorrectDomain(defaultRequester));
 	}
 
-	public void updateListIncidents(LocalDate from, LocalDate to) {
+	public void updateListIncidents(LocalDate from, LocalDate to) throws IOException, SAXException, ParserConfigurationException {
 		currentIncidents = SamanageRequests.getIncidents(userToken, from, to);
 	}
 
@@ -417,19 +426,40 @@ public class AppSession {
 		return size;
 	}
 
-	public String getUpdatePrompt() {
+	public String getUpdatePrompt() throws IOException {
 		String prompt = "";
-		int dbUsers = SamanageRequests.getTotalElements(userToken, "users");
-		int dbSites = SamanageRequests.getTotalElements(userToken, "sites");
+		int dbUsers = 0;
+		int dbSites = 0;
+		try {
+			dbUsers = SamanageRequests.getTotalElements(userToken, "users");
+			dbSites = SamanageRequests.getTotalElements(userToken, "sites");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		if (dbUsers != users.size()) {
 			prompt += "Local Users: " + users.size() + ", Database Users: " + dbUsers + "\n";
-			updateCheckboxList.put("Update Users", () -> updateUsers());
+			updateCheckboxList.put("Update Users", () -> {
+				try {
+					updateUsers();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 		}
 		if (dbSites != sites.size()) {
 			prompt += "Local Sites: " + sites.size() + ", Database Sites: " + dbSites + "\n";
 			String s3 = "Update Sites";
-			Runnable r3 = () -> updateSites();
+			Runnable r3 = () -> {
+				try {
+					updateSites();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			};
 			updateCheckboxList.put(s3, r3);
 		}
 
@@ -442,52 +472,52 @@ public class AppSession {
 		return updateCheckboxList;
 	}
 
-	public void updateUsersMultiThreads(int thread) {
+	public void updateUsersMultiThreads(int thread) throws IOException {
 		System.err.println("Loading users multithread...");
 		users = SamanageRequests.getAllUsersMultiThreads(userToken, thread);
 	}
-	
-	public void updateUsers() {
+
+	public void updateUsers() throws IOException {
 		System.err.println("Loading users...");
 		users = SamanageRequests.getAllUsers(userToken);
 	}
 
-	public void updateSites() {
+	public void updateSites() throws IOException {
 		System.err.println("Loading sites...");
 		sites = SamanageRequests.getSites(userToken);
 	}
 
-	public void updateDepts() {
+	public void updateDepts() throws IOException {
 		System.err.println("Loading departments...");
 		departments = SamanageRequests.getDepartments(userToken);
 	}
-	
-	public void updateCategories() {
+
+	public void updateCategories() throws IOException {
 		System.err.println("Loading categories...");
 		categories = SamanageRequests.getCategories(userToken);
 
 	}
 
-	public void updateGroups() {
+	public void updateGroups() throws IOException {
 		System.err.println("Loading groups...");
 		groups = SamanageRequests.getGroups(userToken);
 
 	}
 
-	public void updateSoftwares() {
+	public void updateSoftwares() throws IOException {
 		System.err.println("Loading softwares...");
 		softwares = SamanageRequests.getSoftwares(userToken, "408915", "Software");
 
 	}
 
-	public void updateEasyStuff() {
+	public void updateEasyStuff() throws IOException {
 		updateDepts();
 		updateCategories();
 		updateGroups();
 		updateSoftwares();
 	}
-	
-	public void updateAll() {
+
+	public void updateAll() throws IOException {
 		updateUsers();
 		updateDepts();
 		updateSites();

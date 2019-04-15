@@ -192,7 +192,7 @@
                                                 <TextField fx:id="timeElapsedField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Label prefHeight="52.0" prefWidth="162.0" text="Time Track Comment" GridPane.rowIndex="2" />
                                                 <TextField fx:id="timeTrackCmtField" onAction="#handleAddEmailButton" prefHeight="26.0" prefWidth="113.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <TableView fx:id="infoTable" prefHeight="148.0" prefWidth="575.0" GridPane.columnIndex="3" GridPane.rowSpan="4">
+                                                <TableView fx:id="trackTable" prefHeight="148.0" prefWidth="575.0" GridPane.columnIndex="3" GridPane.rowSpan="4">
                                                   <columns>
                                                     <TableColumn prefWidth="110.39996641874313" text="Name" />
                                                     <TableColumn prefWidth="110.39999389648438" text="Email" />
@@ -399,10 +399,10 @@
                                                       <ComboBox fx:id="tempStateComboBox" prefWidth="150.0" GridPane.columnIndex="4" />
                                                       <Label text="Category" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                       <ComboBox fx:id="tempCatComboBox" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                                      <Label text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                      <ComboBox fx:id="tempSubcatComboBox" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                                      <Label text="Software" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                      <ComboBox fx:id="tempSoftwareComboBox" editable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                                      <Label fx:id="tempSubcatLabel" disable="true" text="Subcategory" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                      <ComboBox fx:id="tempSubcatComboBox" disable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                                      <Label fx:id="tempSoftwareLabel" disable="true" text="Software" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                      <ComboBox fx:id="tempSoftwareComboBox" disable="true" editable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                                                       <Label text="Template Name" />
                                                       <CustomTextField fx:id="tempNameField" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" />
                                                       <Label text="Requester" GridPane.rowIndex="1" />
