@@ -472,9 +472,9 @@ public class AppSession {
 		return updateCheckboxList;
 	}
 
-	public void updateUsersMultiThreads(int thread) throws IOException {
+	public void updateUsersMultiThreads() throws IOException {
 		System.err.println("Loading users multithread...");
-		users = SamanageRequests.getAllUsersMultiThreads(userToken, thread);
+		users = SamanageRequests.getAllUsersMultiThreads(userToken);
 	}
 
 	public void updateUsers() throws IOException {

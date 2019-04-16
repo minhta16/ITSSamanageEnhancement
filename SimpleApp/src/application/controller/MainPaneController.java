@@ -168,12 +168,14 @@ public class MainPaneController {
 
 		try {
 			AppSession.getSession().updateEasyStuff();
+			AppSession.getSession().updateUsersMultiThreads();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			showAlert("ERROR", "ERROR:\n" + e.getStackTrace(), AlertType.ERROR);
 			System.exit(1);
 		}
-		//AppSession.getSession().updateUsersMultiThreads(16);
+		
+		
 
 		// setup setting tab
 		System.out.print("Setting up Setting Tab\t\t\t\r");
