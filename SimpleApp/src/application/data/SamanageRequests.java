@@ -13,7 +13,11 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -379,9 +383,11 @@ public class SamanageRequests {
 							}
 						}
 						newUser.setGroupID(groupIdList);
+						
+					
 						users.put(email, newUser);
 					}
-					System.out.print("Updating users: [" + (i + (curPage - 1) * 100) + "/" + totalUsers + "]\t\t\t\r");
+				//	System.out.print("Updating users: [" + (i + (curPage - 1) * 100) + "/" + totalUsers + "]\t\t\t\r");
 
 				}
 				conn.disconnect();
@@ -394,10 +400,14 @@ public class SamanageRequests {
 		// System.err.println(map);
 	}
 
-	public static TreeMap<String, User> getAllUsersMultiThreads(String userToken) throws IOException {
-		TreeMap<String, User> users = new TreeMap<String, User>();
+	public static Map<String, User> getAllUsersMultiThreads(String userToken) throws IOException {
+		TreeMap<String, User> map = new TreeMap<String, User>();
+		Map<String, User> users = Collections.synchronizedMap(map);
+		
 		int totalUsers = getTotalElements(userToken, "users");
 		int totalCalls = (int) totalUsers / 100 + 1;
+		
+		System.out.println("User: Number of needed threads: " + totalCalls);
 
 		// TODO Auto-generated method stub
 
@@ -411,7 +421,7 @@ public class SamanageRequests {
 				@Override
 				public Parent call() throws JsonIOException, IOException {
 
-					System.out.println("Thread " + current + " is running");
+					System.out.println("Users: Thread " + current + " is running");
 					// get users
 
 					try {
@@ -440,40 +450,48 @@ public class SamanageRequests {
 							xml.append(output);
 						}
 
-						// got from
-						// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
-						DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-						DocumentBuilder builder = factory.newDocumentBuilder();
-						Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
-						Element rootElement = document.getDocumentElement();
+							// got from
+							// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+							DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+							DocumentBuilder builder = factory.newDocumentBuilder();
+							Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+							Element rootElement = document.getDocumentElement();
 
-						NodeList listOfUsers = rootElement.getElementsByTagName("user");
+							NodeList listOfUsers = rootElement.getElementsByTagName("user");
+							
+						//	System.out.println("Thread " + current + " pulled " + listOfUsers.getLength() + " users" );
 
-						for (int i = 0; i < listOfUsers.getLength(); i++) {
+							for (int i = 0; i < listOfUsers.getLength(); i++) {
 
-							if (listOfUsers.item(i) instanceof Element) {
-								Element user = (Element) listOfUsers.item(i);
-								User newUser = new User();
-								String name = getString("name", user);
-								String ID = getString("id", user);
-								String email = getString("email", user).toLowerCase();
-								newUser.setName(name);
-								newUser.setEmail(email);
-								newUser.setDept(
-										getString("name", (Element) user.getElementsByTagName("department").item(0)));
-								newUser.setSite(getString("name", (Element) user.getElementsByTagName("site").item(0)));
-								newUser.setID(ID);
-								ArrayList<String> groupIdList = new ArrayList<String>();
-								Element groupIdsElement = (Element) user.getElementsByTagName("group_ids").item(0);
-								NodeList groupIds = groupIdsElement.getElementsByTagName("group_id");
-								for (int j = 0; j < groupIds.getLength(); j++) {
-									if (groupIds.item(j) instanceof Element) {
-										String groupID = groupIds.item(j).getTextContent();
-										groupIdList.add(groupID);
+								if (listOfUsers.item(i) instanceof Element) {
+									Element user = (Element) listOfUsers.item(i);
+									User newUser = new User();
+									String name = getString("name", user);
+									String ID = getString("id", user);
+									String email = getString("email", user).toLowerCase();
+									newUser.setName(name);
+									newUser.setEmail(email);
+									newUser.setDept(getString("name",
+											(Element) user.getElementsByTagName("department").item(0)));
+									newUser.setSite(
+											getString("name", (Element) user.getElementsByTagName("site").item(0)));
+									newUser.setID(ID);
+									ArrayList<String> groupIdList = new ArrayList<String>();
+									Element groupIdsElement = (Element) user.getElementsByTagName("group_ids").item(0);
+									NodeList groupIds = groupIdsElement.getElementsByTagName("group_id");
+									for (int j = 0; j < groupIds.getLength(); j++) {
+										if (groupIds.item(j) instanceof Element) {
+											String groupID = groupIds.item(j).getTextContent();
+											groupIdList.add(groupID);
+										}
 									}
-								}
-								newUser.setGroupID(groupIdList);
-								users.put(email, newUser);
+									
+					//				if(users.keySet().contains(email)) {
+					//					System.out.println("This key already exists: " + email);
+										
+					//				}
+									newUser.setGroupID(groupIdList);
+									users.put(email, newUser);
 							}
 							// System.out.print("Updating users with Thread: " + current + " ["
 							// + (i + (curPage - 1) * 100) + "/" + totalUsers + "]\t\t\t\r");
@@ -492,10 +510,11 @@ public class SamanageRequests {
 
 				@Override
 				public void handle(WorkerStateEvent event) {
-					System.err.println("DONE THREAD " + current);
-					doneThreads.add("thread " + current);
+					System.err.println("USERS: DONE THREAD " + current);
+				//	System.err.println("THREAD " + current + " SAVED " + users.size() +" USERS");
+					doneThreads.add("user thread "+current);
 					if (doneThreads.size() == totalCalls) {
-						System.out.println("FINISH ALL");
+						System.out.println("FINISH ALL USERS");
 					}
 
 				}
@@ -635,6 +654,95 @@ public class SamanageRequests {
 		}
 		return siteList;
 	}
+	
+	
+	public static List<String> getSitesMultiThreads(String userToken) throws IOException {
+		/*
+		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
+		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
+		 * https://api.samanage.com/categories.xml
+		 */
+		
+		ArrayList<String> list = new ArrayList<String>();
+		List<String> siteList =  Collections.synchronizedList(list);
+		
+		int totalSites = getTotalElements(userToken, "sites");
+		int totalCalls = (int) totalSites / 100 + 1;
+		
+		System.out.println("Site: Number of needed threads: " + totalCalls);
+
+		// TODO Auto-generated method stub
+
+		ArrayList<String> doneThreads = new ArrayList<String>();
+
+		for (int i = 1; i <= totalCalls; i++) {
+
+			int current = i;
+
+			Task<Parent> newThread = new Task<Parent>() {
+				@Override
+				public Parent call() throws JsonIOException, IOException {
+
+					System.out.println("Sites: Thread " + current + " is running");
+					// get users
+
+					try {
+						// String url =
+						// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
+						
+						String url = "https://api.samanage.com/sites.xml?per_page=100&page=" + current;
+
+						URL obj = new URL(url);
+						HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+						conn.setDoOutput(true);
+
+						conn.setRequestMethod("GET");
+						conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+						conn.setRequestProperty("Accept", ACCEPT_VERSION);
+						conn.setRequestProperty("Content-Type", "text/xml");
+
+						Element rootElement = documentFromOutput(conn);
+						NodeList sites = rootElement.getElementsByTagName("site");
+						
+						for (int i = 0; i < sites.getLength(); i++) {
+							if (sites.item(i) instanceof Element) {
+								Element site = (Element) sites.item(i);
+								String name = getString("name", site);
+								siteList.add(name);
+							}
+
+						}
+
+						conn.disconnect();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return null;
+				}
+			};
+
+			// method to set labeltext
+			newThread.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+
+				@Override
+				public void handle(WorkerStateEvent event) {
+					System.err.println("SITES: DONE THREAD " + current);
+				//	System.err.println("THREAD " + current + " SAVED " + users.size() +" USERS");
+					doneThreads.add("site thread "+current);
+					if (doneThreads.size() == totalCalls) {
+						System.out.println("FINISH ALL SITES");
+					}
+
+				}
+			});
+			Thread newSiteThread = new Thread(newThread);
+			newSiteThread.start();
+		}
+	//	ArrayList<String> retVal = new ArrayList<String>(siteList);
+
+		return siteList;
+	}
+	
 
 	// 408915 Software
 	public static TreeMap<String, Software> getSoftwares(String userToken, String typeCode, String type)

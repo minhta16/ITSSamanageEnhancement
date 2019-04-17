@@ -168,7 +168,7 @@ public class MainPaneController {
 
 		try {
 			AppSession.getSession().updateEasyStuff();
-			AppSession.getSession().updateUsersMultiThreads();
+		//s	AppSession.getSession().updateUsersMultiThreads();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			showAlert("ERROR", "ERROR:\n" + e.getStackTrace(), AlertType.ERROR);
@@ -306,11 +306,6 @@ public class MainPaneController {
 		System.out.print("Setting up Incident Name Prompt\r");
 		updateIncidentNamePrompt();
 		
-		// setup templates
-		System.out.println("Setting up templates\r");
-		templateComboBox.getSelectionModel().select(0);
-		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
-
 	}
 
 	private void setupSettingTab() {
@@ -1489,6 +1484,7 @@ public class MainPaneController {
 		// DEFAULT SORT BY NAME
 		templateTable.getColumns().get(0).setSortType(TableColumn.SortType.ASCENDING);
 		templateTable.getSortOrder().add(templateTable.getColumns().get(0));
+		templateComboBox.getItems().clear();
 		templateComboBox.getSelectionModel().select(0);
 		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
 

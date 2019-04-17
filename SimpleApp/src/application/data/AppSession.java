@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -46,9 +47,9 @@ public class AppSession {
 
 	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
-	private ArrayList<String> sites;
+	private transient List<String> sites;
 	private ArrayList<String> priorities;
-	private TreeMap<String, User> users;
+	private transient Map<String, User> users;
 
 	private transient Map<String, Runnable> updateCheckboxList;
 	private String dateOfLastSystemUpdate;
@@ -170,7 +171,7 @@ public class AppSession {
 		this.users = users;
 	}
 
-	public TreeMap<String, User> getUsers() {
+	public Map<String, User> getUsers() {
 		return users;
 	}
 
@@ -263,7 +264,7 @@ public class AppSession {
 		this.departments = departments;
 	}
 
-	public ArrayList<String> getSites() {
+	public List<String> getSites() {
 		return sites;
 	}
 
@@ -485,6 +486,11 @@ public class AppSession {
 	public void updateSites() throws IOException {
 		System.err.println("Loading sites...");
 		sites = SamanageRequests.getSites(userToken);
+	}
+	
+	public void updateSitesMultiThreads() throws IOException {
+		System.err.println("Loading sites multithread...");
+		sites = SamanageRequests.getSitesMultiThreads(userToken);
 	}
 
 	public void updateDepts() throws IOException {
