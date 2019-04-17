@@ -140,7 +140,7 @@
                                     <Label text="State" GridPane.columnIndex="3" />
                                     <ChoiceBox fx:id="statesChoiceBox" prefHeight="31.0" prefWidth="220.0" GridPane.columnIndex="4" />
                                     <Label text="Requester" GridPane.rowIndex="1" />
-                                    <CustomTextField fx:id="requesterField" onKeyReleased="#handleRequesterFieldChange" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <CustomTextField fx:id="requesterField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Assignee" GridPane.rowIndex="2" />
                                     <CustomTextField fx:id="assigneeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <Label text="Incident Name" GridPane.rowIndex="3" />
@@ -150,7 +150,16 @@
                                     <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmitBtn" prefHeight="42.0" prefWidth="218.0" text="Submit" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
                                     <CheckBox fx:id="notifyCheckBox" mnemonicParsing="false" selected="true" text="Send Email Notification" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" />
                                     <Label text="Template" />
-                                    <ComboBox fx:id="templateComboBox" onAction="#handleTemplateChange" prefHeight="31.0" prefWidth="219.0" GridPane.columnIndex="1" />
+                                    <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="1">
+                                       <children>
+                                          <ComboBox fx:id="templateComboBox" onAction="#handleTemplateChange" prefHeight="31.0" prefWidth="219.0">
+                                             <FlowPane.margin>
+                                                <Insets right="10.0" />
+                                             </FlowPane.margin>
+                                          </ComboBox>
+                                          <Button mnemonicParsing="false" onAction="#handleClearAllFieldsBtn" text="Clear All Fields" />
+                                       </children>
+                                    </FlowPane>
                                  </children>
                                  <opaqueInsets>
                                     <Insets />
@@ -452,7 +461,7 @@
                                                       <Label text="Time Elapsed" GridPane.rowIndex="1" />
                                                       <TextField fx:id="tempTrackTimeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                       <Label text="Comment" GridPane.rowIndex="2" />
-                                                      <TextField fx:id="tempTrackCmtField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <TextField fx:id="tempTrackCmtField" onAction="#handleTempAddTrackBtn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <TableView fx:id="tempTrackTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowSpan="4">
                                                         <columns>
                                                           <TableColumn prefWidth="110.0" text="Name" />

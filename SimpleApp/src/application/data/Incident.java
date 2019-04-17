@@ -33,6 +33,14 @@ public class Incident {
 
 	public Incident(String ID, String number, String state, String title, String priority, String cat, String subcat,
 			String assignee, String requester, String site, String dept, String desc, LocalDate dueOn, String groupId,
+			String software, int trackedUsersNum) {
+		this(ID, number, state, title, priority, cat, subcat, assignee, requester, site, dept, desc, dueOn, groupId,
+				software, new ArrayList<TimeTrack>());
+		setTrackedUsersNum(trackedUsersNum);
+	}
+
+	public Incident(String ID, String number, String state, String title, String priority, String cat, String subcat,
+			String assignee, String requester, String site, String dept, String desc, LocalDate dueOn, String groupId,
 			String software, ArrayList<TimeTrack> trackedUsers) {
 		this.ID = ID;
 		this.number = number;

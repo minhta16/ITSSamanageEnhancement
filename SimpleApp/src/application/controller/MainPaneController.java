@@ -494,7 +494,7 @@ public class MainPaneController {
 		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		handleAssigneeFieldChange();
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
-
+		
 		TextFields.bindAutoCompletion(assigneeField, assigneeProvider);
 		assigneeField.textProperty().addListener((o, oV, nV) -> {
 			handleAssigneeFieldChange();
@@ -513,6 +513,11 @@ public class MainPaneController {
 		clearInputFields();
 	}
 
+	@FXML
+	private void handleClearAllFieldsBtn() {
+		clearInputFields();
+	}
+	
 	@FXML
 	private void handleSubmitBtn() {
 		if (userTokenField.getText().trim().equals("")) {
@@ -812,12 +817,15 @@ public class MainPaneController {
 	}
 
 	private void clearInputFields() {
+		templateComboBox.setValue(null);
 		incidentNameField.clear();
 		descField.clear();
 		trackTable.getItems().clear();
 		catChoiceBox.setValue(null);
 		subcatChoiceBox.setValue(null);
 		softwareComboBox.setValue(null);
+		requesterField.setText(AppSession.getSession().getDefaultRequester());
+		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		updateDefaultDeptSite();
 		// reset tracked email to be default
 		handleAssigneeFieldChange();
@@ -879,6 +887,12 @@ public class MainPaneController {
 				incidentEditTab.setDisable(false);
 				curUpdateIncidentID = incident.getID();
 				tabPane.getSelectionModel().select(incidentEditTab);
+				try {
+					incident.setTimeTracks(SamanageRequests.getTimeTracks(AppSession.getSession().getUserToken(), incident.getID()));
+				} catch (IOException | SAXException | ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				//templateComboBox.setDisable(true);
 				preFetchIncidentInfo(incident.getNumber());
 				AppSession.getSession().setEditType(IncidentEditType.EDIT);
@@ -956,6 +970,7 @@ public class MainPaneController {
 	private void handleRequesterFieldChange() {
 		updateDefaultDeptSite();
 		updateIncidentNamePrompt();
+		requesterField.setText(toShortDomain(requesterField.getText()));
 	}
 
 	@FXML
@@ -1024,7 +1039,8 @@ public class MainPaneController {
 
 	@FXML
 	private void handleAssigneeFieldChange() {
-		userInputField.setText(assigneeField.getText());
+		userInputField.setText(toShortDomain(assigneeField.getText()));
+		assigneeField.setText(toShortDomain(assigneeField.getText()));
 	}
 
 	@FXML
@@ -1284,7 +1300,7 @@ public class MainPaneController {
 		newTracks.addAll(AppSession.getSession().getTemplateTimeTracks());
 		Incident template = new Incident(tempNameField.getText(), "0", tempStateComboBox.getValue(),
 				tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(), tempCatComboBox.getValue(),
-				tempSubcatComboBox.getValue(), tempAsgField.getText(), tempReqField.getText(),
+				tempSubcatComboBox.getValue(), toShortDomain(tempAsgField.getText()), toShortDomain(tempReqField.getText()),
 				tempSiteComboBox.getValue(), tempDeptComboBox.getValue(), tempDescField.getText(),
 				tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(),
 				newTracks);
@@ -1298,8 +1314,6 @@ public class MainPaneController {
 		}
 		clearTemplate();
 		updateTemplatesTable();
-		templateComboBox.getItems().clear();
-		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
 
 	}
 	
@@ -1353,6 +1367,8 @@ public class MainPaneController {
 				}
 				
 				if (!chosenTemplate.getTimeTracks().isEmpty()) {
+					AppSession.getSession().getTimeTracks().clear();
+					AppSession.getSession().getTimeTracks().addAll(chosenTemplate.getTimeTracks());
 					trackTable.getItems().clear();
 					trackTable.getItems().addAll(chosenTemplate.getTimeTracks());
 				}
@@ -1374,15 +1390,37 @@ public class MainPaneController {
 
 	@FXML
 	private void handleTempAddTrackBtn() {
-		User user = AppSession.getSession().getUsers().get(toCorrectDomain(tempTrackEmailField.getText()));
-		TimeTrack track = new TimeTrack(user, Integer.parseInt(tempTrackTimeField.getText()),
-				tempTrackCmtField.getText());
-		track.getRemoveBtn().setOnAction((e) -> {
-			AppSession.getSession().getTemplateTimeTracks().remove(track);
-			tempTrackTable.getItems().remove(track);
-		});
-		tempTrackTable.getItems().add(track);
-		AppSession.getSession().getTemplateTimeTracks().add(track);
+		
+		if (!AppSession.getSession().containTrackedUser(tempTrackEmailField.getText())) {
+			if (tempTrackEmailField.getText().equals("")) {
+				showAlert("Error", "Email empty", AlertType.ERROR);
+			} else if (tempTrackTimeField.getText().equals("")) {
+				showAlert("Error", "Time elapsed empty", AlertType.ERROR);
+			} else if (tempTrackCmtField.getText().equals("")) {
+				showAlert("Error", "Time track comment empty", AlertType.ERROR);
+			} else if (userTokenField.getText().trim().equals("")) {
+				showAlert("Error", "User Token missing", AlertType.ERROR);
+			} else {
+				if (!AppSession.getSession().getUsers().keySet().contains(toCorrectDomain(tempTrackEmailField.getText()))) {
+					showAlert("Error", "Cannot find any users with that email. Try again", AlertType.ERROR);
+				} else {
+					User user = AppSession.getSession().getUsers().get(toCorrectDomain(tempTrackEmailField.getText()));
+					TimeTrack track = new TimeTrack(user, Integer.parseInt(tempTrackTimeField.getText()),
+							tempTrackCmtField.getText());
+					track.getRemoveBtn().setOnAction((e) -> {
+						AppSession.getSession().getTemplateTimeTracks().remove(track);
+						tempTrackTable.getItems().remove(track);
+					});
+					tempTrackTable.getItems().add(track);
+					AppSession.getSession().getTemplateTimeTracks().add(track);
+					tempTrackEmailField.requestFocus();
+					tempTrackEmailField.clear();
+					tempTrackTimeField.clear();
+					tempTrackCmtField.clear();
+				}
+			}
+		}
+		
 	}
 	
 	@FXML
@@ -1440,6 +1478,7 @@ public class MainPaneController {
 			});
 			template.getRmBtn().setOnAction((e) -> {
 				AppSession.getSession().removeTemplate(number);
+				
 				updateTemplatesTable();
 			});
 			templateTable.getItems().add(template);
@@ -1450,6 +1489,8 @@ public class MainPaneController {
 		// DEFAULT SORT BY NAME
 		templateTable.getColumns().get(0).setSortType(TableColumn.SortType.ASCENDING);
 		templateTable.getSortOrder().add(templateTable.getColumns().get(0));
+		templateComboBox.getSelectionModel().select(0);
+		templateComboBox.getItems().addAll(AppSession.getSession().getTemplates().keySet());
 
 	}
 
