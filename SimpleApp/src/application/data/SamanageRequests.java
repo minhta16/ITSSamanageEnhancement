@@ -169,7 +169,10 @@ public class SamanageRequests {
 					+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
 					+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
 					+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-
+			
+			System.err.println(fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+			System.err.println(toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+			
 			URL obj = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 			conn.setDoOutput(true);
