@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -27,6 +28,10 @@ import impl.org.controlsfx.autocompletion.SuggestionProvider;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
@@ -147,12 +152,21 @@ public class MainPaneController {
 	
 	@FXML
 	private MenuItem updateMenuItem;
+	
+	@FXML
+	private ComboBox<String> filterComboBox;
+	@FXML
+	private TextField filterField;
 
 	private String updatePrompt = "";
 
 	private String curUpdateIncidentID = "";
 
 	private boolean updatingIncident;
+	
+	private ObservableList<Incident> updatedListOfIncidents = FXCollections.observableArrayList();
+	
+	
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
 
@@ -291,6 +305,15 @@ public class MainPaneController {
 		incidentTable.getColumns().get(10).setCellValueFactory(new PropertyValueFactory<>("trackedUsersNum"));
 		incidentTable.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
 		incidentTable.setPlaceholder(new Label("Please update list to see the lastest incidents."));
+		
+		//setupFilterComboBox
+		filterField.setDisable(true);
+		for (int i=0; i<incidentTable.getColumns().size()-1;i++) {
+			//filterComboBox.getItems().addAll((Collection<? extends String>) incidentTable.getColumns().get(i));
+			//System.out.println(incidentTable.getProperties().keySet());
+			filterComboBox.getItems().add(incidentTable.getColumns().get(i).getText());
+		}
+		
 	}
 
 	private void setupIncidentEditTab() {
@@ -899,6 +922,8 @@ public class MainPaneController {
 				incident.setAssignee(AppSession.getSession().getGroups().get(incident.getGroupId()).getName());
 			}
 			incidentTable.getItems().add(incident);
+			updatedListOfIncidents.add(incident);
+			
 		}
 		if (AppSession.getSession().getCurrentIncidents().keySet().isEmpty()) {
 			incidentTable.setPlaceholder(new Label("You have no assigned incidents today."));
@@ -906,6 +931,57 @@ public class MainPaneController {
 		// DEFAULT SORT BY NUMBER
 		incidentTable.getColumns().get(0).setSortType(TableColumn.SortType.DESCENDING);
 		incidentTable.getSortOrder().add(incidentTable.getColumns().get(0));
+		
+		 // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Incident> filteredUpdatedListOfIncidents = new FilteredList<>(updatedListOfIncidents, p -> true);
+        
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+        	filteredUpdatedListOfIncidents.setPredicate(incident -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (incident.getState().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;     	
+                } else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;     	
+                } else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter)) {
+                	return true;
+                } else if (incident.getCat().toLowerCase().contains(lowerCaseFilter)) {
+                	return true;
+                } else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter)) {
+                	return true;
+                } else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter)) {
+                	return true;
+                } else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter)) {
+                	return true;
+                } else if (incident.getSite().toLowerCase().contains(lowerCaseFilter)) {
+                	return true;
+                } else if (incident.getDept().toLowerCase().contains(lowerCaseFilter)) {
+                	return true;
+                } else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter)) {
+                	return true;
+                }
+                
+
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<Incident> sortedFilterUpdatedListOfIncidents = new SortedList<>(filteredUpdatedListOfIncidents);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedFilterUpdatedListOfIncidents.comparatorProperty().bind(incidentTable.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        incidentTable.setItems(sortedFilterUpdatedListOfIncidents);
+		
 	}
 
 	private void preFetchIncidentInfo(String number) {
@@ -939,6 +1015,20 @@ public class MainPaneController {
 	@FXML
 	private void handleIncidentNameType() {
 
+	}
+	
+	@FXML
+	private void handleFilterComboBox() {
+	//	asdsad
+		if (filterComboBox.getValue().equals(null)) {
+			filterField.setDisable(true);
+		} else {
+			filterField.setDisable(false);
+			
+			// TODO
+			// filterComboBox.getValue() into some sort of list for smarter filter
+			
+		}
 	}
 
 	@FXML

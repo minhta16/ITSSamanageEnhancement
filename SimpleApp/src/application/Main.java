@@ -40,10 +40,10 @@ public class Main extends Application {
 			}
         }
         
-		for (String element: AppSession.getSession().getSites()) {
-			System.out.println(element);
-		}
-		
+		/*
+		 * for (String element: AppSession.getSession().getSites()) {
+		 * System.out.println(element); }
+		 */
         primaryStage.show();
         controller.showPrompt();
 	

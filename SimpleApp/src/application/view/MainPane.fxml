@@ -73,7 +73,11 @@
                      </padding>
                      <children>
                         <Button fx:id="createNewIncidentBtn" mnemonicParsing="false" onAction="#handleNewIncidentBtn" text="+ New Incident" GridPane.columnIndex="1" />
-                        <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="2" />
+                        <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="2">
+                           <children>
+                              <ComboBox fx:id="filterComboBox" onAction="#handleFilterComboBox" prefWidth="150.0" promptText="Filter by..." />
+                              <CustomTextField fx:id="filterField" />
+                           </children></FlowPane>
                         <Button fx:id="updateListBtn" mnemonicParsing="false" onAction="#handleUpdateListBtn" text="Update List" GridPane.columnIndex="3" />
                         <VBox maxHeight="-Infinity" prefHeight="75.0" prefWidth="151.0" GridPane.columnIndex="4">
                            <children>

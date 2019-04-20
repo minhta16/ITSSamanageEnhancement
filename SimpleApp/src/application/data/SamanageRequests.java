@@ -212,7 +212,7 @@ public class SamanageRequests {
 						&& !getString("name", (Element) listOfIncidents.item(i)).isEmpty()) {
 					Element incident = (Element) listOfIncidents.item(i);
 					String id = getString("id", incident);
-					System.err.println(getString("name", incident));
+					//System.err.println(getString("name", incident));
 					int trackedUsersNum = incident.getElementsByTagName("time_track").getLength();
 					String number = getString("number", incident);
 					String category = getString("name", (Element) incident.getElementsByTagName("category").item(0));
