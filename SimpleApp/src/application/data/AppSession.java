@@ -24,14 +24,11 @@ public class AppSession {
 	private static final String DATA_LOCATION = "./resources/bin/data.json";
 	private static AppSession session = new AppSession();
 
-	private String userEmail;
 	private String userToken;
 	private String defaultDomain;
 	private String defaultAssignee;
 	private String defaultRequester;
 	private User requesterInfo;
-	private boolean defaultAutoUpdateCheckChoice;
-	private boolean dtbUpdateCheckAskAgainCheckBox;
 
 	private transient String currentFilter;
 	
@@ -61,14 +58,11 @@ public class AppSession {
 	}
 
 	private AppSession(String userToken) {
-		userEmail = "";
 		this.userToken = userToken;
 		setCurrentFilter("");
 		defaultDomain = "";
 		defaultAssignee = "";
 		defaultRequester = "";
-		defaultAutoUpdateCheckChoice = false;
-		dtbUpdateCheckAskAgainCheckBox = false;
 		requesterInfo = new User();
 		currentIncidents = new TreeMap<String, Incident>();
 		timeTracks = new ArrayList<TimeTrack>();
@@ -82,8 +76,6 @@ public class AppSession {
 		sites = new ArrayList<String>();
 		groups = new TreeMap<String, Group>();
 		softwares = new TreeMap<String, Software>();
-		updateCheckboxList = new HashMap<String, Runnable>();
-		// updateCheckboxList.put("All", () -> updateAll());
 		dateOfLastSystemUpdate = "";
 	}
 
@@ -204,26 +196,12 @@ public class AppSession {
 		}
 	}
 
-//	public void removeTimeTrackByEmailOnServer(String email) {
-//		SamanageRequests.add
-//	}
-
 	public ArrayList<TimeTrack> getTimeTracks() {
 		return timeTracks;
 	}
 
 	public void setTimeTracks(ArrayList<TimeTrack> newTracks) {
 		timeTracks = newTracks;
-	}
-
-	public void setUserEmail(String email) {
-		if (users.containsKey(toCorrectDomain(email))) {
-			userEmail = toShortDomain(email);
-		}
-	}
-
-	public String getUserEmail() {
-		return userEmail;
 	}
 
 	public void setUserToken(String userToken) {
@@ -240,22 +218,6 @@ public class AppSession {
 
 	public void setDefaultDomain(String domain) {
 		defaultDomain = domain;
-	}
-
-	public boolean getDefaultAutoUpdateCheck() {
-		return defaultAutoUpdateCheckChoice;
-	}
-
-	public void setDefaultAutoUpdateCheck(Boolean choice) {
-		defaultAutoUpdateCheckChoice = choice;
-	}
-
-	public boolean getDtbUpdateCheckAskAgainCheckBox() {
-		return dtbUpdateCheckAskAgainCheckBox;
-	}
-
-	public void setdtbUpdateCheckAskAgainCheckBox(Boolean choice) {
-		dtbUpdateCheckAskAgainCheckBox = choice;
 	}
 
 	public ArrayList<String> getDepartments() {
@@ -418,72 +380,7 @@ public class AppSession {
 		currentIncidents = SamanageRequests.getIncidents(userToken, from, to);
 	}
 
-	public int getTotalTime() {
-		int totalTime = 0;
-		for (String key : currentIncidents.keySet()) {
-			Incident incident = currentIncidents.get(key);
-			for (TimeTrack track : incident.getTimeTracks()) {
-				totalTime += track.getTime();
-			}
-
-		}
-		return totalTime;
-	}
-
-	public int getCatAndSubcatSize() {
-		int size = categories.size();
-		for (String key : categories.keySet()) {
-			size += categories.get(key).size();
-		}
-		return size;
-	}
-
-	public String getUpdatePrompt() throws IOException {
-		String prompt = "";
-		int dbUsers = 0;
-		int dbSites = 0;
-		try {
-			dbUsers = SamanageRequests.getTotalElements(userToken, "users");
-			dbSites = SamanageRequests.getTotalElements(userToken, "sites");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		if (dbUsers != users.size()) {
-			prompt += "Local Users: " + users.size() + ", Database Users: " + dbUsers + "\n";
-			updateCheckboxList.put("Update Users", () -> {
-				try {
-					updateUsers();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			});
-		}
-		if (dbSites != sites.size()) {
-			prompt += "Local Sites: " + sites.size() + ", Database Sites: " + dbSites + "\n";
-			String s3 = "Update Sites";
-			Runnable r3 = () -> {
-				try {
-					updateSites();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			};
-			updateCheckboxList.put(s3, r3);
-		}
-
-		updateEasyStuff();
-		return prompt;
-//				&& SamanageRequests.getTotalElements(userToken, users);
-	}
-
-	public Map<String, Runnable> updateCheckboxList() {
-		return updateCheckboxList;
-	}
-
+	
 	public void updateUsersMultiThreads() throws IOException {
 		System.out.println("Loading users multithread...");
 		users = SamanageRequests.getAllUsersMultiThreads(userToken);
@@ -535,9 +432,9 @@ public class AppSession {
 	}
 
 	public void updateAll() throws IOException {
-		updateUsers();
+		updateUsersMultiThreads();
 		updateDepts();
-		updateSites();
+		updateSitesMultiThreads();
 		updateCategories();
 		updateGroups();
 		updateSoftwares();

@@ -1,6 +1,8 @@
 package application;
 	
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import application.controller.MainPaneController;
 import application.data.AppSession;
@@ -20,11 +22,23 @@ public class Main extends Application {
         Scene scene = new Scene(root);
                
         MainPaneController controller = (MainPaneController)loader.getController();
-        controller.setStageAndSetupListeners(primaryStage);
 
         primaryStage.setTitle("Customized Samanage Experience");
 //        primaryStage.getIcons().add(new Image("file:/resources/img/favicon.jpg"));
         primaryStage.setScene(scene);
+        
+    	PrintStream erroutStream;
+		erroutStream = new PrintStream(new FileOutputStream("./logs/error.txt"));
+		System.setErr(erroutStream);
+        
+        System.out.println("Loading...");
+		AppSession.getSession().loadData();
+		try {
+			AppSession.getSession().updateEasyStuff();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
         
         String token = AppSession.getSession().getUserToken();
         int realUserSize = SamanageRequests.getTotalElements(token, "users");
@@ -40,10 +54,7 @@ public class Main extends Application {
 			}
         }
         
-		/*
-		 * for (String element: AppSession.getSession().getSites()) {
-		 * System.out.println(element); }
-		 */
+        controller.setStageAndSetupListeners(primaryStage);
         primaryStage.show();
         controller.showPrompt();
 	

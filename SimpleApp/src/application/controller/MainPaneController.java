@@ -137,8 +137,7 @@ public class MainPaneController {
 	@FXML
 	private Button updateListBtn;
 
-	@FXML
-	private TextField userEmailField;
+
 	@FXML
 	private TextArea userTokenField;
 	@FXML
@@ -148,13 +147,7 @@ public class MainPaneController {
 	@FXML
 	private TextField defaultRequesterField;
 	@FXML
-	private CheckBox autoUpdateCheckBox;
-	@FXML
-	private Button checkForUpdateBtn;
-
-	@FXML
-	private MenuItem updateMenuItem;
-
+	private Button updateDtbBtn;
 	@FXML
 	private ComboBox<String> filterComboBox;
 	@FXML
@@ -168,26 +161,17 @@ public class MainPaneController {
 
 	private ObservableList<Incident> updatedListOfIncidents = FXCollections.observableArrayList();
 
-	private PrintStream erroutStream;
+
 
 	public void setStageAndSetupListeners(Stage primaryStage) throws FileNotFoundException {
 
-		erroutStream = new PrintStream(new FileOutputStream("./logs/error.txt"));
-		System.setErr(erroutStream);
 
-		System.out.println("Loading...");
-		AppSession.getSession().loadData();
+		
 
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
 
-		try {
-			AppSession.getSession().updateEasyStuff();
-			// s AppSession.getSession().updateUsersMultiThreads();
-		} catch (IOException e) {
-			printError(e);
-		}
-
+		
 		// setup setting tab
 		System.out.print("Setting up Setting Tab\t\t\t\r");
 		setupSettingTab();
@@ -221,16 +205,6 @@ public class MainPaneController {
 
 		System.out.print("Setting up Template Editor\t\t\t\r");
 		setupTemplateTab();
-		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
-		if (AppSession.getSession().getDefaultAutoUpdateCheck()) {
-			System.out.print("Checking for newer database version...\t\t\t\r");
-			try {
-				updatePrompt = AppSession.getSession().getUpdatePrompt();
-			} catch (IOException e) {
-				printError(e);
-			}
-		}
-
 		System.out.println("Load Complete!\t\t\t");
 		System.out.println("DO NOT CLOSE THIS CONSOLE! THE APP WILL CLOSE ALONG WITH IT!");
 		System.out.println("Booting up App...");
@@ -240,36 +214,6 @@ public class MainPaneController {
 	 * 
 	 */
 	public void showPrompt() {
-		if (AppSession.getSession().getDefaultAutoUpdateCheck()) {
-			if (!updatePrompt.equals("")) {
-				showAlert("Database outdated", "Database Outdated. Details:\n" + updatePrompt, AlertType.WARNING);
-			}
-		} else {
-
-			/*
-			 * showAlert("Database Update Check Disabled",
-			 * "If you want to check for database changes (users, categories,...)" +
-			 * " upon startup,\nplease enable 'Check for Updates at Startup' in Settings/Database."
-			 * , AlertType.WARNING);
-			 */
-			if (!AppSession.getSession().getDtbUpdateCheckAskAgainCheckBox()) {
-				String msg = "If you want to check for database changes (users, categories,...) upon startup,\n"
-						+ "  please enable 'Check for Updates at Startup' in Settings/Database.";
-				TreeMap<String, Consumer<Boolean>> test = new TreeMap<String, Consumer<Boolean>>();
-				String s1 = "Do not show again";
-				Consumer<Boolean> c1 = (x) -> {
-					// System.err.println(x);
-					AppSession.getSession().setdtbUpdateCheckAskAgainCheckBox(x.booleanValue());
-					AppSession.getSession().saveData();
-
-				};
-				test.put(s1, c1);
-				Alert alert = createAlertWithOptOuts(AlertType.CONFIRMATION, "Database Update Check Disabled", msg,
-						null, test, ButtonType.OK);
-				alert.showAndWait();
-			}
-
-		}
 	}
 
 	private void setupTabs() {
@@ -324,16 +268,13 @@ public class MainPaneController {
 	}
 
 	private void setupSettingTab() {
-		userEmailField.setText(AppSession.getSession().getUserEmail());
+
 		userTokenField.setText(AppSession.getSession().getUserToken());
 		domainField.setText(AppSession.getSession().getDefaultDomain());
 		defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
 
-		TextFields.bindAutoCompletion(userEmailField, savedEmailprovider);
-		userEmailField.textProperty().addListener((o, oV, nV) -> {
-			handleUserEmailFieldChange();
-		});
+
 		TextFields.bindAutoCompletion(defaultAssigneeField, savedEmailprovider);
 		defaultAssigneeField.textProperty().addListener((o, oV, nV) -> {
 			handleDefaultAssigneeFieldChange();
@@ -343,7 +284,6 @@ public class MainPaneController {
 			handleDefaultRequesterFieldChange();
 		});
 
-		autoUpdateCheckBox.setSelected(AppSession.getSession().getDefaultAutoUpdateCheck());
 
 		// setup infoTable
 		trackTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -743,66 +683,6 @@ public class MainPaneController {
 		alert.showAndWait();
 	}
 
-	// Got from
-	// https://stackoverflow.com/questions/36949595/how-do-i-create-a-javafx-alert-with-a-check-box-for-do-not-ask-again
-	//
-	// CAN BE USED FURTHER TO ASK THE USER TO UPDATE WHAT THEY WANT?
-
-	public static Alert createAlertWithOptOuts(AlertType type, String title, String headerText, String message,
-			TreeMap<String, Consumer<Boolean>> optOutActions, ButtonType... buttonTypes) {
-		Alert alert = new Alert(type);
-		// Need to force the alert to layout in order to grab the graphic,
-		// as we are replacing the dialog pane with a custom pane
-		alert.getDialogPane().applyCss();
-		Node graphic = alert.getDialogPane().getGraphic();
-		// Create a new dialog pane that has a checkbox instead of the hide/show details
-		// button
-		// Use the supplied callback for the action of the checkbox
-
-		alert.setDialogPane(new DialogPane() {
-			@Override
-			protected Node createDetailsButton() {
-				VBox vBox = new VBox();
-				CheckBox all = new CheckBox();
-				ArrayList<CheckBox> others = new ArrayList<CheckBox>();
-				for (Map.Entry<String, Consumer<Boolean>> entry : optOutActions.entrySet()) {
-					String key = entry.getKey();
-					Consumer<Boolean> value = entry.getValue();
-					CheckBox optOut = new CheckBox(key);
-					vBox.getChildren().add(optOut);
-					optOut.setOnAction(e -> value.accept(optOut.isSelected()));
-					if (!key.equals("All")) {
-						others.add(optOut);
-					} else {
-						all = optOut;
-					}
-					// return optOut;
-				}
-
-				all.setOnAction(e -> {
-					for (CheckBox other : others) {
-						other.setSelected(!((CheckBox) e.getSource()).isSelected());
-						other.fire();
-					}
-				});
-
-				return vBox;
-
-			}
-
-		});
-		alert.getDialogPane().getButtonTypes().addAll(buttonTypes);
-		alert.getDialogPane().setContentText(message);
-		// Fool the dialog into thinking there is some expandable content
-		// a Group won't take up any space if it has no children
-		alert.getDialogPane().setExpandableContent(new Group());
-		alert.getDialogPane().setExpanded(true);
-		// Reset the dialog graphic using the default style
-		alert.getDialogPane().setGraphic(graphic);
-		alert.setTitle(title);
-		alert.setHeaderText(headerText);
-		return alert;
-	}
 
 	private void addTableItem(User user) {
 		TimeTrack track = new TimeTrack(user, Integer.parseInt(timeElapsedField.getText()),
@@ -842,48 +722,45 @@ public class MainPaneController {
 
 	@FXML
 	private void handleUpdateListBtn() {
-		if (AppSession.getSession().getUserEmail().equals("")) {
-			showAlert("User Email not set", "Please setup your user email in Settings", AlertType.WARNING);
-		} else {
 
-			incidentTable.setPlaceholder(new Label("Updating incidents..."));
-			incidentTable.getItems().clear();
-			Task<Parent> updateIncidentList = new Task<Parent>() {
-				@Override
-				public Parent call() throws JsonIOException, IOException {
-					updateMessage("Loading...");
-					while (updatingIncident) {
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							printError(e);
-						}
-					}
+		incidentTable.setPlaceholder(new Label("Updating incidents..."));
+		incidentTable.getItems().clear();
+		Task<Parent> updateIncidentList = new Task<Parent>() {
+			@Override
+			public Parent call() throws JsonIOException, IOException {
+				updateMessage("Loading...");
+				while (updatingIncident) {
 					try {
-						AppSession.getSession().updateListIncidents(updateFromDatePicker.getValue(),
-								updateToDatePicker.getValue());
-					} catch (SAXException | ParserConfigurationException e) {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
 						printError(e);
 					}
-					updateMessage("Update List");
-					return null;
 				}
-			};
-			// method to set labeltext
-			updateListBtn.textProperty().bind(Bindings.convert(updateIncidentList.messageProperty()));
-			updateListBtn.setDisable(true);
-			updateIncidentList.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+				try {
+					AppSession.getSession().updateListIncidents(updateFromDatePicker.getValue(),
+							updateToDatePicker.getValue());
+				} catch (SAXException | ParserConfigurationException e) {
+					printError(e);
+				}
+				updateMessage("Update List");
+				return null;
+			}
+		};
+		// method to set labeltext
+		updateListBtn.textProperty().bind(Bindings.convert(updateIncidentList.messageProperty()));
+		updateListBtn.setDisable(true);
+		updateIncidentList.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 
-				@Override
-				public void handle(WorkerStateEvent event) {
-					addIncidentsToTable();
-					updateListBtn.setDisable(false);
-					updateListBtn.textProperty().unbind();
-				}
-			});
-			Thread updateIncidentListThread = new Thread(updateIncidentList);
-			updateIncidentListThread.start();
-		}
+			@Override
+			public void handle(WorkerStateEvent event) {
+				addIncidentsToTable();
+				updateListBtn.setDisable(false);
+				updateListBtn.textProperty().unbind();
+			}
+		});
+		Thread updateIncidentListThread = new Thread(updateIncidentList);
+		updateIncidentListThread.start();
+
 	}
 
 	private void addIncidentsToTable() {
@@ -1052,14 +929,6 @@ public class MainPaneController {
 		updateIncidentNamePrompt();
 	}
 
-	@FXML
-	private void handleUserEmailFieldChange() {
-		AppSession.getSession().setUserEmail(userEmailField.getText());
-		if (AppSession.getSession().getUsers().keySet().contains(userEmailField.getText())) {
-			userEmailField.setText(AppSession.getSession().getUserEmail());
-			AppSession.getSession().saveData();
-		}
-	}
 
 	@FXML
 	private void handleDefaultRequesterFieldChange() {
@@ -1095,25 +964,15 @@ public class MainPaneController {
 		assigneeField.setText(toShortDomain(assigneeField.getText()));
 	}
 
-	@FXML
-	private void handleAutoupdateCheck() {
-		AppSession.getSession().setDefaultAutoUpdateCheck(autoUpdateCheckBox.isSelected());
-		AppSession.getSession().saveData();
-	}
+
 
 	@FXML
-	private void handleAutoUpdateCheckBox() {
-		AppSession.getSession().setDefaultAutoUpdateCheck(autoUpdateCheckBox.selectedProperty().getValue());
-		AppSession.getSession().saveData();
-	}
-
-	@FXML
-	private void handleCheckForUpdateBtn() {
+	private void handleUpdateDtbBtn() {
 		Task<Parent> updateCheck = new Task<Parent>() {
 			@Override
 			public Parent call() throws JsonIOException, IOException {
-				updateMessage("Checking...");
-				updatePrompt = AppSession.getSession().getUpdatePrompt();
+				updateMessage("Updating...");
+				AppSession.getSession().updateAll();
 				updateMessage("Done.");
 
 				return null;
@@ -1121,78 +980,14 @@ public class MainPaneController {
 		};
 
 		// method to set labeltext
-		checkForUpdateBtn.textProperty().bind(Bindings.convert(updateCheck.messageProperty()));
-		checkForUpdateBtn.setDisable(true);
+		updateDtbBtn.textProperty().bind(Bindings.convert(updateCheck.messageProperty()));
+		updateDtbBtn.setDisable(true);
 		updateCheck.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 
 			@Override
 			public void handle(WorkerStateEvent event) {
-				if (updatePrompt.equals("")) {
 					showAlert("Check complete", "Database is Up-to-date." + updatePrompt, AlertType.INFORMATION);
-				} else {
-					// showAlert("Check complete", "Database Outdated. Press Update to
-					// update.\nDetails:\n" + updatePrompt,
-					// AlertType.WARNING);
-					// updateDataBtn.setDisable(false);
-
-					TreeMap<String, Consumer<Boolean>> cmd = new TreeMap<String, Consumer<Boolean>>();
-					List<Runnable> methodsToRun = new ArrayList<>();
-					for (Map.Entry<String, Runnable> entry : AppSession.getSession().updateCheckboxList().entrySet()) {
-						String s = entry.getKey();
-						Runnable r = entry.getValue();
-						Consumer<Boolean> c = (x) -> {
-							if (x.booleanValue() && !methodsToRun.contains(r)) {
-								methodsToRun.add(r);
-							} else if (!x.booleanValue() && methodsToRun.contains(r)) {
-								methodsToRun.remove(r);
-							}
-						};
-						cmd.put(s, c);
-					}
-
-					Alert alert = createAlertWithOptOuts(AlertType.CONFIRMATION, "Warning", updatePrompt,
-							"Choose what to update", cmd, ButtonType.OK, ButtonType.CANCEL);
-
-					Optional<ButtonType> result = alert.showAndWait();
-
-					if (result.get() == ButtonType.OK) {
-
-						if (methodsToRun.size() == 0) {
-							showAlert("Alert", "You haven't chosen anything to update!", AlertType.INFORMATION);
-						} else {
-							Task<Parent> update = new Task<Parent>() {
-								@Override
-								public Parent call() throws JsonIOException, IOException {
-									for (Runnable r : methodsToRun) {
-										updateMessage("Updating...");
-										r.run();
-									}
-									updateMessage("Saving Data...");
-									AppSession.getSession().saveData();
-									return null;
-								}
-							};
-
-							// method to set labeltext
-							checkForUpdateBtn.textProperty().unbind();
-							checkForUpdateBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
-							checkForUpdateBtn.setDisable(true);
-							update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-								@Override
-								public void handle(WorkerStateEvent event) {
-									showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
-									checkForUpdateBtn.textProperty().unbind();
-									checkForUpdateBtn.setText("Check for Updates");
-									checkForUpdateBtn.setDisable(false);
-									updatePrompt = "";
-
-								}
-							});
-							Thread updateThread = new Thread(update);
-							updateThread.start();
-						}
-					}
-				}
+			
 
 			}
 		});
@@ -1461,51 +1256,7 @@ public class MainPaneController {
 
 	}
 
-	@FXML
-	private void handleUpdateMenuItem() {
-		String lastUpdateDate = AppSession.getSession().getDateOfLastSystemUpdate();
-		Alert alert = new Alert(AlertType.WARNING,
-				"Last system update at: " + lastUpdateDate + "\nThe process is going to take about 4 mins. Proceed?",
-				ButtonType.OK, ButtonType.CANCEL);
-		alert.setTitle("Warning");
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			Task<Parent> update = new Task<Parent>() {
-				@Override
-				public Parent call() throws JsonIOException, IOException {
-					// disable buttons
-					updateMessage("Updating All...");
-					AppSession.getSession().updateAll();
-					LocalDate thisUpdateDate = LocalDate.now();
-					String formattedDate = thisUpdateDate.format(formatter);
-					System.err.println(formattedDate);
-					AppSession.getSession().setDateOfLastSystemUpdate(formattedDate);
-					AppSession.getSession().saveData();
-					return null;
-				}
-			};
-
-			// method to set labeltext
-			checkForUpdateBtn.textProperty().bind(Bindings.convert(update.messageProperty()));
-			checkForUpdateBtn.setDisable(true);
-			update.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-
-				@Override
-				public void handle(WorkerStateEvent event) {
-					showAlert("Updated", "Update Complete!", AlertType.INFORMATION);
-					checkForUpdateBtn.textProperty().unbind();
-					checkForUpdateBtn.setText("Check for Updates");
-					checkForUpdateBtn.setDisable(false);
-					updatePrompt = "";
-
-				}
-			});
-			Thread updateThread = new Thread(update);
-			updateThread.start();
-
-		}
-
-	}
+	
 
 	private void updateTemplatesTable() {
 		templateTable.getItems().clear();
@@ -1616,5 +1367,17 @@ public class MainPaneController {
 			}
 		}
 		return email;
+	}
+	
+	@FXML
+	private void handleAboutMenuItem() {
+		
+		String title = "About";
+		String msg = "Collaborators: Nathan Truong @nguyentruong17, Minh Ta @minhta16  \r\n" + 
+				"This project aims to solve ITS Department's work order processing insufficiency.  \r\n" + 
+				"It implements JavaFX and RESTful for an user-friendly application designed for fast and on-the-fly ticket entry. \r\n"+
+				"© Augustana ITS Department 2019";
+		
+		showAlert(title, msg, AlertType.INFORMATION);
 	}
 }
