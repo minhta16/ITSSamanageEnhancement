@@ -936,26 +936,27 @@ public class MainPaneController {
 
 				// Compare first name and last name of every person with filter text.
 				String lowerCaseFilter = newValue.toLowerCase();
+				String curFilter = AppSession.getSession().getCurrentFilter();
 
-				if (incident.getState().toLowerCase().contains(lowerCaseFilter)) {
+				if (incident.getState().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("State")) {
 					return true;
-				} else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+				} else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Title")) {
 					return true;
-				} else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter)) {
+				} else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Priority")) {
 					return true;
-				} else if (incident.getCat().toLowerCase().contains(lowerCaseFilter)) {
+				} else if (incident.getCat().toLowerCase().contains(lowerCaseFilter)  && curFilter.equals("Category")) {
 					return true;
-				} else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter)) {
+				} else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter)  && curFilter.equals("Subcategory")) {
 					return true;
-				} else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter)) {
+				} else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Assignee")) {
 					return true;
-				} else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter)) {
+				} else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Requester")) {
 					return true;
-				} else if (incident.getSite().toLowerCase().contains(lowerCaseFilter)) {
+				} else if (incident.getSite().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Site")) {
 					return true;
-				} else if (incident.getDept().toLowerCase().contains(lowerCaseFilter)) {
+				} else if (incident.getDept().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Dept")) {
 					return true;
-				} else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter)) {
+				} else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter) && curFilter.equals("Tracks #")) {
 					return true;
 				}
 
@@ -1009,12 +1010,12 @@ public class MainPaneController {
 
 	@FXML
 	private void handleFilterComboBox() {
-		// asdsad
 		if (filterComboBox.getValue().equals(null)) {
+			AppSession.getSession().setCurrentFilter("");
 			filterField.setDisable(true);
 		} else {
+			AppSession.getSession().setCurrentFilter(filterComboBox.getValue());
 			filterField.setDisable(false);
-
 			// TODO
 			// filterComboBox.getValue() into some sort of list for smarter filter
 

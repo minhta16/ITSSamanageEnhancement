@@ -33,6 +33,8 @@ public class AppSession {
 	private boolean defaultAutoUpdateCheckChoice;
 	private boolean dtbUpdateCheckAskAgainCheckBox;
 
+	private transient String currentFilter;
+	
 	private transient TreeMap<String, Incident> currentIncidents;
 	private transient ArrayList<TimeTrack> timeTracks;
 	private transient IncidentEditType editType;
@@ -61,6 +63,7 @@ public class AppSession {
 	private AppSession(String userToken) {
 		userEmail = "";
 		this.userToken = userToken;
+		setCurrentFilter("");
 		defaultDomain = "";
 		defaultAssignee = "";
 		defaultRequester = "";
@@ -566,5 +569,13 @@ public class AppSession {
 		} else {
 			return email;
 		}
+	}
+
+	public String getCurrentFilter() {
+		return currentFilter;
+	}
+
+	public void setCurrentFilter(String currentFilter) {
+		this.currentFilter = currentFilter;
 	}
 }
