@@ -6,16 +6,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -33,12 +28,10 @@ import org.xml.sax.SAXException;
 
 import com.google.gson.JsonIOException;
 
-import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert.AlertType;
 
 public class SamanageRequests {
 
@@ -510,7 +503,7 @@ public class SamanageRequests {
 
 				@Override
 				public void handle(WorkerStateEvent event) {
-					System.err.println("USERS: DONE THREAD " + current);
+					System.out.println("USERS: DONE THREAD " + current);
 				//	System.err.println("THREAD " + current + " SAVED " + users.size() +" USERS");
 					doneThreads.add("user thread "+current);
 					if (doneThreads.size() == totalCalls) {
@@ -726,7 +719,7 @@ public class SamanageRequests {
 
 				@Override
 				public void handle(WorkerStateEvent event) {
-					System.err.println("SITES: DONE THREAD " + current);
+					System.out.println("SITES: DONE THREAD " + current);
 				//	System.err.println("THREAD " + current + " SAVED " + users.size() +" USERS");
 					doneThreads.add("site thread "+current);
 					if (doneThreads.size() == totalCalls) {

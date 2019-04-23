@@ -97,7 +97,6 @@ public class AppSession {
 	public void setTemplateTimeTracks(ArrayList<TimeTrack> templateTimeTracks) {
 		this.templateTimeTracks = templateTimeTracks;
 	}
-	
 
 	public void removeTemplateTimeTrackByEmail(String email) {
 		for (int i = templateTimeTracks.size() - 1; i >= 0; i--) {
@@ -354,19 +353,27 @@ public class AppSession {
 		this.dateOfLastSystemUpdate = date;
 	}
 
-	public void loadData() throws IOException {
-		FileReader fd = new FileReader(DATA_LOCATION);
-		JsonReader reader = new JsonReader(fd);
-		Gson gson = new Gson();
-		session = gson.fromJson(reader, AppSession.class);
-		fd.close();
+	public void loadData() {
+		try {
+			FileReader fd = new FileReader(DATA_LOCATION);
+			JsonReader reader = new JsonReader(fd);
+			Gson gson = new Gson();
+			session = gson.fromJson(reader, AppSession.class);
+			fd.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void saveData() throws JsonIOException, IOException {
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		FileWriter fw = new FileWriter(DATA_LOCATION);
-		gson.toJson(session, fw);
-		fw.close();
+	public void saveData() {
+		try {
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			FileWriter fw = new FileWriter(DATA_LOCATION);
+			gson.toJson(session, fw);
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public boolean hasGroup(String groupName) {
@@ -403,7 +410,8 @@ public class AppSession {
 		requesterInfo = users.get(toCorrectDomain(defaultRequester));
 	}
 
-	public void updateListIncidents(LocalDate from, LocalDate to) throws IOException, SAXException, ParserConfigurationException {
+	public void updateListIncidents(LocalDate from, LocalDate to)
+			throws IOException, SAXException, ParserConfigurationException {
 		currentIncidents = SamanageRequests.getIncidents(userToken, from, to);
 	}
 
@@ -474,44 +482,44 @@ public class AppSession {
 	}
 
 	public void updateUsersMultiThreads() throws IOException {
-		System.err.println("Loading users multithread...");
+		System.out.println("Loading users multithread...");
 		users = SamanageRequests.getAllUsersMultiThreads(userToken);
 	}
 
 	public void updateUsers() throws IOException {
-		System.err.println("Loading users...");
+		System.out.println("Loading users...");
 		users = SamanageRequests.getAllUsers(userToken);
 	}
 
 	public void updateSites() throws IOException {
-		System.err.println("Loading sites...");
+		System.out.println("Loading sites...");
 		sites = SamanageRequests.getSites(userToken);
 	}
-	
+
 	public void updateSitesMultiThreads() throws IOException {
-		System.err.println("Loading sites multithread...");
+		System.out.println("Loading sites multithread...");
 		sites = SamanageRequests.getSitesMultiThreads(userToken);
 	}
 
 	public void updateDepts() throws IOException {
-		System.err.println("Loading departments...");
+		System.out.println("Loading departments...");
 		departments = SamanageRequests.getDepartments(userToken);
 	}
 
 	public void updateCategories() throws IOException {
-		System.err.println("Loading categories...");
+		System.out.println("Loading categories...");
 		categories = SamanageRequests.getCategories(userToken);
 
 	}
 
 	public void updateGroups() throws IOException {
-		System.err.println("Loading groups...");
+		System.out.println("Loading groups...");
 		groups = SamanageRequests.getGroups(userToken);
 
 	}
 
 	public void updateSoftwares() throws IOException {
-		System.err.println("Loading softwares...");
+		System.out.println("Loading softwares...");
 		softwares = SamanageRequests.getSoftwares(userToken, "408915", "Software");
 
 	}
@@ -534,23 +542,13 @@ public class AppSession {
 
 	public void addTemplate(String id, Incident template) {
 		templates.put(id, template);
-		try {
-			saveData();
-		} catch (JsonIOException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		saveData();
 		templateTimeTracks.clear();
 	}
 
 	public void removeTemplate(String id) {
 		templates.remove(id);
-		try {
-			saveData();
-		} catch (JsonIOException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		saveData();
 	}
 
 	private String toShortDomain(String email) {

@@ -1,10 +1,12 @@
 package application.controller;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -149,10 +151,10 @@ public class MainPaneController {
 	private CheckBox autoUpdateCheckBox;
 	@FXML
 	private Button checkForUpdateBtn;
-	
+
 	@FXML
 	private MenuItem updateMenuItem;
-	
+
 	@FXML
 	private ComboBox<String> filterComboBox;
 	@FXML
@@ -163,33 +165,28 @@ public class MainPaneController {
 	private String curUpdateIncidentID = "";
 
 	private boolean updatingIncident;
-	
-	private ObservableList<Incident> updatedListOfIncidents = FXCollections.observableArrayList();
-	
-	
 
-	public void setStageAndSetupListeners(Stage primaryStage) {
+	private ObservableList<Incident> updatedListOfIncidents = FXCollections.observableArrayList();
+
+	private PrintStream erroutStream;
+
+	public void setStageAndSetupListeners(Stage primaryStage) throws FileNotFoundException {
+
+		erroutStream = new PrintStream(new FileOutputStream("./logs/error.txt"));
+		System.setErr(erroutStream);
 
 		System.out.println("Loading...");
-		try {
-			AppSession.getSession().loadData();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		AppSession.getSession().loadData();
 
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
 
 		try {
 			AppSession.getSession().updateEasyStuff();
-		//s	AppSession.getSession().updateUsersMultiThreads();
+			// s AppSession.getSession().updateUsersMultiThreads();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			showAlert("ERROR", "ERROR:\n" + e.getStackTrace(), AlertType.ERROR);
-			System.exit(1);
+			printError(e);
 		}
-		
-		
 
 		// setup setting tab
 		System.out.print("Setting up Setting Tab\t\t\t\r");
@@ -230,9 +227,7 @@ public class MainPaneController {
 			try {
 				updatePrompt = AppSession.getSession().getUpdatePrompt();
 			} catch (IOException e) {
-				//TODO: handle
-				showAlert("ERROR", "ERROR:\n" + e.getStackTrace(), AlertType.ERROR);
-				System.exit(1);
+				printError(e);
 			}
 		}
 
@@ -265,11 +260,7 @@ public class MainPaneController {
 				Consumer<Boolean> c1 = (x) -> {
 					// System.err.println(x);
 					AppSession.getSession().setdtbUpdateCheckAskAgainCheckBox(x.booleanValue());
-					try {
-						AppSession.getSession().saveData();
-					} catch (JsonIOException | IOException e) {
-						e.printStackTrace();
-					}
+					AppSession.getSession().saveData();
 
 				};
 				test.put(s1, c1);
@@ -305,15 +296,16 @@ public class MainPaneController {
 		incidentTable.getColumns().get(10).setCellValueFactory(new PropertyValueFactory<>("trackedUsersNum"));
 		incidentTable.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
 		incidentTable.setPlaceholder(new Label("Please update list to see the lastest incidents."));
-		
-		//setupFilterComboBox
+
+		// setupFilterComboBox
 		filterField.setDisable(true);
-		for (int i=0; i<incidentTable.getColumns().size()-1;i++) {
-			//filterComboBox.getItems().addAll((Collection<? extends String>) incidentTable.getColumns().get(i));
-			//System.out.println(incidentTable.getProperties().keySet());
+		for (int i = 0; i < incidentTable.getColumns().size() - 1; i++) {
+			// filterComboBox.getItems().addAll((Collection<? extends String>)
+			// incidentTable.getColumns().get(i));
+			// System.out.println(incidentTable.getProperties().keySet());
 			filterComboBox.getItems().add(incidentTable.getColumns().get(i).getText());
 		}
-		
+
 	}
 
 	private void setupIncidentEditTab() {
@@ -328,7 +320,7 @@ public class MainPaneController {
 		// setup incident name
 		System.out.print("Setting up Incident Name Prompt\r");
 		updateIncidentNamePrompt();
-		
+
 	}
 
 	private void setupSettingTab() {
@@ -512,7 +504,7 @@ public class MainPaneController {
 		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		handleAssigneeFieldChange();
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
-		
+
 		TextFields.bindAutoCompletion(assigneeField, assigneeProvider);
 		assigneeField.textProperty().addListener((o, oV, nV) -> {
 			handleAssigneeFieldChange();
@@ -535,7 +527,7 @@ public class MainPaneController {
 	private void handleClearAllFieldsBtn() {
 		clearInputFields();
 	}
-	
+
 	@FXML
 	private void handleSubmitBtn() {
 		if (userTokenField.getText().trim().equals("")) {
@@ -609,8 +601,7 @@ public class MainPaneController {
 
 						updateMessage("Submit");
 					} catch (IOException e) {
-						showAlert("Error", e.getMessage(), AlertType.ERROR);
-						e.printStackTrace();
+						printError(e);
 					}
 					return null;
 				}
@@ -669,8 +660,7 @@ public class MainPaneController {
 
 						updateMessage("Submit");
 					} catch (IOException e) {
-						showAlert("Error", e.getMessage(), AlertType.ERROR);
-						e.printStackTrace();
+						printError(e);
 					}
 					return null;
 				}
@@ -866,16 +856,14 @@ public class MainPaneController {
 						try {
 							Thread.sleep(100);
 						} catch (InterruptedException e) {
-							e.printStackTrace();
+							printError(e);
 						}
 					}
 					try {
 						AppSession.getSession().updateListIncidents(updateFromDatePicker.getValue(),
 								updateToDatePicker.getValue());
 					} catch (SAXException | ParserConfigurationException e) {
-						// TODO Auto-generated catch block
-						showAlert("ERROR", "ERROR:\n" + e.getStackTrace(), AlertType.ERROR);
-						System.exit(1);
+						printError(e);
 					}
 					updateMessage("Update List");
 					return null;
@@ -906,12 +894,15 @@ public class MainPaneController {
 				curUpdateIncidentID = incident.getID();
 				tabPane.getSelectionModel().select(incidentEditTab);
 				try {
-					incident.setTimeTracks(SamanageRequests.getTimeTracks(AppSession.getSession().getUserToken(), incident.getID()));
+					incident.setTimeTracks(
+							SamanageRequests.getTimeTracks(AppSession.getSession().getUserToken(), incident.getID()));
 				} catch (IOException | SAXException | ParserConfigurationException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					showAlert("ERROR", "ERROR:\n" + e1, AlertType.ERROR);
+					System.exit(1);
 				}
-				//templateComboBox.setDisable(true);
+				// templateComboBox.setDisable(true);
 				preFetchIncidentInfo(incident.getNumber());
 				AppSession.getSession().setEditType(IncidentEditType.EDIT);
 			});
@@ -923,7 +914,7 @@ public class MainPaneController {
 			}
 			incidentTable.getItems().add(incident);
 			updatedListOfIncidents.add(incident);
-			
+
 		}
 		if (AppSession.getSession().getCurrentIncidents().keySet().isEmpty()) {
 			incidentTable.setPlaceholder(new Label("You have no assigned incidents today."));
@@ -931,57 +922,56 @@ public class MainPaneController {
 		// DEFAULT SORT BY NUMBER
 		incidentTable.getColumns().get(0).setSortType(TableColumn.SortType.DESCENDING);
 		incidentTable.getSortOrder().add(incidentTable.getColumns().get(0));
-		
-		 // 1. Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<Incident> filteredUpdatedListOfIncidents = new FilteredList<>(updatedListOfIncidents, p -> true);
-        
-        // 2. Set the filter Predicate whenever the filter changes.
-        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-        	filteredUpdatedListOfIncidents.setPredicate(incident -> {
-                // If filter text is empty, display all persons.
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                
-                // Compare first name and last name of every person with filter text.
-                String lowerCaseFilter = newValue.toLowerCase();
-                
-                if (incident.getState().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;     	
-                } else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;     	
-                } else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter)) {
-                	return true;
-                } else if (incident.getCat().toLowerCase().contains(lowerCaseFilter)) {
-                	return true;
-                } else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter)) {
-                	return true;
-                } else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter)) {
-                	return true;
-                } else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter)) {
-                	return true;
-                } else if (incident.getSite().toLowerCase().contains(lowerCaseFilter)) {
-                	return true;
-                } else if (incident.getDept().toLowerCase().contains(lowerCaseFilter)) {
-                	return true;
-                } else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter)) {
-                	return true;
-                }
-                
 
-                return false; // Does not match.
-            });
-        });
-        
-        // 3. Wrap the FilteredList in a SortedList. 
-        SortedList<Incident> sortedFilterUpdatedListOfIncidents = new SortedList<>(filteredUpdatedListOfIncidents);
-        
-        // 4. Bind the SortedList comparator to the TableView comparator.
-        sortedFilterUpdatedListOfIncidents.comparatorProperty().bind(incidentTable.comparatorProperty());
-        
-        // 5. Add sorted (and filtered) data to the table.
-        incidentTable.setItems(sortedFilterUpdatedListOfIncidents);
-		
+		// 1. Wrap the ObservableList in a FilteredList (initially display all data).
+		FilteredList<Incident> filteredUpdatedListOfIncidents = new FilteredList<>(updatedListOfIncidents, p -> true);
+
+		// 2. Set the filter Predicate whenever the filter changes.
+		filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredUpdatedListOfIncidents.setPredicate(incident -> {
+				// If filter text is empty, display all persons.
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+
+				if (incident.getState().toLowerCase().contains(lowerCaseFilter)) {
+					return true;
+				} else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+					return true;
+				} else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter)) {
+					return true;
+				} else if (incident.getCat().toLowerCase().contains(lowerCaseFilter)) {
+					return true;
+				} else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter)) {
+					return true;
+				} else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter)) {
+					return true;
+				} else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter)) {
+					return true;
+				} else if (incident.getSite().toLowerCase().contains(lowerCaseFilter)) {
+					return true;
+				} else if (incident.getDept().toLowerCase().contains(lowerCaseFilter)) {
+					return true;
+				} else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter)) {
+					return true;
+				}
+
+				return false; // Does not match.
+			});
+		});
+
+		// 3. Wrap the FilteredList in a SortedList.
+		SortedList<Incident> sortedFilterUpdatedListOfIncidents = new SortedList<>(filteredUpdatedListOfIncidents);
+
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		sortedFilterUpdatedListOfIncidents.comparatorProperty().bind(incidentTable.comparatorProperty());
+
+		// 5. Add sorted (and filtered) data to the table.
+		incidentTable.setItems(sortedFilterUpdatedListOfIncidents);
+
 	}
 
 	private void preFetchIncidentInfo(String number) {
@@ -1016,39 +1006,31 @@ public class MainPaneController {
 	private void handleIncidentNameType() {
 
 	}
-	
+
 	@FXML
 	private void handleFilterComboBox() {
-	//	asdsad
+		// asdsad
 		if (filterComboBox.getValue().equals(null)) {
 			filterField.setDisable(true);
 		} else {
 			filterField.setDisable(false);
-			
+
 			// TODO
 			// filterComboBox.getValue() into some sort of list for smarter filter
-			
+
 		}
 	}
 
 	@FXML
 	private void handleUserTokenFieldChange() {
 		AppSession.getSession().setUserToken(userTokenField.getText());
-		try {
-			AppSession.getSession().saveData();
-		} catch (JsonIOException | IOException e) {
-			e.printStackTrace();
-		}
+		AppSession.getSession().saveData();
 	}
 
 	@FXML
 	private void handleDefaultDomainFieldChange() {
 		AppSession.getSession().setDefaultDomain(domainField.getText());
-		try {
-			AppSession.getSession().saveData();
-		} catch (JsonIOException | IOException e) {
-			e.printStackTrace();
-		}
+		AppSession.getSession().saveData();
 	}
 
 	@FXML
@@ -1074,11 +1056,7 @@ public class MainPaneController {
 		AppSession.getSession().setUserEmail(userEmailField.getText());
 		if (AppSession.getSession().getUsers().keySet().contains(userEmailField.getText())) {
 			userEmailField.setText(AppSession.getSession().getUserEmail());
-			try {
-				AppSession.getSession().saveData();
-			} catch (JsonIOException | IOException e) {
-				e.printStackTrace();
-			}
+			AppSession.getSession().saveData();
 		}
 	}
 
@@ -1089,11 +1067,7 @@ public class MainPaneController {
 			requesterField.setText(toShortDomain(AppSession.getSession().getDefaultRequester()));
 			defaultRequesterField.setText(AppSession.getSession().getDefaultRequester());
 			handleRequesterFieldChange();
-			try {
-				AppSession.getSession().saveData();
-			} catch (JsonIOException | IOException e) {
-				e.printStackTrace();
-			}
+			AppSession.getSession().saveData();
 		}
 	}
 
@@ -1104,22 +1078,14 @@ public class MainPaneController {
 			assigneeField.setText(toShortDomain(AppSession.getSession().getDefaultAssignee()));
 			defaultAssigneeField.setText(AppSession.getSession().getDefaultAssignee());
 			handleAssigneeFieldChange();
-			try {
-				AppSession.getSession().saveData();
-			} catch (JsonIOException | IOException e) {
-				e.printStackTrace();
-			}
+			AppSession.getSession().saveData();
 		}
 	}
 
 	@FXML
 	private void handleDefaultDomainChange() {
 		AppSession.getSession().setDefaultDomain(domainField.getText());
-		try {
-			AppSession.getSession().saveData();
-		} catch (JsonIOException | IOException e) {
-			e.printStackTrace();
-		}
+		AppSession.getSession().saveData();
 	}
 
 	@FXML
@@ -1131,23 +1097,13 @@ public class MainPaneController {
 	@FXML
 	private void handleAutoupdateCheck() {
 		AppSession.getSession().setDefaultAutoUpdateCheck(autoUpdateCheckBox.isSelected());
-		try {
-			AppSession.getSession().saveData();
-		} catch (JsonIOException | IOException e) {
-			e.printStackTrace();
-		}
+		AppSession.getSession().saveData();
 	}
-
 
 	@FXML
 	private void handleAutoUpdateCheckBox() {
 		AppSession.getSession().setDefaultAutoUpdateCheck(autoUpdateCheckBox.selectedProperty().getValue());
-		try {
-			AppSession.getSession().saveData();
-		} catch (JsonIOException | IOException e) {
-			e.printStackTrace();
-		}
-
+		AppSession.getSession().saveData();
 	}
 
 	@FXML
@@ -1173,10 +1129,11 @@ public class MainPaneController {
 				if (updatePrompt.equals("")) {
 					showAlert("Check complete", "Database is Up-to-date." + updatePrompt, AlertType.INFORMATION);
 				} else {
-	//				showAlert("Check complete", "Database Outdated. Press Update to update.\nDetails:\n" + updatePrompt,
-	//						AlertType.WARNING);
-	//				updateDataBtn.setDisable(false);
-					
+					// showAlert("Check complete", "Database Outdated. Press Update to
+					// update.\nDetails:\n" + updatePrompt,
+					// AlertType.WARNING);
+					// updateDataBtn.setDisable(false);
+
 					TreeMap<String, Consumer<Boolean>> cmd = new TreeMap<String, Consumer<Boolean>>();
 					List<Runnable> methodsToRun = new ArrayList<>();
 					for (Map.Entry<String, Runnable> entry : AppSession.getSession().updateCheckboxList().entrySet()) {
@@ -1210,11 +1167,7 @@ public class MainPaneController {
 										r.run();
 									}
 									updateMessage("Saving Data...");
-									try {
-										AppSession.getSession().saveData();
-									} catch (JsonIOException | IOException e) {
-										e.printStackTrace();
-									}
+									AppSession.getSession().saveData();
 									return null;
 								}
 							};
@@ -1338,13 +1291,12 @@ public class MainPaneController {
 		TextFields.bindAutoCompletion(tempDeptComboBox.getEditor(), tempDeptComboBox.getItems());
 		tempSiteComboBox.getItems().addAll(AppSession.getSession().getSites());
 		TextFields.bindAutoCompletion(tempSiteComboBox.getEditor(), tempSiteComboBox.getItems());
-	
-		
+
 		TextFields.bindAutoCompletion(tempReqField, savedEmailprovider);
 		TextFields.bindAutoCompletion(tempAsgField, savedEmailprovider);
 		TextFields.bindAutoCompletion(tempTrackEmailField, savedEmailprovider);
 		updateTemplatesTable();
-		
+
 		tempCatComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -1361,7 +1313,6 @@ public class MainPaneController {
 		tempSubcatLabel.setDisable(disable);
 	}
 
-
 	private void updateTempSubcatChoiceBox() {
 		tempSubcatComboBox.getItems().clear();
 		if (tempCatComboBox.getValue() == null) {
@@ -1370,7 +1321,8 @@ public class MainPaneController {
 			setDisableTempSubcatChoiceBox(true);
 		} else {
 			setDisableTempSubcatChoiceBox(false);
-			tempSubcatComboBox.getItems().addAll(AppSession.getSession().getCategories().get(tempCatComboBox.getValue()));
+			tempSubcatComboBox.getItems()
+					.addAll(AppSession.getSession().getCategories().get(tempCatComboBox.getValue()));
 		}
 	}
 
@@ -1385,10 +1337,9 @@ public class MainPaneController {
 		newTracks.addAll(AppSession.getSession().getTemplateTimeTracks());
 		Incident template = new Incident(tempNameField.getText(), "0", tempStateComboBox.getValue(),
 				tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(), tempCatComboBox.getValue(),
-				tempSubcatComboBox.getValue(), toShortDomain(tempAsgField.getText()), toShortDomain(tempReqField.getText()),
-				tempSiteComboBox.getValue(), tempDeptComboBox.getValue(), tempDescField.getText(),
-				tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(),
-				newTracks);
+				tempSubcatComboBox.getValue(), toShortDomain(tempAsgField.getText()),
+				toShortDomain(tempReqField.getText()), tempSiteComboBox.getValue(), tempDeptComboBox.getValue(),
+				tempDescField.getText(), tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(), newTracks);
 		if ((templateEdit == IncidentEditType.NEW
 				|| (templateEdit == IncidentEditType.EDIT && (!template.getID().equals(currentTemplate.getID()))))
 				&& AppSession.getSession().getTemplates().keySet().contains(tempNameField.getText())) {
@@ -1401,10 +1352,10 @@ public class MainPaneController {
 		updateTemplatesTable();
 
 	}
-	
+
 	@FXML
 	private void handleTemplateChange() {
-		//awdas
+		// awdas
 		if (templateComboBox.getValue() != null) {
 			if (AppSession.getSession().getTemplates().keySet().contains(templateComboBox.getValue())) {
 				System.err.println("Chosen template: " + templateComboBox.getValue());
@@ -1413,11 +1364,11 @@ public class MainPaneController {
 				if (chosenTemplate.getState() != null) {
 					statesChoiceBox.setValue(chosenTemplate.getState());
 				}
-				
+
 				if (chosenTemplate.getRequester() != null) {
 					requesterField.setText(chosenTemplate.getRequester());
 				}
-				
+
 				if (chosenTemplate.getTitle() != null) {
 					incidentNameField.setText(chosenTemplate.getTitle());
 				}
@@ -1427,7 +1378,7 @@ public class MainPaneController {
 						subcatChoiceBox.setValue(chosenTemplate.getSubcategory());
 					}
 				}
-				
+
 				if (chosenTemplate.getAssignee() != null) {
 					assigneeField.setText(chosenTemplate.getAssignee());
 				}
@@ -1446,11 +1397,11 @@ public class MainPaneController {
 				if (chosenTemplate.getSoftware() != null) {
 					softwareComboBox.setValue(chosenTemplate.getSoftware());
 				}
-				
+
 				if (chosenTemplate.getDueOn() != null) {
 					datePicker.setValue(chosenTemplate.getDueOn());
 				}
-				
+
 				if (!chosenTemplate.getTimeTracks().isEmpty()) {
 					AppSession.getSession().getTimeTracks().clear();
 					AppSession.getSession().getTimeTracks().addAll(chosenTemplate.getTimeTracks());
@@ -1475,7 +1426,7 @@ public class MainPaneController {
 
 	@FXML
 	private void handleTempAddTrackBtn() {
-		
+
 		if (!AppSession.getSession().containTrackedUser(tempTrackEmailField.getText())) {
 			if (tempTrackEmailField.getText().equals("")) {
 				showAlert("Error", "Email empty", AlertType.ERROR);
@@ -1486,7 +1437,8 @@ public class MainPaneController {
 			} else if (userTokenField.getText().trim().equals("")) {
 				showAlert("Error", "User Token missing", AlertType.ERROR);
 			} else {
-				if (!AppSession.getSession().getUsers().keySet().contains(toCorrectDomain(tempTrackEmailField.getText()))) {
+				if (!AppSession.getSession().getUsers().keySet()
+						.contains(toCorrectDomain(tempTrackEmailField.getText()))) {
 					showAlert("Error", "Cannot find any users with that email. Try again", AlertType.ERROR);
 				} else {
 					User user = AppSession.getSession().getUsers().get(toCorrectDomain(tempTrackEmailField.getText()));
@@ -1505,13 +1457,14 @@ public class MainPaneController {
 				}
 			}
 		}
-		
+
 	}
-	
+
 	@FXML
 	private void handleUpdateMenuItem() {
 		String lastUpdateDate = AppSession.getSession().getDateOfLastSystemUpdate();
-		Alert alert = new Alert(AlertType.WARNING, "Last system update at: "+lastUpdateDate+"\nThe process is going to take about 4 mins. Proceed?",
+		Alert alert = new Alert(AlertType.WARNING,
+				"Last system update at: " + lastUpdateDate + "\nThe process is going to take about 4 mins. Proceed?",
 				ButtonType.OK, ButtonType.CANCEL);
 		alert.setTitle("Warning");
 		Optional<ButtonType> result = alert.showAndWait();
@@ -1519,7 +1472,7 @@ public class MainPaneController {
 			Task<Parent> update = new Task<Parent>() {
 				@Override
 				public Parent call() throws JsonIOException, IOException {
-					//disable buttons
+					// disable buttons
 					updateMessage("Updating All...");
 					AppSession.getSession().updateAll();
 					LocalDate thisUpdateDate = LocalDate.now();
@@ -1550,7 +1503,7 @@ public class MainPaneController {
 			updateThread.start();
 
 		}
-		
+
 	}
 
 	private void updateTemplatesTable() {
@@ -1563,7 +1516,7 @@ public class MainPaneController {
 			});
 			template.getRmBtn().setOnAction((e) -> {
 				AppSession.getSession().removeTemplate(number);
-				
+
 				updateTemplatesTable();
 			});
 			templateTable.getItems().add(template);
@@ -1637,6 +1590,14 @@ public class MainPaneController {
 		tempSiteComboBox.setValue(null);
 		tempDatePicker.setValue(null);
 		templatePane.setDisable(true);
+	}
+
+	private void printError(Exception e) {
+		showAlert("ERROR", "Please refer to log/error.txt for debugging:\n" + e.getStackTrace(), AlertType.ERROR);
+		
+		System.err.println("------\n" + LocalDate.now());
+		e.printStackTrace();
+		System.exit(1);
 	}
 
 	private String toCorrectDomain(String email) {
