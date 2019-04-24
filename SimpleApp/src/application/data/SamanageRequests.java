@@ -310,7 +310,6 @@ public class SamanageRequests {
 
 	public static TreeMap<String, User> getAllUsers(String userToken) throws IOException {
 		TreeMap<String, User> users = new TreeMap<String, User>();
-		int totalUsers = getTotalElements(userToken, "users");
 		boolean hasMore = true;
 		int curPage = 1;
 

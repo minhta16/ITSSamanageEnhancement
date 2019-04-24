@@ -28,7 +28,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         
     	PrintStream erroutStream;
-		erroutStream = new PrintStream(new FileOutputStream("./logs/error.txt"));
+		erroutStream = new PrintStream(new FileOutputStream("./logs/error.txt", true));
 		System.setErr(erroutStream);
         
         System.out.println("Loading...");
