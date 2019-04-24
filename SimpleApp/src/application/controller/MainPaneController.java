@@ -735,6 +735,7 @@ public class MainPaneController {
 				updateListBtn.setDisable(false);
 			}
 		});
+		handleClearFilterBtn();
 		Thread updateIncidentListThread = new Thread(updateIncidentList);
 		updateIncidentListThread.start();
 
@@ -858,13 +859,20 @@ public class MainPaneController {
 	}
 
 	@FXML
+	private void handleClearFilterBtn() {
+		filterComboBox.setValue(null);
+		filterField.setText("");
+		handleFilterComboBox();
+	}
+	
+	@FXML
 	private void handleIncidentNameType() {
 
 	}
 
 	@FXML
 	private void handleFilterComboBox() {
-		if (filterComboBox.getValue().equals(null)) {
+		if (filterComboBox.getValue() == null) {
 			AppSession.getSession().setCurrentFilter("");
 			filterField.setDisable(true);
 		} else {

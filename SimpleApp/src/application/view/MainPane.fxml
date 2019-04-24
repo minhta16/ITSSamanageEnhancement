@@ -75,7 +75,15 @@
                         <FlowPane alignment="CENTER_LEFT" GridPane.columnIndex="2">
                            <children>
                               <ComboBox fx:id="filterComboBox" onAction="#handleFilterComboBox" prefWidth="150.0" promptText="Filter by..." />
-                              <CustomTextField fx:id="filterField" />
+                              <CustomTextField fx:id="filterField">
+                                 <FlowPane.margin>
+                                    <Insets left="10.0" />
+                                 </FlowPane.margin></CustomTextField>
+                              <Button mnemonicParsing="false" onAction="#handleClearFilterBtn" text="Clear Filter">
+                                 <FlowPane.margin>
+                                    <Insets left="10.0" />
+                                 </FlowPane.margin>
+                              </Button>
                            </children></FlowPane>
                         <Button fx:id="updateListBtn" mnemonicParsing="false" onAction="#handleUpdateListBtn" text="Update List" GridPane.columnIndex="3" />
                         <VBox maxHeight="-Infinity" prefHeight="75.0" prefWidth="151.0" GridPane.columnIndex="4">
