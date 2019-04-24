@@ -146,8 +146,6 @@ public class MainPaneController {
 
 	private String curUpdateIncidentID = "";
 
-	private boolean updatingIncident;
-
 	private ObservableList<Incident> updatedListOfIncidents = FXCollections.observableArrayList();
 
 
@@ -508,7 +506,6 @@ public class MainPaneController {
 				public Parent call() throws JsonIOException, IOException {
 					try {
 						updateMessage("Loading...");
-						updatingIncident = true;
 						String incidentName;
 						if (incidentNameField.getText().equals("")) {
 							incidentName = getDefaultIncidentName();
@@ -543,7 +540,6 @@ public class MainPaneController {
 
 				@Override
 				public void handle(WorkerStateEvent event) {
-					updatingIncident = false;
 					submitBtn.textProperty().unbind();
 					clearInputFields();
 					showAlert("Incident Created", "Incident Created", AlertType.INFORMATION);
@@ -711,20 +707,12 @@ public class MainPaneController {
 
 	@FXML
 	private void handleUpdateListBtn() {
-
 		incidentTable.setPlaceholder(new Label("Updating incidents..."));
-		incidentTable.getItems().clear();
+		incidentTable.setItems(null);
 		Task<Parent> updateIncidentList = new Task<Parent>() {
 			@Override
 			public Parent call() throws JsonIOException, IOException {
 				updateMessage("Loading...");
-				while (updatingIncident) {
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						printError(e);
-					}
-				}
 				try {
 					AppSession.getSession().updateListIncidents(updateFromDatePicker.getValue(),
 							updateToDatePicker.getValue());
@@ -743,8 +731,8 @@ public class MainPaneController {
 			@Override
 			public void handle(WorkerStateEvent event) {
 				addIncidentsToTable();
-				updateListBtn.setDisable(false);
 				updateListBtn.textProperty().unbind();
+				updateListBtn.setDisable(false);
 			}
 		});
 		Thread updateIncidentListThread = new Thread(updateIncidentList);
@@ -778,16 +766,12 @@ public class MainPaneController {
 				// set Assignee to Group Name
 				incident.setAssignee(AppSession.getSession().getGroups().get(incident.getGroupId()).getName());
 			}
-			incidentTable.getItems().add(incident);
 			updatedListOfIncidents.add(incident);
 
 		}
 		if (AppSession.getSession().getCurrentIncidents().keySet().isEmpty()) {
 			incidentTable.setPlaceholder(new Label("You have no assigned incidents today."));
 		}
-		// DEFAULT SORT BY NUMBER
-		incidentTable.getColumns().get(0).setSortType(TableColumn.SortType.DESCENDING);
-		incidentTable.getSortOrder().add(incidentTable.getColumns().get(0));
 
 		// 1. Wrap the ObservableList in a FilteredList (initially display all data).
 		FilteredList<Incident> filteredUpdatedListOfIncidents = new FilteredList<>(updatedListOfIncidents, p -> true);
@@ -838,6 +822,10 @@ public class MainPaneController {
 
 		// 5. Add sorted (and filtered) data to the table.
 		incidentTable.setItems(sortedFilterUpdatedListOfIncidents);
+		
+		// DEFAULT SORT BY NUMBER
+		incidentTable.getColumns().get(0).setSortType(TableColumn.SortType.DESCENDING);
+		incidentTable.getSortOrder().add(incidentTable.getColumns().get(0));
 
 	}
 

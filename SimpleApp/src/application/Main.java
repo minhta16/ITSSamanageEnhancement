@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -24,7 +25,7 @@ public class Main extends Application {
         MainPaneController controller = (MainPaneController)loader.getController();
 
         primaryStage.setTitle("Customized Samanage Experience");
-//        primaryStage.getIcons().add(new Image("file:/resources/img/favicon.jpg"));
+        primaryStage.getIcons().add(new Image("file:./resources/img/appIcon32.ico"));
         primaryStage.setScene(scene);
         
     	PrintStream erroutStream;
