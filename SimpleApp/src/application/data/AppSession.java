@@ -31,6 +31,7 @@ public class AppSession {
 	private User requesterInfo;
 
 	private transient String currentFilter;
+	private transient String currentFilter2;
 	
 	private transient TreeMap<String, Incident> currentIncidents;
 	private transient ArrayList<TimeTrack> timeTracks;
@@ -49,8 +50,7 @@ public class AppSession {
 	private transient List<String> sites;
 	private ArrayList<String> priorities;
 	private transient Map<String, User> users;
-
-	private transient Map<String, Runnable> updateCheckboxList;
+	
 	private String dateOfLastSystemUpdate;
 
 	private AppSession() {
@@ -474,5 +474,13 @@ public class AppSession {
 
 	public void setCurrentFilter(String currentFilter) {
 		this.currentFilter = currentFilter;
+	}
+
+	public String getCurrentFilter2() {
+		return currentFilter2;
+	}
+
+	public void setCurrentFilter2(String currentFilter2) {
+		this.currentFilter2 = currentFilter2;
 	}
 }

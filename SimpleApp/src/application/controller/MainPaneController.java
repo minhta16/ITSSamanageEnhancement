@@ -30,6 +30,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -141,6 +142,11 @@ public class MainPaneController {
 	private ComboBox<String> filterComboBox;
 	@FXML
 	private TextField filterField;
+	@FXML
+	private ComboBox<String> filterComboBox2;
+	@FXML
+	private TextField filterField2;
+
 
 	private String updatePrompt = "";
 
@@ -230,11 +236,13 @@ public class MainPaneController {
 
 		// setupFilterComboBox
 		filterField.setDisable(true);
+		filterField2.setDisable(true);
 		for (int i = 0; i < incidentTable.getColumns().size() - 1; i++) {
 			// filterComboBox.getItems().addAll((Collection<? extends String>)
 			// incidentTable.getColumns().get(i));
 			// System.out.println(incidentTable.getProperties().keySet());
 			filterComboBox.getItems().add(incidentTable.getColumns().get(i).getText());
+			filterComboBox2.getItems().add(incidentTable.getColumns().get(i).getText());
 		}
 
 	}
@@ -733,15 +741,16 @@ public class MainPaneController {
 				addIncidentsToTable();
 				updateListBtn.textProperty().unbind();
 				updateListBtn.setDisable(false);
+				filterField.fireEvent(new ActionEvent());
 			}
 		});
-		handleClearFilterBtn();
 		Thread updateIncidentListThread = new Thread(updateIncidentList);
 		updateIncidentListThread.start();
 
 	}
 
 	private void addIncidentsToTable() {
+		updatedListOfIncidents.clear();
 		for (String incidentNum : AppSession.getSession().getCurrentIncidents().keySet()) {
 			Incident incident = AppSession.getSession().getCurrentIncidents().get(incidentNum);
 			incident.getEditBtn().setOnAction((e) -> {
@@ -770,59 +779,169 @@ public class MainPaneController {
 			updatedListOfIncidents.add(incident);
 
 		}
+		
 		if (AppSession.getSession().getCurrentIncidents().keySet().isEmpty()) {
 			incidentTable.setPlaceholder(new Label("You have no assigned incidents today."));
+		} else {
+			// 1. Wrap the ObservableList in a FilteredList (initially display all data).
+			FilteredList<Incident> filteredUpdatedListOfIncidents = new FilteredList<>(updatedListOfIncidents, p -> true);
+
+			// 2. Set the filter Predicate whenever the filter changes.
+			filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+				filteredUpdatedListOfIncidents.setPredicate(incident -> {
+
+					// Compare first name and last name of every person with filter text.
+					String lowerCaseFilter = newValue.toLowerCase();
+					String lowerCaseFilter2 = filterField2.getText().toLowerCase();
+					String curFilter = AppSession.getSession().getCurrentFilter();
+					String curFilter2 = AppSession.getSession().getCurrentFilter2();
+
+					boolean match = false;
+
+					// If filter text is empty, display all persons.
+					if (newValue == null || newValue.isEmpty()) {
+						match = true;
+					} else {
+						if (incident.getState().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("State")) {
+							match = true;
+						} else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Title")) {
+							match = true;
+						} else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Priority")) {
+							match = true;
+						} else if (incident.getCat().toLowerCase().contains(lowerCaseFilter)  && curFilter.equals("Category")) {
+							match = true;
+						} else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter)  && curFilter.equals("Subcategory")) {
+							match = true;
+						} else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Assignee")) {
+							match = true;
+						} else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Requester")) {
+							match = true;
+						} else if (incident.getSite().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Site")) {
+							match = true;
+						} else if (incident.getDept().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Dept")) {
+							match = true;
+						} else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter) && curFilter.equals("Tracks #")) {
+							match = true;
+						} else {
+							match = false;
+						}
+					}
+					
+					// TODO: implement 2 filters
+//					if (!lowerCaseFilter2.isEmpty()) {
+//						if (incident.getState().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("State")) {
+//							match = match && true;
+//						} else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Title")) {
+//							match = match && true;
+//						} else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Priority")) {
+//							match = match && true;
+//						} else if (incident.getCat().toLowerCase().contains(lowerCaseFilter2)  && curFilter2.equals("Category")) {
+//							match = match && true;
+//						} else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter2)  && curFilter2.equals("Subcategory")) {
+//							match = match && true;
+//						} else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Assignee")) {
+//							match = match && true;
+//						} else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Requester")) {
+//							match = match && true;
+//						} else if (incident.getSite().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Site")) {
+//							match = match && true;
+//						} else if (incident.getDept().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Dept")) {
+//							match = match && true;
+//						} else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter2) && curFilter2.equals("Tracks #")) {
+//							match = match && true;
+//						} else {
+//							match = false;
+//						}
+//					}
+
+					return match; // Does not match.
+				});
+			});
+
+			// TODO: implement 2 filters
+			/*
+			filterField2.textProperty().addListener((observable, oldValue, newValue) -> {
+				filteredUpdatedListOfIncidents.setPredicate(incident -> {
+
+					// Compare first name and last name of every person with filter text.
+					String lowerCaseFilter2 = newValue.toLowerCase();
+					String lowerCaseFilter = filterField.getText().toLowerCase();
+					String curFilter2 = AppSession.getSession().getCurrentFilter2();
+					String curFilter = AppSession.getSession().getCurrentFilter();
+
+					
+					boolean match = false;
+
+					// If filter text is empty, display all persons.
+					if (newValue == null || newValue.isEmpty()) {
+						match = true;
+					} else {
+						
+						if (incident.getState().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("State")) {
+							match = true;
+						} else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Title")) {
+							match = true;
+						} else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Priority")) {
+							match = true;
+						} else if (incident.getCat().toLowerCase().contains(lowerCaseFilter2)  && curFilter2.equals("Category")) {
+							match = true;
+						} else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter2)  && curFilter2.equals("Subcategory")) {
+							match = true;
+						} else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Assignee")) {
+							match = true;
+						} else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Requester")) {
+							match = true;
+						} else if (incident.getSite().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Site")) {
+							match = true;
+						} else if (incident.getDept().toLowerCase().contains(lowerCaseFilter2) && curFilter2.equals("Dept")) {
+							match = true;
+						} else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter2) && curFilter2.equals("Tracks #")) {
+							match = true;
+						 else {
+							match = false;
+						}}
+					}
+					if (!lowerCaseFilter.isEmpty()) {		
+					if (incident.getState().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("State")) {	
+						match = match && true;	
+					} else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Title")) {	
+						match = match && true;	
+					} else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Priority")) {	
+						match = match && true;	
+					} else if (incident.getCat().toLowerCase().contains(lowerCaseFilter)  && curFilter.equals("Category")) {	
+						match = match && true;	
+					} else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter)  && curFilter.equals("Subcategory")) {	
+						match = match && true;	
+					} else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Assignee")) {	
+						match = match && true;	
+					} else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Requester")) {	
+						match = match && true;	
+					} else if (incident.getSite().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Site")) {	
+						match = match && true;	
+					} else if (incident.getDept().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Dept")) {	
+						match = match && true;	
+					} else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter) && curFilter.equals("Tracks #")) {	
+						match = match && true;	
+					 else {
+							match = false;
+						}
+					}}
+
+					return match; // Does not match.
+				});
+			});
+			*/
+
+			// 3. Wrap the FilteredList in a SortedList.
+			SortedList<Incident> sortedFilterUpdatedListOfIncidents = new SortedList<>(filteredUpdatedListOfIncidents);
+
+			// 4. Bind the SortedList comparator to the TableView comparator.
+			sortedFilterUpdatedListOfIncidents.comparatorProperty().bind(incidentTable.comparatorProperty());
+
+			// 5. Add sorted (and filtered) data to the table.
+			incidentTable.setItems(sortedFilterUpdatedListOfIncidents);
 		}
 
-		// 1. Wrap the ObservableList in a FilteredList (initially display all data).
-		FilteredList<Incident> filteredUpdatedListOfIncidents = new FilteredList<>(updatedListOfIncidents, p -> true);
-
-		// 2. Set the filter Predicate whenever the filter changes.
-		filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredUpdatedListOfIncidents.setPredicate(incident -> {
-				// If filter text is empty, display all persons.
-				if (newValue == null || newValue.isEmpty()) {
-					return true;
-				}
-
-				// Compare first name and last name of every person with filter text.
-				String lowerCaseFilter = newValue.toLowerCase();
-				String curFilter = AppSession.getSession().getCurrentFilter();
-
-				if (incident.getState().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("State")) {
-					return true;
-				} else if (incident.getTitle().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Title")) {
-					return true;
-				} else if (incident.getPriority().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Priority")) {
-					return true;
-				} else if (incident.getCat().toLowerCase().contains(lowerCaseFilter)  && curFilter.equals("Category")) {
-					return true;
-				} else if (incident.getSubcat().toLowerCase().contains(lowerCaseFilter)  && curFilter.equals("Subcategory")) {
-					return true;
-				} else if (incident.getAssignee().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Assignee")) {
-					return true;
-				} else if (incident.getRequester().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Requester")) {
-					return true;
-				} else if (incident.getSite().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Site")) {
-					return true;
-				} else if (incident.getDept().toLowerCase().contains(lowerCaseFilter) && curFilter.equals("Dept")) {
-					return true;
-				} else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter) && curFilter.equals("Tracks #")) {
-					return true;
-				}
-
-				return false; // Does not match.
-			});
-		});
-
-		// 3. Wrap the FilteredList in a SortedList.
-		SortedList<Incident> sortedFilterUpdatedListOfIncidents = new SortedList<>(filteredUpdatedListOfIncidents);
-
-		// 4. Bind the SortedList comparator to the TableView comparator.
-		sortedFilterUpdatedListOfIncidents.comparatorProperty().bind(incidentTable.comparatorProperty());
-
-		// 5. Add sorted (and filtered) data to the table.
-		incidentTable.setItems(sortedFilterUpdatedListOfIncidents);
 		
 		// DEFAULT SORT BY NUMBER
 		incidentTable.getColumns().get(0).setSortType(TableColumn.SortType.DESCENDING);
@@ -864,6 +983,12 @@ public class MainPaneController {
 		filterField.setText("");
 		handleFilterComboBox();
 	}
+	@FXML
+	private void handleClearFilterBtn2() {
+		filterComboBox2.setValue(null);
+		filterField2.setText("");
+		handleFilterComboBox2();
+	}
 	
 	@FXML
 	private void handleIncidentNameType() {
@@ -878,6 +1003,20 @@ public class MainPaneController {
 		} else {
 			AppSession.getSession().setCurrentFilter(filterComboBox.getValue());
 			filterField.setDisable(false);
+			// TODO
+			// filterComboBox.getValue() into some sort of list for smarter filter
+
+		}
+	}
+	
+	@FXML
+	private void handleFilterComboBox2() {
+		if (filterComboBox2.getValue() == null) {
+			AppSession.getSession().setCurrentFilter("");
+			filterField2.setDisable(true);
+		} else {
+			AppSession.getSession().setCurrentFilter(filterComboBox2.getValue());
+			filterField2.setDisable(false);
 			// TODO
 			// filterComboBox.getValue() into some sort of list for smarter filter
 

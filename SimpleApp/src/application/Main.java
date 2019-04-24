@@ -31,8 +31,7 @@ public class Main extends Application {
     	PrintStream erroutStream;
 		erroutStream = new PrintStream(new FileOutputStream("./logs/error.txt", true));
 		
-//		TODO: re-enable this
-//		System.setErr(erroutStream);
+		System.setErr(erroutStream);
         
         System.out.println("Loading...");
 		AppSession.getSession().loadData();
