@@ -33,7 +33,7 @@ public class AppSession {
 	private transient String currentFilter;
 	private transient String currentFilter2;
 	
-	private transient TreeMap<String, Incident> currentIncidents;
+	private transient Map<String, Incident> currentIncidents;
 	private transient ArrayList<TimeTrack> timeTracks;
 	private transient IncidentEditType editType;
 
@@ -47,8 +47,8 @@ public class AppSession {
 
 	private ArrayList<String> assigneeEmails;
 	private ArrayList<String> states;
-	private transient List<String> sites;
 	private ArrayList<String> priorities;
+	private transient List<String> sites;
 	private transient Map<String, User> users;
 	
 	private String dateOfLastSystemUpdate;
@@ -147,7 +147,7 @@ public class AppSession {
 	/**
 	 * @return the currentIncidents
 	 */
-	public TreeMap<String, Incident> getCurrentIncidents() {
+	public Map<String, Incident> getCurrentIncidents() {
 		return currentIncidents;
 	}
 
@@ -376,7 +376,7 @@ public class AppSession {
 	}
 
 	public void updateListIncidents(LocalDate from, LocalDate to)
-			throws IOException, SAXException, ParserConfigurationException {
+			throws IOException, SAXException, ParserConfigurationException, InterruptedException {
 		currentIncidents = SamanageRequests.getIncidents(userToken, from, to);
 	}
 

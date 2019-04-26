@@ -36,7 +36,7 @@ import javafx.scene.Parent;
 public class SamanageRequests {
 
 	private static final String ACCEPT_VERSION = "application/vnd.samanage.v2.1+xml";
-	private static final int maxEachCall = 100;
+	private static final int PER_PAGE = 25;
 	// HTML METHOD:
 	// POST
 
@@ -148,108 +148,122 @@ public class SamanageRequests {
 	// HTML METHOD:
 	// GET
 
-	public static TreeMap<String, Incident> getIncidents(String userToken, LocalDate fromDate, LocalDate toDate)
-			throws IOException, SAXException, ParserConfigurationException {
-		TreeMap<String, Incident> incidentMap = new TreeMap<String, Incident>();
-		boolean hasMore = true;
-		int curPage = 1;
-		while (hasMore) {
-			// String url =
-			// "https://api.samanage.com/incidents.xml?per_page=100&page=1&created%5B%5D=Select%20Date%20Range&created_custom_gte%5B%5D=27/03/2019&created_custom_lte%5B%5D=27/03/2019";
-			/*
-			 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H'Accept:
-			 * application/vnd.samanage.v2.1+xml' -X GET
-			 * https://api.samanage.com/incidents.xml
-			 */
-			String url = "https://api.samanage.com/incidents.xml" + "?per_page=100&page=" + curPage
-					+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
-					+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
-					+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+	public static Map<String, Incident> getIncidents(String userToken, LocalDate fromDate, LocalDate toDate)
+			throws IOException, SAXException, ParserConfigurationException, InterruptedException {
+		TreeMap<String, Incident> map = new TreeMap<String, Incident>();
+		Map<String, Incident> incidentMap = Collections.synchronizedMap(map);
 
-			URL obj = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-			conn.setDoOutput(true);
+		int totalIncidents = getIncidentsNum(userToken, fromDate, toDate);
+		int totalPages = totalIncidents / PER_PAGE + 1;
+		ArrayList<Thread> threads = new ArrayList<Thread>();
+		for (int curPage = 1; curPage <= totalPages; curPage++) {
+			int page = curPage;
+			Task<Parent> newTask = new Task<Parent>() {
+				@Override
+				public Parent call() throws IOException, ParserConfigurationException, SAXException {
 
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
-			conn.setRequestProperty("Accept", ACCEPT_VERSION);
-			// conn.setRequestProperty("Content-Type", "text/xml");
+					String url = "https://api.samanage.com/incidents.xml" + "?per_page=" + PER_PAGE + "&page=" + page
+							+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
+							+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
+							+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-			BufferedReader br;
-			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
-				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			} else {
-				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-			}
+					URL obj = new URL(url);
+					HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+					conn.setDoOutput(true);
 
-			StringBuffer xml = new StringBuffer();
-			String output;
-			while ((output = br.readLine()) != null) {
-				xml.append(output);
-			}
+					conn.setRequestMethod("GET");
+					conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+					conn.setRequestProperty("Accept", ACCEPT_VERSION);
+					// conn.setRequestProperty("Content-Type", "text/xml");
 
-			// got from
-			// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
-			Element rootElement = document.getDocumentElement();
-
-			NodeList listOfIncidents = rootElement.getElementsByTagName("incident");
-			if (rootElement.getChildNodes().getLength() < 103) {
-				hasMore = false;
-			}
-
-			for (int i = 0; i < listOfIncidents.getLength(); i++) {
-				if (listOfIncidents.item(i) instanceof Element
-						&& !getString("name", (Element) listOfIncidents.item(i)).isEmpty()) {
-					Element incident = (Element) listOfIncidents.item(i);
-					String id = getString("id", incident);
-					//System.err.println(getString("name", incident));
-					int trackedUsersNum = incident.getElementsByTagName("time_track").getLength();
-					String number = getString("number", incident);
-					String category = getString("name", (Element) incident.getElementsByTagName("category").item(0));
-					String assigneeEmail = getString("email",
-							(Element) incident.getElementsByTagName("assignee").item(0)).toLowerCase();
-					String groupId = "";
-					if (assigneeEmail.isEmpty()) {
-						groupId = getString("id", (Element) incident.getElementsByTagName("assignee").item(0));
+					BufferedReader br;
+					if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+						br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 					} else {
-						groupId = getString("group_id", (Element) incident.getElementsByTagName("assignee").item(0));
+						br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
 					}
-					String software = "";
-					if (category.equals("Software")) {
-						for (int j = 0; j < incident.getElementsByTagName("custom_fields_value").getLength(); j++) {
-							Element customField = (Element) incident.getElementsByTagName("custom_fields_value")
-									.item(j);
-							if (getString("name", customField).equals("Software")) {
-								software = getString("value", customField);
-								break;
+
+					StringBuffer xml = new StringBuffer();
+					String output;
+					while ((output = br.readLine()) != null) {
+						xml.append(output);
+					}
+
+					// got from
+					// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+					DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+					DocumentBuilder builder = factory.newDocumentBuilder();
+					Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+					Element rootElement = document.getDocumentElement();
+
+					NodeList listOfIncidents = rootElement.getElementsByTagName("incident");
+
+					for (int i = 0; i < listOfIncidents.getLength(); i++) {
+						if (listOfIncidents.item(i) instanceof Element
+								&& !getString("name", (Element) listOfIncidents.item(i)).isEmpty()) {
+							Element incident = (Element) listOfIncidents.item(i);
+							String id = getString("id", incident);
+							// System.err.println(getString("name", incident));
+							int trackedUsersNum = incident.getElementsByTagName("time_track").getLength();
+							String number = getString("number", incident);
+							String category = getString("name",
+									(Element) incident.getElementsByTagName("category").item(0));
+							String assigneeEmail = getString("email",
+									(Element) incident.getElementsByTagName("assignee").item(0)).toLowerCase();
+							String groupId = "";
+							if (assigneeEmail.isEmpty()) {
+								groupId = getString("id", (Element) incident.getElementsByTagName("assignee").item(0));
+							} else {
+								groupId = getString("group_id",
+										(Element) incident.getElementsByTagName("assignee").item(0));
 							}
+							String software = "";
+							if (category.equals("Software")) {
+								for (int j = 0; j < incident.getElementsByTagName("custom_fields_value")
+										.getLength(); j++) {
+									Element customField = (Element) incident.getElementsByTagName("custom_fields_value")
+											.item(j);
+									if (getString("name", customField).equals("Software")) {
+										software = getString("value", customField);
+										break;
+									}
+								}
+							}
+							Incident newIncident = new Incident(id, number, getString("state", incident),
+									getString("name", incident), getString("priority", incident), category,
+									getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
+									assigneeEmail,
+									getString("email", (Element) incident.getElementsByTagName("requester").item(0))
+											.toLowerCase(),
+									getString("name",
+											(Element) incident.getElementsByTagName("site")
+													.item(incident.getElementsByTagName("site").getLength() - 1)),
+									getString("name",
+											(Element) incident.getElementsByTagName("department")
+													.item(incident.getElementsByTagName("department").getLength() - 1)),
+									getString("description", incident), toDate(getString("due_at", incident)), groupId,
+									software, trackedUsersNum);
+
+							incidentMap.put(number, newIncident);
 						}
+
 					}
-					Incident newIncident = new Incident(id, number, getString("state", incident),
-							getString("name", incident), getString("priority", incident), category,
-							getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
-							assigneeEmail,
-							getString("email", (Element) incident.getElementsByTagName("requester").item(0))
-									.toLowerCase(),
-							getString("name",
-									(Element) incident.getElementsByTagName("site")
-											.item(incident.getElementsByTagName("site").getLength() - 1)),
-							getString("name",
-									(Element) incident.getElementsByTagName("department")
-											.item(incident.getElementsByTagName("department").getLength() - 1)),
-							getString("description", incident), toDate(getString("due_at", incident)), groupId,
-							software, trackedUsersNum);
-
-					incidentMap.put(number, newIncident);
+					conn.disconnect();
+					return null;
 				}
-
-			}
-			conn.disconnect();
-			curPage++;
+			};
+			
+			newTask.setOnSucceeded((e) -> {
+				System.out.println("done task " + page);
+			});
+			Thread newThread = new Thread(newTask);
+			threads.add(newThread);
+			newThread.start();
 		}
+		for(Thread thread : threads) {
+			thread.join();
+		}
+		
 		return incidentMap;
 	}
 
@@ -375,11 +389,11 @@ public class SamanageRequests {
 							}
 						}
 						newUser.setGroupID(groupIdList);
-						
-					
+
 						users.put(email, newUser);
 					}
-				//	System.out.print("Updating users: [" + (i + (curPage - 1) * 100) + "/" + totalUsers + "]\t\t\t\r");
+					// System.out.print("Updating users: [" + (i + (curPage - 1) * 100) + "/" +
+					// totalUsers + "]\t\t\t\r");
 
 				}
 				conn.disconnect();
@@ -395,10 +409,10 @@ public class SamanageRequests {
 	public static Map<String, User> getAllUsersMultiThreads(String userToken) throws IOException {
 		TreeMap<String, User> map = new TreeMap<String, User>();
 		Map<String, User> users = Collections.synchronizedMap(map);
-		
+
 		int totalUsers = getTotalElements(userToken, "users");
-		int totalCalls = (int) totalUsers / 100 + 1;
-		
+		int totalCalls = (int) totalUsers / PER_PAGE + 1;
+
 		System.out.println("User: Number of needed threads: " + totalCalls);
 
 		// TODO Auto-generated method stub
@@ -419,7 +433,7 @@ public class SamanageRequests {
 					try {
 						// String url =
 						// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
-						String url = "https://api.samanage.com/users.xml?per_page=100&page=" + current;
+						String url = "https://api.samanage.com/users.xml?per_page=" + PER_PAGE + "&page=" + current;
 
 						URL obj = new URL(url);
 						HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -442,48 +456,48 @@ public class SamanageRequests {
 							xml.append(output);
 						}
 
-							// got from
-							// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
-							DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-							DocumentBuilder builder = factory.newDocumentBuilder();
-							Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
-							Element rootElement = document.getDocumentElement();
+						// got from
+						// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+						DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+						DocumentBuilder builder = factory.newDocumentBuilder();
+						Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+						Element rootElement = document.getDocumentElement();
 
-							NodeList listOfUsers = rootElement.getElementsByTagName("user");
-							
-						//	System.out.println("Thread " + current + " pulled " + listOfUsers.getLength() + " users" );
+						NodeList listOfUsers = rootElement.getElementsByTagName("user");
 
-							for (int i = 0; i < listOfUsers.getLength(); i++) {
+						// System.out.println("Thread " + current + " pulled " + listOfUsers.getLength()
+						// + " users" );
 
-								if (listOfUsers.item(i) instanceof Element) {
-									Element user = (Element) listOfUsers.item(i);
-									User newUser = new User();
-									String name = getString("name", user);
-									String ID = getString("id", user);
-									String email = getString("email", user).toLowerCase();
-									newUser.setName(name);
-									newUser.setEmail(email);
-									newUser.setDept(getString("name",
-											(Element) user.getElementsByTagName("department").item(0)));
-									newUser.setSite(
-											getString("name", (Element) user.getElementsByTagName("site").item(0)));
-									newUser.setID(ID);
-									ArrayList<String> groupIdList = new ArrayList<String>();
-									Element groupIdsElement = (Element) user.getElementsByTagName("group_ids").item(0);
-									NodeList groupIds = groupIdsElement.getElementsByTagName("group_id");
-									for (int j = 0; j < groupIds.getLength(); j++) {
-										if (groupIds.item(j) instanceof Element) {
-											String groupID = groupIds.item(j).getTextContent();
-											groupIdList.add(groupID);
-										}
+						for (int i = 0; i < listOfUsers.getLength(); i++) {
+
+							if (listOfUsers.item(i) instanceof Element) {
+								Element user = (Element) listOfUsers.item(i);
+								User newUser = new User();
+								String name = getString("name", user);
+								String ID = getString("id", user);
+								String email = getString("email", user).toLowerCase();
+								newUser.setName(name);
+								newUser.setEmail(email);
+								newUser.setDept(
+										getString("name", (Element) user.getElementsByTagName("department").item(0)));
+								newUser.setSite(getString("name", (Element) user.getElementsByTagName("site").item(0)));
+								newUser.setID(ID);
+								ArrayList<String> groupIdList = new ArrayList<String>();
+								Element groupIdsElement = (Element) user.getElementsByTagName("group_ids").item(0);
+								NodeList groupIds = groupIdsElement.getElementsByTagName("group_id");
+								for (int j = 0; j < groupIds.getLength(); j++) {
+									if (groupIds.item(j) instanceof Element) {
+										String groupID = groupIds.item(j).getTextContent();
+										groupIdList.add(groupID);
 									}
-									
-					//				if(users.keySet().contains(email)) {
-					//					System.out.println("This key already exists: " + email);
-										
-					//				}
-									newUser.setGroupID(groupIdList);
-									users.put(email, newUser);
+								}
+
+								// if(users.keySet().contains(email)) {
+								// System.out.println("This key already exists: " + email);
+
+								// }
+								newUser.setGroupID(groupIdList);
+								users.put(email, newUser);
 							}
 							// System.out.print("Updating users with Thread: " + current + " ["
 							// + (i + (curPage - 1) * 100) + "/" + totalUsers + "]\t\t\t\r");
@@ -503,8 +517,8 @@ public class SamanageRequests {
 				@Override
 				public void handle(WorkerStateEvent event) {
 					System.out.println("USERS: DONE THREAD " + current);
-				//	System.err.println("THREAD " + current + " SAVED " + users.size() +" USERS");
-					doneThreads.add("user thread "+current);
+					// System.err.println("THREAD " + current + " SAVED " + users.size() +" USERS");
+					doneThreads.add("user thread " + current);
 					if (doneThreads.size() == totalCalls) {
 						System.out.println("FINISH ALL USERS");
 					}
@@ -646,21 +660,20 @@ public class SamanageRequests {
 		}
 		return siteList;
 	}
-	
-	
+
 	public static List<String> getSitesMultiThreads(String userToken) throws IOException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
 		 * https://api.samanage.com/categories.xml
 		 */
-		
+
 		ArrayList<String> list = new ArrayList<String>();
-		List<String> siteList =  Collections.synchronizedList(list);
-		
+		List<String> siteList = Collections.synchronizedList(list);
+
 		int totalSites = getTotalElements(userToken, "sites");
-		int totalCalls = (int) totalSites / 100 + 1;
-		
+		int totalCalls = (int) totalSites / PER_PAGE + 1;
+
 		System.out.println("Site: Number of needed threads: " + totalCalls);
 
 		// TODO Auto-generated method stub
@@ -681,8 +694,8 @@ public class SamanageRequests {
 					try {
 						// String url =
 						// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
-						
-						String url = "https://api.samanage.com/sites.xml?per_page=100&page=" + current;
+
+						String url = "https://api.samanage.com/sites.xml?per_page=" + PER_PAGE + "&page=" + current;
 
 						URL obj = new URL(url);
 						HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -695,7 +708,7 @@ public class SamanageRequests {
 
 						Element rootElement = documentFromOutput(conn);
 						NodeList sites = rootElement.getElementsByTagName("site");
-						
+
 						for (int i = 0; i < sites.getLength(); i++) {
 							if (sites.item(i) instanceof Element) {
 								Element site = (Element) sites.item(i);
@@ -719,8 +732,8 @@ public class SamanageRequests {
 				@Override
 				public void handle(WorkerStateEvent event) {
 					System.out.println("SITES: DONE THREAD " + current);
-				//	System.err.println("THREAD " + current + " SAVED " + users.size() +" USERS");
-					doneThreads.add("site thread "+current);
+					// System.err.println("THREAD " + current + " SAVED " + users.size() +" USERS");
+					doneThreads.add("site thread " + current);
 					if (doneThreads.size() == totalCalls) {
 						System.out.println("FINISH ALL SITES");
 					}
@@ -730,11 +743,10 @@ public class SamanageRequests {
 			Thread newSiteThread = new Thread(newThread);
 			newSiteThread.start();
 		}
-	//	ArrayList<String> retVal = new ArrayList<String>(siteList);
+		// ArrayList<String> retVal = new ArrayList<String>(siteList);
 
 		return siteList;
 	}
-	
 
 	// 408915 Software
 	public static TreeMap<String, Software> getSoftwares(String userToken, String typeCode, String type)
@@ -826,9 +838,42 @@ public class SamanageRequests {
 		conn.disconnect();
 		return incidentID;
 	}
+	
+	public static int getIncidentsNum(String userToken, LocalDate fromDate, LocalDate toDate) throws IOException {
+
+		String url = "https://api.samanage.com/incidents.xml" + "?per_page=1&page=1&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
+				+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
+				+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+		URL obj = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+		conn.setDoOutput(true);
+
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Samanage-Authorization", "Bearer " + userToken);
+		conn.setRequestProperty("Accept", ACCEPT_VERSION);
+//			conn.setRequestProperty("Content-Type", "text/xml");
+
+		Element rootElement = documentFromOutput(conn);
+		int totalEntries = 0;
+		if (getString("total_entries", rootElement).equals("")) {
+			NodeList nodes = rootElement.getChildNodes();
+			for (int i = 0; i < nodes.getLength(); i++) {
+				Node childNode = nodes.item(i);
+				if (childNode instanceof Element) {
+					totalEntries++;
+				}
+			}
+		} else {
+			totalEntries = Integer.parseInt(getString("total_entries", rootElement));
+		}
+		conn.disconnect();
+		return totalEntries;
+	}
+
 
 	public static int getTotalElements(String userToken, String type) throws IOException {
-		String url = "https://api.samanage.com/" + type + ".xml";
+		String url = "https://api.samanage.com/" + type + ".xml?per_page=1";
 
 		URL obj = new URL(url);
 		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();

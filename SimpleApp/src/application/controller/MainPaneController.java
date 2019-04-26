@@ -724,10 +724,11 @@ public class MainPaneController {
 			@Override
 			public Parent call() throws JsonIOException, IOException {
 				updateMessage("Loading...");
+				
 				try {
 					AppSession.getSession().updateListIncidents(updateFromDatePicker.getValue(),
 							updateToDatePicker.getValue());
-				} catch (SAXException | ParserConfigurationException e) {
+				} catch (SAXException | ParserConfigurationException | InterruptedException e) {
 					printError(e);
 				}
 				updateMessage("Update List");
