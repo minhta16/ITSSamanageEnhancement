@@ -741,6 +741,7 @@ public class MainPaneController {
 				addIncidentsToTable();
 				updateListBtn.textProperty().unbind();
 				updateListBtn.setDisable(false);
+				incidentTable.setPlaceholder(new Label("No incidents found"));
 				filterField.fireEvent(new ActionEvent());
 			}
 		});
