@@ -456,6 +456,7 @@ public class MainPaneController {
 	@FXML
 	private void handleNewIncidentBtn() {
 		incidentEditTab.setDisable(false);
+		incidentEditTab.setText("New Incident");
 		tabPane.getSelectionModel().select(incidentEditTab);
 		AppSession.getSession().setEditType(IncidentEditType.NEW);
 		clearInputFields();
@@ -507,6 +508,14 @@ public class MainPaneController {
 
 		}
 	}
+	
+	@FXML
+	private void handleCancelBtn() {
+		clearInputFields();
+		incidentEditTab.setDisable(true);
+		incidentEditTab.setText("Incident Edit");
+		tabPane.getSelectionModel().select(mainMenuTab);
+	}
 
 	private void submitIncident() {
 		submitBtn.setDisable(true);
@@ -555,6 +564,7 @@ public class MainPaneController {
 					clearInputFields();
 					showAlert("Incident Created", "Incident Created", AlertType.INFORMATION);
 					tabPane.getSelectionModel().select(mainMenuTab);
+					incidentEditTab.setText("Incident Edit");
 					handleUpdateListBtn();
 				}
 			});
@@ -612,6 +622,7 @@ public class MainPaneController {
 					clearInputFields();
 					showAlert("Incident Updated", "Incident Updated", AlertType.INFORMATION);
 					tabPane.getSelectionModel().select(mainMenuTab);
+					incidentEditTab.setText("Incident Edit");
 					handleUpdateListBtn();
 				}
 			});
@@ -760,6 +771,7 @@ public class MainPaneController {
 			Incident incident = AppSession.getSession().getCurrentIncidents().get(incidentNum);
 			incident.getEditBtn().setOnAction((e) -> {
 				incidentEditTab.setDisable(false);
+				incidentEditTab.setText("Edit: " + incident.getTitle());
 				curUpdateIncidentID = incident.getID();
 				tabPane.getSelectionModel().select(incidentEditTab);
 				try {

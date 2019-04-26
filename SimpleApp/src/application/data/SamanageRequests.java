@@ -36,7 +36,8 @@ import javafx.scene.Parent;
 public class SamanageRequests {
 
 	private static final String ACCEPT_VERSION = "application/vnd.samanage.v2.1+xml";
-	private static final int PER_PAGE = 25;
+	private static final int PER_PAGE_FETCH = 25;
+	private static final int PER_PAGE_BOOT = 100;
 	// HTML METHOD:
 	// POST
 
@@ -154,7 +155,7 @@ public class SamanageRequests {
 		Map<String, Incident> incidentMap = Collections.synchronizedMap(map);
 
 		int totalIncidents = getIncidentsNum(userToken, fromDate, toDate);
-		int totalPages = totalIncidents / PER_PAGE + 1;
+		int totalPages = totalIncidents / PER_PAGE_FETCH + 1;
 		ArrayList<Thread> threads = new ArrayList<Thread>();
 		for (int curPage = 1; curPage <= totalPages; curPage++) {
 			int page = curPage;
@@ -162,7 +163,7 @@ public class SamanageRequests {
 				@Override
 				public Parent call() throws IOException, ParserConfigurationException, SAXException {
 
-					String url = "https://api.samanage.com/incidents.xml" + "?per_page=" + PER_PAGE + "&page=" + page
+					String url = "https://api.samanage.com/incidents.xml" + "?per_page=" + PER_PAGE_FETCH + "&page=" + page
 							+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
 							+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
 							+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -411,7 +412,7 @@ public class SamanageRequests {
 		Map<String, User> users = Collections.synchronizedMap(map);
 
 		int totalUsers = getTotalElements(userToken, "users");
-		int totalCalls = (int) totalUsers / PER_PAGE + 1;
+		int totalCalls = totalUsers / PER_PAGE_BOOT + 1;
 
 		System.out.println("User: Number of needed threads: " + totalCalls);
 
@@ -433,7 +434,7 @@ public class SamanageRequests {
 					try {
 						// String url =
 						// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
-						String url = "https://api.samanage.com/users.xml?per_page=" + PER_PAGE + "&page=" + current;
+						String url = "https://api.samanage.com/users.xml?per_page=" + PER_PAGE_BOOT + "&page=" + current;
 
 						URL obj = new URL(url);
 						HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -672,7 +673,7 @@ public class SamanageRequests {
 		List<String> siteList = Collections.synchronizedList(list);
 
 		int totalSites = getTotalElements(userToken, "sites");
-		int totalCalls = (int) totalSites / PER_PAGE + 1;
+		int totalCalls = totalSites / PER_PAGE_BOOT + 1;
 
 		System.out.println("Site: Number of needed threads: " + totalCalls);
 
@@ -695,7 +696,7 @@ public class SamanageRequests {
 						// String url =
 						// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
 
-						String url = "https://api.samanage.com/sites.xml?per_page=" + PER_PAGE + "&page=" + current;
+						String url = "https://api.samanage.com/sites.xml?per_page=" + PER_PAGE_BOOT + "&page=" + current;
 
 						URL obj = new URL(url);
 						HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
