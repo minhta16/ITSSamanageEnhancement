@@ -11,7 +11,7 @@
              
 </description>
     <description_no_html>Friends:    A really unusual situation has emerged where we have been unable to remove ken johnson as the email contact for our DOL immigration site.  We've been trying for over 4 months and am wondering if you would know what his former email address was and be able to reactivate it.      Is this possible?    Laura          Laura Ford &lt;br&gt;Director of Human Resources Chief Title IX Coordinator&lt;br&gt;Augustana College&lt;br&gt;309.794.7452</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category nil="true"/>
     <subcategory nil="true"/>
@@ -57,11 +57,11 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T16:44:24-05:00</created_at>
-    <updated_at>2019-04-17T10:32:52-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:19-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
-    <number_of_comments>0</number_of_comments>
-    <user_saw_all_comments>true</user_saw_all_comments>
+    <number_of_comments>2</number_of_comments>
+    <user_saw_all_comments>false</user_saw_all_comments>
     <is_service_request>false</is_service_request>
     <created_by>
       <id>1238220</id>
@@ -103,7 +103,123 @@
     </department>
     <cc/>
     <custom_fields_values/>
-    <comments/>
+    <comments>
+      <comment>
+        <id>47908562</id>
+        <body>  Thanks Shawn.&amp;nbsp; When I logged in there were 24K+ emails.&amp;nbsp; Has this address never been de-activated?     L.           Laura Ford  
+ Director of Human Resources  Chief Title IX Coordinator 
+ Augustana College 
+ 309.794.7452 
+                 On Wed, Apr 17, 2019 at 10:32 AM Shawn Beattie &amp;lt;&lt;a href="mailto:shawnbeattie@augustana.edu"&gt;shawnbeattie@augustana.edu&lt;/a&gt;&amp;gt; wrote:   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   </body>
+        <user>
+          <id>1527429</id>
+          <name>Ford, Laura C</name>
+          <email>lauraford@augustana.edu</email>
+          <avatar>
+            <type>initials</type>
+            <color>#fd4165</color>
+            <initials>FC</initials>
+          </avatar>
+        </user>
+        <created_at>2019-04-17T14:14:37-05:00</created_at>
+        <updated_at>2019-04-17T14:14:37-05:00</updated_at>
+        <attachments/>
+        <inline_attachments/>
+        <shared_attachments/>
+        <is_private>false</is_private>
+        <seen_by>
+          <seen_by>1374176</seen_by>
+        </seen_by>
+        <isTask>false</isTask>
+        <task_info>
+        </task_info>
+        <requester nil="true"/>
+        <commenter_id>37787863</commenter_id>
+        <commenter_type>Incident</commenter_type>
+        <comment_sentiment nil="true"/>
+      </comment>
+      <comment>
+        <id>47908951</id>
+        <body> It does not seem so, but it can be deleted &amp;amp; gone as soon as you are done with wheat you need.&amp;nbsp; </body>
+        <user>
+          <id>1374176</id>
+          <name>Shawn Beattie</name>
+          <email>shawnbeattie@augustana.edu</email>
+          <avatar>
+            <type>image</type>
+            <image_class>avatar_image</image_class>
+            <sso_image_class></sso_image_class>
+            <avatar_url>https://s3.us-east-1.amazonaws.com/Production_CustomerData/avatars/4b0fa735568dc051b834/Screen_Shot_2016-06-30_at_12.52.38_PM_card.png?1468359299</avatar_url>
+          </avatar>
+        </user>
+        <created_at>2019-04-17T14:18:06-05:00</created_at>
+        <updated_at>2019-04-17T14:18:06-05:00</updated_at>
+        <attachments/>
+        <inline_attachments/>
+        <shared_attachments/>
+        <is_private>false</is_private>
+        <seen_by>
+          <seen_by>1374176</seen_by>
+        </seen_by>
+        <isTask>false</isTask>
+        <task_info>
+        </task_info>
+        <requester nil="true"/>
+        <commenter_id>37787863</commenter_id>
+        <commenter_type>Incident</commenter_type>
+        <comment_sentiment nil="true"/>
+      </comment>
+    </comments>
     <attachments/>
     <statistics>
       <statistic>
@@ -148,17 +264,24 @@
         <business_time_elapsed>02:33</business_time_elapsed>
         <value>2019-04-17 15:32:52 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>58:31</time>
+        <time_elapsed>58:31</time_elapsed>
+        <business_time_elapsed>17:01</business_time_elapsed>
+        <value>2019-04-19 08:15:19 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>1497943</id>
         <name>Sorensen Human Resources</name>
-        <taggings_count>38</taggings_count>
+        <taggings_count>39</taggings_count>
       </tag>
       <tag>
         <id>1864</id>
         <name>human resources</name>
-        <taggings_count>338976</taggings_count>
+        <taggings_count>343231</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -257,7 +380,7 @@
       <name>Ramsdale, Wendy (ITS)</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-02T10:01:08-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T12:11:24-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -476,7 +599,7 @@
       <tag>
         <id>44929</id>
         <name>Religion</name>
-        <taggings_count>155</taggings_count>
+        <taggings_count>157</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -665,7 +788,7 @@
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -697,7 +820,7 @@
     <name>noticing more errors than usual in SSRPM log</name>
     <description> With new first years onboarding (about 40 in the last 48 hrs) I noticed that we were getting an unusual number of "-71" errors - around a dozen or so in the last 24 hrs (this is an SMS related error, see attached solution).    I bumped the number of test SMS messages allowed, from 2 to 3, but my hunch is that something else is causing the errors. </description>
     <description_no_html>With new first years onboarding (about 40 in the last 48 hrs) I noticed that we were getting an unusual number of "-71" errors - around a dozen or so in the last 24 hrs (this is an SMS related error, see attached solution).   I bumped the number of test SMS messages allowed, from 2 to 3, but my hunch is that something else is causing the errors.</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408918</id>
@@ -746,7 +869,7 @@
       <name>Shawn Beattie</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T16:11:28-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-23T15:12:31-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -755,7 +878,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T15:05:34-05:00</created_at>
-    <updated_at>2019-04-16T16:11:37-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:18-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>2</number_of_comments>
@@ -769,7 +892,7 @@
       <name>Shawn Beattie</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T16:11:28-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-23T15:12:31-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -951,17 +1074,24 @@
         <business_time_elapsed>01:06</business_time_elapsed>
         <value>2019-04-16 21:11:26 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>60:10</time>
+        <time_elapsed>60:10</time_elapsed>
+        <business_time_elapsed>18:25</business_time_elapsed>
+        <value>2019-04-19 08:15:18 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>685881</id>
         <name>Sorensen 163</name>
-        <taggings_count>381</taggings_count>
+        <taggings_count>389</taggings_count>
       </tag>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -1026,7 +1156,7 @@
     <name>E-Mail Account for kpop</name>
     <description> kpop music </description>
     <description_no_html>kpop music</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408918</id>
@@ -1083,7 +1213,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T14:43:10-05:00</created_at>
-    <updated_at>2019-04-16T14:46:30-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:17-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>1</number_of_comments>
@@ -1097,7 +1227,7 @@
       <name>Ramsdale, Wendy (ITS)</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-02T10:01:08-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T12:11:24-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -1242,6 +1372,13 @@
         <business_time_elapsed>00:04</business_time_elapsed>
         <value>2019-04-16 19:46:30 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>60:33</time>
+        <time_elapsed>60:33</time_elapsed>
+        <business_time_elapsed>18:47</business_time_elapsed>
+        <value>2019-04-19 08:15:17 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
@@ -1252,7 +1389,7 @@
       <tag>
         <id>17298</id>
         <name>student</name>
-        <taggings_count>170834</taggings_count>
+        <taggings_count>171593</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -1304,7 +1441,7 @@
     <name>Hanson 103 Extron not working</name>
     <description> Hanson 103 Extron 1606 giving flashing 1 with no additional movement. </description>
     <description_no_html>Hanson 103 Extron 1606 giving flashing 1 with no additional movement.</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408914</id>
@@ -1354,7 +1491,7 @@
       <name>Whitemore, Kevin</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T13:23:37-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T09:27:34-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -1363,7 +1500,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T13:23:05-05:00</created_at>
-    <updated_at>2019-04-16T13:23:45-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:16-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -1377,7 +1514,7 @@
       <name>Whitemore, Kevin</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T13:23:37-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T09:27:34-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -1526,6 +1663,13 @@
         <business_time_elapsed>00:01</business_time_elapsed>
         <value>2019-04-16 18:23:36 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>61:53</time>
+        <time_elapsed>61:53</time_elapsed>
+        <business_time_elapsed>20:07</business_time_elapsed>
+        <value>2019-04-19 08:15:16 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
@@ -1536,7 +1680,7 @@
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -1568,7 +1712,7 @@
     <name>Paper cut cards needed</name>
     <description> We are down to our last couple of papercut cards in the library, and students are running out of printing allotment. </description>
     <description_no_html>We are down to our last couple of papercut cards in the library, and students are running out of printing allotment.</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408919</id>
@@ -1620,7 +1764,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T12:21:51-05:00</created_at>
-    <updated_at>2019-04-17T10:06:55-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:16-05:00</updated_at>
     <due_at>2019-04-18T00:00:00-05:00</due_at>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -1738,24 +1882,31 @@
         <business_time_elapsed>06:16</business_time_elapsed>
         <value>2019-04-17 15:06:55 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>62:54</time>
+        <time_elapsed>62:54</time_elapsed>
+        <business_time_elapsed>21:09</business_time_elapsed>
+        <value>2019-04-19 08:15:15 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>14946</id>
         <name>library</name>
-        <taggings_count>26464</taggings_count>
+        <taggings_count>26794</taggings_count>
       </tag>
       <tag>
         <id>1507768</id>
         <name>High customer priority</name>
-        <taggings_count>139</taggings_count>
+        <taggings_count>144</taggings_count>
       </tag>
     </tags>
     <incidents/>
     <changes/>
     <solutions/>
     <associated_sla_names/>
-    <is_customer_satisfied nil="true"/>
+    <is_customer_satisfied>Yes</is_customer_satisfied>
     <customer_satisfaction_response nil="true"/>
     <total_time_spent>0</total_time_spent>
     <resolution nil="true"/>
@@ -1813,7 +1964,7 @@
     <name>Email group permissions</name>
     <description> Hello.&amp;nbsp; I am using the email address &lt;a href="mailto:performingarts@augustana.edu"&gt;performingarts@augustana.edu&lt;/a&gt; to send group emails.&amp;nbsp; Can I please have permission to email the first year, sophomore, junior, and senior groups as&amp;nbsp;well as&amp;nbsp;the priority admin group?&amp;nbsp; I think I am already able to email the faculty and staff groups.  Thanks!     Danielle </description>
     <description_no_html>Hello.  I am using the email address performingarts@augustana.edu to send group emails.  Can I please have permission to email the first year, sophomore, junior, and senior groups as well as the priority admin group?  I think I am already able to email the faculty and staff groups. Thanks!    Danielle</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408918</id>
@@ -1864,7 +2015,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T12:12:39-05:00</created_at>
-    <updated_at>2019-04-17T10:09:54-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:15-05:00</updated_at>
     <due_at>2019-04-17T00:00:00-05:00</due_at>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -1980,17 +2131,24 @@
         <business_time_elapsed>06:28</business_time_elapsed>
         <value>2019-04-17 15:09:54 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>63:03</time>
+        <time_elapsed>63:03</time_elapsed>
+        <business_time_elapsed>21:18</business_time_elapsed>
+        <value>2019-04-19 08:15:15 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>441926</id>
         <name>Bergendoff</name>
-        <taggings_count>347</taggings_count>
+        <taggings_count>348</taggings_count>
       </tag>
       <tag>
         <id>409179</id>
         <name>Ticket office</name>
-        <taggings_count>84</taggings_count>
+        <taggings_count>85</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -2094,7 +2252,7 @@
       <name>Ta, Minh Q</name>
       <disabled>false</disabled>
       <has_gravatar>true</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:17:31-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-26T13:24:28-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -2197,7 +2355,7 @@
     <name>Testing</name>
     <description>Testing</description>
     <description_no_html>Testing</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408920</id>
@@ -2247,7 +2405,7 @@
       <name>Ta, Minh Q</name>
       <disabled>false</disabled>
       <has_gravatar>true</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:17:31-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-26T13:24:28-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -2256,7 +2414,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T10:17:27-05:00</created_at>
-    <updated_at>2019-04-16T10:17:30-05:00</updated_at>
+    <updated_at>2019-04-17T14:27:50-05:00</updated_at>
     <due_at>2019-04-19T00:00:00-05:00</due_at>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -2270,7 +2428,7 @@
       <name>Ta, Minh Q</name>
       <disabled>false</disabled>
       <has_gravatar>true</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:17:31-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-26T13:24:28-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -2326,6 +2484,13 @@
         <time_elapsed>00:01</time_elapsed>
         <business_time_elapsed>00:01</business_time_elapsed>
         <value>2019-04-16 15:17:29 UTC</value>
+      </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>28:11</time>
+        <time_elapsed>28:11</time_elapsed>
+        <business_time_elapsed>12:41</business_time_elapsed>
+        <value>2019-04-17 19:27:50 UTC</value>
       </statistic>
     </statistics>
     <tags/>
@@ -2402,7 +2567,7 @@
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -2424,7 +2589,7 @@
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -2551,12 +2716,12 @@
       <tag>
         <id>1006291</id>
         <name>Sorensen 130</name>
-        <taggings_count>344</taggings_count>
+        <taggings_count>349</taggings_count>
       </tag>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -2583,7 +2748,7 @@
     <name>Colleague UI5 Install (cont.)</name>
     <description> Colleague UI5 install for wk 4/8/19 - 4/12/19&amp;nbsp; </description>
     <description_no_html>Colleague UI5 install for wk 4/8/19 - 4/12/19 </description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>859385</id>
@@ -2632,7 +2797,7 @@
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -2640,7 +2805,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T10:03:48-05:00</created_at>
-    <updated_at>2019-04-16T10:04:59-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:14-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -2654,7 +2819,7 @@
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -2717,17 +2882,24 @@
         <business_time_elapsed>00:02</business_time_elapsed>
         <value>2019-04-16 15:04:59 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>65:12</time>
+        <time_elapsed>65:12</time_elapsed>
+        <business_time_elapsed>23:27</business_time_elapsed>
+        <value>2019-04-19 08:15:14 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>1006291</id>
         <name>Sorensen 130</name>
-        <taggings_count>344</taggings_count>
+        <taggings_count>349</taggings_count>
       </tag>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -2809,7 +2981,7 @@
       <name>Chris Vaughan</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T08:11:46-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-26T09:40:29-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -2832,7 +3004,7 @@
       <name>Ta, Minh Q</name>
       <disabled>false</disabled>
       <has_gravatar>true</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:17:31-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-26T13:24:28-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -2931,7 +3103,7 @@
     <name>Workstudy students permissions</name>
     <description> Can you give RGN screen&amp;nbsp; view rights to our new student workers:     Catherine Lotz # 596721     Elizabeth Aniol # 659731     Jenna Kiermas # 652538     Samantha Goodmanson # 626461 </description>
     <description_no_html>Can you give RGN screen  view rights to our new student workers:     Catherine Lotz # 596721    Elizabeth Aniol # 659731    Jenna Kiermas # 652538    Samantha Goodmanson # 626461</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408918</id>
@@ -2988,7 +3160,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T09:23:04-05:00</created_at>
-    <updated_at>2019-04-16T15:14:21-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:13-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -3114,17 +3286,24 @@
         <business_time_elapsed>05:52</business_time_elapsed>
         <value>2019-04-16 20:14:21 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>65:53</time>
+        <time_elapsed>65:53</time_elapsed>
+        <business_time_elapsed>24:07</business_time_elapsed>
+        <value>2019-04-19 08:15:13 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>1500484</id>
         <name>Sorensen Security Services</name>
-        <taggings_count>31</taggings_count>
+        <taggings_count>32</taggings_count>
       </tag>
       <tag>
         <id>54108</id>
         <name>Registrar</name>
-        <taggings_count>3129</taggings_count>
+        <taggings_count>3142</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -3156,7 +3335,7 @@
     <name>Back Room Computer cannot log in</name>
     <description> Back Room Computer cannot log in.&amp;nbsp; But he can log into his computer </description>
     <description_no_html>Back Room Computer cannot log in.  But he can log into his computer</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>High</priority>
     <category>
       <id>408914</id>
@@ -3214,7 +3393,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T08:51:14-05:00</created_at>
-    <updated_at>2019-04-17T11:12:59-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:13-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -3228,7 +3407,7 @@
       <name>Ramsdale, Wendy (ITS)</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-02T10:01:08-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T12:11:24-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -3383,17 +3562,24 @@
         <business_time_elapsed>10:52</business_time_elapsed>
         <value>2019-04-17 16:12:53 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>66:24</time>
+        <time_elapsed>66:24</time_elapsed>
+        <business_time_elapsed>24:39</business_time_elapsed>
+        <value>2019-04-19 08:15:12 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>1500484</id>
         <name>Sorensen Security Services</name>
-        <taggings_count>31</taggings_count>
+        <taggings_count>32</taggings_count>
       </tag>
       <tag>
         <id>34257</id>
         <name>Security Services</name>
-        <taggings_count>903</taggings_count>
+        <taggings_count>907</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -3425,7 +3611,7 @@
     <name>PC video not working properly</name>
     <description> MOuse pointer absent, second monitor not displaying </description>
     <description_no_html>MOuse pointer absent, second monitor not displaying</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Critical</priority>
     <category>
       <id>408914</id>
@@ -3483,7 +3669,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-16T08:50:33-05:00</created_at>
-    <updated_at>2019-04-16T08:51:25-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:12-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -3646,17 +3832,24 @@
         <business_time_elapsed>00:01</business_time_elapsed>
         <value>2019-04-16 13:51:19 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>66:25</time>
+        <time_elapsed>66:25</time_elapsed>
+        <business_time_elapsed>24:40</business_time_elapsed>
+        <value>2019-04-19 08:15:12 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>1498006</id>
         <name>Sorensen Business Office</name>
-        <taggings_count>107</taggings_count>
+        <taggings_count>111</taggings_count>
       </tag>
       <tag>
         <id>13698</id>
         <name>business office</name>
-        <taggings_count>18763</taggings_count>
+        <taggings_count>18962</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -3688,7 +3881,7 @@
     <name>Software Needs to be Installed/Upgraded</name>
     <description> Software needs to be installed or upgraded. </description>
     <description_no_html>Software needs to be installed or upgraded.</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408915</id>
@@ -3751,7 +3944,7 @@
       </avatar>
     </requester>
     <created_at>2019-04-15T19:31:18-05:00</created_at>
-    <updated_at>2019-04-16T10:55:02-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:11-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -3829,6 +4022,13 @@
         <business_time_elapsed>02:56</business_time_elapsed>
         <value>2019-04-16 15:55:02 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>79:44</time>
+        <time_elapsed>79:44</time_elapsed>
+        <business_time_elapsed>25:31</business_time_elapsed>
+        <value>2019-04-19 08:15:11 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
@@ -3839,7 +4039,7 @@
       <tag>
         <id>17298</id>
         <name>student</name>
-        <taggings_count>170834</taggings_count>
+        <taggings_count>171593</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -4119,7 +4319,7 @@
         <content_type>application/msword</content_type>
         <size>85504</size>
         <filename>OMC Agreement Draft 2019 - Augie edits.doc</filename>
-        <url>https://s3.amazonaws.com/Production_CustomerData/attachments/02bb066ec861a451c013/OMC%20Agreement%20Draft%202019%20-%20Augie%20edits.doc?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJBWICFNTSMBXV6QA%2F20190417%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190417T185756Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4b720e07a9f192997e33ff227f0e3667ecbc117d6ee8903adba1c70da232b7bd</url>
+        <url>https://s3.amazonaws.com/Production_CustomerData/attachments/02bb066ec861a451c013/OMC%20Agreement%20Draft%202019%20-%20Augie%20edits.doc?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJBWICFNTSMBXV6QA%2F20190426%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190426T192015Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c6892acb1e9a33e6c57db5f8ee146180c30a5c4ea6ca831c86d949ce0030cbdf</url>
         <shared_attachment>false</shared_attachment>
         <attachable_id>37694674</attachable_id>
         <attachable_type>Incident</attachable_type>
@@ -4137,17 +4337,24 @@
         <business_time_elapsed>00:01</business_time_elapsed>
         <value>2019-04-15 22:11:58 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>assignee_opened_show</statistic_type>
+        <time>232:06</time>
+        <time_elapsed>232:06</time_elapsed>
+        <business_time_elapsed>60:48</business_time_elapsed>
+        <value>1929666</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>135443</id>
         <name>Sorensen</name>
-        <taggings_count>1119</taggings_count>
+        <taggings_count>1120</taggings_count>
       </tag>
       <tag>
         <id>13698</id>
         <name>business office</name>
-        <taggings_count>18763</taggings_count>
+        <taggings_count>18962</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -4245,7 +4452,7 @@ Regional Education Manager
 PO Box 8200 | Bonney Lake | Washington | 98391       Phone:  (253) 770-4823 ext. 115 | Fax: (253) 435-4966       E-mail:
   p.lachance@tools4ever.com  |   http://www.tools4ever.com   
  --------------------------------------------------------------------------------------------------------</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408915</id>
@@ -4294,7 +4501,7 @@ PO Box 8200 | Bonney Lake | Washington | 98391       Phone:  (253) 770-4823 ext.
       <name>Shawn Beattie</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T16:11:28-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-23T15:12:31-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -4303,7 +4510,7 @@ PO Box 8200 | Bonney Lake | Washington | 98391       Phone:  (253) 770-4823 ext.
       </avatar>
     </requester>
     <created_at>2019-04-15T16:24:37-05:00</created_at>
-    <updated_at>2019-04-16T13:12:23-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:10-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>2</number_of_comments>
@@ -4317,7 +4524,7 @@ PO Box 8200 | Bonney Lake | Washington | 98391       Phone:  (253) 770-4823 ext.
       <name>Shawn Beattie</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T16:11:28-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-23T15:12:31-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -4532,17 +4739,24 @@ PO Box 8200 | Bonney Lake | Washington | 98391       Phone:  (253) 770-4823 ext.
         <business_time_elapsed>03:49</business_time_elapsed>
         <value>2019-04-16 16:43:24 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>82:51</time>
+        <time_elapsed>82:51</time_elapsed>
+        <business_time_elapsed>25:36</business_time_elapsed>
+        <value>2019-04-19 08:15:10 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>685881</id>
         <name>Sorensen 163</name>
-        <taggings_count>381</taggings_count>
+        <taggings_count>389</taggings_count>
       </tag>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -4578,7 +4792,7 @@ PO Box 8200 | Bonney Lake | Washington | 98391       Phone:  (253) 770-4823 ext.
     <name>Adobe Acrobat/Reader not working.</name>
     <description> Says "it is running, please exit and try again".&amp;nbsp; Done this several time.&amp;nbsp;     Due to vault clean out,&amp;nbsp;I&amp;nbsp;viewed an old bank disc on Friday, so I am not sure it this effected the version that I am to use.&amp;nbsp;Thank you and sorry if I messed something up.&amp;nbsp; </description>
     <description_no_html>Says "it is running, please exit and try again".  Done this several time.     Due to vault clean out, I viewed an old bank disc on Friday, so I am not sure it this effected the version that I am to use. Thank you and sorry if I messed something up. </description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category nil="true"/>
     <subcategory nil="true"/>
@@ -4624,7 +4838,7 @@ PO Box 8200 | Bonney Lake | Washington | 98391       Phone:  (253) 770-4823 ext.
       </avatar>
     </requester>
     <created_at>2019-04-15T15:47:35-05:00</created_at>
-    <updated_at>2019-04-17T10:48:59-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:10-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -4715,17 +4929,24 @@ PO Box 8200 | Bonney Lake | Washington | 98391       Phone:  (253) 770-4823 ext.
         <business_time_elapsed>12:02</business_time_elapsed>
         <value>2019-04-17 15:48:58 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>83:28</time>
+        <time_elapsed>83:28</time_elapsed>
+        <business_time_elapsed>26:13</business_time_elapsed>
+        <value>2019-04-19 08:15:09 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>1498006</id>
         <name>Sorensen Business Office</name>
-        <taggings_count>107</taggings_count>
+        <taggings_count>111</taggings_count>
       </tag>
       <tag>
         <id>13698</id>
         <name>business office</name>
-        <taggings_count>18763</taggings_count>
+        <taggings_count>18962</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -4872,7 +5093,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>7386</id>
         <name>music</name>
-        <taggings_count>2413</taggings_count>
+        <taggings_count>2464</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -4969,7 +5190,17 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <created_at>2019-04-15T15:27:23-05:00</created_at>
     <updated_at>2019-04-15T15:27:23-05:00</updated_at>
     <due_at nil="true"/>
-    <sla_violations/>
+    <sla_violations>
+      <sla_violation>
+        <id>3664265</id>
+        <name>Resolution time target</name>
+        <sla_id>53955</sla_id>
+        <sla_type>no_actions_taken</sla_type>
+        <resolved>false</resolved>
+        <time_delay>3</time_delay>
+        <time_units>days</time_units>
+      </sla_violation>
+    </sla_violations>
     <number_of_comments>0</number_of_comments>
     <user_saw_all_comments>true</user_saw_all_comments>
     <is_service_request>false</is_service_request>
@@ -5137,13 +5368,15 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>17298</id>
         <name>student</name>
-        <taggings_count>170834</taggings_count>
+        <taggings_count>171593</taggings_count>
       </tag>
     </tags>
     <incidents/>
     <changes/>
     <solutions/>
-    <associated_sla_names/>
+    <associated_sla_names>
+      <associated_sla_name>no_actions_taken</associated_sla_name>
+    </associated_sla_names>
     <is_customer_satisfied nil="true"/>
     <customer_satisfaction_response nil="true"/>
     <total_time_spent>0</total_time_spent>
@@ -5213,7 +5446,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -5223,7 +5456,17 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <created_at>2019-04-15T15:05:15-05:00</created_at>
     <updated_at>2019-04-15T15:05:15-05:00</updated_at>
     <due_at nil="true"/>
-    <sla_violations/>
+    <sla_violations>
+      <sla_violation>
+        <id>3664147</id>
+        <name>Resolution time target</name>
+        <sla_id>53955</sla_id>
+        <sla_type>no_actions_taken</sla_type>
+        <resolved>false</resolved>
+        <time_delay>3</time_delay>
+        <time_units>days</time_units>
+      </sla_violation>
+    </sla_violations>
     <number_of_comments>0</number_of_comments>
     <user_saw_all_comments>true</user_saw_all_comments>
     <is_service_request>false</is_service_request>
@@ -5235,7 +5478,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -5355,18 +5598,20 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1006291</id>
         <name>Sorensen 130</name>
-        <taggings_count>344</taggings_count>
+        <taggings_count>349</taggings_count>
       </tag>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
     <changes/>
     <solutions/>
-    <associated_sla_names/>
+    <associated_sla_names>
+      <associated_sla_name>no_actions_taken</associated_sla_name>
+    </associated_sla_names>
     <is_customer_satisfied nil="true"/>
     <customer_satisfaction_response nil="true"/>
     <total_time_spent>0</total_time_spent>
@@ -5432,10 +5677,10 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       </avatar>
     </requester>
     <created_at>2019-04-15T14:56:24-05:00</created_at>
-    <updated_at>2019-04-16T14:19:25-05:00</updated_at>
+    <updated_at>2019-04-25T11:05:51-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
-    <number_of_comments>3</number_of_comments>
+    <number_of_comments>6</number_of_comments>
     <user_saw_all_comments>false</user_saw_all_comments>
     <is_service_request>false</is_service_request>
     <created_by>
@@ -5502,6 +5747,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
         <seen_by>
           <seen_by>1502481</seen_by>
           <seen_by>3461799</seen_by>
+          <seen_by>1374216</seen_by>
         </seen_by>
         <isTask>false</isTask>
         <task_info>
@@ -5532,6 +5778,71 @@ Your unique voter code is: FXYRP2M4</description_no_html>
         <is_private>false</is_private>
         <seen_by>
           <seen_by>3461799</seen_by>
+          <seen_by>1502481</seen_by>
+          <seen_by>1374216</seen_by>
+        </seen_by>
+        <isTask>false</isTask>
+        <task_info>
+        </task_info>
+        <requester nil="true"/>
+        <commenter_id>37682849</commenter_id>
+        <commenter_type>Incident</commenter_type>
+        <comment_sentiment nil="true"/>
+      </comment>
+      <comment>
+        <id>48101490</id>
+        <body> Markus,  Sorry to get back to you late. I spoke with our director, Chris Beyer, and he is fine to spend about $550 for replace the office phones in the 3 locations that I mentioned earlier. Please let me know what do you need from me. Thank you.&amp;nbsp; </body>
+        <user>
+          <id>3461799</id>
+          <name>Jia, Victor</name>
+          <email>victorjia@augustana.edu</email>
+          <avatar>
+            <type>initials</type>
+            <color>#ffa21e</color>
+            <initials>JV</initials>
+          </avatar>
+        </user>
+        <created_at>2019-04-22T13:36:53-05:00</created_at>
+        <updated_at>2019-04-22T13:36:53-05:00</updated_at>
+        <attachments/>
+        <inline_attachments/>
+        <shared_attachments/>
+        <is_private>false</is_private>
+        <seen_by>
+          <seen_by>3461799</seen_by>
+          <seen_by>1502481</seen_by>
+          <seen_by>1374216</seen_by>
+        </seen_by>
+        <isTask>false</isTask>
+        <task_info>
+        </task_info>
+        <requester nil="true"/>
+        <commenter_id>37682849</commenter_id>
+        <commenter_type>Incident</commenter_type>
+        <comment_sentiment nil="true"/>
+      </comment>
+      <comment>
+        <id>48113506</id>
+        <body> At this point, I just need an account number for the invoice and I will hopefully be able to have the parts shipped by the end of the week. </body>
+        <user>
+          <id>1502481</id>
+          <name>Harris, Markus-ITS Staff</name>
+          <email>markusharris@augustana.edu</email>
+          <avatar>
+            <type>initials</type>
+            <color>#0089c9</color>
+            <initials>HS</initials>
+          </avatar>
+        </user>
+        <created_at>2019-04-22T15:35:20-05:00</created_at>
+        <updated_at>2019-04-22T15:35:20-05:00</updated_at>
+        <attachments/>
+        <inline_attachments/>
+        <shared_attachments/>
+        <is_private>false</is_private>
+        <seen_by>
+          <seen_by>1502481</seen_by>
+          <seen_by>1374216</seen_by>
         </seen_by>
         <isTask>false</isTask>
         <task_info>
@@ -5567,6 +5878,47 @@ Your unique voter code is: FXYRP2M4</description_no_html>
         <is_private>true</is_private>
         <seen_by>
           <seen_by>1502481</seen_by>
+          <seen_by>1374216</seen_by>
+        </seen_by>
+        <isTask>false</isTask>
+        <task_info>
+        </task_info>
+        <requester nil="true"/>
+        <commenter_id>37682849</commenter_id>
+        <commenter_type>Incident</commenter_type>
+        <comment_sentiment nil="true"/>
+      </comment>
+      <comment>
+        <id>48354350</id>
+        <body> Re: Account for Phone replacement &amp;lt;Tue 4/23/2019 8:42 AM&amp;gt; 
+ Please use: 
+ 50-500-90670-69940 
+ Thanks! 
+ &amp;nbsp; 
+ Chris Beyer 
+ Director of Residential Life 
+ Assistant Dean of Students 
+ Augustana College 
+ p: 309.794.2686 </body>
+        <user>
+          <id>1502481</id>
+          <name>Harris, Markus-ITS Staff</name>
+          <email>markusharris@augustana.edu</email>
+          <avatar>
+            <type>initials</type>
+            <color>#0089c9</color>
+            <initials>HS</initials>
+          </avatar>
+        </user>
+        <created_at>2019-04-25T07:56:57-05:00</created_at>
+        <updated_at>2019-04-25T07:56:57-05:00</updated_at>
+        <attachments/>
+        <inline_attachments/>
+        <shared_attachments/>
+        <is_private>true</is_private>
+        <seen_by>
+          <seen_by>1502481</seen_by>
+          <seen_by>1374216</seen_by>
         </seen_by>
         <isTask>false</isTask>
         <task_info>
@@ -5626,12 +5978,12 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1499338</id>
         <name>Erickson Residence Center 3822</name>
-        <taggings_count>6</taggings_count>
+        <taggings_count>7</taggings_count>
       </tag>
       <tag>
         <id>313203</id>
         <name>Residential Life</name>
-        <taggings_count>334</taggings_count>
+        <taggings_count>338</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -5640,11 +5992,16 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <associated_sla_names/>
     <is_customer_satisfied nil="true"/>
     <customer_satisfaction_response nil="true"/>
-    <total_time_spent>0</total_time_spent>
+    <total_time_spent>15</total_time_spent>
     <resolution nil="true"/>
     <resolution_type nil="true"/>
     <tasks/>
-    <time_tracks/>
+    <time_tracks>
+      <time_track>
+        <id>2963792</id>
+        <href>https://api.samanage.com/incidents/37682849/time_tracks/2963792.xml</href>
+      </time_track>
+    </time_tracks>
     <assets/>
     <mobiles/>
     <other_assets/>
@@ -5708,7 +6065,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Dean, Scott</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-17T08:53:11-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T13:33:53-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -5731,7 +6088,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Dean, Scott</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-17T08:53:11-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T13:33:53-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -5928,12 +6285,12 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1013512</id>
         <name>Sorensen 109</name>
-        <taggings_count>87</taggings_count>
+        <taggings_count>88</taggings_count>
       </tag>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -6036,7 +6393,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Ramsdale, Wendy (ITS)</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-02T10:01:08-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T12:11:24-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -6187,7 +6544,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>17298</id>
         <name>student</name>
-        <taggings_count>170834</taggings_count>
+        <taggings_count>171593</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -6272,7 +6629,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -6282,7 +6639,17 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <created_at>2019-04-15T13:38:41-05:00</created_at>
     <updated_at>2019-04-15T13:38:41-05:00</updated_at>
     <due_at nil="true"/>
-    <sla_violations/>
+    <sla_violations>
+      <sla_violation>
+        <id>3663620</id>
+        <name>Resolution time target</name>
+        <sla_id>53955</sla_id>
+        <sla_type>no_actions_taken</sla_type>
+        <resolved>false</resolved>
+        <time_delay>3</time_delay>
+        <time_units>days</time_units>
+      </sla_violation>
+    </sla_violations>
     <number_of_comments>0</number_of_comments>
     <user_saw_all_comments>true</user_saw_all_comments>
     <is_service_request>false</is_service_request>
@@ -6294,7 +6661,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -6414,18 +6781,20 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1006291</id>
         <name>Sorensen 130</name>
-        <taggings_count>344</taggings_count>
+        <taggings_count>349</taggings_count>
       </tag>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
     <changes/>
     <solutions/>
-    <associated_sla_names/>
+    <associated_sla_names>
+      <associated_sla_name>no_actions_taken</associated_sla_name>
+    </associated_sla_names>
     <is_customer_satisfied nil="true"/>
     <customer_satisfaction_response nil="true"/>
     <total_time_spent>0</total_time_spent>
@@ -6446,7 +6815,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <name>install SPSS</name>
     <description> please install SPSS to computer in Hanson 318  </description>
     <description_no_html>please install SPSS to computer in Hanson 318</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408915</id>
@@ -6504,7 +6873,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       </avatar>
     </requester>
     <created_at>2019-04-15T11:58:22-05:00</created_at>
-    <updated_at>2019-04-17T09:59:56-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:09-05:00</updated_at>
     <due_at>2019-04-19T00:00:00-05:00</due_at>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -6668,6 +7037,13 @@ Your unique voter code is: FXYRP2M4</description_no_html>
         <business_time_elapsed>15:01</business_time_elapsed>
         <value>2019-04-17 14:58:51 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>87:17</time>
+        <time_elapsed>87:17</time_elapsed>
+        <business_time_elapsed>30:02</business_time_elapsed>
+        <value>2019-04-19 08:15:09 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
@@ -6678,7 +7054,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>52755</id>
         <name>Biology</name>
-        <taggings_count>2010</taggings_count>
+        <taggings_count>2020</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -6767,7 +7143,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       </avatar>
     </requester>
     <created_at>2019-04-15T10:42:11-05:00</created_at>
-    <updated_at>2019-04-16T15:26:21-05:00</updated_at>
+    <updated_at>2019-04-17T14:15:51-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -6896,7 +7272,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -6905,7 +7281,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <associated_sla_names/>
     <is_customer_satisfied nil="true"/>
     <customer_satisfaction_response nil="true"/>
-    <total_time_spent>420</total_time_spent>
+    <total_time_spent>600</total_time_spent>
     <resolution nil="true"/>
     <resolution_type>Done</resolution_type>
     <tasks/>
@@ -6917,6 +7293,10 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <time_track>
         <id>2933572</id>
         <href>https://api.samanage.com/incidents/37655255/time_tracks/2933572.xml</href>
+      </time_track>
+      <time_track>
+        <id>2938050</id>
+        <href>https://api.samanage.com/incidents/37655255/time_tracks/2938050.xml</href>
       </time_track>
     </time_tracks>
     <assets/>
@@ -7255,7 +7635,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>17298</id>
         <name>student</name>
-        <taggings_count>170834</taggings_count>
+        <taggings_count>171593</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -7634,12 +8014,12 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>52755</id>
         <name>Biology</name>
-        <taggings_count>2010</taggings_count>
+        <taggings_count>2020</taggings_count>
       </tag>
       <tag>
         <id>1507768</id>
         <name>High customer priority</name>
-        <taggings_count>139</taggings_count>
+        <taggings_count>144</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -7715,7 +8095,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Neujahr, Kelsey</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-11T11:58:26-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-23T13:14:09-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -7737,7 +8117,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Ramsdale, Wendy (ITS)</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-02T10:01:08-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T12:11:24-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -7931,12 +8311,12 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1005460</id>
         <name>Sorensen 162</name>
-        <taggings_count>315</taggings_count>
+        <taggings_count>324</taggings_count>
       </tag>
       <tag>
         <id>19935</id>
         <name>employee</name>
-        <taggings_count>40283</taggings_count>
+        <taggings_count>41236</taggings_count>
       </tag>
     </tags>
     <incidents>
@@ -8185,7 +8565,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Zimmerman, Kristina</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-04T17:00:54-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T10:30:55-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#bb5bac</color>
@@ -8455,7 +8835,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Ramsdale, Wendy (ITS)</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-02T10:01:08-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T12:11:24-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -8536,7 +8916,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -8669,7 +9049,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Ramsdale, Wendy (ITS)</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-02T10:01:08-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T12:11:24-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -8745,12 +9125,12 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1005460</id>
         <name>Sorensen 162</name>
-        <taggings_count>315</taggings_count>
+        <taggings_count>324</taggings_count>
       </tag>
       <tag>
         <id>17298</id>
         <name>student</name>
-        <taggings_count>170834</taggings_count>
+        <taggings_count>171593</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -8851,7 +9231,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>ITS Helpdesk</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-15T09:43:38-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T11:45:29-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#0bc46f</color>
@@ -8873,7 +9253,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>ITS Helpdesk</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-15T09:43:38-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T11:45:29-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#0bc46f</color>
@@ -8964,7 +9344,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <name>Computer lab - The computer will shut down in 5 min. </name>
     <description> This is on the computers and we are having to shut them down and start back up. It's a waste of time for our students. They just need to print off papers.   If you can help, I would really appreciate it!  Lisa  </description>
     <description_no_html>This is on the computers and we are having to shut them down and start back up. It's a waste of time for our students. They just need to print off papers.  If you can help, I would really appreciate it! Lisa</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408915</id>
@@ -9014,7 +9394,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Slater, Lisa K</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:01:18-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-18T14:07:24-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -9022,7 +9402,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       </avatar>
     </requester>
     <created_at>2019-04-15T09:33:45-05:00</created_at>
-    <updated_at>2019-04-16T10:01:17-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:08-05:00</updated_at>
     <due_at nil="true"/>
     <sla_violations/>
     <number_of_comments>1</number_of_comments>
@@ -9036,7 +9416,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Slater, Lisa K</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:01:18-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-18T14:07:24-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#2eabcf</color>
@@ -9163,7 +9543,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
             <content_type>image/png</content_type>
             <size>4473523</size>
             <filename>Computer lab CORE COMMONS .PNG</filename>
-            <url>https://s3.amazonaws.com/Production_CustomerData/attachments/504614e4375f38130c4f/Computer%20lab%20CORE%20COMMONS%20.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJBWICFNTSMBXV6QA%2F20190417%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190417T185802Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4cb88bc9092efc84d5195773066900cc1c4a749e6f15040bc8266aa8e2c0d2a5</url>
+            <url>https://s3.amazonaws.com/Production_CustomerData/attachments/504614e4375f38130c4f/Computer%20lab%20CORE%20COMMONS%20.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJBWICFNTSMBXV6QA%2F20190426%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190426T192019Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f00152d5d86f14a671db09691e0d73ddd9fd390af76e29d318b76b67dac20bd3</url>
             <shared_attachment>false</shared_attachment>
             <attachable_id>47448102</attachable_id>
             <attachable_type>Comment</attachable_type>
@@ -9242,6 +9622,13 @@ Your unique voter code is: FXYRP2M4</description_no_html>
         <business_time_elapsed>08:58</business_time_elapsed>
         <value>2019-04-16 15:01:17 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>89:42</time>
+        <time_elapsed>89:42</time_elapsed>
+        <business_time_elapsed>32:27</business_time_elapsed>
+        <value>2019-04-19 08:15:08 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
@@ -9257,7 +9644,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1507768</id>
         <name>High customer priority</name>
-        <taggings_count>139</taggings_count>
+        <taggings_count>144</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -9338,7 +9725,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -9360,7 +9747,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -9508,12 +9895,12 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1006291</id>
         <name>Sorensen 130</name>
-        <taggings_count>344</taggings_count>
+        <taggings_count>349</taggings_count>
       </tag>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -9594,7 +9981,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -9616,7 +10003,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Bjork, Brad</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:05:01-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-24T10:15:19-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#fa7911</color>
@@ -9691,12 +10078,12 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1006291</id>
         <name>Sorensen 130</name>
-        <taggings_count>344</taggings_count>
+        <taggings_count>349</taggings_count>
       </tag>
       <tag>
         <id>73885</id>
         <name>ITS</name>
-        <taggings_count>11128</taggings_count>
+        <taggings_count>11315</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -9728,7 +10115,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <name>Rachel Gustafson (#92356) via of vacation accruals in TimeClock Plus</name>
     <description> Good morning,  Rachel contacted me because she couldn't reconcile the vacation accrual piece in Arches. I had her send a snapshot of what she was seeing so I could better explain. I can agree all but the 9.5 hours used that is shown on the vacation line (see attached). Can you tell me where this might be coming from?   Thanks for your help!   Jean   </description>
     <description_no_html>Good morning, Rachel contacted me because she couldn't reconcile the vacation accrual piece in Arches. I had her send a snapshot of what she was seeing so I could better explain. I can agree all but the 9.5 hours used that is shown on the vacation line (see attached). Can you tell me where this might be coming from?  Thanks for your help!  Jean</description_no_html>
-    <state>Resolved</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408915</id>
@@ -9786,7 +10173,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       </avatar>
     </requester>
     <created_at>2019-04-15T09:17:35-05:00</created_at>
-    <updated_at>2019-04-16T08:41:36-05:00</updated_at>
+    <updated_at>2019-04-19T03:15:08-05:00</updated_at>
     <due_at>2019-05-31T00:00:00-05:00</due_at>
     <sla_violations/>
     <number_of_comments>1</number_of_comments>
@@ -9932,7 +10319,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
             <content_type>application/vnd.openxmlformats-officedocument.wordprocessingml.document</content_type>
             <size>50882</size>
             <filename>Coll_TCP_Accruals.docx</filename>
-            <url>https://s3.amazonaws.com/Production_CustomerData/attachments/e299cbaafe80fa466452/Coll_TCP_Accruals.docx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJBWICFNTSMBXV6QA%2F20190417%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190417T185803Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=06788b1dd3fbf6a502955e6eb21b068c83acbc28c440e25fddcab74c2125ffbe</url>
+            <url>https://s3.amazonaws.com/Production_CustomerData/attachments/e299cbaafe80fa466452/Coll_TCP_Accruals.docx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJBWICFNTSMBXV6QA%2F20190426%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190426T192019Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=83f1063ba746ec681c17df7e7e626bcbc0c3142f906b1fd23862a31e9dc5640b</url>
             <shared_attachment>false</shared_attachment>
             <attachable_id>47766741</attachable_id>
             <attachable_type>Comment</attachable_type>
@@ -9963,7 +10350,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
         <content_type>application/pdf</content_type>
         <size>224147</size>
         <filename>Rachel Gustafson TCP accrual forecast.pdf</filename>
-        <url>https://s3.amazonaws.com/Production_CustomerData/attachments/ef88a58e37a49beaf25f/Rachel%20Gustafson%20TCP%20accrual%20forecast.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJBWICFNTSMBXV6QA%2F20190417%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190417T185803Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ab5fd61fc1d359189e042868267093b8c723817241bac628531d124dc17b2b93</url>
+        <url>https://s3.amazonaws.com/Production_CustomerData/attachments/ef88a58e37a49beaf25f/Rachel%20Gustafson%20TCP%20accrual%20forecast.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJBWICFNTSMBXV6QA%2F20190426%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190426T192019Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d5e8f832007aad95064f938766c9be64fd056b030826413bdb8f969865f579a9</url>
         <shared_attachment>false</shared_attachment>
         <attachable_id>37641231</attachable_id>
         <attachable_type>Incident</attachable_type>
@@ -10023,17 +10410,24 @@ Your unique voter code is: FXYRP2M4</description_no_html>
         <business_time_elapsed>07:54</business_time_elapsed>
         <value>2019-04-16 13:40:51 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>89:58</time>
+        <time_elapsed>89:58</time_elapsed>
+        <business_time_elapsed>32:43</business_time_elapsed>
+        <value>2019-04-19 08:15:07 UTC</value>
+      </statistic>
     </statistics>
     <tags>
       <tag>
         <id>1498006</id>
         <name>Sorensen Business Office</name>
-        <taggings_count>107</taggings_count>
+        <taggings_count>111</taggings_count>
       </tag>
       <tag>
         <id>13698</id>
         <name>business office</name>
-        <taggings_count>18763</taggings_count>
+        <taggings_count>18962</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -10302,17 +10696,17 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>1497943</id>
         <name>Sorensen Human Resources</name>
-        <taggings_count>38</taggings_count>
+        <taggings_count>39</taggings_count>
       </tag>
       <tag>
         <id>1864</id>
         <name>human resources</name>
-        <taggings_count>338977</taggings_count>
+        <taggings_count>343231</taggings_count>
       </tag>
       <tag>
         <id>162600</id>
         <name>Merged</name>
-        <taggings_count>622458</taggings_count>
+        <taggings_count>630108</taggings_count>
       </tag>
     </tags>
     <incidents>
@@ -10399,7 +10793,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Chris Vaughan</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T08:11:46-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-26T09:40:29-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -10422,7 +10816,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Ta, Minh Q</name>
       <disabled>false</disabled>
       <has_gravatar>true</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:17:31-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-26T13:24:28-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -10575,7 +10969,17 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <created_at>2019-04-15T08:31:15-05:00</created_at>
     <updated_at>2019-04-15T08:31:15-05:00</updated_at>
     <due_at nil="true"/>
-    <sla_violations/>
+    <sla_violations>
+      <sla_violation>
+        <id>3661773</id>
+        <name>Resolution time target</name>
+        <sla_id>53955</sla_id>
+        <sla_type>no_actions_taken</sla_type>
+        <resolved>false</resolved>
+        <time_delay>3</time_delay>
+        <time_units>days</time_units>
+      </sla_violation>
+    </sla_violations>
     <number_of_comments>0</number_of_comments>
     <user_saw_all_comments>true</user_saw_all_comments>
     <is_service_request>false</is_service_request>
@@ -10743,13 +11147,15 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>17298</id>
         <name>student</name>
-        <taggings_count>170834</taggings_count>
+        <taggings_count>171593</taggings_count>
       </tag>
     </tags>
     <incidents/>
     <changes/>
     <solutions/>
-    <associated_sla_names/>
+    <associated_sla_names>
+      <associated_sla_name>no_actions_taken</associated_sla_name>
+    </associated_sla_names>
     <is_customer_satisfied nil="true"/>
     <customer_satisfaction_response nil="true"/>
     <total_time_spent>0</total_time_spent>
@@ -10841,7 +11247,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Shawn Beattie</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T16:11:28-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-23T15:12:31-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -11050,7 +11456,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>31434</id>
         <name>ENGLISH</name>
-        <taggings_count>3238</taggings_count>
+        <taggings_count>3265</taggings_count>
       </tag>
     </tags>
     <incidents/>
@@ -11186,7 +11592,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>ITS Helpdesk</name>
       <disabled>false</disabled>
       <has_gravatar>false</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-15T09:43:38-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-25T11:45:29-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>initials</type>
         <color>#0bc46f</color>
@@ -11419,7 +11825,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>162600</id>
         <name>Merged</name>
-        <taggings_count>622458</taggings_count>
+        <taggings_count>630108</taggings_count>
       </tag>
     </tags>
     <incidents>
@@ -11881,7 +12287,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <tag>
         <id>17298</id>
         <name>student</name>
-        <taggings_count>170834</taggings_count>
+        <taggings_count>171593</taggings_count>
       </tag>
     </tags>
     <incidents>
@@ -12086,7 +12492,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <name>test</name>
     <description>test</description>
     <description_no_html>test</description_no_html>
-    <state>Scheduled</state>
+    <state>Closed</state>
     <priority>Medium</priority>
     <category>
       <id>408920</id>
@@ -12124,7 +12530,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Ta, Minh Q</name>
       <disabled>false</disabled>
       <has_gravatar>true</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:17:31-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-26T13:24:28-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -12133,7 +12539,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       </avatar>
     </requester>
     <created_at>2019-04-14T16:18:22-05:00</created_at>
-    <updated_at>2019-04-14T16:18:25-05:00</updated_at>
+    <updated_at>2019-04-17T14:27:14-05:00</updated_at>
     <due_at>2019-04-14T00:00:00-05:00</due_at>
     <sla_violations/>
     <number_of_comments>0</number_of_comments>
@@ -12147,7 +12553,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       <name>Ta, Minh Q</name>
       <disabled>false</disabled>
       <has_gravatar>true</has_gravatar>
-      <customer_satisfaction_survey_time>2019-04-16T10:17:31-05:00</customer_satisfaction_survey_time>
+      <customer_satisfaction_survey_time>2019-04-26T13:24:28-05:00</customer_satisfaction_survey_time>
       <avatar>
         <type>image</type>
         <image_class>avatar_image</image_class>
@@ -12156,7 +12562,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
       </avatar>
     </created_by>
     <resolution_description nil="true"/>
-    <resolution_code nil="true"/>
+    <resolution_code>Done</resolution_code>
     <custom nil="true"/>
     <href>https://api.samanage.com/incidents/37512554-test.xml</href>
     <site>
@@ -12197,6 +12603,27 @@ Your unique voter code is: FXYRP2M4</description_no_html>
         <business_time_elapsed>00:01</business_time_elapsed>
         <value>2019-04-14 21:18:25 UTC</value>
       </statistic>
+      <statistic>
+        <statistic_type>to_resolve</statistic_type>
+        <time>70:09</time>
+        <time_elapsed>70:09</time_elapsed>
+        <business_time_elapsed>23:28</business_time_elapsed>
+        <value>2019-04-17 19:27:11 UTC</value>
+      </statistic>
+      <statistic>
+        <statistic_type>to_close</statistic_type>
+        <time>70:09</time>
+        <time_elapsed>70:09</time_elapsed>
+        <business_time_elapsed>23:28</business_time_elapsed>
+        <value>2019-04-17 19:27:14 UTC</value>
+      </statistic>
+      <statistic>
+        <statistic_type>assignee_opened_show</statistic_type>
+        <time>70:09</time>
+        <time_elapsed>70:09</time_elapsed>
+        <business_time_elapsed>23:28</business_time_elapsed>
+        <value>1953008</value>
+      </statistic>
     </statistics>
     <tags/>
     <incidents/>
@@ -12207,7 +12634,7 @@ Your unique voter code is: FXYRP2M4</description_no_html>
     <customer_satisfaction_response nil="true"/>
     <total_time_spent>15</total_time_spent>
     <resolution nil="true"/>
-    <resolution_type nil="true"/>
+    <resolution_type>Done</resolution_type>
     <tasks/>
     <time_tracks>
       <time_track>

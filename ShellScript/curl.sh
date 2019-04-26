@@ -2,7 +2,7 @@ TOKEN=TUlOSFRBMTZAYXVndXN0YW5hLmVkdQ==:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNzUz
 #curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+json' -H 'Content-type: application/json' -X GET https://api.samanage.com/incidents.json | python -mjson.tool > "formatted.json
 
 # Get incidents ------------------------------------------------
-curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET "https://api.samanage.com/incidents.xml?per_page=100&page=1&created%5B%5D=Select%20Date%20Range&created_custom_gte%5B%5D=14/04/2019&created_custom_lte%5B%5D=16/04/2019&layout=long" -o bug_32_incident.xml
+curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-type: application/xml' -X GET "https://api.samanage.com/incidents.xml?per_page=100&page=1&created%5B%5D=Select%20Date%20Range&created_custom_gte%5B%5D=01/04/2019&created_custom_lte%5B%5D=26/04/2019&layout=long" -o incidents_time.xml
 
 
 # Get categories ----------------------------------------------

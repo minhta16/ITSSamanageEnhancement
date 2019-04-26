@@ -196,7 +196,7 @@ public class SamanageRequests {
 			Element rootElement = document.getDocumentElement();
 
 			NodeList listOfIncidents = rootElement.getElementsByTagName("incident");
-			if (listOfIncidents.getLength() != 100) {
+			if (rootElement.getChildNodes().getLength() < 103) {
 				hasMore = false;
 			}
 
