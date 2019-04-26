@@ -436,6 +436,9 @@ public class MainPaneController {
 
 	private void setupEmailAutoComplete() {
 		TextFields.bindAutoCompletion(userInputField, savedEmailprovider);
+		userInputField.textProperty().addListener((o, oV, nV) -> {
+			handleUserInputFieldChange();
+		});
 		assigneeField.setText(AppSession.getSession().getDefaultAssignee());
 		handleAssigneeFieldChange();
 		requesterField.setText(AppSession.getSession().getDefaultRequester());
@@ -1082,13 +1085,18 @@ public class MainPaneController {
 		AppSession.getSession().setDefaultDomain(domainField.getText());
 		AppSession.getSession().saveData();
 	}
-
+	
+	
 	@FXML
 	private void handleAssigneeFieldChange() {
 		userInputField.setText(toShortDomain(assigneeField.getText()));
 		assigneeField.setText(toShortDomain(assigneeField.getText()));
 	}
 
+	@FXML
+	private void handleUserInputFieldChange() {
+		userInputField.setText(toShortDomain(userInputField.getText()));
+	}
 
 
 	@FXML
