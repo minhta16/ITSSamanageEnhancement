@@ -258,8 +258,8 @@ public class SamanageRequests {
 				System.out.println("done task " + page);
 			});
 			Thread newThread = new Thread(newTask);
-			threads.add(newThread);
 			newThread.start();
+			threads.add(newThread);
 		}
 		for(Thread thread : threads) {
 			thread.join();
