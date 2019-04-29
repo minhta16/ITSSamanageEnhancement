@@ -159,8 +159,6 @@ public class MainPaneController {
 	public void setStageAndSetupListeners(Stage primaryStage) throws FileNotFoundException {
 
 
-		
-
 		savedEmailprovider = SuggestionProvider.create(AppSession.getSession().getSavedEmails());
 		assigneeProvider = SuggestionProvider.create(AppSession.getSession().getAssignees());
 
@@ -546,7 +544,7 @@ public class MainPaneController {
 								siteComboBox.getValue(), softwareComboBox.getValue(), notifyCheckBox.isSelected());
 
 						updateMessage("Submit");
-					} catch (IOException e) {
+					} catch (IOException | ParserConfigurationException | SAXException e) {
 						printError(e);
 					}
 					return null;
@@ -1118,7 +1116,11 @@ public class MainPaneController {
 			@Override
 			public Parent call() throws JsonIOException, IOException {
 				updateMessage("Updating...");
-				AppSession.getSession().updateAll();
+				try {
+					AppSession.getSession().updateAll();
+				} catch (ParserConfigurationException | SAXException e) {
+					printError(e);
+				}
 				updateMessage("Done.");
 
 				return null;

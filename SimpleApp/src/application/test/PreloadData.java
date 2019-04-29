@@ -2,6 +2,10 @@ package application.test;
 
 import java.io.IOException;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import application.data.AppSession;
 import application.data.SamanageRequests;
 
@@ -14,9 +18,15 @@ public class PreloadData {
 //		AppSession.getSession().setDepartments(SamanageRequests.getDepartments(userToken));
 //		AppSession.getSession().setSites(SamanageRequests.getSites(userToken));
 //		AppSession.getSession().saveData();
-		int catNum = SamanageRequests.getTotalElements(userToken, "categories");
-		System.err.println(catNum);
-		System.err.println(SamanageRequests.getCategories(userToken));
+		int catNum;
+		try {
+			catNum = SamanageRequests.getTotalElements(userToken, "categories");
+			System.err.println(catNum);
+			System.err.println(SamanageRequests.getCategories(userToken));
+		} catch (ParserConfigurationException | SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

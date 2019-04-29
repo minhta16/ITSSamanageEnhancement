@@ -43,7 +43,7 @@ public class SamanageRequests {
 
 	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority, String category,
 			String subcategory, String description, String dueDate, String state, String assignee, String requester,
-			String dept, String site, String software, boolean notify) throws IOException {
+			String dept, String site, String software, boolean notify) throws IOException, ParserConfigurationException, SAXException {
 		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate,
 				assignee, requester, software);
 		String incidentID = SamanageRequests.getID(userToken);
@@ -407,7 +407,7 @@ public class SamanageRequests {
 		// System.err.println(map);
 	}
 
-	public static Map<String, User> getAllUsersMultiThreads(String userToken) throws IOException {
+	public static Map<String, User> getAllUsersMultiThreads(String userToken) throws IOException, ParserConfigurationException, SAXException {
 		TreeMap<String, User> map = new TreeMap<String, User>();
 		Map<String, User> users = Collections.synchronizedMap(map);
 
@@ -534,7 +534,7 @@ public class SamanageRequests {
 
 	}
 
-	public static TreeMap<String, ArrayList<String>> getCategories(String userToken) throws IOException {
+	public static TreeMap<String, ArrayList<String>> getCategories(String userToken) throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -577,7 +577,7 @@ public class SamanageRequests {
 		return categoriesMap;
 	}
 
-	public static ArrayList<String> getDepartments(String userToken) throws IOException {
+	public static ArrayList<String> getDepartments(String userToken) throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -620,7 +620,7 @@ public class SamanageRequests {
 
 	}
 
-	public static ArrayList<String> getSites(String userToken) throws IOException {
+	public static ArrayList<String> getSites(String userToken) throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -662,7 +662,7 @@ public class SamanageRequests {
 		return siteList;
 	}
 
-	public static List<String> getSitesMultiThreads(String userToken) throws IOException {
+	public static List<String> getSitesMultiThreads(String userToken) throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -751,7 +751,7 @@ public class SamanageRequests {
 
 	// 408915 Software
 	public static TreeMap<String, Software> getSoftwares(String userToken, String typeCode, String type)
-			throws IOException {
+			throws IOException, ParserConfigurationException, SAXException {
 		TreeMap<String, Software> softwareList = new TreeMap<String, Software>();
 		// typeCode is for Category = Software, so that Software custom fields are there
 		String url = "https://api.samanage.com/incidents.xml?per_page=1&page=1&category%5B%5D=" + typeCode;
@@ -786,7 +786,7 @@ public class SamanageRequests {
 		return softwareList;
 	}
 
-	public static TreeMap<String, Group> getGroups(String userToken) throws IOException {
+	public static TreeMap<String, Group> getGroups(String userToken) throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -821,7 +821,7 @@ public class SamanageRequests {
 		return groupsMap;
 	}
 
-	public static String getID(String userToken) throws IOException {
+	public static String getID(String userToken) throws IOException, ParserConfigurationException, SAXException {
 		String url = "https://api.samanage.com/incidents.xml?per_page=1";
 
 		URL obj = new URL(url);
@@ -840,7 +840,7 @@ public class SamanageRequests {
 		return incidentID;
 	}
 	
-	public static int getIncidentsNum(String userToken, LocalDate fromDate, LocalDate toDate) throws IOException {
+	public static int getIncidentsNum(String userToken, LocalDate fromDate, LocalDate toDate) throws IOException, ParserConfigurationException, SAXException {
 
 		String url = "https://api.samanage.com/incidents.xml" + "?per_page=1&page=1&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
 				+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
@@ -873,7 +873,7 @@ public class SamanageRequests {
 	}
 
 
-	public static int getTotalElements(String userToken, String type) throws IOException {
+	public static int getTotalElements(String userToken, String type) throws IOException, ParserConfigurationException, SAXException {
 		String url = "https://api.samanage.com/" + type + ".xml?per_page=1";
 
 		URL obj = new URL(url);
@@ -1115,32 +1115,30 @@ public class SamanageRequests {
 		return timeTracks;
 	}
 
-	public static Element documentFromOutput(HttpURLConnection conn) {
+	public static Element documentFromOutput(HttpURLConnection conn)
+			throws IOException, ParserConfigurationException, SAXException {
 		Element rootElement = null;
-		try {
-			BufferedReader br;
-			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
-				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			} else {
-				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-			}
-			String output;
-			StringBuffer xml = new StringBuffer();
-			while ((output = br.readLine()) != null) {
-				xml.append(output);
-			}
-
-			// got from
-			// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
-			rootElement = document.getDocumentElement();
-
-			conn.disconnect();
-		} catch (Exception e) {
-			e.printStackTrace();
+		BufferedReader br;
+		if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+			br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		}
+		String output;
+		StringBuffer xml = new StringBuffer();
+		while ((output = br.readLine()) != null) {
+			xml.append(output);
+		}
+
+		// got from
+		// https://stackoverflow.com/questions/4076910/how-to-retrieve-element-value-of-xml-using-java
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document document = builder.parse(new InputSource(new StringReader(xml.toString())));
+		rootElement = document.getDocumentElement();
+
+		conn.disconnect();
+
 		return rootElement;
 	}
 }

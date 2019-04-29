@@ -381,7 +381,7 @@ public class AppSession {
 	}
 
 	
-	public void updateUsersMultiThreads() throws IOException {
+	public void updateUsersMultiThreads() throws IOException, ParserConfigurationException, SAXException {
 		System.out.println("Loading users multithread...");
 		users = SamanageRequests.getAllUsersMultiThreads(userToken);
 	}
@@ -391,47 +391,47 @@ public class AppSession {
 		users = SamanageRequests.getAllUsers(userToken);
 	}
 
-	public void updateSites() throws IOException {
+	public void updateSites() throws IOException, ParserConfigurationException, SAXException {
 		System.out.println("Loading sites...");
 		sites = SamanageRequests.getSites(userToken);
 	}
 
-	public void updateSitesMultiThreads() throws IOException {
+	public void updateSitesMultiThreads() throws IOException, ParserConfigurationException, SAXException {
 		System.out.println("Loading sites multithread...");
 		sites = SamanageRequests.getSitesMultiThreads(userToken);
 	}
 
-	public void updateDepts() throws IOException {
+	public void updateDepts() throws IOException, ParserConfigurationException, SAXException {
 		System.out.println("Loading departments...");
 		departments = SamanageRequests.getDepartments(userToken);
 	}
 
-	public void updateCategories() throws IOException {
+	public void updateCategories() throws IOException, ParserConfigurationException, SAXException {
 		System.out.println("Loading categories...");
 		categories = SamanageRequests.getCategories(userToken);
 
 	}
 
-	public void updateGroups() throws IOException {
+	public void updateGroups() throws IOException, ParserConfigurationException, SAXException {
 		System.out.println("Loading groups...");
 		groups = SamanageRequests.getGroups(userToken);
 
 	}
 
-	public void updateSoftwares() throws IOException {
+	public void updateSoftwares() throws IOException, ParserConfigurationException, SAXException {
 		System.out.println("Loading softwares...");
 		softwares = SamanageRequests.getSoftwares(userToken, "408915", "Software");
 
 	}
 
-	public void updateEasyStuff() throws IOException {
+	public void updateEasyStuff() throws IOException, ParserConfigurationException, SAXException {
 		updateDepts();
 		updateCategories();
 		updateGroups();
 		updateSoftwares();
 	}
 
-	public void updateAll() throws IOException {
+	public void updateAll() throws IOException, ParserConfigurationException, SAXException {
 		updateUsersMultiThreads();
 		updateDepts();
 		updateSitesMultiThreads();
