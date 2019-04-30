@@ -37,9 +37,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -49,6 +51,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -146,6 +149,8 @@ public class MainPaneController {
 	private ComboBox<String> filterComboBox2;
 	@FXML
 	private TextField filterField2;
+	@FXML
+	private Button addRmvBtn;
 
 
 	private String updatePrompt = "";
@@ -1141,6 +1146,112 @@ public class MainPaneController {
 		});
 		Thread updateThread = new Thread(updateCheck);
 		updateThread.start();
+	}
+	
+	
+	//the following 3 methods are from https://code.makery.ch/blog/javafx-dialogs-official/
+	@FXML
+	private void handleAddRmvBtn() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation");
+		alert.setHeaderText("You're about to edit the native (local) data!");
+		alert.setContentText("Choose your option.");
+
+		ButtonType buttonTypeOne = new ButtonType("Add");
+		ButtonType buttonTypeTwo = new ButtonType("Remove");
+		ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+
+		alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeCancel);
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() != buttonTypeCancel) {
+			String actionName = result.get().getText();
+			String dataName = chooseDataToEditAlert(actionName);
+			editDataAlert(actionName, dataName);
+			AppSession.getSession().saveData();
+			setupPriorityChoiceBox();
+			setupStatesChoiceBox();
+			showAlert("Confirmation", "Done!", AlertType.INFORMATION);
+		} else {
+		   alert.close();
+		}
+	}
+	// how to make this method depends on handleAddRmvBtn()?
+	private String chooseDataToEditAlert(String actionName) {
+		
+		//
+		ArrayList<String> choices = new ArrayList<>();
+		choices.addAll(AppSession.getSession().getNatives());
+
+		ChoiceDialog<String> dialog = new ChoiceDialog<>("Native data:", choices);
+		dialog.setTitle("Choice Dialog");
+		dialog.setHeaderText("Choose the type of native data you want to " + actionName.toUpperCase() + " :");
+		dialog.setContentText("Available native data: ");
+
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			return result.get();
+		}
+		return null;
+	}
+
+	// how to make this method depends on handleAddRmvBtn()?
+	private void editDataAlert(String actionName, String dataName) {
+		if (actionName.equalsIgnoreCase("add")) {
+			TextInputDialog dialog = new TextInputDialog("");
+			dialog.setTitle("Text Input Dialog");
+			dialog.setHeaderText("Adding data for " + dataName);
+			dialog.setContentText("Please enter the name:");
+
+			// Traditional way to get the response value.
+			Optional<String> result = dialog.showAndWait();
+			if (result.isPresent()) {
+
+				if (dataName.equalsIgnoreCase("priority")) {
+					boolean containsSearchStr = AppSession.getSession().getPriorities().stream()
+							.anyMatch(result.get()::equalsIgnoreCase);
+
+					if (containsSearchStr == true) {
+						showAlert("Error", result.get() + " in " + dataName.toUpperCase() + " already existed",
+								AlertType.WARNING);
+						editDataAlert(actionName, dataName);
+					} else {
+						AppSession.getSession().getPriorities().add(result.get());
+					}
+
+				} else if (dataName.equalsIgnoreCase("state")) {
+					boolean containsSearchStr = AppSession.getSession().getPriorities().stream()
+							.anyMatch(result.get()::equalsIgnoreCase);
+					if (containsSearchStr == true) {
+						showAlert("Error", "\"" + result.get() + "\" in " + dataName.toUpperCase() + " already existed!",
+								AlertType.WARNING);
+						editDataAlert(actionName, dataName);
+					} else {
+						AppSession.getSession().getStates().add(result.get());
+					}
+				}
+			}
+		} else if (actionName.equalsIgnoreCase("remove")) {
+			ArrayList<String> choices = new ArrayList<>();
+			if (dataName.equalsIgnoreCase("priority")) {
+				choices.addAll(AppSession.getSession().getPriorities());
+			} else if (dataName.equalsIgnoreCase("state")) {
+				choices.addAll(AppSession.getSession().getStates());
+			}
+
+			ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
+			dialog.setTitle("Choice Dialog");
+			dialog.setHeaderText("Choose a data to remove from " + dataName.toUpperCase());
+			Optional<String> result = dialog.showAndWait();
+
+			if (result.isPresent()) {
+				// System.out.println("Your choice: " + result.get());
+				AppSession.getSession().getPriorities().remove(result.get());
+				AppSession.getSession().getStates().remove(result.get());
+			}
+
+		}
 	}
 
 	// LINEBREAK TEMPLATES ------------------------------------------------

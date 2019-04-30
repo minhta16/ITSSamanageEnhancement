@@ -51,6 +51,8 @@ public class AppSession {
 	private transient List<String> sites;
 	private transient Map<String, User> users;
 	
+	private ArrayList<String> natives;
+	
 	private String dateOfLastSystemUpdate;
 
 	private AppSession() {
@@ -482,5 +484,14 @@ public class AppSession {
 
 	public void setCurrentFilter2(String currentFilter2) {
 		this.currentFilter2 = currentFilter2;
+	}
+
+	public ArrayList<String> getNatives() {
+		return natives;
+		
+	}
+	
+	public void setNatives(ArrayList<String> natives) {
+		this.natives = natives;
 	}
 }

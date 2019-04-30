@@ -1,6 +1,5 @@
 {
-  "userEmail": "nguyentruong17",
-  "userToken": "",
+  "userToken": " bmd1eWVudHJ1b25nMTdAYXVndXN0YW5hLmVkdQ\u003d\u003d:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyNTUyNDA0LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTI2IDE2OjM3OjQzIn0.7t15xvK2Ih1RJ3vMCSkqwCOJV38iyO9zrkywIUMpM3zeet1qFpwXG8MX837s27EkXyXoV21oH7ZiMBNVNYFMAQ",
   "defaultDomain": "augustana.edu",
   "defaultAssignee": "chrisvaughan",
   "defaultRequester": "minhta16",
@@ -105,7 +104,11 @@
     "Low",
     "Medium",
     "High",
-    "Critical"
+    "Critical",
+  ],
+  "natives": [
+    "Priority",
+    "State"
   ],
   "dateOfLastSystemUpdate": "04/14/2019"
 }
