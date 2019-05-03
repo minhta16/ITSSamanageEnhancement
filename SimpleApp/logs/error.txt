@@ -56,3 +56,5 @@ Caused by: java.net.ConnectException: Connection timed out: connect
 	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
 	... 1 more
 Exception running application application.Main
+Chosen template: ITS Meeting
+application.data.Incident@16b4f5d5

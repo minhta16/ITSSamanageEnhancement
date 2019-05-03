@@ -711,10 +711,7 @@ public class MainPaneController {
 		alert.showAndWait();
 	}
 
-
-	private void addTableItem(User user) {
-		TimeTrack track = new TimeTrack(user, Integer.parseInt(timeElapsedField.getText()),
-				timeTrackCmtField.getText());
+	private void addTableItem(TimeTrack track) {
 		track.getRemoveBtn().setOnAction((e) -> {
 			AppSession.getSession().removeTimeTrackByEmail(track.getEmail());
 			trackTable.getItems().remove(track);
@@ -730,6 +727,12 @@ public class MainPaneController {
 		savedEmailprovider.addPossibleSuggestions(AppSession.getSession().getSavedEmails());
 		assigneeProvider.clearSuggestions();
 		assigneeProvider.addPossibleSuggestions(AppSession.getSession().getAssignees());
+	}
+	
+	private void addTableItem(User user) {
+		TimeTrack track = new TimeTrack(user, Integer.parseInt(timeElapsedField.getText()),
+				timeTrackCmtField.getText());
+		addTableItem(track);
 	}
 
 	private void clearInputFields() {
@@ -1488,7 +1491,9 @@ public class MainPaneController {
 					AppSession.getSession().getTimeTracks().clear();
 					AppSession.getSession().getTimeTracks().addAll(chosenTemplate.getTimeTracks());
 					trackTable.getItems().clear();
-					trackTable.getItems().addAll(chosenTemplate.getTimeTracks());
+					for (TimeTrack track: chosenTemplate.getTimeTracks()) {
+						addTableItem(track);
+					}
 				}
 
 			} else {
