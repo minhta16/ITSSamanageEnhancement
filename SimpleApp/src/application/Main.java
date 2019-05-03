@@ -3,6 +3,7 @@ package application;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -40,7 +41,7 @@ public class Main extends Application {
 		erroutStream = new PrintStream(new FileOutputStream("./logs/error.txt", true));
 		
 		// TODO: reenable
-//		System.setErr(erroutStream);
+		System.setErr(erroutStream);
 		
         
         System.out.println("Loading...");
@@ -65,15 +66,14 @@ public class Main extends Application {
 	        AppSession.getSession().updateUsersMultiThreads();  
 	        AppSession.getSession().updateSitesMultiThreads(); 
 		} catch (ParserConfigurationException | SAXException e1) {
-			
-			e1.printStackTrace();
+
+			printError(e1);
 		}
         while(AppSession.getSession().getUsers().size() < realUserSize && AppSession.getSession().getSites().size() < realSiteSize) {
         	try {
 				Thread.sleep((long) 5);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				printError(e);
 			}
         }
         
@@ -132,5 +132,15 @@ public class Main extends Application {
 		}
 
 		return userToken;
+	}
+	private void printError(Exception e) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("ERROR");
+		alert.setHeaderText("Please refer to log/error.txt for debugging:\n" + e.getStackTrace());
+		alert.showAndWait();
+		
+		System.err.println("\n" + LocalDate.now() + "------\n");
+		e.printStackTrace();
+		System.exit(1);
 	}
 }

@@ -1,7 +1,10 @@
 package application.controller;
 
+import java.awt.Desktop;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -44,6 +47,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -79,6 +83,10 @@ public class MainPaneController {
 	private ComboBox<String> catChoiceBox;
 	@FXML
 	private Label subcatLabel;
+	@FXML
+	private Hyperlink incidentLink;
+	@FXML
+	private Hyperlink allIncidentsLink;
 	@FXML
 	private ComboBox<String> subcatChoiceBox;
 	@FXML
@@ -248,6 +256,15 @@ public class MainPaneController {
 			filterComboBox2.getItems().add(incidentTable.getColumns().get(i).getText());
 		}
 
+		allIncidentsLink.setOnAction((ev) -> {
+			try {
+				//https://stackoverflow.com/questions/16604341/how-can-i-open-the-default-system-browser-from-a-java-fx-application
+				Desktop.getDesktop().browse(new URL("https://augustanacollege.samanage.com/incidents").toURI());
+			} catch (IOException | URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 	}
 
 	private void setupIncidentEditTab() {
@@ -460,6 +477,7 @@ public class MainPaneController {
 	private void handleNewIncidentBtn() {
 		incidentEditTab.setDisable(false);
 		incidentEditTab.setText("New Incident");
+		incidentLink.setVisible(false);
 		tabPane.getSelectionModel().select(incidentEditTab);
 		AppSession.getSession().setEditType(IncidentEditType.NEW);
 		clearInputFields();
@@ -775,6 +793,15 @@ public class MainPaneController {
 			incident.getEditBtn().setOnAction((e) -> {
 				incidentEditTab.setDisable(false);
 				incidentEditTab.setText("Edit: " + incident.getTitle());
+				incidentLink.setVisible(true);
+				incidentLink.setOnAction((event) -> {
+					try {
+						Desktop.getDesktop().browse(new URL("https://augustanacollege.samanage.com/incidents/" + incident.getID()).toURI());
+					} catch (IOException | URISyntaxException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+				});
 				curUpdateIncidentID = incident.getID();
 				tabPane.getSelectionModel().select(incidentEditTab);
 				try {
@@ -812,9 +839,9 @@ public class MainPaneController {
 
 					// Compare first name and last name of every person with filter text.
 					String lowerCaseFilter = newValue.toLowerCase();
-					String lowerCaseFilter2 = filterField2.getText().toLowerCase();
+//					String lowerCaseFilter2 = filterField2.getText().toLowerCase();
 					String curFilter = AppSession.getSession().getCurrentFilter();
-					String curFilter2 = AppSession.getSession().getCurrentFilter2();
+//					String curFilter2 = AppSession.getSession().getCurrentFilter2();
 
 					boolean match = false;
 

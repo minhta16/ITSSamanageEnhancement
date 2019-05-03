@@ -19,6 +19,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -73,27 +74,27 @@ public class SamanageRequests {
 		conn.setRequestProperty("Content-Type", "text/xml");
 
 		String data = "<incident>";
-		data += " <name>" + incidentName + "</name>";
-		data += " <priority>" + priority + "</priority>";
-		data += " <requester><email>" + requester + "</email></requester>";
-		data += " <category><name>" + category + "</name></category>";
+		data += " <name>" + StringEscapeUtils.escapeHtml4(incidentName) + "</name>";
+		data += " <priority>" + StringEscapeUtils.escapeHtml4(priority) + "</priority>";
+		data += " <requester><email>" + StringEscapeUtils.escapeHtml4(requester) + "</email></requester>";
+		data += " <category><name>" + StringEscapeUtils.escapeHtml4(category) + "</name></category>";
 		if (!subcategory.isEmpty()) {
 			data += " <subcategory>";
-			data += "<name>" + subcategory + "</name>";
+			data += "<name>" + StringEscapeUtils.escapeHtml4(subcategory) + "</name>";
 			data += " </subcategory>";
 		}
-		data += " <description>" + description + "</description>";
-		data += " <due_at>" + dueDate + "</due_at>";
+		data += " <description>" + StringEscapeUtils.escapeHtml4(description) + "</description>";
+		data += " <due_at>" + StringEscapeUtils.escapeHtml4(dueDate) + "</due_at>";
 		if (assignee.contains("@")) {
-			data += " <assignee><email>" + assignee + "</email></assignee>";
+			data += " <assignee><email>" + StringEscapeUtils.escapeHtml4(assignee) + "</email></assignee>";
 		} else {
-			data += " <assignee_id>" + assignee + "</assignee_id>";
+			data += " <assignee_id>" + StringEscapeUtils.escapeHtml4(assignee) + "</assignee_id>";
 		}
 		if (software != null && !software.isEmpty()) {
 			data += "<custom_fields_values>";
 			data += "<custom_fields_value>";
 			data += "<name>Software</name>";
-			data += "<value>" + software + "</value>";
+			data += "<value>" + StringEscapeUtils.escapeHtml4(software) + "</value>";
 			data += "</custom_fields_value>";
 			data += "</custom_fields_values>";
 
@@ -134,7 +135,7 @@ public class SamanageRequests {
 		conn.setRequestProperty("Accept", ACCEPT_VERSION);
 		conn.setRequestProperty("Content-Type", "text/xml");
 
-		String data = "<time_track>" + "<name>" + trackCmt + "</name>";
+		String data = "<time_track>" + "<name>" + StringEscapeUtils.escapeHtml4(trackCmt) + "</name>";
 		data += "<creator_id>" + creatorID + "</creator_id>";
 		data += "<minutes_parsed>" + time + " m</minutes_parsed>" + "</time_track>";
 		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
@@ -932,13 +933,13 @@ public class SamanageRequests {
 
 		String data = "<incident>";
 		if (state != null && !state.isEmpty()) {
-			data += " <state>" + state + "</state>";
+			data += " <state>" + StringEscapeUtils.escapeHtml4(state) + "</state>";
 		}
 		if (site != null && !site.isEmpty()) {
-			data += " <site><name>" + site + "</name></site>";
+			data += " <site><name>" + StringEscapeUtils.escapeHtml4(site) + "</name></site>";
 		}
 		if (dept != null && !dept.isEmpty()) {
-			data += " <department><name>" + dept + "</name></department>";
+			data += " <department><name>" + StringEscapeUtils.escapeHtml4(dept) + "</name></department>";
 		}
 		data += "</incident>";
 		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
@@ -982,24 +983,24 @@ public class SamanageRequests {
 		conn.setRequestProperty("Content-Type", "text/xml");
 
 		String data = "<incident>";
-		data += " <name>" + incidentName + "</name>";
-		data += " <priority>" + priority + "</priority>";
-		data += " <requester><email>" + requester + "</email></requester>";
-		data += " <category><name>" + category + "</name></category>";
+		data += " <name>" + StringEscapeUtils.escapeHtml4(incidentName) + "</name>";
+		data += " <priority>" + StringEscapeUtils.escapeHtml4(priority) + "</priority>";
+		data += " <requester><email>" + StringEscapeUtils.escapeHtml4(requester) + "</email></requester>";
+		data += " <category><name>" + StringEscapeUtils.escapeHtml4(category) + "</name></category>";
 		if (!subcategory.equals("")) {
-			data += " <subcategory>" + "      <name>" + subcategory + "</name>" + " </subcategory>";
+			data += " <subcategory>" + "      <name>" + StringEscapeUtils.escapeHtml4(subcategory) + "</name>" + " </subcategory>";
 		}
-		data += " <description>" + description + "</description>";
-		data += " <due_at>" + dueDate + "</due_at>";
+		data += " <description>" + StringEscapeUtils.escapeHtml4(description) + "</description>";
+		data += " <due_at>" + StringEscapeUtils.escapeHtml4(dueDate) + "</due_at>";
 		if (assignee.contains("@")) {
-			data += " <assignee><email>" + assignee + "</email></assignee>";
+			data += " <assignee><email>" + StringEscapeUtils.escapeHtml4(assignee) + "</email></assignee>";
 		} else {
-			data += " <assignee_id>" + assignee + "</assignee_id>";
+			data += " <assignee_id>" + StringEscapeUtils.escapeHtml4(assignee) + "</assignee_id>";
 		}
 		if (!software.isEmpty()) {
 			data += "<custom_fields_values>";
 			data += "<custom_fields_value><name>Software</name>";
-			data += "<value>" + software + "</value></custom_fields_value>";
+			data += "<value>" + StringEscapeUtils.escapeHtml4(software) + "</value></custom_fields_value>";
 			data += "</custom_fields_values>";
 		}
 		data += "</incident>";
@@ -1051,7 +1052,7 @@ public class SamanageRequests {
 			NodeList subList = list.item(0).getChildNodes();
 
 			if (subList != null && subList.getLength() > 0) {
-				return subList.item(item).getNodeValue();
+				return StringEscapeUtils.unescapeHtml4(subList.item(item).getNodeValue());
 			}
 		}
 
