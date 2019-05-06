@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>D:\Study\Intern\ITSInternship\RunnableJAR\0_0_7\samanage\SimpleApp.jar</jar>
+  <outfile>D:\Study\Intern\ITSInternship\RunnableJAR\0_0_7\samanage\SamanageLauncher.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>D:\Study\Intern\ITSInternship\RunnableJAR\appIcon96.ico</icon>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.8.0_45</minVersion>
+    <maxVersion>1.8.0_211</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+  </jre>
+  <splash>
+    <file>D:\Study\Intern\ITSInternship\RunnableJAR\splash2.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>300</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+  <versionInfo>
+    <fileVersion>0.0.0.7</fileVersion>
+    <txtFileVersion>0.0.7</txtFileVersion>
+    <fileDescription>A customized UI for Samanage by Augustana ITS</fileDescription>
+    <copyright>None</copyright>
+    <productVersion>0.0.0.7</productVersion>
+    <txtProductVersion>0.0.7</txtProductVersion>
+    <productName>Samanage Customized UI</productName>
+    <companyName>Augustana ITS</companyName>
+    <internalName>SamanageCustomizedUI</internalName>
+    <originalFilename>SamanageLauncher.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>ENGLISH_US</language>
+  </versionInfo>
+</launch4jConfig>

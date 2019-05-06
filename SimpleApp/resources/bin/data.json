@@ -105,6 +105,7 @@
     "Medium",
     "High",
     "Critical",
+    null
   ],
   "natives": [
     "Priority",

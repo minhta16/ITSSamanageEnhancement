@@ -872,6 +872,8 @@ public class MainPaneController {
 							match = true;
 						} else if (Integer.toString(incident.getTrackedUsersNum()).contains(lowerCaseFilter) && curFilter.equals("Tracks #")) {
 							match = true;
+						} else if (incident.getNumber().contains(lowerCaseFilter) && curFilter.equals("#")) {
+							match = true;
 						} else {
 							match = false;
 						}
@@ -1667,7 +1669,8 @@ public class MainPaneController {
 		String msg = "Collaborators: Nathan Truong @nguyentruong17, Minh Ta @minhta16  \r\n" + 
 				"This project aims to solve ITS Department's work order processing insufficiency.  \r\n" + 
 				"It implements JavaFX and RESTful for an user-friendly application designed for fast and on-the-fly ticket entry. \r\n"+
-				"© Augustana ITS Department 2019";
+				"© Augustana ITS Department 2019\n"
+				+ "Version: 0.0.7";
 		
 		showAlert(title, msg, AlertType.INFORMATION);
 	}
