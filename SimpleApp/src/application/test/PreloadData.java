@@ -6,7 +6,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import application.data.AppSession;
 import application.data.SamanageRequests;
 
 public class PreloadData {

@@ -37,6 +37,7 @@ import javafx.scene.Parent;
 public class SamanageRequests {
 
 	private static final String ACCEPT_VERSION = "application/vnd.samanage.v2.1+xml";
+	@SuppressWarnings("unused")
 	private static final String ACCEPT_VERSION_JSON = "application/vnd.samanage.v2.1+json";
 	private static final int PER_PAGE_FETCH = 25;
 	private static final int PER_PAGE_BOOT = 100;

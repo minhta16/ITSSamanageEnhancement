@@ -25,6 +25,8 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+	public static final String VERSION_NUMBER = "0.0.8";
+	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/MainPane.fxml"));
