@@ -1673,7 +1673,7 @@ public class MainPaneController {
 				"This project aims to solve ITS Department's work order processing insufficiency.  \r\n" + 
 				"It implements JavaFX and RESTful for an user-friendly application designed for fast and on-the-fly ticket entry. \r\n"+
 				"© Augustana ITS Department 2019\n"
-				+ "Version: 0.0.7";
+				+ "Version: 0.0.8";
 		
 		showAlert(title, msg, AlertType.INFORMATION);
 	}
