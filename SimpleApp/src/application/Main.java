@@ -96,7 +96,7 @@ public class Main extends Application {
 
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()) {
-			userToken = result.get();
+			userToken = result.get().trim();
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
@@ -119,7 +119,7 @@ public class Main extends Application {
 				dialog.setContentText("Please enter your user token: ");
 				result = dialog.showAndWait();
 				if (result.isPresent()) {
-					userToken = result.get();
+					userToken = result.get().trim();
 				} else {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Error");

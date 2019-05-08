@@ -27,7 +27,7 @@ curl -H "X-Samanage-Authorization: Bearer $TOKEN" -H 'Accept: application/vnd.sa
 #   <subcategory>
 #        <name>Planning/Consulting/Brainstorming</name>
 #   </subcategory>
-#  <description>Test curl-ing new incidents</description>
+#  <description>&lt;a href="mailto:minhta16@augustana.edu"&gt;performingarts@augustana.edu&lt;/a&gt;minhta16@augustana.edu&lt;/a&gt;</description>
 #  <due_at>Mar 20, 2019</due_at>
 # </incident>
 # ' -H 'Accept: application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X POST https://api.samanage.com/incidents.xml

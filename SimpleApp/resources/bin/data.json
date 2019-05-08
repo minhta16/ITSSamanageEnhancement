@@ -1,5 +1,5 @@
 {
-  "userToken": " bmd1eWVudHJ1b25nMTdAYXVndXN0YW5hLmVkdQ\u003d\u003d:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyNTUyNDA0LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTI2IDE2OjM3OjQzIn0.7t15xvK2Ih1RJ3vMCSkqwCOJV38iyO9zrkywIUMpM3zeet1qFpwXG8MX837s27EkXyXoV21oH7ZiMBNVNYFMAQ",
+  "userToken": "bmd1eWVudHJ1b25nMTdAYXVndXN0YW5hLmVkdQ\u003d\u003d:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyNTUyNDA0LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTI2IDE2OjM3OjQzIn0.7t15xvK2Ih1RJ3vMCSkqwCOJV38iyO9zrkywIUMpM3zeet1qFpwXG8MX837s27EkXyXoV21oH7ZiMBNVNYFMAQ",
   "defaultDomain": "augustana.edu",
   "defaultAssignee": "chrisvaughan",
   "defaultRequester": "minhta16",
@@ -60,6 +60,39 @@
         }
       ],
       "trackedUsersNum": 2
+    },
+    "Test template": {
+      "ID": "Test template",
+      "number": "0",
+      "state": "Closed",
+      "title": "ITS Monthly Meeting",
+      "priority": "",
+      "cat": "Meetings  (ITS use only)",
+      "subcat": "Campus Event",
+      "assignee": "minhta16",
+      "requester": "minhta16",
+      "site": "",
+      "dept": "",
+      "desc": "Test",
+      "groupId": "",
+      "software": "",
+      "trackedUsers": [
+        {
+          "user": {
+            "name": "Ta, Minh Q",
+            "email": "minhta16@augustana.edu",
+            "dept": "Student",
+            "site": "Freya House 2",
+            "ID": "1753326",
+            "groupID": [
+              "1953008"
+            ]
+          },
+          "time": 30,
+          "comment": "test"
+        }
+      ],
+      "trackedUsersNum": 1
     }
   },
   "assigneeEmails": [

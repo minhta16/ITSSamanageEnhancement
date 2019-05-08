@@ -44,7 +44,8 @@ public class SamanageRequests {
 
 	public static void newIncidentWithTimeTrack(String userToken, String incidentName, String priority, String category,
 			String subcategory, String description, String dueDate, String state, String assignee, String requester,
-			String dept, String site, String software, boolean notify) throws IOException, ParserConfigurationException, SAXException {
+			String dept, String site, String software, boolean notify)
+			throws IOException, ParserConfigurationException, SAXException {
 		SamanageRequests.newIncident(userToken, incidentName, priority, category, subcategory, description, dueDate,
 				assignee, requester, software);
 		String incidentID = SamanageRequests.getID(userToken);
@@ -164,8 +165,8 @@ public class SamanageRequests {
 				@Override
 				public Parent call() throws IOException, ParserConfigurationException, SAXException {
 
-					String url = "https://api.samanage.com/incidents.xml" + "?per_page=" + PER_PAGE_FETCH + "&page=" + page
-							+ "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
+					String url = "https://api.samanage.com/incidents.xml" + "?per_page=" + PER_PAGE_FETCH + "&page="
+							+ page + "&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
 							+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
 							+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
@@ -254,7 +255,7 @@ public class SamanageRequests {
 					return null;
 				}
 			};
-			
+
 			newTask.setOnSucceeded((e) -> {
 				System.out.println("done task " + page);
 			});
@@ -262,10 +263,10 @@ public class SamanageRequests {
 			newThread.start();
 			threads.add(newThread);
 		}
-		for(Thread thread : threads) {
+		for (Thread thread : threads) {
 			thread.join();
 		}
-		
+
 		return incidentMap;
 	}
 
@@ -408,7 +409,8 @@ public class SamanageRequests {
 		// System.err.println(map);
 	}
 
-	public static Map<String, User> getAllUsersMultiThreads(String userToken) throws IOException, ParserConfigurationException, SAXException {
+	public static Map<String, User> getAllUsersMultiThreads(String userToken)
+			throws IOException, ParserConfigurationException, SAXException {
 		TreeMap<String, User> map = new TreeMap<String, User>();
 		Map<String, User> users = Collections.synchronizedMap(map);
 
@@ -435,7 +437,8 @@ public class SamanageRequests {
 					try {
 						// String url =
 						// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
-						String url = "https://api.samanage.com/users.xml?per_page=" + PER_PAGE_BOOT + "&page=" + current;
+						String url = "https://api.samanage.com/users.xml?per_page=" + PER_PAGE_BOOT + "&page="
+								+ current;
 
 						URL obj = new URL(url);
 						HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -535,7 +538,8 @@ public class SamanageRequests {
 
 	}
 
-	public static TreeMap<String, ArrayList<String>> getCategories(String userToken) throws IOException, ParserConfigurationException, SAXException {
+	public static TreeMap<String, ArrayList<String>> getCategories(String userToken)
+			throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -578,7 +582,8 @@ public class SamanageRequests {
 		return categoriesMap;
 	}
 
-	public static ArrayList<String> getDepartments(String userToken) throws IOException, ParserConfigurationException, SAXException {
+	public static ArrayList<String> getDepartments(String userToken)
+			throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -621,7 +626,8 @@ public class SamanageRequests {
 
 	}
 
-	public static ArrayList<String> getSites(String userToken) throws IOException, ParserConfigurationException, SAXException {
+	public static ArrayList<String> getSites(String userToken)
+			throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -663,7 +669,8 @@ public class SamanageRequests {
 		return siteList;
 	}
 
-	public static List<String> getSitesMultiThreads(String userToken) throws IOException, ParserConfigurationException, SAXException {
+	public static List<String> getSitesMultiThreads(String userToken)
+			throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -697,7 +704,8 @@ public class SamanageRequests {
 						// String url =
 						// "https://api.samanage.com/users.xml?email=minhta16@augustana.edu";
 
-						String url = "https://api.samanage.com/sites.xml?per_page=" + PER_PAGE_BOOT + "&page=" + current;
+						String url = "https://api.samanage.com/sites.xml?per_page=" + PER_PAGE_BOOT + "&page="
+								+ current;
 
 						URL obj = new URL(url);
 						HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -787,7 +795,8 @@ public class SamanageRequests {
 		return softwareList;
 	}
 
-	public static TreeMap<String, Group> getGroups(String userToken) throws IOException, ParserConfigurationException, SAXException {
+	public static TreeMap<String, Group> getGroups(String userToken)
+			throws IOException, ParserConfigurationException, SAXException {
 		/*
 		 * curl -H "X-Samanage-Authorization: Bearer TOKEN" -H 'Accept:
 		 * application/vnd.samanage.v2.1+xml' -H 'Content-Type:text/xml' -X GET
@@ -840,12 +849,13 @@ public class SamanageRequests {
 		conn.disconnect();
 		return incidentID;
 	}
-	
-	public static int getIncidentsNum(String userToken, LocalDate fromDate, LocalDate toDate) throws IOException, ParserConfigurationException, SAXException {
 
-		String url = "https://api.samanage.com/incidents.xml" + "?per_page=1&page=1&created%5B%5D=Select%20Date%20Range" + "&created_custom_gte%5B%5D="
-				+ fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "&created_custom_lte%5B%5D="
-				+ toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+	public static int getIncidentsNum(String userToken, LocalDate fromDate, LocalDate toDate)
+			throws IOException, ParserConfigurationException, SAXException {
+
+		String url = "https://api.samanage.com/incidents.xml" + "?per_page=1&page=1&created%5B%5D=Select%20Date%20Range"
+				+ "&created_custom_gte%5B%5D=" + fromDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+				+ "&created_custom_lte%5B%5D=" + toDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
 		URL obj = new URL(url);
 		HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
@@ -873,8 +883,8 @@ public class SamanageRequests {
 		return totalEntries;
 	}
 
-
-	public static int getTotalElements(String userToken, String type) throws IOException, ParserConfigurationException, SAXException {
+	public static int getTotalElements(String userToken, String type)
+			throws IOException, ParserConfigurationException, SAXException {
 		String url = "https://api.samanage.com/" + type + ".xml?per_page=1";
 
 		URL obj = new URL(url);
@@ -983,24 +993,25 @@ public class SamanageRequests {
 		conn.setRequestProperty("Content-Type", "text/xml");
 
 		String data = "<incident>";
-		data += " <name>" + StringEscapeUtils.escapeHtml4(incidentName) + "</name>";
-		data += " <priority>" + StringEscapeUtils.escapeHtml4(priority) + "</priority>";
-		data += " <requester><email>" + StringEscapeUtils.escapeHtml4(requester) + "</email></requester>";
-		data += " <category><name>" + StringEscapeUtils.escapeHtml4(category) + "</name></category>";
+		data += " <name>" + StringEscapeUtils.escapeXml11(incidentName) + "</name>";
+		data += " <priority>" + StringEscapeUtils.escapeXml11(priority) + "</priority>";
+		data += " <requester><email>" + StringEscapeUtils.escapeXml11(requester) + "</email></requester>";
+		data += " <category><name>" + StringEscapeUtils.escapeXml11(category) + "</name></category>";
 		if (!subcategory.equals("")) {
-			data += " <subcategory>" + "      <name>" + StringEscapeUtils.escapeHtml4(subcategory) + "</name>" + " </subcategory>";
+			data += " <subcategory>" + "      <name>" + StringEscapeUtils.escapeXml11(subcategory) + "</name>"
+					+ " </subcategory>";
 		}
-		data += " <description>" + StringEscapeUtils.escapeHtml4(description) + "</description>";
-		data += " <due_at>" + StringEscapeUtils.escapeHtml4(dueDate) + "</due_at>";
+		data += " <description>" + StringEscapeUtils.escapeXml11(description) + "</description>";
+		data += " <due_at>" + StringEscapeUtils.escapeXml11(dueDate) + "</due_at>";
 		if (assignee.contains("@")) {
-			data += " <assignee><email>" + StringEscapeUtils.escapeHtml4(assignee) + "</email></assignee>";
+			data += " <assignee><email>" + StringEscapeUtils.escapeXml11(assignee) + "</email></assignee>";
 		} else {
-			data += " <assignee_id>" + StringEscapeUtils.escapeHtml4(assignee) + "</assignee_id>";
+			data += " <assignee_id>" + StringEscapeUtils.escapeXml11(assignee) + "</assignee_id>";
 		}
 		if (!software.isEmpty()) {
 			data += "<custom_fields_values>";
 			data += "<custom_fields_value><name>Software</name>";
-			data += "<value>" + StringEscapeUtils.escapeHtml4(software) + "</value></custom_fields_value>";
+			data += "<value>" + StringEscapeUtils.escapeXml11(software) + "</value></custom_fields_value>";
 			data += "</custom_fields_values>";
 		}
 		data += "</incident>";
@@ -1052,7 +1063,7 @@ public class SamanageRequests {
 			NodeList subList = list.item(0).getChildNodes();
 
 			if (subList != null && subList.getLength() > 0) {
-				return StringEscapeUtils.unescapeHtml4(subList.item(item).getNodeValue());
+				return StringEscapeUtils.unescapeXml(subList.item(item).getNodeValue());
 			}
 		}
 

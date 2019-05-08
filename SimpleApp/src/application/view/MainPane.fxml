@@ -70,7 +70,7 @@
                         <RowConstraints maxHeight="143.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <padding>
-                        <Insets right="20.0" top="10.0" />
+                        <Insets left="20.0" right="20.0" top="10.0" />
                      </padding>
                      <children>
                         <Button fx:id="createNewIncidentBtn" mnemonicParsing="false" onAction="#handleNewIncidentBtn" text="+ New Incident" GridPane.columnIndex="1" GridPane.rowIndex="1" />
