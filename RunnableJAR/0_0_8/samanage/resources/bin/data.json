@@ -1,0 +1,148 @@
+{
+  "userToken": "bmd1eWVudHJ1b25nMTdAYXVndXN0YW5hLmVkdQ\u003d\u003d:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyNTUyNDA0LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAzLTI2IDE2OjM3OjQzIn0.7t15xvK2Ih1RJ3vMCSkqwCOJV38iyO9zrkywIUMpM3zeet1qFpwXG8MX837s27EkXyXoV21oH7ZiMBNVNYFMAQ",
+  "defaultDomain": "augustana.edu",
+  "defaultAssignee": "chrisvaughan",
+  "defaultRequester": "minhta16",
+  "requesterInfo": {
+    "name": "Ta, Minh Q",
+    "email": "minhta16@augustana.edu",
+    "dept": "Student",
+    "site": "Freya House 2",
+    "ID": "1753326",
+    "groupID": [
+      "1953008"
+    ]
+  },
+  "templates": {
+    "ITS Meeting": {
+      "ID": "ITS Meeting",
+      "number": "0",
+      "state": "Closed",
+      "title": "Test template 2",
+      "priority": "",
+      "cat": "Meetings  (ITS use only)",
+      "subcat": "Conference",
+      "assignee": "nguyentruong17@augustana.edu",
+      "requester": "minhta16@augustana.edu",
+      "site": "",
+      "dept": "",
+      "desc": "Test template 2",
+      "groupId": "",
+      "software": "",
+      "trackedUsers": [
+        {
+          "user": {
+            "name": "Truong, Nguyen",
+            "email": "nguyentruong17@augustana.edu",
+            "dept": "Student",
+            "site": "Andreen 430",
+            "ID": "2552404",
+            "groupID": [
+              "2753563"
+            ]
+          },
+          "time": 30,
+          "comment": "time"
+        },
+        {
+          "user": {
+            "name": "Ta, Minh Q",
+            "email": "minhta16@augustana.edu",
+            "dept": "Student",
+            "site": "Freya House 2",
+            "ID": "1753326",
+            "groupID": [
+              "1953008"
+            ]
+          },
+          "time": 30,
+          "comment": "time"
+        }
+      ],
+      "trackedUsersNum": 2
+    },
+    "Test template": {
+      "ID": "Test template",
+      "number": "0",
+      "state": "Closed",
+      "title": "ITS Monthly Meeting",
+      "priority": "",
+      "cat": "Meetings  (ITS use only)",
+      "subcat": "Campus Event",
+      "assignee": "minhta16",
+      "requester": "minhta16",
+      "site": "",
+      "dept": "",
+      "desc": "Test",
+      "groupId": "",
+      "software": "",
+      "trackedUsers": [
+        {
+          "user": {
+            "name": "Ta, Minh Q",
+            "email": "minhta16@augustana.edu",
+            "dept": "Student",
+            "site": "Freya House 2",
+            "ID": "1753326",
+            "groupID": [
+              "1953008"
+            ]
+          },
+          "time": 30,
+          "comment": "test"
+        }
+      ],
+      "trackedUsersNum": 1
+    }
+  },
+  "assigneeEmails": [
+    "janaarpy@augustana.edu",
+    "bradbjork@augustana.edu",
+    "bonniehewitt@augustana.edu",
+    "lillianbradshaw@augustana.edu",
+    "CentrifyTest@augustana.edu",
+    "chrisvaughan@augustana.edu",
+    "scottdean@augustana.edu",
+    "dianeheist@augustana.edu",
+    "markusharris@augustana.edu",
+    "JustinMcDanel@augustana.edu",
+    "jeffmartin@augustana.edu",
+    "seanmcbride@augustana.edu",
+    "wendyramsdale@augustana.edu",
+    "fernandorios@augustana.edu",
+    "shawnbeattie@augustana.edu",
+    "sophiawu@augustana.edu",
+    "studentque@augustana.edu",
+    "tammymcauliffe@augustana.edu",
+    "suevanwatermeulen@augustana.edu",
+    "kevinwhitemore@augustana.edu",
+    "kristinazimmerman@augustana.edu"
+  ],
+  "states": [
+    "New",
+    "Assigned",
+    "Awaiting Input",
+    "On Hold",
+    "Critical",
+    "On Order",
+    "Scheduled",
+    "New - User High Priority",
+    "In Progress",
+    "Modifying Work Order",
+    "Resolved",
+    "Closed"
+  ],
+  "priorities": [
+    "None",
+    "Low",
+    "Medium",
+    "High",
+    "Critical",
+    null
+  ],
+  "natives": [
+    "Priority",
+    "State"
+  ],
+  "dateOfLastSystemUpdate": "04/14/2019"
+}

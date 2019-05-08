@@ -76,27 +76,27 @@ public class SamanageRequests {
 		conn.setRequestProperty("Content-Type", "text/xml");
 
 		String data = "<incident>";
-		data += " <name>" + StringEscapeUtils.escapeHtml4(incidentName) + "</name>";
-		data += " <priority>" + StringEscapeUtils.escapeHtml4(priority) + "</priority>";
-		data += " <requester><email>" + StringEscapeUtils.escapeHtml4(requester) + "</email></requester>";
-		data += " <category><name>" + StringEscapeUtils.escapeHtml4(category) + "</name></category>";
+		data += " <name>" + StringEscapeUtils.escapeXml11(incidentName) + "</name>";
+		data += " <priority>" + StringEscapeUtils.escapeXml11(priority) + "</priority>";
+		data += " <requester><email>" + StringEscapeUtils.escapeXml11(requester) + "</email></requester>";
+		data += " <category><name>" + StringEscapeUtils.escapeXml11(category) + "</name></category>";
 		if (!subcategory.isEmpty()) {
 			data += " <subcategory>";
-			data += "<name>" + StringEscapeUtils.escapeHtml4(subcategory) + "</name>";
+			data += "<name>" + StringEscapeUtils.escapeXml11(subcategory) + "</name>";
 			data += " </subcategory>";
 		}
-		data += " <description>" + StringEscapeUtils.escapeHtml4(description) + "</description>";
-		data += " <due_at>" + StringEscapeUtils.escapeHtml4(dueDate) + "</due_at>";
+		data += " <description>" + StringEscapeUtils.escapeXml11(description) + "</description>";
+		data += " <due_at>" + StringEscapeUtils.escapeXml11(dueDate) + "</due_at>";
 		if (assignee.contains("@")) {
-			data += " <assignee><email>" + StringEscapeUtils.escapeHtml4(assignee) + "</email></assignee>";
+			data += " <assignee><email>" + StringEscapeUtils.escapeXml11(assignee) + "</email></assignee>";
 		} else {
-			data += " <assignee_id>" + StringEscapeUtils.escapeHtml4(assignee) + "</assignee_id>";
+			data += " <assignee_id>" + StringEscapeUtils.escapeXml11(assignee) + "</assignee_id>";
 		}
 		if (software != null && !software.isEmpty()) {
 			data += "<custom_fields_values>";
 			data += "<custom_fields_value>";
 			data += "<name>Software</name>";
-			data += "<value>" + StringEscapeUtils.escapeHtml4(software) + "</value>";
+			data += "<value>" + StringEscapeUtils.escapeXml11(software) + "</value>";
 			data += "</custom_fields_value>";
 			data += "</custom_fields_values>";
 
@@ -137,7 +137,7 @@ public class SamanageRequests {
 		conn.setRequestProperty("Accept", ACCEPT_VERSION);
 		conn.setRequestProperty("Content-Type", "text/xml");
 
-		String data = "<time_track>" + "<name>" + StringEscapeUtils.escapeHtml4(trackCmt) + "</name>";
+		String data = "<time_track>" + "<name>" + StringEscapeUtils.escapeXml11(trackCmt) + "</name>";
 		data += "<creator_id>" + creatorID + "</creator_id>";
 		data += "<minutes_parsed>" + time + " m</minutes_parsed>" + "</time_track>";
 		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
@@ -945,13 +945,13 @@ public class SamanageRequests {
 
 		String data = "<incident>";
 		if (state != null && !state.isEmpty()) {
-			data += " <state>" + StringEscapeUtils.escapeHtml4(state) + "</state>";
+			data += " <state>" + StringEscapeUtils.escapeXml11(state) + "</state>";
 		}
 		if (site != null && !site.isEmpty()) {
-			data += " <site><name>" + StringEscapeUtils.escapeHtml4(site) + "</name></site>";
+			data += " <site><name>" + StringEscapeUtils.escapeXml11(site) + "</name></site>";
 		}
 		if (dept != null && !dept.isEmpty()) {
-			data += " <department><name>" + StringEscapeUtils.escapeHtml4(dept) + "</name></department>";
+			data += " <department><name>" + StringEscapeUtils.escapeXml11(dept) + "</name></department>";
 		}
 		data += "</incident>";
 		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
@@ -1070,7 +1070,7 @@ public class SamanageRequests {
 			NodeList subList = list.item(0).getChildNodes();
 
 			if (subList != null && subList.getLength() > 0) {
-				return StringEscapeUtils.unescapeXml(subList.item(item).getNodeValue());
+				return StringEscapeUtils.unescapeHtml4(subList.item(item).getNodeValue());
 			}
 		}
 
