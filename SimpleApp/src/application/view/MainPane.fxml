@@ -25,9 +25,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="797.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="797.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainPaneController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
+      <MenuBar prefHeight="32.0" prefWidth="1214.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -91,16 +91,17 @@
                           <columns>
                               <TableColumn editable="false" minWidth="9.0" prefWidth="55.0" text="#" />
                               <TableColumn editable="false" minWidth="9.0" prefWidth="71.99996948242188" text="State" />
-                            <TableColumn editable="false" prefWidth="181.0" text="Title" />
-                              <TableColumn editable="false" prefWidth="68.0" text="Priority" />
-                              <TableColumn editable="false" prefWidth="116.0" text="Category" />
-                              <TableColumn editable="false" prefWidth="121.0" text="Subcategory" />
-                            <TableColumn editable="false" prefWidth="128.0" text="Assignee" />
-                              <TableColumn editable="false" prefWidth="103.0" text="Requester" />
-                              <TableColumn editable="false" prefWidth="106.0" text="Site" />
-                              <TableColumn editable="false" prefWidth="100.0" text="Dept" />
-                              <TableColumn editable="false" minWidth="9.0" prefWidth="67.0" text="Tracks #" />
-                              <TableColumn editable="false" minWidth="9.0" prefWidth="44.0" text="Edit" />
+                            <TableColumn editable="false" prefWidth="162.0" text="Title" />
+                              <TableColumn editable="false" prefWidth="75.0" text="Priority" />
+                              <TableColumn editable="false" prefWidth="104.0" text="Category" />
+                              <TableColumn editable="false" prefWidth="122.0" text="Subcategory" />
+                            <TableColumn editable="false" prefWidth="112.0" text="Assignee" />
+                              <TableColumn editable="false" prefWidth="102.0" text="Requester" />
+                              <TableColumn editable="false" prefWidth="97.0" text="Site" />
+                              <TableColumn editable="false" prefWidth="102.0" text="Dept" />
+                              <TableColumn editable="false" minWidth="9.0" prefWidth="72.0" text="Tracks #" />
+                              <TableColumn editable="false" minWidth="9.0" prefWidth="91.0" text="Date" />
+                              <TableColumn editable="false" minWidth="9.0" prefWidth="47.0" text="Edit" />
                           </columns>
                         </TableView>
                         <FlowPane alignment="CENTER_LEFT" disable="true" visible="false" GridPane.columnIndex="6">
@@ -135,6 +136,14 @@
                               <Insets left="20.0" />
                            </GridPane.margin>
                         </Button>
+                        <Label text="You only need to update once for each date range!" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
                      </children>
                   </GridPane>
                </content>

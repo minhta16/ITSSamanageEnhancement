@@ -21,6 +21,7 @@ public class Incident {
 	private String groupId;
 	private String software;
 	private LocalDate dueOn;
+	private String date;
 
 	private ArrayList<TimeTrack> trackedUsers;
 	private int trackedUsersNum;
@@ -28,20 +29,20 @@ public class Incident {
 	private transient Button rmBtn;
 
 	public Incident() {
-		this("", "", "", "", "", "", "", "", "", "", "", "", null, "", "", new ArrayList<TimeTrack>());
+		this("", "", "", "", "", "", "", "", "", "", "", "", null, "", "", new ArrayList<TimeTrack>(), "");
 	}
 
 	public Incident(String ID, String number, String state, String title, String priority, String cat, String subcat,
 			String assignee, String requester, String site, String dept, String desc, LocalDate dueOn, String groupId,
-			String software, int trackedUsersNum) {
+			String software, int trackedUsersNum, String date) {
 		this(ID, number, state, title, priority, cat, subcat, assignee, requester, site, dept, desc, dueOn, groupId,
-				software, new ArrayList<TimeTrack>());
+				software, new ArrayList<TimeTrack>(), date);
 		setTrackedUsersNum(trackedUsersNum);
 	}
 
 	public Incident(String ID, String number, String state, String title, String priority, String cat, String subcat,
 			String assignee, String requester, String site, String dept, String desc, LocalDate dueOn, String groupId,
-			String software, ArrayList<TimeTrack> trackedUsers) {
+			String software, ArrayList<TimeTrack> trackedUsers, String date) {
 		this.ID = ID;
 		this.number = number;
 		this.state = state;
@@ -61,6 +62,7 @@ public class Incident {
 		setTrackedUsersNum(trackedUsers.size());
 		editBtn = new Button("Edit");
 		rmBtn = new Button("X");
+		this.date = date;
 	}
 
 	/**
@@ -320,5 +322,13 @@ public class Incident {
 
 	public void updateTrackedUsersNum() {
 		trackedUsersNum = trackedUsers.size();
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

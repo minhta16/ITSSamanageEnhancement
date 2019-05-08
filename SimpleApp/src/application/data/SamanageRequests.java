@@ -37,6 +37,7 @@ import javafx.scene.Parent;
 public class SamanageRequests {
 
 	private static final String ACCEPT_VERSION = "application/vnd.samanage.v2.1+xml";
+	private static final String ACCEPT_VERSION_JSON = "application/vnd.samanage.v2.1+json";
 	private static final int PER_PAGE_FETCH = 25;
 	private static final int PER_PAGE_BOOT = 100;
 	// HTML METHOD:
@@ -232,6 +233,7 @@ public class SamanageRequests {
 									}
 								}
 							}
+							String date = formatDate(getString("created_at", incident));
 							Incident newIncident = new Incident(id, number, getString("state", incident),
 									getString("name", incident), getString("priority", incident), category,
 									getString("name", (Element) incident.getElementsByTagName("subcategory").item(0)),
@@ -245,7 +247,7 @@ public class SamanageRequests {
 											(Element) incident.getElementsByTagName("department")
 													.item(incident.getElementsByTagName("department").getLength() - 1)),
 									getString("description", incident), toDate(getString("due_at", incident)), groupId,
-									software, trackedUsersNum);
+									software, trackedUsersNum, date);
 
 							incidentMap.put(number, newIncident);
 						}
@@ -1057,6 +1059,11 @@ public class SamanageRequests {
 		return getString(tagName, element, 0);
 	}
 
+	protected static String formatDate(String date) {
+		String[] split = date.split("T")[0].split("-");
+		return split[1] + "/" + split[2] + "/" + split[0];
+	}
+	
 	protected static String getString(String tagName, Element element, int item) {
 		NodeList list = element.getElementsByTagName(tagName);
 		if (list != null && list.getLength() > 0) {

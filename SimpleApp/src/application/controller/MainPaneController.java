@@ -242,7 +242,8 @@ public class MainPaneController {
 		incidentTable.getColumns().get(8).setCellValueFactory(new PropertyValueFactory<>("site"));
 		incidentTable.getColumns().get(9).setCellValueFactory(new PropertyValueFactory<>("dept"));
 		incidentTable.getColumns().get(10).setCellValueFactory(new PropertyValueFactory<>("trackedUsersNum"));
-		incidentTable.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
+		incidentTable.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("date"));
+		incidentTable.getColumns().get(12).setCellValueFactory(new PropertyValueFactory<>("editBtn"));
 		incidentTable.setPlaceholder(new Label("Please update list to see the lastest incidents."));
 
 		// setupFilterComboBox
@@ -874,6 +875,8 @@ public class MainPaneController {
 							match = true;
 						} else if (incident.getNumber().contains(lowerCaseFilter) && curFilter.equals("#")) {
 							match = true;
+						} else if (incident.getDate().contains(lowerCaseFilter) && curFilter.equals("Date")) {
+							match = true;
 						} else {
 							match = false;
 						}
@@ -1426,7 +1429,7 @@ public class MainPaneController {
 				tempIncidentNameField.getText(), tempPriorityChoiceBox.getValue(), tempCatComboBox.getValue(),
 				tempSubcatComboBox.getValue(), toShortDomain(tempAsgField.getText()),
 				toShortDomain(tempReqField.getText()), tempSiteComboBox.getValue(), tempDeptComboBox.getValue(),
-				tempDescField.getText(), tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(), newTracks);
+				tempDescField.getText(), tempDatePicker.getValue(), null, tempSoftwareComboBox.getValue(), newTracks, "");
 		if ((templateEdit == IncidentEditType.NEW
 				|| (templateEdit == IncidentEditType.EDIT && (!template.getID().equals(currentTemplate.getID()))))
 				&& AppSession.getSession().getTemplates().keySet().contains(tempNameField.getText())) {
